@@ -16,15 +16,15 @@
   <meta name="author" content="Limpid">
   <meta name="keywords" content="">
   
-    <meta name="description" content="var LIM&#x3D;LIM||&amp;#123;&amp;#125;; LIM.WORLD&#x3D;LIM.WORLD||&amp;#123;&amp;#125;;      ((_)&#x3D;&gt; &amp;#123;     _.canvasWidth &#x3D; 1920;  &#x2F;&#x2F;画布大小     _.canvasHeight &#x3D; 1920;     &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;     _.windowWidth&#x3D;0">
+    <meta name="description" content="var LIM &#x3D; LIM || &amp;#123;&amp;#125;; LIM.UTILS&#x3D;LIM.UTILS||&amp;#123;&amp;#125;; ((_)&#x3D;&gt;&amp;#123;     _.sinNum&#x3D;function(max,i)&amp;#123;return Math.sin(Math.PI&#x2F;2&#x2F;max*i).toFixed(7)&amp;#125;     _.lengthNum&#x3D;function(num)&amp;#123">
 <meta property="og:type" content="article">
-<meta property="og:title" content="引擎-游戏基础渲染">
+<meta property="og:title" content="MZ UI脚手架">
 <meta property="og:url" content="http://example.com/2023/09/09/RpgMakerLim/index.html">
 <meta property="og:site_name" content="深渊RM壬">
-<meta property="og:description" content="var LIM&#x3D;LIM||&amp;#123;&amp;#125;; LIM.WORLD&#x3D;LIM.WORLD||&amp;#123;&amp;#125;;      ((_)&#x3D;&gt; &amp;#123;     _.canvasWidth &#x3D; 1920;  &#x2F;&#x2F;画布大小     _.canvasHeight &#x3D; 1920;     &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;     _.windowWidth&#x3D;0">
+<meta property="og:description" content="var LIM &#x3D; LIM || &amp;#123;&amp;#125;; LIM.UTILS&#x3D;LIM.UTILS||&amp;#123;&amp;#125;; ((_)&#x3D;&gt;&amp;#123;     _.sinNum&#x3D;function(max,i)&amp;#123;return Math.sin(Math.PI&#x2F;2&#x2F;max*i).toFixed(7)&amp;#125;     _.lengthNum&#x3D;function(num)&amp;#123">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-09T01:17:00.000Z">
-<meta property="article:modified_time" content="2023-09-09T04:41:49.043Z">
+<meta property="article:modified_time" content="2023-11-22T13:37:48.208Z">
 <meta property="article:author" content="Limpid">
 <meta property="article:tag" content="脚本">
 <meta property="article:tag" content="rpgmv">
@@ -32,7 +32,7 @@
   
   
   
-  <title>引擎-游戏基础渲染 - 深渊RM壬</title>
+  <title>MZ UI脚手架 - 深渊RM壬</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="引擎-游戏基础渲染"></span>
+            <span id="subtitle" data-typed-text="MZ UI脚手架"></span>
           
         </div>
 
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          22k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          48 分钟
+          180 分钟
         
       </span>
     
@@ -287,213 +287,777 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">引擎-游戏基础渲染</h1>
+            <h1 id="seo-header">MZ UI脚手架</h1>
             
             
               <div class="markdown-body">
                 
-                <pre><code class="hljs">var LIM=LIM||&#123;&#125;;
-LIM.WORLD=LIM.WORLD||&#123;&#125;;
-    
-((_)=&gt; &#123;
-    _.canvasWidth = 1920;  //画布大小
-    _.canvasHeight = 1920;
-    /////////////////////////////
-    _.windowWidth=0        //画面大小
-    _.windowHeight=0 
-    _.scale = 1            //缩放比例
-    _.app=null             //pixi应用
-    
-    _.tick=null            //触发
-    _.clock=[0,0,0,0,0,0]  //时钟
-    _.cursor=[0,0]         //鼠标
-    _.canvas=&#123;x:0,y:0,w:0,h:0&#125;  //画布位置
-    
-    _.showFps=false
-    _.resizeTimeout=null
-    
-    _.fps = document.createElement(&quot;div&quot;);      //fps dom
-    _.memory = document.createElement(&quot;div&quot;);   //内存 dom
-    _.xy = document.createElement(&quot;div&quot;);       //光标实时位置dom
-    
-    //初始化
-    _.init=function ()&#123;
-        PIXI.utils.skipHello();
-        PIXI.settings.GC_MAX_IDLE = 600;
-        _.initCanvas()
-        _.initFps()     
-        _.updateFps()
-        _.setupEventHandlers()  //注册操作
-        
-        
-        ////测试
-        const stage= new PIXI.Container();
-        const sprite = new PIXI.Sprite.from(&#39;/img/back.png&#39;);
-        sprite.x=0
-        sprite.y=0
-        stage.addChild(sprite);
-        _.setStage(stage)
-        ////
-        
-        _.resize()
-    &#125;
-    _.initCanvas=function ()&#123;
-        _.app = new PIXI.Application(&#123;
-            width: _.canvasWidth,
-            height: _.canvasHeight,
-            antialias: true,
-            transparent: false,
-            resolution: window.devicePixelRatio,
-            forceCanvas: false
-        &#125;);
-        
-        _.app.ticker.remove(_.app.render, _.app);
-        _.app.ticker.add(_.onTick, this);
-        
-        _.clock[2]=100
-        _.clock[1]=performance.now()-100
-        document.body.appendChild(_.app.view);
-        _.app.view.style.position=&quot;absolute&quot;
-    &#125;
-    
-    _.initFps=function ()&#123;
-        document.body.appendChild(_.fps)
-        _.fps.style.width=&quot;200px&quot;
-        _.fps.style.height=&quot;30px&quot;
-        _.fps.style.top=&quot;30px&quot;
-        _.fps.style.left=&quot;10px&quot;
-        _.fps.style.lineHeight=&quot;30px&quot;
-        _.fps.style.position=&quot;absolute&quot;
-        _.fps.style.backgroundColor=&quot;#000a&quot;
-        _.fps.style.color=&quot;#fff&quot;
-        _.fps.style.fontSize=&quot;18px&quot;
-        _.fps.style.fontWeight=&quot;800&quot;
-        _.fps.style.textAlign=&quot;left&quot;
-        _.fps.style.pointerEvents=&quot;none&quot;
-
-        document.body.appendChild(_.memory)
-        _.memory.style.width=&quot;200px&quot;
-        _.memory.style.height=&quot;30px&quot;
-        _.memory.style.left=&quot;10px&quot;
-        _.memory.style.lineHeight=&quot;30px&quot;
-        _.memory.style.position=&quot;absolute&quot;
-        _.memory.style.backgroundColor=&quot;#000a&quot;
-        _.memory.style.color=&quot;#fff&quot;
-        _.memory.style.fontSize=&quot;18px&quot;
-        _.memory.style.fontWeight=&quot;800&quot;
-        _.memory.style.textAlign=&quot;left&quot;
-        _.memory.style.pointerEvents=&quot;none&quot;
-
-        document.body.appendChild(_.xy)
-        _.xy.style.width=&quot;200px&quot;
-        _.xy.style.height=&quot;30px&quot;
-        _.xy.style.top=&quot;60px&quot;
-        _.xy.style.left=&quot;10px&quot;
-        _.xy.style.lineHeight=&quot;30px&quot;
-        _.xy.style.position=&quot;absolute&quot;
-        _.xy.style.backgroundColor=&quot;#000a&quot;
-        _.xy.style.color=&quot;#fff&quot;
-        _.xy.style.fontSize=&quot;18px&quot;
-        _.xy.style.fontWeight=&quot;800&quot;
-        _.xy.style.textAlign=&quot;left&quot;
-        _.xy.style.pointerEvents=&quot;none&quot;
-    &#125;
-    _.updateFps=function ()&#123;
-        _.fps.style.display=_.showFps?&quot;block&quot;:&quot;none&quot;
-        _.xy.style.display=_.showFps?&quot;block&quot;:&quot;none&quot;
-        _.memory.style.display=_.showFps?&quot;block&quot;:&quot;none&quot;
-    &#125;
-    _.drawFps=function ()&#123;
-        _.fps.innerHTML=&quot;fps:&quot;+_.clock[3].toFixed(0)
-        _.memory.innerHTML=(performance.memory.usedJSHeapSize/1048576).toFixed(2)+&#39;MB&#39;
-        _.xy.innerHTML=_.cursor[0].toFixed(0)+&quot;/&quot;+_.cursor[1].toFixed(0)
-    &#125;
-    
-    //舞台
-    _.setStage = function(stage) &#123;if (_.app) _.app.stage = stage;&#125;
-    _.canRender = function() &#123;return !!_.app.stage;&#125;
-    //设置工作
-    _.setTick = function(handler) &#123;_.tick = handler;&#125;
-    //执行工作
-    _.onTick = function(deltaTime) &#123;
-        _.clock[0]=performance.now();
-        
-        if (_.tick) &#123;_.tick(deltaTime);&#125;
-        if ( _.canRender()) &#123;_.app.render();&#125;
-        const time = performance.now();
-        const thisclockTime = time - _.clock[1];
-        
-        _.clock[2] +=(thisclockTime -  _.clock[2]) / 12;;
-        _.clock[3] = 1000 /  _.clock[2];
-        _.clock[4] = Math.max(0, time -  _.clock[0]);
-        _.clock[1] = time;
-        
-        if( _.clock[5]++%15===0) _.drawFps()
-       
-    &#125;;
-    //计算窗体大小
-    _.resize =function ()&#123;
-        _.windowWidth = window.innerWidth
-        _.windowHeight = window.innerHeight
-        let scale= Math.min(_.windowWidth/_.app.view.offsetWidth,_.windowHeight/_.app.view.offsetHeight)
-        _.setScale(scale)
-    &#125;
-    //改变窗体
-    _.setScale = function (scale) &#123;
-        if (_.app &amp;&amp; _.app.view) &#123;
-            _.scale=scale
-            const canvasStyle = _.app.view.style;
-            const canvasOffsetWidth = _.app.view.offsetWidth;
-            const canvasOffsetHeight = _.app.view.offsetHeight;
-            _.canvas.w=canvasOffsetWidth*scale
-            _.canvas.h=canvasOffsetHeight*scale
-            _.canvas.x=(_.windowWidth-_.canvas.w)/2
-            _.canvas.y=(_.windowHeight-_.canvas.h)/2
-            canvasStyle.transform = `scale($&#123;scale&#125;, $&#123;scale&#125;)`;
-            canvasStyle.left = `calc((-$&#123;canvasOffsetWidth&#125;px * (1 - $&#123;scale&#125;)) / 2 + ($&#123;_.windowWidth&#125;px - $&#123;canvasOffsetWidth&#125;px * $&#123;scale&#125;) / 2)`;
-            canvasStyle.top = `calc((-$&#123;canvasOffsetHeight&#125;px * (1 - $&#123;scale&#125;)) / 2 + ($&#123;_.windowHeight&#125;px - $&#123;canvasOffsetHeight&#125;px * $&#123;scale&#125;) / 2)`;
+                <pre><code class="hljs">var LIM = LIM || &#123;&#125;;
+LIM.UTILS=LIM.UTILS||&#123;&#125;;
+((_)=&gt;&#123;
+    _.sinNum=function(max,i)&#123;return Math.sin(Math.PI/2/max*i).toFixed(7)&#125;
+    _.lengthNum=function(num)&#123;
+        try &#123;
+            if(isNaN(num))
+            &#123;
+                if(num.split(&quot;w&quot;).length&gt;1) &#123;
+                    let arr = num.split(&quot;w&quot;)
+                    let a = parseFloat(arr[0]) * 0.01 * Graphics.width
+                    let b = arr[1] ? parseFloat(arr[1]) : 0
+                    return a + b
+                &#125;
+                else if(num.split(&quot;h&quot;).length&gt;1) &#123;
+                    let arr = num.split(&quot;h&quot;)
+                    let a = parseFloat(arr[0]) * 0.01 * Graphics.height
+                    let b = arr[1] ? parseFloat(arr[1]) : 0
+                    return a + b
+                &#125;
+                else return 0
+            &#125;
+            else return parseFloat(num)
+        &#125;
+        catch (e) &#123;
+            return 0
         &#125;
     &#125;
-    //光标移动
-    _.cursorMove=function (event)&#123;
-        let sx=event.clientX-LIM.WORLD.canvas.x
-        let sy=event.clientY-LIM.WORLD.canvas.y
-        _.cursor=[sx/LIM.WORLD.scale/window.devicePixelRatio,sy/LIM.WORLD.scale/window.devicePixelRatio]
+    _.rpgaReduce=function(r,g,b,a)&#123;
+        return _.radixNum(Math.min(r,255),10,16)+
+            _.radixNum(Math.min(g,255),10,16)+
+            _.radixNum(Math.min(b,255),10,16)+
+            _.radixNum(Math.min(a,255),10,16)
     &#125;
-    //按下
-    _.onKeyDown = function(event) &#123;
-        if (!event.ctrlKey &amp;&amp; !event.altKey) &#123;
-            switch (event.keyCode) &#123;
-                case 113: // F2
-                    _.showFps=!_.showFps
-                    _.updateFps()
-                    break
-                case 115: // F4
-                    if(Utils.isNwjs()) &#123;
-                        let gui = require(&#39;nw.gui&#39;);
-                        let win = gui.Window.get();
-                        if (window.screen.width&lt;win.width) win.restore();    
-                        else win.maximize()
-                    &#125;
-                    break
-                case 116: // F5
-                    location.reload()
-                    break;
+    _.radixNum = function (num, m, n) &#123;
+        num=typeof(num)===&#39;string&#39; ?num:String(num)
+        const _DEFAULT_=&#123;initNum:10&#125;
+        m=m===0?_DEFAULT_.initNum:m
+        n=n===0?_DEFAULT_.initNum:n
+        n=m&amp;&amp;!n?_DEFAULT_.initNum:n;
+        return parseInt(num,m).toString(n)
+    &#125;
+    _.atBit=function(num,bit)&#123;return num&gt;&gt;bit&amp;1&#125;
+    _.setBit=function(num,bit,bool) &#123;
+        if (bool) return num | (1 &lt;&lt; bit);
+    &#125;
+    _.sortBy=function(property,desc)&#123;
+        return function (v1,v2) &#123;return (v2[property]&gt;v1[property]?1:-1)*(desc?1:-1)&#125;
+    &#125;
+    _.union=function(arr1,arr2) &#123;return [...new Set([...arr1, ...arr2])]&#125;
+    _.inter=function(arr1,arr2) &#123;return new Set([...arr1].filter(x=&gt;arr2.has(x)))&#125;
+    _.diff=function(arr1,arr2) &#123;return new Set([...arr1].filter(x=&gt;!arr2.has(x)))&#125;
+&#125;)(LIM.UTILS);
+Bitmap.prototype.Ablt=function (data)&#123;
+    let &#123;source,sx,sy,sw,sh,dx,dy,dw,dh,alpha,rota&#125; = data
+    let rotationAngle =rota * (Math.PI / 180);
+    this.context.save();
+    this.context.translate(dx + source.width / 2, dy +source.height / 2);
+    this.context.rotate(rotationAngle);
+    this.context.translate(-(dx + source.width / 2), -(dy + source.height / 2));
+    this.context.globalAlpha = alpha
+    this.blt(source, sx, sy, sw, sh, dx, dy, dw, dh)
+    this.context.restore();
+&#125;
+Bitmap.prototype.drawTextWithGradient = function(text,x,y,maxWidth,lineHeight,align,gradientColors) &#123;
+    const context = this.context;
+    const alpha = context.globalAlpha;
+    maxWidth = maxWidth || 0xffffffff;
+    let tx = x;
+    let ty = Math.round(y + lineHeight / 2 + this.fontSize * 0.35);
+    if (align === &quot;center&quot;) &#123; tx += maxWidth / 2;&#125;
+    if (align === &quot;right&quot;) &#123;tx += maxWidth;&#125;
+    context.save();
+    context.font = this._makeFontNameText();
+    context.textAlign = align;
+    context.textBaseline = &quot;alphabetic&quot;;
+    const gradient = context.createLinearGradient(tx, ty - this.fontSize, tx, ty + this.fontSize);
+    for (let i = 0; i &lt; gradientColors.length; i++) &#123;gradient.addColorStop((i) / (gradientColors.length), gradientColors[i]);&#125;
+    context.fillStyle = gradient;
+    this._drawTextOutline(text, tx, ty, maxWidth);
+    this._drawTextBody(text, tx, ty, maxWidth, gradient);
+    context.globalAlpha = alpha;
+    context.restore();
+    this._baseTexture.update();
+&#125;;
+Bitmap.prototype._drawTextBody = function(text,tx,ty,maxWidth,gradient) &#123;
+    const context = this.context;
+    if (gradient) &#123;
+        const metrics = context.measureText(text);
+        const textWidth = metrics.width;
+        context.fillText(text, tx , ty, maxWidth);
+    &#125; else &#123;
+        context.fillStyle = this.textColor;
+        context.fillText(text, tx, ty, maxWidth);
+    &#125;
+&#125;;
+
+
+Sprite.prototype.getTotalValue = function(propertyName) &#123;
+    let total = this[propertyName];
+    for (let current = this; current &amp;&amp; current.parent &amp;&amp; current.parent[propertyName]; current = current.parent) &#123;
+        total += current.parent[propertyName];
+    &#125;
+    return total;
+&#125;
+Sprite.prototype.getX = function() &#123;return this.getTotalValue(&#39;x&#39;)&#125;
+Sprite.prototype.getY = function() &#123;return this.getTotalValue(&#39;y&#39;)&#125;
+
+function Weaver() &#123;
+    this.initialize.apply(this, arguments);
+&#125;
+Weaver.prototype = Object.create(Sprite.prototype);
+Weaver.prototype.constructor = Weaver;
+Weaver.prototype.initialize = function (orgin) &#123;
+    Sprite.prototype.initialize.call(this)
+    this.alpha =0
+    this._orgin=orgin
+    this._load = 0
+    this._mode = 0
+
+    this.install()
+    this.hatch()
+    this.filters=[new PIXI.filters.FXAAFilter()]
+&#125;
+Weaver.prototype.install = function ()&#123;
+    this._window=&#123;&#125;
+&#125;
+Weaver.prototype.update=function ()&#123;
+    if(this._load) return
+    switch (this._mode)&#123;
+        case 0: this.execute();break
+        case 1:
+            for (const child of this.children) &#123;
+                if (child.update) &#123;
+                    child.update();
+                &#125;
+            &#125;
+    &#125;
+&#125;
+Weaver.prototype.execute = function() &#123;
+    this._mode =1
+    this.alpha=1
+    for(let key in this._window)
+        this._window[key].execute()
+&#125;
+Weaver.prototype.hatch=function ()&#123;
+    for (let key in this._window)&#123;
+        let item=this._window[key]
+        for(let img in item.img)
+            item.loadBit(img,item.img[img])
+    &#125;
+    this._orgin.addChild(this)
+&#125;
+Weaver.prototype.death=function ()&#123;
+    const children=this._orgin.children
+    for(let i=0;i&lt;children.length;i++)&#123;
+        if(children[i]===this)&#123;
+            children.splice(i,1)
+            break
+        &#125;
+    &#125;
+    this.removeChildren()
+    this.destroy()
+&#125;
+
+
+////
+function Cotton() &#123;
+    this.initialize.apply(this, arguments);
+&#125;
+Cotton.prototype = Object.create(Sprite.prototype);
+Cotton.prototype.constructor = Cotton;
+Cotton.prototype.initialize = function (orgin) &#123;
+    Sprite.prototype.initialize.call(this)
+    this._orgin=orgin
+    this._bit = &#123;&quot;n&quot;:new Bitmap(1,1)&#125;
+    this._delay = 0
+    this._stop = true
+    this._input=[]
+    this.initImage()
+&#125;;
+Cotton.prototype.execute = function () &#123;
+    this.threshold = 20
+    this._page = 0
+    this._note = &#123;&#125;
+    this._sprite= []
+    this._expel= new Set()
+    this.run = new Runflow(this)
+    this.adorn = new Adorn(this)
+    this.initRun()
+    this.initAdorn()
+    this.drawAdorn()
+    this._orgin.addChild(this)
+&#125;
+
+Cotton.prototype.initImage = function() &#123;this.img=&#123;&#125;&#125;
+Cotton.prototype.delay=function (val)&#123;this._delay=val&#125;
+Cotton.prototype.stop=function ()&#123;this._stop=true&#125;
+Cotton.prototype.start=function ()&#123;this._stop=false&#125;
+
+Cotton.prototype.setInput=function (arr)&#123;this._input = this._input.concat(arr);&#125;
+
+Cotton.prototype.initRun=function ()&#123;
+
+&#125;
+Cotton.prototype.setRun=function (key,init,cond,done)&#123;this.run.set(key,init,cond,done)&#125;
+Cotton.prototype.work=function (work)&#123;this.run.install(work)&#125;
+Cotton.prototype.initAdorn=function ()&#123;&#125;
+Cotton.prototype.setAdorn=function (key,bit,handler,data,w,h,x,y,cover,adso,alpha,rota)&#123;
+    this.adorn.set(key,bit,handler,data,w,h,x,y,cover,adso,alpha,rota)
+&#125;
+Cotton.prototype.delAdorn=function (key)&#123;this.adorn.delete(key)&#125;
+Cotton.prototype.refAdorn=function (key)&#123;this.adorn.ref(key)&#125;
+Cotton.prototype.swapAdorn=function (key1,key2)&#123;this.adorn.swap(key1,key2)&#125;
+Cotton.prototype.evokeAdorn=function (key,bool)&#123;
+    if(bool) this.adorn.on(key)
+    else  this.adorn.off(key)
+&#125;
+Cotton.prototype.touchAdorn=function (key,bool)&#123;this.adorn.setTouch(key,bool)&#125;
+Cotton.prototype.bitAdorn=function (bit,key)&#123;this.adorn.setBit(bit,key)&#125;
+Cotton.prototype.drawAdorn=function ()&#123;
+    this.adorn.draw()
+&#125;
+Cotton.prototype.update = function () &#123;
+    if(this._stop) return
+    else if(this.run.active) this.run.update()
+    else &#123;
+        if(this._delay===0) &#123;
+            this.processTouch()
+            if(this.processKey()||this.processWheel())&#123;this._delay=Math.max(this._delay,4)&#125;
+        &#125;
+        else this._delay--
+        this.innerListen()
+    &#125;
+    this.adorn.update()
+    this.outerListen()
+&#125;
+Cotton.prototype.setAnime =function (sp,key,val,time,mode,line) &#123;
+    this.adorn.setAnime(sp,key,val,time,mode,line)
+&#125;
+Cotton.prototype.stopAnime =function (sp,key) &#123;
+    this.adorn.stopAnime(sp,key)
+&#125;
+Cotton.prototype.spHandler=function (key,handler)&#123;this.adorn.spHandler(key,handler)&#125;
+Cotton.prototype.delHandler=function (key)&#123;this.adorn.delHandler(key)&#125;
+Cotton.prototype.getsp=function (key)&#123;
+    return this.adorn.sp[key]
+&#125;
+Cotton.prototype.loadBit = function (key, val) &#123;
+    this._orgin._load++
+    this._bit[key] = ImageManager.loadBitmap(`img/$&#123;val[0]&#125;/`, val[1]||key)
+    this._bit[key].addLoadListener(() =&gt; &#123; this._orgin._load-- &#125;)
+&#125;
+Cotton.prototype.getNote = function (key) &#123;
+    return this._note[key]
+&#125;
+Cotton.prototype.setNote = function (key, val) &#123;
+    this._note[key] = val
+&#125;
+Cotton.prototype.addExpel=function (handler)&#123;this._expel.add(handler)&#125;
+Cotton.prototype.delExpel=function (handler)&#123;this._expel.delete(handler)&#125;
+Cotton.prototype.setExpel=function (arr)&#123;
+    this._expel=new Set()
+    for(let item of arr) this._expel.add(item)
+&#125;
+Cotton.prototype.addBit = function (bit,key) &#123;
+    this._bit[key] = bit
+    this.adorn.refBit(key)
+&#125;
+Cotton.prototype.getBit = function (key) &#123;
+    if (this._bit[key]) &#123;
+        let bit = new Bitmap(this._bit[key].width, this._bit[key].height)
+        bit.blt(this._bit[key], 0, 0, this._bit[key].width, this._bit[key].height, 0, 0, this._bit[key].width, this._bit[key].height)
+        return bit
+    &#125;
+    return new Bitmap(1,1)
+&#125;
+Cotton.prototype.grabBit = function (key) &#123;
+    if (this._bit[key]) return this._bit[key]
+    return new Bitmap(1,1)
+&#125;
+
+Cotton.prototype.processTouch = function () &#123;
+    const cancelled=TouchInput.isCancelled()
+    const pressed =TouchInput.isPressed()
+
+    if(cancelled&amp;&amp;this.cancelled()) return
+    const x= TouchInput.x
+    const y= TouchInput.y
+    for (let key of this.adorn.list.slice().reverse()) &#123;
+        const item = this.adorn.sp[key];
+        const data = this.adorn.data[key];
+        const bound= this.adorn.handler[key]
+        if(bound) &#123;
+            const handler =bound.handler
+            const res=bound.update(x,y,cancelled,pressed,item,this._expel)
+            const pos=[res.touch[0],res.touch[1],res.touch[4]-res.touch[2],res.touch[5]-res.touch[3]]
+            const bool =res.data
+
+            let region=0
+            if (bool[0] === bool[1]) &#123;region = 2;&#125;
+            else if (bool[1] &gt; bool[2]) &#123;region = 1;&#125;
+            else if (bool[0] === bool[2]) &#123;region = 3;&#125;
+
+            if(bool[6]===2&amp;&amp;data.touch)&#123;
+                if (region===1&amp;&amp;this.triggerHandler(handler,&quot;K&quot;,data.data,pos)) return
+                return
+            &#125;
+            if(region===1&amp;&amp;data.touch)&#123;
+                if (bool[0]===bool[5]&amp;&amp;this.triggerHandler(handler,&quot;R&quot;,data.data,pos)) return
+                if (bool[0]===bool[3]&amp;&amp;this.triggerHandler(handler,&quot;L&quot;,data.data,pos)) return
+                return;
+            &#125;
+            
+            if(bool[0]===bool[4])&#123;
+                if(region===1||region===2) &#123;
+                    if (this.triggerHandler(handler,&quot;E&quot;,data.data,pos)) return
+                &#125;
+            &#125;
+            else if(bool[3]&gt;bool[4])&#123;
+                if(data.touch&amp;&amp;bool[6]===1)
+                    if (this.triggerHandler(handler,&quot;C&quot;,data.data,pos)) return
+            &#125;
+            else &#123;
+                if(region===2) &#123;
+                    if (this.triggerHandler(handler,&quot;E&quot;,data.data,pos)) return
+                &#125;
+                else if(region===3) &#123;
+                    if (this.triggerHandler(handler, &quot;Q&quot;, data.data, pos)) return
+                &#125;
+                else if(data.touch&amp;&amp;region===1) &#123;
+                    if (this.triggerHandler(handler,&quot;T&quot;,data.data,pos)) return
+                &#125;
             &#125;
         &#125;
     &#125;
-    //注册事件
-    _.setupEventHandlers=function ()&#123;
-        document.addEventListener(&#39;mousemove&#39;,_.cursorMove.bind(this));
-        document.addEventListener(&quot;keydown&quot;, _.onKeyDown.bind(this));
-        window.addEventListener(&#39;resize&#39;, function() &#123;
-            clearTimeout(_.resizeTimeout);
-            _.resizeTimeout = setTimeout( ()=&gt;&#123;_.resize();&#125;, 100);
-        &#125;);
+&#125;
+Cotton.prototype.processWheel = function() &#123;
+    if (this[`WheelDown_$&#123;this._page&#125;`]&amp;&amp;TouchInput.wheelY &gt;= this.threshold) &#123;
+        this[`WheelDown_$&#123;this._page&#125;`]()
+        return true
     &#125;
-    
-&#125;)(LIM.WORLD);
+    if (this[`WheelUp_$&#123;this._page&#125;`]&amp;&amp;TouchInput.wheelY &lt;= -this.threshold) &#123;
+        this[`WheelUp_$&#123;this._page&#125;`]()
+        return true
+    &#125;
+    return false
+&#125;
+Cotton.prototype.processKey = function () &#123;
+    for(let key of this._input) &#123;
+        if (this[`Trigger_$&#123;key&#125;_$&#123;this._page&#125;`] &amp;&amp; Input.isTriggered(key)) &#123;
+            this[`Trigger_$&#123;key&#125;_$&#123;this._page&#125;`]()
+            return true
+        &#125;
+        else if (this[`Key_$&#123;key&#125;_$&#123;this._page&#125;`] &amp;&amp; Input.isPressed(key)) &#123;
+            this[`Key_$&#123;key&#125;_$&#123;this._page&#125;`]()
+            return true
+        &#125;
+        else if (this[`Repe_$&#123;key&#125;_$&#123;this._page&#125;`] &amp;&amp; Input.isRepeated(key)) &#123;
+            this[`Repe_$&#123;key&#125;_$&#123;this._page&#125;`]()
+            return true
+        &#125;
+        else if (this[`Longkey_$&#123;key&#125;_$&#123;this._page&#125;`] &amp;&amp; Input.isLongPressed(key)) &#123;
+            this[`Longkey_$&#123;key&#125;_$&#123;this._page&#125;`]()
+            return true
+        &#125;
+    &#125;
+    return  false
+&#125;
 
+Cotton.prototype.triggerHandler = function (handler,name,data,pos) &#123;
+    if(this[handler+&quot;_&quot;+name]) return this[handler+&quot;_&quot;+name](data,pos)
+    return false;
+&#125;;
+Cotton.prototype.cancelled = function () &#123;
+    if(this[`Back_$&#123;this._page&#125;`]) return this[`Back_$&#123;this._page&#125;`]()
+    return false;
+&#125;;
+
+Cotton.prototype.innerListen =function ()&#123;&#125;
+Cotton.prototype.outerListen =function ()&#123;&#125;
+
+////
+function Runflow() &#123;
+    this.initialize.apply(this, arguments);
+&#125;
+Runflow.prototype = Object.create(Runflow.prototype);
+Runflow.prototype.constructor = Runflow;
+Runflow.prototype.initialize = function (orgin) &#123;
+    this._orgin=orgin
+    this.active=false
+    this.time=0
+    this.arr=[]
+    this.work=&#123;&#125;
+    this.init=&quot;&quot;
+    this.cond=&quot;&quot;
+    this.done=&quot;&quot;
+&#125;
+
+Runflow.prototype.set=function (key,init,cond,done)&#123;
+    this.work[key] = &#123;init: init || &quot;&quot;,cond: cond || &quot;&quot;, done: done || &quot;&quot;,&#125;
+&#125;
+Runflow.prototype.install = function (work) &#123;
+    if (this.work[work]) &#123;
+        if(!this.active) &#123;
+            this.time=0
+            this.active=true
+            this.init=this.work[work].init
+            this.cond=this.work[work].cond
+            this.done=this.work[work].done
+            return true
+        &#125;
+        else this.arr.push(work)
+    &#125;
+    return false
+&#125;
+Runflow.prototype.update=function ()&#123;
+    if (this.time === 0) &#123;
+        this.time++;
+        if (this.init &amp;&amp; this._orgin[this.init]) this._orgin[this.init](); // 执行初始化方法
+    &#125;
+    else &#123;
+        if (!this.cond||(this._orgin[this.cond]&amp;&amp;this._orgin[this.cond]()))&#123;
+            this.active = false;
+            if(this.done&amp;&amp;this._orgin[this.done])&#123;
+                this._orgin[this.done]()
+                let bool=true
+                while (bool&amp;&amp;this.arr.length)
+                    if(this.install(this.arr.shift()))
+                        bool=false
+            &#125;
+        &#125;
+        else this.time++
+    &#125;
+&#125;
+
+////
+function Adorn() &#123;
+    this.initialize.apply(this, arguments);
+&#125;
+Adorn.prototype = Object.create(Adorn.prototype);
+Adorn.prototype.constructor = Adorn;
+Adorn.prototype.initialize = function (orgin) &#123;
+    this._orgin=orgin
+    this.data=&#123;&#125;
+    this.list=[]
+    this.map=&#123;&#125;
+    this.sp=&#123;&#125;
+    this.anime=&#123;&#125;
+    this.handler=&#123;&#125;
+&#125;
+
+Adorn.prototype.set=function (key,bit,handler,data,w,h,x,y,cover,adso,alpha,rota)&#123;
+    this.data[key]=&#123;
+        bit:bit,
+        data:data||&#123;&#125;,
+        w:w||0,
+        h:h||0,
+        x:x||0,
+        y:y||0,
+        cover: cover||0,
+        adso: adso!==undefined?adso:7,
+        alpha: alpha!==undefined?alpha:1,
+        rota: rota || 0,
+        ox:1, //缩放
+        oy:1,
+        sx:0,
+        sy:0,
+        fx:0,
+        fy:0,
+        fw:100,
+        fh:100,
+        touch:false,
+        trans:true,
+        refresh:true
+    &#125;
+    this.connectBit(bit,key)
+    if(handler) this.spHandler(key,handler)
+    this.list.push(key)
+&#125;
+Adorn.prototype.delete =function (key)&#123;
+    if(this.data[key])&#123;
+        delete this.data[key]
+        if(this.list.indexOf(key)&gt;-1)
+            this.list.splice(this.list.indexOf(key),1)
+        this.draw()
+    &#125;
+&#125;
+
+Adorn.prototype.ref=function (key)&#123;if(this.data[key]) this.data[key].refresh=true&#125;
+Adorn.prototype.update=function ()&#123;
+    for(let sp in this.anime)&#123;
+        let item=this.anime[sp]
+        for(let key in item)&#123;
+            let data=item[key]
+            if(!data.run&amp;&amp;data.count===data.time*data.mode)
+                this.delAnime(sp,key)
+            data.count++
+        &#125;
+    &#125;
+    for (let key of this.list)
+        if (this.anime[key]||this.data[key].trans)
+            this.trans(key)
+&#125;
+Adorn.prototype.swap=function (v1,v2)&#123;
+    const i1 = this.list.indexOf(v1);
+    const i2 = this.list.indexOf(v2);
+    if (i1 === -1 || i2 === -1) return
+    this.list.splice(i1, 1);
+    this.list.splice(i2, 0, v1);
+&#125;
+Adorn.prototype.off=function (key)&#123;if(this.data[key]) this.data[key].touch=false&#125;
+Adorn.prototype.on=function (key) &#123;if(this.data[key]) this.data[key].touch=true &#125;
+Adorn.prototype.setBit=function (bit,key)&#123;
+    if(this.data[key]&amp;&amp;this.data[key].bit)&#123;
+        let index=this.map[this.data[key].bit].indexOf(key)
+        if(index&gt;-1) this.map[this.data[key].bit].splice(index,1)
+    &#125;
+    this.data[key].bit=bit
+    this.connectBit(bit,key)
+    this.data[key].refresh=true
+&#125;
+Adorn.prototype.connectBit=function (bit,key)&#123;
+    if(this.map[bit]) this.map[bit].push(key)
+    else  this.map[bit]=[key]
+&#125;
+Adorn.prototype.refBit=function (bit)&#123;
+    if(this.map[bit])
+        for(let key of this.map[bit])
+            if(this.data[key]) this.data[key].refresh=true
+&#125;
+
+Adorn.prototype.setAnime =function (sp,key,val,time,mode,line) &#123;
+    if (this.data[sp]) &#123;
+        if (!this.anime[sp]) &#123;
+            this.anime[sp] = &#123;&#125;
+        &#125;
+        let data = this.anime[sp]
+        for (let i = 0; i &lt; key.length; i++) &#123;
+            data[key[i]] = &#123;val: val[i], run: mode &gt; 0, time: time, count: 0, mode: Math.abs(mode), line: line&#125;
+        &#125;
+    &#125;
+&#125;
+Adorn.prototype.stopAnime=function (sp,key)&#123;
+    if(this.anime[sp]) &#123;
+        for (let i = 0; i &lt; key.length; i++) &#123;
+            if (this.anime[sp][key[i]])
+                this.anime[sp][key[i]].run = false
+        &#125;
+    &#125;
+&#125;
+Adorn.prototype.delAnime=function (sp,key)&#123;
+    if(this.anime[sp]) &#123;
+        if (this.anime[sp][key])
+            delete this.anime[sp][key]
+        if (Object.keys(this.anime[sp]).length &lt; 1)
+            delete this.anime[sp]
+    &#125;
+&#125;
+Adorn.prototype.getAnime=function (sp)&#123;
+    const correct=&#123;&#125;
+    if(this.anime[sp]) &#123;
+        const item = this.anime[sp]
+        for (let key in item) &#123;
+            const data = item[key]
+            switch (data.line)&#123;
+                case &quot;line&quot;:
+                    correct[key] =
+                        (data.count % (data.time * data.mode))/data.time * data.val
+                    break
+                default:
+                    correct[key] =
+                        LIM.UTILS.sinNum(data.time,data.count % (data.time * data.mode)) * data.val
+            &#125;
+        &#125;
+    &#125;
+    return correct
+&#125;
+
+
+Adorn.prototype.getRef = function() &#123;
+    return this.list.filter(function(key) &#123;return this.data[key].refresh;&#125;, this);
+&#125;;
+Adorn.prototype.getLapse = function() &#123;
+    let spKeys = Object.keys(this.sp);
+    let dataKeys = Object.keys(this.data);
+    return spKeys.filter(function(key) &#123; return !dataKeys.includes(key);&#125;, this);
+&#125;;
+Adorn.prototype.draw = function () &#123;
+    const ref=LIM.UTILS.union(this.getRef(),this.getLapse())
+    for(let i=0;i&lt;this._orgin.children.length;i++)&#123;
+        if (this._orgin.children[i].adorn)&#123;
+            const adorn= this._orgin.children[i].adorn
+            if(ref.indexOf(adorn)&gt;-1&amp;&amp;this.sp[adorn])&#123;
+                this._orgin.children.splice(i--, 1)
+                this.sp[adorn].destroy()
+                delete this.sp[adorn]
+            &#125;
+        &#125;
+    &#125;
+    this._orgin.children=[]
+    for (let key of this.list) &#123;
+        if (this.data[key])&#123;
+            if(this.data[key].refresh)&#123;
+                this.data[key].refresh=false
+                const bit = this._orgin.grabBit(this.data[key].bit);
+                if(bit)&#123;
+                    const sp = new Sprite(bit);
+                    sp.adorn=key
+                    this.sp[key]=sp
+                    this.trans(key)
+
+                &#125;
+            &#125;
+            this._orgin.addChild(this.sp[key])
+        &#125;
+    &#125;
+&#125;
+
+Adorn.prototype.trans =function (key) &#123;
+    this.data[key].trans=false
+    if(this.data[key]&amp;&amp;this.sp[key])&#123;
+        let correct=this.getAnime(key)
+        const sp=this.sp[key]
+        const data=this.data[key]
+        sp.anchor.set(0.5, 0.5);
+
+        //缩放
+        let w= 1
+        let h= 1
+        if(String(data.w).indexOf(&quot;%&quot;)&gt;-1)  w=parseFloat(data.w.replace(&#39;%&#39;, &#39;&#39;)) / 100 || 1
+        else w= LIM.UTILS.lengthNum(data.w)/sp.bitmap.width
+
+        if(String(data.h).indexOf(&quot;%&quot;)&gt;-1)  h=parseFloat(data.h.replace(&#39;%&#39;, &#39;&#39;)) / 100 || 1
+        else h= LIM.UTILS.lengthNum(data.h)/sp.bitmap.height
+        switch (data.cover) &#123;
+            case 1:
+                sp.scale.x = Math.max(w,h)
+                sp.scale.y = sp.scale.x
+                break
+            case 2:
+                sp.scale.x = Math.min(w,h)
+                sp.scale.y = sp.scale.x
+                break
+            default:
+                sp.scale.x = w
+                sp.scale.y = h
+                break
+        &#125;
+
+        //定位
+        let qx= sp.scale.x
+        let qy= sp.scale.y
+        w=sp.bitmap.width
+        h=sp.bitmap.height
+        let sx=data.adso % 3 === 1 ? w * qx * 0.5 :
+            data.adso % 3 === 2 ? Graphics.width * 0.5 :
+                Graphics.width - w * qx * 0.5;
+        let sy=data.adso &gt; 6 ? h * qy * 0.5 :
+            data.adso &lt; 4 ? Graphics.height - h * qy * 0.5 :
+                Graphics.height * 0.5;
+
+        //设定值
+        sp.rx= LIM.UTILS.lengthNum(data.x)
+        sp.x = sp.rx+sx+(correct.x||0);
+        sp.ry= LIM.UTILS.lengthNum(data.y)
+        sp.y = sp.ry+sy+(correct.y||0);
+        sp.alpha = data.alpha + (correct.alpha||0)/100;
+        sp.rotation = ((data.rota+(correct.rota||0))/180) * Math.PI;
+        sp.scale.x *=data.ox + (correct.ox||0)/100
+        sp.scale.y *=data.oy + (correct.oy||0)/100
+
+        sp.skew.x =((data.sx+(correct.sx||0))/180) * Math.PI;
+        sp.skew.y =((data.sy+(correct.sy||0))/180) * Math.PI;
+
+        //裁剪
+        let fx= data.fx+(correct.fx||0)
+        let fy= data.fy+(correct.fy||0)
+        let fw= data.fw+(correct.fw||0)
+        let fh= data.fh+(correct.fh||0)
+        sp.setFrame(w*fx/100,h*fy/100,w*fw/100,h*fh/100)
+    &#125;
+&#125;
+Adorn.prototype.move=function (key,data)&#123;
+    if(this.data[key]) &#123;
+        for (let k of Object.keys(data)) this.data[key][k] = data[k]
+        this.data[key].trans = true
+    &#125;
+&#125;
+Adorn.prototype.setTouch =function (key,bool)&#123;
+    if(this.handler[key]) this.handler[key].alpha=bool||false
+&#125;
+
+Adorn.prototype.spHandler=function (key,handler)&#123;
+    this.delHandler(key)
+    if(this.data[key]) this.handler[key]=new Handler(this,handler)
+&#125;
+Adorn.prototype.delHandler=function (key)&#123;
+    if(this.handler[key]) delete this.handler[key]
+&#125;
+
+/////
+function Handler() &#123;
+    this.initialize.apply(this, arguments);
+&#125;
+Handler.prototype = Object.create(Handler.prototype);
+Handler.prototype.constructor = Handler;
+Handler.prototype.initialize = function (orgin,handler) &#123;
+    this._orgin=orgin
+    this.handler=handler
+    this.create()
+&#125;
+Handler.prototype.create=function ()&#123;
+    this.alpha=false    //是否判断颜色
+    this.touch=[-1,-1,-1,-1,-1,-1]
+    this.data=[0,-1,0,-1,0,-1,0]
+    this.activa=true
+&#125;
+Handler.prototype.update=function (x,y,cancelled,pressed,item,expel) &#123;
+    if (this.activa) &#123;
+        let itemWidth = item.width*item.scale.x;
+        let itemHeight = item.height*item.scale.y;
+        let itemX = item.getX()
+        let itemY = item.getY()
+        let alphaPixel = this.alpha||item.bitmap.getAlphaPixel(x - (itemX - itemWidth * 0.5), y - (itemY - itemHeight * 0.5));
+        this.touch = [
+            x - (itemX - itemWidth * 0.5),
+            y - (itemY - itemHeight * 0.5),
+            this.touch[2] &gt; -1 ? this.touch[4] : x,
+            this.touch[3] &gt; -1 ? this.touch[5] : y,
+            x,
+            y
+        ];
+        if (expel.has(this.handler)) &#123;
+            this.create();
+        &#125;
+        else &#123;
+            if (cancelled) &#123;
+                this.data[5] = this.data[0]+1;
+            &#125;
+            let insideItem = alphaPixel &gt; 0 &amp;&amp; this.touch[0] &gt;= 0 &amp;&amp; this.touch[0] &lt;= itemWidth &amp;&amp; this.touch[1] &gt;= 0 &amp;&amp; this.touch[1] &lt;= itemHeight;
+            if (pressed) &#123;
+                if(this.data[4]&gt;this.data[3]) &#123;
+                    this.data[3] = this.data[0] + 1
+                    if(insideItem)&#123;this.data[6]=1&#125;
+                &#125;
+            &#125;
+            else &#123;
+                if(this.data[3]&gt;this.data[4]) &#123;this.data[4]=this.data[0]+1&#125;
+                if(this.data[6]) this.data[6]=this.data[6]===1?2:0
+            &#125;
+            if (insideItem) &#123;
+                if(this.data[2]&gt;this.data[1])&#123;this.data[1]=this.data[0]+1&#125;
+            &#125;
+            else &#123;
+                if(this.data[1]&gt;this.data[2])&#123;this.data[2]=this.data[0]+1&#125;
+            &#125;
+        &#125;
+        this.data[0]++;  // 更新时间
+        return &#123;data:this.data,touch:this.touch&#125;
+    &#125;
+    else if (!expel.has(this.handler)) &#123;
+        this.activa = true
+        return this.update(x,y,cancelled,pressed,item,expel)
+    &#125;
+&#125;
 </code></pre>
 
                 
