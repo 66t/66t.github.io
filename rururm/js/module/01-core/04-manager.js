@@ -13,7 +13,7 @@ ImageManager = (function() {
   ImageManager.loadBitmap = function(folder, filename) {
     var url;
     if (filename) {
-      url = folder + "/" + (Utils.encodeURI(filename)) + ".png";
+      url = "https://66t.github.io/rururm/"+folder + "/" + (Utils.encodeURI(filename)) + ".png";
       return this.loadBitmapFromUrl(url);
     } else {
       return this.emptyBitmap;
@@ -126,7 +126,7 @@ FontManager = (function() {
   };
 
   FontManager.makeUrl = function(filename) {
-    return "fonts/" + (Utils.encodeURI(filename));
+    return "https://66t.github.io/rururm/fonts/" + (Utils.encodeURI(filename));
   };
 
   return FontManager;
