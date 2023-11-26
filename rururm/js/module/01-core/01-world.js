@@ -44,29 +44,22 @@ World = (function() {
   };
 
   World.initCanvas = function() {
-    var e;
-    try {
-      this.app = new PIXI.Application({
-        width: this.canvasWidth,
-        height: this.canvasHeight,
-        resolution: window.devicePixelRatio,
-        antialias: true,
-        autoStart: false
-      });
-      PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
-      document.body.appendChild(this.app.view);
-      this.app.view.style.display = "none";
-      this.app.view.style.position = "absolute";
-      this.app.ticker.remove(this.app.render, this.app);
-      this.app.ticker.add(this.onTick, this);
-      this.clock[2] = 100;
-      this.clock[1] = performance.now() - 100;
-      return true;
-    } catch (error) {
-      e = error;
-      this._app = null;
-      return false;
-    }
+    this.app = new PIXI.Application({
+      width: this.canvasWidth,
+      height: this.canvasHeight,
+      antialias: true,
+      transparent: false,
+      resolution: window.devicePixelRatio,
+      forceCanvas: false
+    });
+    document.body.appendChild(this.app.view);
+    this.app.view.style.display = "none";
+    this.app.view.style.position = "absolute";
+    this.app.ticker.remove(this.app.render, this.app);
+    this.app.ticker.add(this.onTick, this);
+    this.clock[2] = 100;
+    this.clock[1] = performance.now() - 100;
+    return true;
   };
 
   World.startGame = function() {
@@ -160,8 +153,7 @@ World = (function() {
   };
 
   World.initFont = function() {
-    FontManager.load("cubic", "cubic.ttf");
-    FontManager.load("ht", "ZiXinFangShenShiHei-2.ttf");
+   
     return true;
   };
 
@@ -255,9 +247,7 @@ World = (function() {
           }
           break;
         case 116:
-          if (Utils.isNwjs()) {
-            chrome.runtime.reload();
-          }
+          chrome.runtime.reload();
       }
     }
     return this;
@@ -314,17 +304,11 @@ World = (function() {
     return true;
   };
 
-  World.unload = function() {
-    PIXI.utils.clearTextureCache();
-    return ImageManager.clear();
-  };
-
   World.setupEventHandlers = function() {
     document.addEventListener('mousemove', this.cursorMove.bind(this));
     document.addEventListener('keydown', this.onKeyDown.bind(this));
     window.addEventListener('resize', this.resize.bind(this));
     window.addEventListener('visibilitychange', this.change.bind(this));
-    window.addEventListener("unload", this.unload.bind(this));
     return true;
   };
 
