@@ -1,0 +1,29 @@
+﻿{
+ "melo":{
+   "type":"bgm",
+   "name":"AL051",
+   "volume":1,
+   "traje":2,
+   "fade":[5,5],
+   "rever":true,
+   "rate":1,    
+   "loop":[true,2,0],
+   "time":[0],
+   "pan":1,
+   "filter":["bandpass",2000,1,2,0]
+ },
+ "sg":{
+    "type":"bgm",
+    "name":"ShadyGirls",
+    "volume":0.1,
+    "traje":2,
+    "fade":[5,5],
+    "rever":false,
+    "rate":1.1,
+    "loop":[true,2,0],
+    "time":[0],
+    "pan":1,
+    "dis":[0,"none"],
+    "filter":["highshelf",500,-12,1,0]
+ }
+}

@@ -1,0 +1,24 @@
+﻿{
+ "a":{
+  "type":1,
+  "class":1,
+  "know":1,
+  "myste":1,
+  "gold":1,
+  "rune":1,
+  "mana":1,
+  "life":1,
+  "clique":1
+ },
+ "b":{
+  "type":2,
+  "class":1,
+  "know":1,
+  "myste":1,
+  "gold":1,
+  "rune":1,
+  "mana":1,
+  "life":1,
+  "clique":1
+ }
+}
