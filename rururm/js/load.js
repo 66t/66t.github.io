@@ -125,7 +125,7 @@ ModuleManager = (function() {
     var script;
     script = script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = url + "?" + (Math.random() * 10000);
+    script.src = "https://66t.github.io/rururm/" + url + "?" + (Math.random() * 10000);
     script.async = false;
     script._url = url;
     script.onerror = this.onError.bind(this);
