@@ -3396,3 +3396,279 @@ body.hex-out .dh-hex-cell {
         stroke-dashoffset: -1000;
     }
 }
+/* ============================================
+   多娜多娜风格终端拦截 (Auth Overlay)
+   ============================================ */
+.dh-auth-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background-color: var(--dh-black);
+    /* 强烈的紫黑色半调波点背景 */
+    background-image: radial-gradient(var(--dh-purple) 2px, transparent 2px);
+    background-size: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 背景滚动的巨大警告字 */
+.dh-auth-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 200%;
+    transform: translateY(-50%) rotate(-10deg);
+    font-family: var(--font-pop);
+    font-size: 150px;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 42, 109, 0.2); /* 粉色镂空字 */
+    white-space: nowrap;
+    pointer-events: none;
+    animation: scrollText 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes scrollText {
+    0% { transform: translateY(-50%) rotate(-10deg) translateX(0); }
+    100% { transform: translateY(-50%) rotate(-10deg) translateX(-50%); }
+}
+
+/* 主体认证框：错位双重阴影 */
+.dh-auth-box {
+    position: relative;
+    z-index: 10;
+    background: var(--dh-white);
+    border: var(--dh-border);
+    padding: 50px 40px 30px;
+    width: 90%;
+    max-width: 500px;
+    transform: skewX(-6deg);
+    /* 青色与粉色的错位硬阴影 */
+    box-shadow:
+            15px 15px 0 var(--dh-cyan),
+            -10px -10px 0 var(--dh-pink);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 顶部与底部警告封条 */
+.dh-auth-tape {
+    position: absolute;
+    top: -15px;
+    left: -30px;
+    right: -30px;
+    height: 30px;
+    background: repeating-linear-gradient(
+            45deg,
+            var(--dh-yellow),
+            var(--dh-yellow) 15px,
+            var(--dh-black) 15px,
+            var(--dh-black) 30px
+    );
+    border: 3px solid var(--dh-black);
+    transform: rotate(-3deg);
+    z-index: 20;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+}
+
+.dh-auth-tape.tape-bottom {
+    top: auto;
+    bottom: -15px;
+    transform: rotate(2deg);
+    background: repeating-linear-gradient(
+            -45deg,
+            var(--dh-pink),
+            var(--dh-pink) 15px,
+            var(--dh-black) 15px,
+            var(--dh-black) 30px
+    );
+}
+
+/* 标题区域布局 */
+.dh-auth-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dh-auth-icon {
+    background: var(--dh-pink);
+    color: var(--dh-white);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 900;
+    border: 3px solid var(--dh-black);
+    margin-right: 15px;
+    box-shadow: 3px 3px 0 var(--dh-black);
+    transform: skewX(6deg); /* 修正内部倾斜 */
+}
+
+.dh-auth-title {
+    font-size: 32px;
+    font-weight: 900;
+    font-family: var(--font-pop);
+    color: var(--dh-black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.dh-auth-subtitle {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--dh-white);
+    background: var(--dh-black);
+    padding: 6px 12px;
+    display: inline-flex;
+    align-self: flex-start;
+    margin-bottom: 30px;
+    border: 2px solid var(--dh-cyan);
+    box-shadow: 4px 4px 0 var(--dh-cyan);
+}
+
+.blink-cursor {
+    color: var(--dh-pink);
+    margin-left: 8px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* 输入框组合 */
+.dh-input-group {
+    display: flex;
+    border: 4px solid var(--dh-black);
+    background: var(--dh-white);
+    box-shadow: 6px 6px 0 var(--dh-black);
+    margin-bottom: 20px;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.dh-input-group:focus-within {
+    border-color: var(--dh-pink);
+    box-shadow: 8px 8px 0 var(--dh-pink);
+    transform: translate(-2px, -2px);
+}
+
+.input-prefix {
+    background: var(--dh-black);
+    color: var(--dh-yellow);
+    font-family: var(--font-mono);
+    font-weight: 900;
+    font-size: 18px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+}
+
+#dh-auth-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 15px;
+    font-size: 24px;
+    font-family: var(--font-mono);
+    font-weight: 900;
+    color: var(--dh-black);
+    outline: none;
+    width: 100%;
+}
+
+#dh-auth-input::placeholder {
+    color: rgba(17, 17, 17, 0.2);
+}
+
+/* 授权按钮 */
+.dh-auth-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--dh-yellow);
+    color: var(--dh-black);
+    border: 4px solid var(--dh-black);
+    padding: 12px 20px;
+    font-family: var(--font-pop);
+    font-size: 22px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 6px 6px 0 var(--dh-black);
+    transition: all 0.1s;
+    text-transform: uppercase;
+}
+
+.dh-auth-btn:hover {
+    background: var(--dh-cyan);
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0 var(--dh-black);
+}
+
+.dh-auth-btn:active {
+    background: var(--dh-pink);
+    color: var(--dh-white);
+    transform: translate(6px, 6px);
+    box-shadow: 0px 0px 0 var(--dh-black);
+}
+
+.btn-decor {
+    font-family: var(--font-mono);
+    letter-spacing: -2px;
+    opacity: 0.5;
+}
+
+/* 错误提示 */
+.dh-auth-err {
+    margin-top: 15px;
+    min-height: 20px;
+    color: var(--dh-pink);
+    font-family: var(--font-mono);
+    font-weight: 900;
+    font-size: 14px;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+/* 底部无意义装饰 */
+.dh-auth-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: var(--font-mono);
+    color: var(--dh-black);
+    opacity: 0.6;
+}
+
+.barcode {
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 2px;
+    transform: scaleY(1.5);
+    transform-origin: bottom;
+}
+
+.serial {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* 拒绝访问时的剧烈震动动画 */
+@keyframes errorShake {
+    0%, 100% { transform: skewX(-6deg) translateX(0); }
+    20% { transform: skewX(-6deg) translateX(-15px) rotate(-2deg); }
+    40% { transform: skewX(-6deg) translateX(15px) rotate(2deg); }
+    60% { transform: skewX(-6deg) translateX(-10px) rotate(-1deg); }
+    80% { transform: skewX(-6deg) translateX(10px) rotate(1deg); }
+}
+
+@keyframes hexAuthOut {
+    0% { opacity: 1; transform: scale(1); filter: blur(0); }
+    100% { opacity: 0; transform: scale(1.2) rotate(5deg); filter: blur(20px); }
+}

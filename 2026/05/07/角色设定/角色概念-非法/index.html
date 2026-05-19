@@ -15,7 +15,51 @@
 
 <meta name="generator" content="Hexo 8.1.2"></head>
 <body class="dohna-body">
+<div id="dh-auth-overlay" class="dh-auth-overlay">
+    <div class="dh-auth-bg-text">RESTRICTED_AREA // DO_NOT_ENTER //</div>
 
+    <div class="dh-auth-box">
+        <div class="dh-auth-tape"></div>
+        <div class="dh-auth-tape tape-bottom"></div>
+
+        <div class="dh-auth-header">
+            <div class="dh-auth-icon">!</div>
+            <div class="dh-auth-title">
+                <span class="glitch-text" data-text="SYSTEM_LOCKED">SYSTEM_LOCKED</span>
+            </div>
+        </div>
+
+        <div class="dh-auth-subtitle">
+            <span>PLEASE_INPUT_TERMINAL_KEY</span>
+            <span class="blink-cursor">█</span>
+        </div>
+
+        <div class="dh-input-group">
+            <span class="input-prefix">KEY &gt;</span>
+            <input type="password" id="dh-auth-input" placeholder="********" autocomplete="off">
+        </div>
+
+        <button id="dh-auth-btn" class="dh-auth-btn">
+            <span class="btn-txt">AUTHORIZE</span>
+            <span class="btn-decor">///</span>
+        </button>
+
+        <div id="dh-auth-err" class="dh-auth-err"></div>
+
+        <div class="dh-auth-footer">
+            <div class="barcode">||| |||| | || |||</div>
+            <div class="serial">NO.09-X77</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 为底部的极客数值添加一个好玩的随机刷新效果
+    setInterval(() => {
+        const el = document.getElementById('dh-random-hex');
+        if(el) el.innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+    }, 400);
+</script>
 <canvas id="skyCanvas"></canvas>
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <header class="mobile-header">
@@ -46,6 +90,8 @@
             <li><a href="/" class="tree-item link ">~ / Home</a></li>
             
                 
+            
+                
                     
                     <li class="tree-folder">
                         <div class="tree-item folder-toggle" style="cursor:pointer;">
@@ -64,6 +110,95 @@
                     </li>
                 
             
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">程序</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
+                                        JRRG的构建
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Array扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Math扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Bitmap 扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
+                                        RpgMaker 事件
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
+                                        声明式UI-UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        帧动画系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
+                                        TOUHOU弹幕
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
+                                        游戏editor
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
+                                        视觉小说
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
+                                        游戏runtime
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
                 
             
                 
@@ -115,126 +250,6 @@
                     <li class="tree-folder">
                         <div class="tree-item folder-toggle" style="cursor:pointer;">
                             <span class="folder-icon">[+]</span>
-                            <span class="folder-name">编剧</span>
-                        </div>
-                        <ul class="tree-sub ">
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
-                                        剧本模板
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
-                                        神之罪与人之理：存在论视域下的剥削与觉醒
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-            
-                
-            
-                
-                    
-                    <li class="tree-folder">
-                        <div class="tree-item folder-toggle" style="cursor:pointer;">
-                            <span class="folder-icon">[+]</span>
-                            <span class="folder-name">程序</span>
-                        </div>
-                        <ul class="tree-sub ">
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
-                                        JRRG的构建
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Math扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Bitmap 扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Array扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
-                                        Minecraft红石系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
-                                        Minecraft红石系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
-                                        声明式UI-UX
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
-                                        RpgMaker 事件
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
-                                        TOUHOU弹幕
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
-                                        游戏runtime
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
-                                        帧动画系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
-                                        视觉小说
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
-                                        游戏editor
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    
-                    <li class="tree-folder">
-                        <div class="tree-item folder-toggle" style="cursor:pointer;">
-                            <span class="folder-icon">[+]</span>
                             <span class="folder-name">策划</span>
                         </div>
                         <ul class="tree-sub ">
@@ -248,6 +263,35 @@
                                 <li>
                                     <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
                                         独立物品系统
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">编剧</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
+                                        剧本模板
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
+                                        神之罪与人之理：存在论视域下的剥削与觉醒
                                     </a>
                                 </li>
                             
@@ -299,54 +343,87 @@
     </div>
     <article class="post-content">
         <p><u1>介绍</u1></p>
-<h1 id="角色名（English）"><a href="#角色名（English）" class="headerlink" title="角色名（English）"></a>角色名（English）</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
-<p><strong>英雄名</strong> —— <em>谶言短语</em><br>${背景故事}</p>
+<h1 id="暗部王牌（Vory-Ace）"><a href="#暗部王牌（Vory-Ace）" class="headerlink" title="暗部王牌（Vory Ace）"></a>暗部王牌（Vory Ace）</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
+<p><strong>英雄名</strong> —— <em>卓越的犯罪精英，巧妙伪装并渗透任何系统；宁成罪恶之形骸，也不为良善粉饰遮羞</em><br>${背景故事}</p>
 </blockquote>
+<div align="center">
+  <img src="/images/ace_full.png" width="35%" title="暗部王牌 - 立绘">
+</div>
+
+
+
 <p><u1>天赋</u1></p>
-<h2 id="天赋："><a href="#天赋：" class="headerlink" title="天赋："></a>天赋：</h2><blockquote>
-<p>++++++</p>
+<h2 id="天赋：自我检索"><a href="#天赋：自我检索" class="headerlink" title="天赋：自我检索"></a>天赋：自我检索</h2><blockquote>
+<p>持续检索1200范围内所有包含自身信息的数据。<br>获得该英雄信息的单位，将暴露其位置与状态信息。</p>
 </blockquote>
 <p><u1>特性</u1></p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p><u2>A</u2></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p><u2>切入点</u2></p>
 <blockquote>
-<h5 id="A"><a href="#A" class="headerlink" title="A"></a><strong>A</strong></h5><p>++++++<br><u2>B</u2></p>
-<h5 id="B"><a href="#B" class="headerlink" title="B"></a><strong>B</strong></h5><p>++++++<br><u2>C</u2></p>
-<h5 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h5><p>++++++<br><u2>D</u2></p>
-<h5 id="D"><a href="#D" class="headerlink" title="D"></a><strong>D</strong></h5><p>++++++</p>
+<h5 id="切入点"><a href="#切入点" class="headerlink" title="切入点"></a><strong>切入点</strong></h5><p>基础武器是<code>军刺</code><br><code>比特匕首</code>变为2个互相相同且独立的技能。<br><code>架点操控</code>后保留一个<code>比特匕首</code>技能。<br><u2>定点寻址</u2></p>
+<h5 id="定点寻址"><a href="#定点寻址" class="headerlink" title="定点寻址"></a><strong>定点寻址</strong></h5><p>基础武器是<code>手枪</code><br><code>扫描模块</code>可以对敌人指向使用。<br><code>架点操控</code>后<code>扫描模块</code>的无人机隐身盘旋在自身附近巡逻，无法攻击。<br><u2>扫荡指令</u2></p>
+<h5 id="扫荡指令"><a href="#扫荡指令" class="headerlink" title="扫荡指令"></a><strong>扫荡指令</strong></h5><p>基础武器是<code>突击步枪</code><br><code>实例构建</code>锁定&#x2F;攻击间隔缩短。<br><code>架点操控</code>后<code>实例构建</code>变为开关被动技能，只要面朝方向有敌人就会发射一轮激光。<br><u2>火力覆盖</u2></p>
+<h5 id="火力覆盖"><a href="#火力覆盖" class="headerlink" title="火力覆盖"></a><strong>火力覆盖</strong></h5><p>基础武器是<code>霰弹枪</code><br>攻击附带70%溅射效果，每次攻击后降低攻击速度，但提高攻击力。</p>
 </blockquote>
 <p><u1>技能</u1></p>
-<h2 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h2><p><u2>A</u2></p>
-<h3 id="技能一：A（Q）-主动"><a href="#技能一：A（Q）-主动" class="headerlink" title="技能一：A（Q） 主动"></a>技能一：A（Q） <em>主动</em></h3><p>++++++</p>
+<h2 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h2><p><u2>比特匕首</u2></p>
+<h3 id="技能一：比特匕首（D）-主动"><a href="#技能一：比特匕首（D）-主动" class="headerlink" title="技能一：比特匕首（D） 主动"></a>技能一：比特匕首（D） <em>主动</em></h3><p>投掷出数字化的匕首，刺入物体或敌人体内。<br>使用附属技能使自身瞬移到虚拟匕首的位置，若已命中敌人还造成一次拔出伤害。</p>
 <ul>
-<li><strong>冷却时间</strong>：0</li>
-<li><strong>魔法消耗</strong>：0<blockquote>
+<li><strong>冷却时间</strong>：8</li>
+<li><strong>魔法消耗</strong>：80<blockquote>
 <p><em>技能备注</em></p>
 </blockquote>
 </li>
 </ul>
-<p><u2>B</u2></p>
-<h3 id="技能二：B（W）-主动"><a href="#技能二：B（W）-主动" class="headerlink" title="技能二：B（W） 主动"></a>技能二：B（W） <em>主动</em></h3><p>++++++</p>
+<p><u2>恶意注入</u2></p>
+<h3 id="技能一：死寂一线（D）-主动"><a href="#技能一：死寂一线（D）-主动" class="headerlink" title="技能一：死寂一线（D） 主动"></a>技能一：死寂一线（D） <em>主动</em></h3><p>攻击会注入恶意程序，使得敌人被攻击就会眩晕并减少生命，可以叠加。</p>
 <ul>
-<li><strong>冷却时间</strong>：0</li>
-<li><strong>魔法消耗</strong>：0<blockquote>
+<li><strong>冷却时间</strong>：1</li>
+<li><strong>魔法消耗</strong>：100<blockquote>
 <p><em>技能备注</em></p>
 </blockquote>
 </li>
 </ul>
-<p><u2>C</u2></p>
-<h3 id="技能三：C（E）-开关"><a href="#技能三：C（E）-开关" class="headerlink" title="技能三：C（E） 开关"></a>技能三：C（E） <em>开关</em></h3><p>++++++</p>
+<p><u2>实例构建</u2></p>
+<h3 id="技能二：实例构建（G）-主动"><a href="#技能二：实例构建（G）-主动" class="headerlink" title="技能二：实例构建（G） 主动"></a>技能二：实例构建（G） <em>主动</em></h3><p>构建出一个炮台，对一个方向进行火力压制，炮台会朝前方发射激光。<br>炮台会锁定离英雄本体最近（优先锁定被比特匕首标记）的单位，向其发射激光。被激光命中的单位会被击退。</p>
+<ul>
+<li><strong>冷却时间</strong>：12</li>
+<li><strong>魔法消耗</strong>：90<blockquote>
+<p><em>技能备注</em></p>
+</blockquote>
+</li>
+</ul>
+<p><u2>死寂一线</u2></p>
+<h3 id="技能二：死寂一线（G）-主动"><a href="#技能二：死寂一线（G）-主动" class="headerlink" title="技能二：死寂一线（G） 主动"></a>技能二：死寂一线（G） <em>主动</em></h3><p>增加攻击力，射击对直线上敌人造成攻击伤害。</p>
+<ul>
+<li><strong>冷却时间</strong>：5</li>
+<li><strong>魔法消耗</strong>：50<blockquote>
+<p><em>技能备注</em></p>
+</blockquote>
+</li>
+</ul>
+<p><u2>扫描模块</u2></p>
+<h3 id="技能三：扫描模块（C）-主动"><a href="#技能三：扫描模块（C）-主动" class="headerlink" title="技能三：扫描模块（C） 主动"></a>技能三：扫描模块（C） <em>主动</em></h3><p>召唤无人机环绕自身侦查，同时有两个附属技能。<br>更改移动方式：环绕-停留<br>更改行动方式：侦查-攻击<br>侦查模式下，无人机是虚拟态 无法被攻击，只提供视野。<br>攻击模式下，无人机会向最近的（或优先与英雄目前攻击一致的）单位发动攻击。</p>
+<ul>
+<li><strong>冷却时间</strong>：25</li>
+<li><strong>魔法消耗</strong>：75<blockquote>
+<p><em>技能备注</em></p>
+</blockquote>
+</li>
+</ul>
+<p><u2>密毒穿透</u2></p>
+<h3 id="技能三：密毒穿透（C）-主动"><a href="#技能三：密毒穿透（C）-主动" class="headerlink" title="技能三：密毒穿透（C） 主动"></a>技能三：密毒穿透（C） <em>主动</em></h3><p>使下次攻击附带毒伤与腐蚀护甲的效果。</p>
+<ul>
+<li><strong>冷却时间</strong>：7</li>
+<li><strong>魔法消耗</strong>：50<blockquote>
+<p><em>技能备注</em></p>
+</blockquote>
+</li>
+</ul>
+<p><u2>架点操控</u2></p>
+<h3 id="终极技能：架点操控（V）-切换"><a href="#终极技能：架点操控（V）-切换" class="headerlink" title="终极技能：架点操控（V） 切换"></a>终极技能：架点操控（V） <em>切换</em></h3><p>将工具结合切换为狙击模式。<br>使攻击从原本攻击方式变成更远的狙击设计，并改变3个基础技能。</p>
 <blockquote>
 <p><em>技能备注</em></p>
 </blockquote>
-<p><u2>D</u2></p>
-<h3 id="终极技能：天焚烬灭（V）-主动"><a href="#终极技能：天焚烬灭（V）-主动" class="headerlink" title="终极技能：天焚烬灭（V） 主动"></a>终极技能：天焚烬灭（V） <em>主动</em></h3><p>++++++</p>
-<ul>
-<li><strong>冷却时间</strong>：0</li>
-<li><strong>魔法消耗</strong>：0<blockquote>
-<p><em>技能备注</em></p>
-</blockquote>
-</li>
-</ul>
 <p><u1>华彩</u1></p>
 <h2 id="华彩"><a href="#华彩" class="headerlink" title="华彩"></a>华彩</h2><h6 id="A-B-C"><a href="#A-B-C" class="headerlink" title="A | B | C"></a>A | B | C</h6><table>
 <thead>
@@ -386,15 +463,15 @@
 </tbody></table>
 <p><u1>觉醒</u1></p>
 <p><u2>A</u2></p>
-<h3 id="解放：A"><a href="#解放：A" class="headerlink" title="解放：A"></a>解放：A</h3><p>+++++++++++</p>
+<h3 id="解放：技术变革"><a href="#解放：技术变革" class="headerlink" title="解放：技术变革"></a>解放：技术变革</h3><p>+++++++++++</p>
 <p><u2>A</u2></p>
-<h3 id="本影：A"><a href="#本影：A" class="headerlink" title="本影：A"></a>本影：A</h3><p>+++++++++++</p>
+<h3 id="本影：绝死领域"><a href="#本影：绝死领域" class="headerlink" title="本影：绝死领域"></a>本影：绝死领域</h3><p>+++++++++++</p>
 <p><u1>欲冕</u1></p>
-<h2 id="欲冕"><a href="#欲冕" class="headerlink" title="欲冕"></a>欲冕</h2><p><u2>A</u2></p>
-<h4 id="A-1"><a href="#A-1" class="headerlink" title="A"></a><strong>A</strong></h4><p>+++++++++++<br><u2>B</u2></p>
-<h4 id="B-1"><a href="#B-1" class="headerlink" title="B"></a><strong>B</strong></h4><p>+++++++++++<br><u2>C</u2></p>
-<h4 id="C-1"><a href="#C-1" class="headerlink" title="C"></a><strong>C</strong></h4><p>+++++++++++<br><u2>D</u2></p>
-<h4 id="D-1"><a href="#D-1" class="headerlink" title="D"></a><strong>D</strong></h4><p>+++++++++++</p>
+<h2 id="欲冕"><a href="#欲冕" class="headerlink" title="欲冕"></a>欲冕</h2><p><u2>直抵深网的决猎</u2></p>
+<h4 id="直抵深网的决猎"><a href="#直抵深网的决猎" class="headerlink" title="直抵深网的决猎"></a><strong>直抵深网的决猎</strong></h4><p>+++++++++++<br><u2>B</u2></p>
+<h4 id="B"><a href="#B" class="headerlink" title="B"></a><strong>B</strong></h4><p>+++++++++++<br><u2>C</u2></p>
+<h4 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h4><p>+++++++++++<br><u2>D</u2></p>
+<h4 id="D"><a href="#D" class="headerlink" title="D"></a><strong>D</strong></h4><p>+++++++++++</p>
 
         
         
@@ -418,11 +495,6 @@
                                 <span class="mini-name">无限魔女</span>
                             </a>
                         
-                            <a href="/2026/05/06/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E5%93%88%E8%BF%AA%E6%96%AF/" class="mini-hero-card ">
-                                <img src="/images/1.png">
-                                <span class="mini-name">哈迪斯</span>
-                            </a>
-                        
                             <a href="/2025/03/10/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E5%92%92%E6%B3%95/" class="mini-hero-card ">
                                 <img src="/images/1.png">
                                 <span class="mini-name">阳焰缔结</span>
@@ -433,14 +505,14 @@
                                 <span class="mini-name">鬼宿巫祸</span>
                             </a>
                         
-                            <a href="/2026/05/07/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E8%B0%83%E5%92%8C/" class="mini-hero-card ">
-                                <img src="/images/1.png">
-                                <span class="mini-name">苍天主宰</span>
-                            </a>
-                        
                             <a href="/2025/02/24/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E5%A1%91%E8%83%BD/" class="mini-hero-card ">
                                 <img src="/images/1.png">
                                 <span class="mini-name">超威元素使</span>
+                            </a>
+                        
+                            <a href="/2026/05/06/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E5%93%88%E8%BF%AA%E6%96%AF/" class="mini-hero-card ">
+                                <img src="/images/1.png">
+                                <span class="mini-name">哈迪斯</span>
                             </a>
                         
                             <a href="/2024/12/20/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E6%AD%BB%E7%81%B5/" class="mini-hero-card ">
@@ -448,19 +520,19 @@
                                 <span class="mini-name">桀骜的导灵师</span>
                             </a>
                         
+                            <a href="/2026/05/07/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E8%B0%83%E5%92%8C/" class="mini-hero-card ">
+                                <img src="/images/1.png">
+                                <span class="mini-name">苍天主宰</span>
+                            </a>
+                        
+                            <a href="/2026/05/07/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E9%9D%9E%E6%B3%95/" class="mini-hero-card is-active">
+                                <img src="/images/1.png">
+                                <span class="mini-name">暗部王牌</span>
+                            </a>
+                        
                             <a href="/2024/12/08/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E9%98%B2%E6%8A%A4/" class="mini-hero-card ">
                                 <img src="/images/1.png">
                                 <span class="mini-name">优雅贵族</span>
-                            </a>
-                        
-                            <a href="/2026/05/07/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E6%83%91%E6%8E%A7/" class="mini-hero-card ">
-                                <img src="/images/1.png">
-                                <span class="mini-name">幻愈炽天使</span>
-                            </a>
-                        
-                            <a href="/2025/03/10/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E7%A9%BA%E6%A8%A1%E7%89%88/" class="mini-hero-card ">
-                                <img src="/images/1.png">
-                                <span class="mini-name">空模版</span>
                             </a>
                         
                             <a href="/2026/05/07/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E9%A2%84%E8%A8%80/" class="mini-hero-card ">
@@ -468,9 +540,9 @@
                                 <span class="mini-name">缥缈玲珑</span>
                             </a>
                         
-                            <a href="/2026/05/07/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E9%9D%9E%E6%B3%95/" class="mini-hero-card is-active">
+                            <a href="/2026/05/07/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5-%E6%83%91%E6%8E%A7/" class="mini-hero-card ">
                                 <img src="/images/1.png">
-                                <span class="mini-name">暗部王牌</span>
+                                <span class="mini-name">幻愈炽天使</span>
                             </a>
                         
                     </div>
@@ -919,7 +991,70 @@
     });
   });
 </script>
+<script>
+    (function initDohnaAuth() {
+        
+        const TARGET_HASH = 'e3803a6b63c7bbf3d1595457d9acca1012acfcdb70ef47fb7a45d2223ba5cbcf';
 
+        const overlay = document.getElementById('dh-auth-overlay');
+        const input = document.getElementById('dh-auth-input');
+        const btn = document.getElementById('dh-auth-btn');
+        const err = document.getElementById('dh-auth-err');
+        
+        if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+            overlay.style.display = 'none';
+            return;
+        }
+        
+        document.body.style.overflow = 'hidden';
+        async function verifyPassword() {
+            const pwd = input.value.trim();
+            if (!pwd) return;
+
+            btn.innerText = 'VERIFYING...';
+            btn.style.pointerEvents = 'none';
+
+            try {
+                const buffer = new TextEncoder().encode(pwd);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                if (hashHex === TARGET_HASH) {
+                    err.innerText = 'ACCESS GRANTED';
+                    err.style.color = 'var(--dh-green)';
+                    sessionStorage.setItem('dh_terminal_access', 'GRANTED');
+
+                    // 动画退场
+                    overlay.style.animation = 'hexAuthOut 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }, 500);
+                } else {
+                    throw new Error('KEY_MISMATCH');
+                }
+            } catch (e) {
+                err.innerText = 'ERROR: INVALID_KEY';
+                input.value = '';
+                input.focus();
+                // 错误抖动反馈
+                const box = document.querySelector('.dh-auth-box');
+                box.style.animation = 'none';
+                box.offsetHeight; // trigger reflow
+                box.style.animation = 'errorShake 0.4s';
+            } finally {
+                btn.innerText = 'VERIFY';
+                btn.style.pointerEvents = 'auto';
+            }
+        }
+
+        btn.addEventListener('click', verifyPassword);
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') verifyPassword();
+        });
+    })();
+</script>
 
 </body>
 </html>

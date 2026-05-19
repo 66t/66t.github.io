@@ -15,7 +15,51 @@
 
 <meta name="generator" content="Hexo 8.1.2"></head>
 <body class="dohna-body">
+<div id="dh-auth-overlay" class="dh-auth-overlay">
+    <div class="dh-auth-bg-text">RESTRICTED_AREA // DO_NOT_ENTER //</div>
 
+    <div class="dh-auth-box">
+        <div class="dh-auth-tape"></div>
+        <div class="dh-auth-tape tape-bottom"></div>
+
+        <div class="dh-auth-header">
+            <div class="dh-auth-icon">!</div>
+            <div class="dh-auth-title">
+                <span class="glitch-text" data-text="SYSTEM_LOCKED">SYSTEM_LOCKED</span>
+            </div>
+        </div>
+
+        <div class="dh-auth-subtitle">
+            <span>PLEASE_INPUT_TERMINAL_KEY</span>
+            <span class="blink-cursor">█</span>
+        </div>
+
+        <div class="dh-input-group">
+            <span class="input-prefix">KEY &gt;</span>
+            <input type="password" id="dh-auth-input" placeholder="********" autocomplete="off">
+        </div>
+
+        <button id="dh-auth-btn" class="dh-auth-btn">
+            <span class="btn-txt">AUTHORIZE</span>
+            <span class="btn-decor">///</span>
+        </button>
+
+        <div id="dh-auth-err" class="dh-auth-err"></div>
+
+        <div class="dh-auth-footer">
+            <div class="barcode">||| |||| | || |||</div>
+            <div class="serial">NO.09-X77</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 为底部的极客数值添加一个好玩的随机刷新效果
+    setInterval(() => {
+        const el = document.getElementById('dh-random-hex');
+        if(el) el.innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+    }, 400);
+</script>
 <canvas id="skyCanvas"></canvas>
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <header class="mobile-header">
@@ -46,6 +90,8 @@
             <li><a href="/" class="tree-item link ">~ / Home</a></li>
             
                 
+            
+                
                     
                     <li class="tree-folder">
                         <div class="tree-item folder-toggle" style="cursor:pointer;">
@@ -64,6 +110,95 @@
                     </li>
                 
             
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">程序</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
+                                        JRRG的构建
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Array扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Math扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Bitmap 扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
+                                        RpgMaker 事件
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
+                                        声明式UI-UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        帧动画系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
+                                        TOUHOU弹幕
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
+                                        游戏editor
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
+                                        视觉小说
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
+                                        游戏runtime
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
                 
             
                 
@@ -115,126 +250,6 @@
                     <li class="tree-folder">
                         <div class="tree-item folder-toggle" style="cursor:pointer;">
                             <span class="folder-icon">[+]</span>
-                            <span class="folder-name">编剧</span>
-                        </div>
-                        <ul class="tree-sub ">
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
-                                        剧本模板
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
-                                        神之罪与人之理：存在论视域下的剥削与觉醒
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-            
-                
-            
-                
-                    
-                    <li class="tree-folder">
-                        <div class="tree-item folder-toggle" style="cursor:pointer;">
-                            <span class="folder-icon">[+]</span>
-                            <span class="folder-name">程序</span>
-                        </div>
-                        <ul class="tree-sub ">
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
-                                        JRRG的构建
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Math扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Bitmap 扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Array扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
-                                        Minecraft红石系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
-                                        Minecraft红石系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
-                                        声明式UI-UX
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
-                                        RpgMaker 事件
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
-                                        TOUHOU弹幕
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
-                                        游戏runtime
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
-                                        帧动画系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
-                                        视觉小说
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
-                                        游戏editor
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    
-                    <li class="tree-folder">
-                        <div class="tree-item folder-toggle" style="cursor:pointer;">
-                            <span class="folder-icon">[+]</span>
                             <span class="folder-name">策划</span>
                         </div>
                         <ul class="tree-sub ">
@@ -248,6 +263,35 @@
                                 <li>
                                     <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
                                         独立物品系统
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">编剧</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
+                                        剧本模板
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
+                                        神之罪与人之理：存在论视域下的剥削与觉醒
                                     </a>
                                 </li>
                             
@@ -753,7 +797,70 @@
     });
   });
 </script>
+<script>
+    (function initDohnaAuth() {
+        
+        const TARGET_HASH = 'e3803a6b63c7bbf3d1595457d9acca1012acfcdb70ef47fb7a45d2223ba5cbcf';
 
+        const overlay = document.getElementById('dh-auth-overlay');
+        const input = document.getElementById('dh-auth-input');
+        const btn = document.getElementById('dh-auth-btn');
+        const err = document.getElementById('dh-auth-err');
+        
+        if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+            overlay.style.display = 'none';
+            return;
+        }
+        
+        document.body.style.overflow = 'hidden';
+        async function verifyPassword() {
+            const pwd = input.value.trim();
+            if (!pwd) return;
+
+            btn.innerText = 'VERIFYING...';
+            btn.style.pointerEvents = 'none';
+
+            try {
+                const buffer = new TextEncoder().encode(pwd);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                if (hashHex === TARGET_HASH) {
+                    err.innerText = 'ACCESS GRANTED';
+                    err.style.color = 'var(--dh-green)';
+                    sessionStorage.setItem('dh_terminal_access', 'GRANTED');
+
+                    // 动画退场
+                    overlay.style.animation = 'hexAuthOut 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }, 500);
+                } else {
+                    throw new Error('KEY_MISMATCH');
+                }
+            } catch (e) {
+                err.innerText = 'ERROR: INVALID_KEY';
+                input.value = '';
+                input.focus();
+                // 错误抖动反馈
+                const box = document.querySelector('.dh-auth-box');
+                box.style.animation = 'none';
+                box.offsetHeight; // trigger reflow
+                box.style.animation = 'errorShake 0.4s';
+            } finally {
+                btn.innerText = 'VERIFY';
+                btn.style.pointerEvents = 'auto';
+            }
+        }
+
+        btn.addEventListener('click', verifyPassword);
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') verifyPassword();
+        });
+    })();
+</script>
 
 </body>
 </html>
