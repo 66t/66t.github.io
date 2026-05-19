@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>
+  
+    AI提示词 | LIMPID
+  
+</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body class="dohna-body">
+
+<canvas id="skyCanvas"></canvas>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<header class="mobile-header">
+  <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/items/">Story</a>
+</nav>
+  <div class="mobile-menu-btn" id="mobileMenuBtn">
+    <span class="m-icon"></span>
+    <span class="m-icon"></span>
+    <span class="m-icon"></span>
+  </div>
+</header>
+
+<div id="app-wrapper" class="wiki-layout">
+
+  
+
+  <aside id="site-sidebar" class="wiki-sidebar">
+    <nav class="tree-nav dohna-sidebar-container">
+    <div class="sidebar-handle desktop-only">
+    </div>
+    <div class="sidebar-content-scroll">
+        <ul class="tree-root">
+            <li><a href="/" class="tree-item link ">~ / Home</a></li>
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">游戏日记</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/04/11/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%804%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开4月记录
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/18/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%805%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开5月记录
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">前端开发</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/17/%E6%B5%8B%E8%AF%95/" class="tree-item link ">
+                                        Hexo &amp; Markdown 全元素样式测试文章
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">策划</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/Minecraft%E5%90%88%E6%88%90%E5%8F%B0%20UX/" class="tree-item link ">
+                                        Minecraft合成台 UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        独立物品系统
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">博客搭建</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/17/%E6%B5%8B%E8%AF%95/" class="tree-item link ">
+                                        Hexo &amp; Markdown 全元素样式测试文章
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">程序</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
+                                        JRRG的构建
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Array扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Math扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
+                                        TOUHOU弹幕
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Bitmap 扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
+                                        游戏runtime
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
+                                        游戏editor
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
+                                        RpgMaker 事件
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
+                                        声明式UI-UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        帧动画系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
+                                        视觉小说
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">编剧</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
+                                        神之罪与人之理：存在论视域下的剥削与觉醒
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
+                                        剧本模板
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[-]</span>
+                            <span class="folder-name">音乐</span>
+                        </div>
+                        <ul class="tree-sub open">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E9%9F%B3%E4%B9%90/%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="tree-item link active">
+                                        AI提示词
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+        </ul>
+    </div>
+</nav>
+  </aside>
+
+  <main id="site-main" class="wiki-main">
+    <header class="sticky-header">
+      <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/items/">Story</a>
+</nav>
+    </header>
+    <div class="dohna-content-inner">
+      <div class="post-layout">
+    <div class="post-head">
+        <h1 class="post-title">AI提示词</h1>
+        <div class="post-meta">
+            <span class="date">Terminal Update: 2026-05-03 00:00</span>
+        </div>
+    </div>
+    <article class="post-content">
+        <h4 id="P-H"><a href="#P-H" class="headerlink" title="P.H"></a>P.H</h4><ol>
+<li>风格流派： Electronic Pop (电子流行), Future Bass (未来贝斯), Glitch Pop (故障流行).</li>
+<li>节奏特征： Syncopated Rhythm (切分律动), Staccato (断奏), High Energy (高能), Fast Tempo (快节奏).</li>
+<li>音色描述： Plucky Synth Bass (拨奏感合成器贝斯), Digital Textures (数字质感), Industrial Percussion (工业打击乐).</li>
+<li>情感基调： Cynical (愤世嫉俗的), Neurotic (神经质的), Cold &amp; Sharp (冷冽且锐利的)</li>
+</ol>
+<h4 id="ROKI"><a href="#ROKI" class="headerlink" title="ROKI"></a>ROKI</h4><ol>
+<li>风格流派： Garage Rock (车库摇滚), Power Pop (力量流行), J-Rock (日系摇滚), Punk Fusion (朋克融合).</li>
+<li>节奏特征： Driving Beat (驱动律动), 电子吉他 Riff, Upbeat (高亢节奏), Call and Response (呼应对唱).</li>
+<li>音色描述： Overdriven Electric Guitar (过载电吉他), Distorted Bass (失真贝斯), Crisp Snare (清脆军鼓), Handclaps (拍手声).</li>
+<li>情感基调： Self-deprecating (自嘲的), Rebellious (叛逆的), Energetic (精力充沛的), Wild (狂放的).</li>
+</ol>
+<h4 id="Override"><a href="#Override" class="headerlink" title="Override"></a>Override</h4><ol>
+<li>风格流派： Denpa-kei (电波系), Hyperpop (超流行), Glitch Hop (故障跳跃), Future Core (未来核心).</li>
+<li>节奏特征： Chaotic Syncopation (混乱切分律动), Fast Tempo (快节奏), Sudden Stops (突发性停顿), High Information Density (高信息密度).</li>
+<li>音色描述： Heavy Brass Hits (重型铜管采样), Sample Chops (采样切片), Compressed Synth (高压缩合成器), Playful Percussion (俏皮打击乐).</li>
+<li>情感基调： Addictive (成瘾性的), Overwhelming (压倒性的), Manic (狂躁的), Mischievous (顽皮狡黠的).</li>
+</ol>
+<h4 id="うつけ論争"><a href="#うつけ論争" class="headerlink" title="うつけ論争"></a>うつけ論争</h4><ol>
+<li>风格流派： Post-Jazz Rock (后爵士摇滚), Progressive J-Pop (进步日系流行), Math Rock Influence (数摇影响), Piano Rock (钢琴摇滚).</li>
+<li>节奏特征： Complex Groove (复杂律动), Rapid Fire Vocals (极速吐字), Odd-time Signatures (不规则拍子感), High-speed Arpeggios (高速琶音).</li>
+<li>音色描述： Percussive Piano (打击乐感钢琴), Dry &amp; Sharp Drums (干练锐利的鼓点), Slap Bass (拨片&#x2F;勾击贝斯), Clean Electric Guitar (清音电吉他).</li>
+<li>情感基调： Cynical (愤世嫉俗的), Arrogant (狂傲的), Defensive (防御性的自尊), High-pressure (高压迫感的).</li>
+</ol>
+<h4 id="ひつじがいっぴき"><a href="#ひつじがいっぴき" class="headerlink" title="ひつじがいっぴき"></a>ひつじがいっぴき</h4><ol>
+<li>风格流派： Alternative Rock (初级替代摇滚), Post-Punk (后朋克), Neo-Psychedelia (新迷幻), Minimalist Rock (极简主义摇滚).</li>
+<li>节奏特征： Steady Mid-tempo (稳健的中速), Walking Bassline (走句贝斯), Dry Groove (干爽的律动), Linear Progression (线性推进).</li>
+<li>音色描述： Twangy Guitar (略带金属颤音的吉他), Sharp Telecaster Tone (锐利的电吉他音色), Muffled Kick Drum (闷音底鼓), Lo-fi Textures (低保真质感).</li>
+<li>情感基调： Listless (倦怠的), Insomniac (失眠焦虑的), Melancholic (忧郁的), Detached (疏离冷淡的).</li>
+</ol>
+<h4 id="新人類"><a href="#新人類" class="headerlink" title="新人類"></a>新人類</h4><ol>
+<li>风格流派： Hybrid J-Core (混合日系核心), Jazz-Punk (爵士朋克), Art Pop (艺术流行), Maximalist Rock (极简主义的反面：极繁主义摇滚).</li>
+<li>节奏特征： High-velocity Syncopation (高速切分音), Polyrhythmic Piano Riffs (多旋律钢琴采样), Chaotic Breakbeats (狂乱的碎拍), Hyper-active Driving Force (超活跃推进感).</li>
+<li>音色描述： Bright Yamaha Grand Piano (明亮的雅马哈三角琴音色), Distorted Power Chords (失真强力和弦), Aggressive Slap Bass (侵略性的勾击贝斯), Glitchy Vocal Edits (碎裂的人声编辑).</li>
+<li>情感基调： Manic (躁狂的), Dionysian Revelry (酒神式狂欢), Ironical (讽刺的), Regression Fantasy (回归原始的幻想).</li>
+</ol>
+<h4 id="セイデンキニンゲン"><a href="#セイデンキニンゲン" class="headerlink" title="セイデンキニンゲン"></a>セイデンキニンゲン</h4><ol>
+<li>风格流派： Electro-Pop (电子流行), Glitch Core (故障核心), Speedcore-influenced Pop (受快速核心影响的流行), Denpa-kei (电波系).</li>
+<li>节奏特征： High-speed BPM (高频极速), Mechanical Repetition (机械化重复), Syncopated Staccato (切分断奏), Hyperactive Percussion (多动式打击乐).</li>
+<li>Distorted Synth (失真合成器), High-pitched Vocaloid Tuning (高亢锐利的调教), Digital Noise (数字噪点), Bit-crushed Percussion (位深度粉碎打击乐).</li>
+<li>情感基调： Manic (躁狂的), High-pressure (高压迫感的), Neurotic (神经质的), Paranoiac (偏执焦虑的).</li>
+</ol>
+<h4 id="disco-light"><a href="#disco-light" class="headerlink" title="disco light"></a>disco light</h4><p>风格流派： Nu-Disco (新迪斯科), French House (法式浩室), J-Pop (日本流行), Neo-City Pop (新都市流行).<br>节奏特征： Four-on-the-floor (四打四底鼓), Strong Sidechain Compression (强侧链压缩带来的呼吸感), Syncopated Funky Bassline (切分切分音贝斯线), Groovy Off-beat Shaker (弱拍沙锤律动).<br>音色特征： Slap Synth Bass (富有弹性的合成器贝斯), Funky Clean Electric Guitar (清澈的放克吉他扫弦), Bright Retro Leads (明亮的复古合成器主音), Chopped Vocal Samples (破碎的人声采样切片).<br>情感基调： Sophisticated (精致成熟的), Neon-lit (霓虹闪烁的), Melancholic-yet-danceable (忧郁但适合起舞的), Urban Nightlife (都市深夜感的).</p>
+<h4 id="MyonMyonMyon"><a href="#MyonMyonMyon" class="headerlink" title="MyonMyonMyon!"></a>MyonMyonMyon!</h4><ol>
+<li>风格流派： Nu-Disco (新迪斯科), Bossa Nova Electronica (巴萨诺瓦电子), J-Electronic (日本电子), Shibuya-kei Influence (涩谷系影响).</li>
+<li>节奏特征： Persistent 4&#x2F;4 Kick (稳定清脆的四打四底鼓), Bossa Rhythm Syncopation (巴萨诺瓦切分律动), Glitchy Micro-rhythms (精密的故障音效细节), Steady High-hat Patterns (细密干练的踩镲推进).</li>
+<li>音色特征： Plucky &amp; Clean Synths (圆润利落的合成器音色), Recursive Vocal Chops (递归式的人声切片重组), Electric Piano Tines (柔和的电钢琴铺底), Dry &amp; High-fidelity Percussion (高保真且干燥的打击乐).</li>
+<li>情感基调： Hyper-Organized Chaos (严谨结构下的灵动感), Technicolor Minimalism (高饱和霓虹色调的极简主义), Playful &amp; Scientific (充满童趣但逻辑严密的), Transparent Immersion (通透且直白的沉浸感).</li>
+</ol>
+<h4 id="Reality-Corruption"><a href="#Reality-Corruption" class="headerlink" title="Reality_Corruption"></a>Reality_Corruption</h4><ol>
+<li>风格流派： Breakcore (碎拍核心) &#x2F; Glitch-Hop (故障跳跃) &#x2F; Dark Industrial (暗黑工业电子)。</li>
+<li>节奏特征： Polyrhythmic (多律动叠加) &#x2F; Amens Break (阿门碎拍) &#x2F; Syncopated Staccato (切分断奏)。</li>
+<li>音色特征： FM Synthesis (频率调制合成器) &#x2F; Granular Sampling (粒度采样) &#x2F; Bit-crushed (位深粉碎)。</li>
+<li>情感基调： Manic (躁狂) &#x2F; Atonal (无调性引起的焦虑) &#x2F; Oppressive (高压迫感)。</li>
+</ol>
+
+        
+        
+        
+
+        
+
+        
+    </article>
+</div>
+<div class="dohna-toc-container" id="dohna-toc">
+    <div class="toc-header">
+        <span class="toc-title">TOC</span>
+    </div>
+    <div class="toc-body" id="toc-tree">
+    </div>
+</div>
+
+<button id="toc-mobile-toggle" class="dohna-toc-fab">TOC</button>
+
+<script>
+    (function initTOC() {
+        const tocTree = document.getElementById('toc-tree');
+        const content = document.querySelector('.post-content');
+        const tocContainer = document.getElementById('dohna-toc');
+        const mobileToggle = document.getElementById('toc-mobile-toggle');
+
+        if (!tocTree || !content) return;
+
+        // 获取所有自定义的标题标签 u1, u2, u3 (保持你的自定义实现不变)
+        const headers = content.querySelectorAll('u1, u2, u3');
+        if (headers.length === 0) {
+            if(tocContainer) tocContainer.style.display = 'none';
+            if(mobileToggle) mobileToggle.style.display = 'none';
+            return;
+        }
+
+        let rootUl = document.createElement('ul');
+        rootUl.className = 'toc-list level-1';
+        let currentParent = { 1: rootUl, 2: null, 3: null };
+        let lastItem = { 1: null, 2: null, 3: null };
+
+        headers.forEach((h, i) => {
+            // 分配锚点 ID 以便点击跳转
+            if (!h.id) h.id = 'dh-heading-' + i;
+            const level = parseInt(h.tagName.substring(1));
+
+            const li = document.createElement('li');
+            li.className = 'toc-item';
+
+            const linkWrapper = document.createElement('div');
+            linkWrapper.className = 'toc-link-wrapper';
+
+            const icon = document.createElement('span');
+            icon.className = 'toc-icon';
+            icon.textContent = ' '; // 没有子层级时的占位符
+
+            const link = document.createElement('a');
+            link.href = '#' + h.id;
+            link.className = 'toc-link';
+            link.textContent = h.textContent;
+
+            linkWrapper.appendChild(icon);
+            linkWrapper.appendChild(link);
+            li.appendChild(linkWrapper);
+
+            // 构建树状包含逻辑
+            if (level === 1) {
+                currentParent[1].appendChild(li);
+                lastItem[1] = li;
+                currentParent[2] = null;
+                currentParent[3] = null;
+            } else if (level === 2) {
+                if (!currentParent[2]) {
+                    currentParent[2] = document.createElement('ul');
+                    currentParent[2].className = 'toc-list level-2 tree-sub';
+                    if (lastItem[1]) {
+                        lastItem[1].appendChild(currentParent[2]);
+                        lastItem[1].querySelector('.toc-icon').textContent = '[-]';
+                        lastItem[1].classList.add('has-child', 'open');
+                    } else {
+                        currentParent[1].appendChild(currentParent[2]);
+                    }
+                }
+                currentParent[2].appendChild(li);
+                lastItem[2] = li;
+                currentParent[3] = null;
+            } else if (level === 3) {
+                if (!currentParent[3]) {
+                    currentParent[3] = document.createElement('ul');
+                    currentParent[3].className = 'toc-list level-3 tree-sub';
+                    if (lastItem[2]) {
+                        lastItem[2].appendChild(currentParent[3]);
+                        lastItem[2].querySelector('.toc-icon').textContent = '[-]';
+                        lastItem[2].classList.add('has-child', 'open');
+                    } else if (currentParent[2]) {
+                        currentParent[2].appendChild(currentParent[3]);
+                    }
+                }
+                if(currentParent[3]) currentParent[3].appendChild(li);
+            }
+        });
+
+        tocTree.appendChild(rootUl);
+
+        // 绑定 [+] / [-] 的展开折叠事件
+        tocTree.querySelectorAll('.toc-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                const li = icon.closest('.toc-item');
+                if (li.classList.contains('has-child')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    li.classList.toggle('open');
+                    icon.textContent = li.classList.contains('open') ? '[-]' : '[+]';
+                }
+            });
+        });
+
+        // 移动端菜单切换逻辑
+        const mobileClose = document.getElementById('toc-mobile-close');
+        const mobileOverlay = document.getElementById('mobileOverlay'); // 获取全局遮罩
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                tocContainer.classList.add('show');
+                if(mobileOverlay) mobileOverlay.classList.add('active'); // 呼出遮罩
+            });
+        }
+        const closeToc = () => {
+            tocContainer.classList.remove('show');
+            if(mobileOverlay) mobileOverlay.classList.remove('active'); // 隐藏遮罩
+        };
+
+        if (mobileClose) {
+            mobileClose.addEventListener('click', closeToc);
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 850 && tocContainer.classList.contains('show')) {
+                if (!tocContainer.contains(e.target) && e.target !== mobileToggle) {
+                    closeToc();
+                }
+            }
+        });
+    })();
+</script>
+    </div>
+  </main>
+
+</div>
+<script src="/js/celestial-bg.js"></script>
+
+<script>
+    let currentPathname = window.location.pathname;
+    let currentSearch = window.location.search; 
+    
+    
+  function initPageInteract() {
+    const overlay = document.getElementById('mobileOverlay');
+    const sidebar = document.getElementById('site-sidebar');
+    const menuBtn = document.getElementById('mobileMenuBtn');
+
+    if (menuBtn && sidebar && overlay) {
+      menuBtn.onclick = () => {
+        sidebar.classList.add('show');
+        overlay.classList.add('active');
+      };
+    }
+
+    if (overlay) {
+      overlay.onclick = () => {
+        if (sidebar) sidebar.classList.remove('show');
+        const toc = document.getElementById('postToc');
+        if (toc) toc.classList.remove('active');
+        overlay.classList.remove('active');
+        const dohnaToc = document.getElementById('dohna-toc');
+        if (dohnaToc) dohnaToc.classList.remove('show');
+        const filter = document.getElementById('filterPanel');
+        if (filter) filter.classList.remove('active');
+        overlay.classList.remove('active');
+      };
+    }
+
+    const tocBtn = document.getElementById('mobileTocBtn');
+    const toc = document.getElementById('postToc');
+    if (tocBtn && toc && overlay) {
+      tocBtn.onclick = () => {
+        toc.classList.add('active');
+        overlay.classList.add('active');
+      };
+    }
+
+    const filterBtn = document.getElementById('mobileFilterBtn');
+    const filterPanel = document.getElementById('filterPanel');
+    if (filterBtn && filterPanel && overlay) {
+      filterBtn.onclick = () => {
+        filterPanel.classList.add('active');
+        overlay.classList.add('active');
+      };
+    }
+
+    document.querySelectorAll('.folder-toggle').forEach(el => {
+      el.onclick = () => {
+        const sub = el.nextElementSibling;
+        if (sub && sub.classList.contains('tree-sub')) {
+          sub.classList.toggle('open');
+          const icon = el.querySelector('.folder-icon');
+          if (icon) {
+            icon.textContent = sub.classList.contains('open') ? '[-]' : '[+]';
+          }
+        }
+      };
+    });
+
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const cards = document.querySelectorAll('.dohna-card');
+    if (checkboxes.length > 0) {
+      checkboxes.forEach(cb => {
+        cb.onchange = () => {
+          const activeTags = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
+          cards.forEach(card => {
+            if (activeTags.length === 0) {
+              card.classList.remove('hidden');
+            } else {
+              const cardTags = (card.getAttribute('data-tags') || '').split(',');
+              const isMatch = activeTags.some(t => cardTags.includes(t));
+              if (isMatch) card.classList.remove('hidden');
+              else card.classList.add('hidden');
+            }
+          });
+        };
+      });
+    }
+  }
+
+  /**
+   * 2. Pjax 无刷新加载与内容替换核心函数
+   */
+  function loadPage(href, shouldPushState = true) {
+    document.body.classList.remove('hex-out');
+    document.body.classList.add('hex-in');
+    fetch(href)
+            .then(response => {
+              if (!response.ok) throw new Error('Network response was not ok');
+              return response.text();
+            })
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              setTimeout(() => {
+                const newAppWrapper = doc.getElementById('app-wrapper');
+                const currentAppWrapper = document.getElementById('app-wrapper');
+                if (newAppWrapper && currentAppWrapper) {
+                  currentAppWrapper.innerHTML = newAppWrapper.innerHTML;
+                }
+                const newMobileHeader = doc.querySelector('.mobile-header');
+                const currentMobileHeader = document.querySelector('.mobile-header');
+                if (newMobileHeader && currentMobileHeader) {
+                  currentMobileHeader.innerHTML = newMobileHeader.innerHTML;
+                }
+                document.title = doc.title;
+                if (shouldPushState) {
+                  history.pushState(null, doc.title, href);
+                }
+                window.scrollTo(0, 0);
+                const siteMain = document.getElementById('site-main');
+                if (siteMain) siteMain.scrollTo(0, 0);
+                if (currentAppWrapper) {
+                  const scripts = currentAppWrapper.querySelectorAll('script');
+                  scripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.textContent = oldScript.textContent;
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                  });
+                }
+                initPageInteract();
+                
+                if (window.MathJax) {
+                  if (window.MathJax.typesetClear) {
+                    window.MathJax.typesetClear();
+                  }
+                  if (window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise();
+                  }
+                }
+
+                document.body.classList.remove('hex-in');
+                document.body.classList.add('hex-out');
+                setTimeout(() => {
+                  document.body.classList.remove('hex-out');
+                }, 1000);
+
+              }, 500);
+            })
+            .catch(err => {
+              console.warn('Pjax 载入失败，降级为常规全刷跳转:', err);
+              window.location.href = href;
+            });
+  }
+
+  /**
+   * 3. 首屏初始化与全局事件委托监听
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    initPageInteract();
+    const transitionContainer = document.createElement('div');
+    transitionContainer.id = 'dh-hex-transition';
+    const loadingText = document.createElement('div');
+    loadingText.className = 'hex-loading-text';
+    loadingText.innerText = '';
+    transitionContainer.appendChild(loadingText);
+    document.body.appendChild(transitionContainer);
+    
+    
+    const hexSize = 60;
+    const hexHeight = hexSize * 1.1547;
+    const rowHeight = hexHeight * 0.75;
+
+    let cols = Math.ceil(window.innerWidth / hexSize) + 2;
+    let rows = Math.ceil(window.innerHeight / rowHeight) + 2;
+
+    const colors = ['c-pink', 'c-cyan', 'c-yellow'];
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const maxDist = Math.sqrt(Math.pow(centerX, 2) + Math.pow(centerY, 2));
+    
+    for (let r = -1; r < rows; r++) {
+      for (let c = -1; c < cols; c++) {
+        const hex = document.createElement('div');
+        hex.className = 'dh-hex-cell';
+
+        if (Math.random() > 0.92) {
+          hex.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+        }
+
+        const x = c * hexSize + (r % 2 === 0 ? hexSize / 2 : 0);
+        const y = r * rowHeight;
+
+        hex.style.left = `${x}px`;
+        hex.style.top = `${y}px`;
+
+        const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+        const delayIn = (dist / maxDist) * 0.5;
+        const delayOut = Math.random() * 0.4;
+
+        hex.style.setProperty('--delay-in', `${delayIn}s`);
+        hex.style.setProperty('--delay-out', `${delayOut}s`);
+        hex.style.transition = 'none';
+
+        transitionContainer.appendChild(hex);
+      }
+    }
+    document.body.classList.add('hex-in');
+    transitionContainer.offsetHeight;
+    document.querySelectorAll('.dh-hex-cell').forEach(hex => {
+      hex.style.transition = '';
+    });
+    
+    setTimeout(() => {
+      document.body.classList.remove('hex-in');
+      document.body.classList.add('hex-out');
+      setTimeout(() => {
+        document.body.classList.remove('hex-out');
+      }, 1000);
+    }, 50);
+
+      document.body.addEventListener('click', function(e) {
+          if (document.body.classList.contains('hex-in') || document.body.classList.contains('hex-out')) {
+              e.preventDefault();
+              e.stopPropagation();
+              return;
+          }
+          const link = e.target.closest('a');
+          if (!link) return;
+
+          const href = link.getAttribute('href');
+          if (!href || href.startsWith('http') || link.target) {
+              return;
+          }
+
+          // --- 核心修改区域：处理同页跳转与 TOC 点击 ---
+          if (href.startsWith('#') || link.pathname === window.location.pathname) {
+              // 1. 阻止浏览器默认行为，防止触发全局的转场判断
+              e.preventDefault();
+
+              // 2. 关闭移动端的 TOC 面板和遮罩层
+              const toc = document.getElementById('postToc');
+              const overlay = document.getElementById('mobileOverlay');
+              if (toc && toc.classList.contains('active')) {
+                  toc.classList.remove('active');
+                  if (overlay) overlay.classList.remove('active');
+              }
+
+              // 3. 执行平滑的同页锚点跳转
+              const targetId = href.startsWith('#') ? href : link.hash;
+              if (targetId && targetId !== '#') {
+                  const targetElement = document.querySelector(targetId);
+                  if (targetElement) {
+                      // 如果你的 wiki-main 是局部滚动的容器，用 siteMain 滚动
+                      const siteMain = document.getElementById('site-main');
+                      if (siteMain) {
+                          // 计算目标元素相对于 siteMain 的位置
+                          const targetTop = targetElement.getBoundingClientRect().top;
+                          const mainTop = siteMain.getBoundingClientRect().top;
+
+                          // 改变为 instant（瞬间）或者直接使用 scrollTop 赋值
+                          siteMain.scrollBy({
+                              top: targetTop - mainTop - 60, // 60 是你的 sticky-header 的预留高度
+                              behavior: 'instant'            // 改为 instant 实现瞬间定位
+                          });
+
+                          // 备用方案：如果某些老旧浏览器不支持 behavior: 'instant'，可以直接操作 scrollTop：
+                          // siteMain.scrollTop += (targetTop - mainTop - 60);
+
+                      } else {
+                          // 如果是整页滚动，改为 instant
+                          targetElement.scrollIntoView({ behavior: 'instant' });
+                      }
+
+                      // 可选：更新浏览器地址栏的 hash 状态而不刷新页面
+                      history.pushState(null, document.title, window.location.pathname + window.location.search + targetId);
+                  }
+              }
+              return;
+          }
+          // --- 修改结束 ---
+
+          console.log(1111)
+          e.preventDefault();
+          loadPage(href, true);
+      });
+    
+    window.addEventListener('popstate', function() {
+      loadPage(window.location.href, false);
+    });
+    
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted) {
+        document.body.classList.remove('hex-in');
+        document.body.classList.add('hex-out');
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
