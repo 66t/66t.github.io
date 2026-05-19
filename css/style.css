@@ -3134,3 +3134,265 @@ body.hex-out .dh-hex-cell {
         margin: 15px auto !important;
     }
 }
+/* ===================================================
+          故事导航专有样式 (无缝缝合 style.css 粗线强阴影规范)
+          =================================================== */
+.dohna-story-matrix {
+    margin: 60px 0 30px 0;
+    border: var(--dh-border);
+    background: var(--dh-white);
+    box-shadow: var(--dh-shadow);
+    font-family: var(--font-pop);
+}
+
+/* 页眉设计 - 保持与页面其他大板块一致的黑底高亮风格 */
+.matrix-header {
+    background: var(--dh-black);
+    color: var(--dh-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: var(--dh-border);
+}
+
+.matrix-title-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.matrix-tag {
+    background: var(--dh-pink);
+    color: var(--dh-black);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+}
+
+.matrix-title {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.matrix-deco-lines {
+    height: 8px;
+    width: 60px;
+    background: repeating-linear-gradient(
+            45deg,
+            var(--dh-pink),
+            var(--dh-pink) 4px,
+            var(--dh-black) 4px,
+            var(--dh-black) 8px
+    );
+}
+
+/* 容器主体：改回明亮底色，彻底消除暗色块带来的视觉碎片感 */
+.matrix-body {
+    padding: 30px;
+    background: var(--dh-white);
+}
+
+.matrix-group {
+    margin-bottom: 35px;
+}
+.matrix-group:last-child {
+    margin-bottom: 0;
+}
+
+/* 分类标签：硬边方块 + 动态色点 (极简游戏菜单流) */
+.matrix-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: var(--dh-border);
+    background: var(--dh-black);
+    color: var(--dh-white);
+    padding: 4px 14px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 18px;
+    font-family: var(--font-mono);
+}
+
+.badge-color-dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border: 1px solid var(--dh-black);
+}
+
+/* 网格布局：完美对齐道具槽 */
+.matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+/* 单个卡片单元：高还原度的“道具/技能解锁槽”视觉 */
+.matrix-cell {
+    display: flex;
+    align-items: center;
+    background: var(--dh-white);
+    border: var(--dh-border);
+    height: 48px;
+    text-decoration: none;
+    color: var(--dh-black);
+    position: relative;
+    box-shadow: 4px 4px 0px var(--dh-black);
+    transition: all 0.15s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    overflow: hidden;
+}
+
+/* 单元左侧ID区 */
+.matrix-cell .cell-id {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: var(--dh-black);
+    color: var(--dh-white);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-right: var(--dh-border);
+    transition: background 0.15s ease;
+}
+
+/* 单元标题区 */
+.matrix-cell .cell-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--dh-black);
+    padding: 0 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+/* 边缘指示线：提供细腻的色彩锚定 */
+.matrix-cell .cell-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    border-left: 2px solid var(--dh-black);
+}
+
+.matrix-cell:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--dh-black);
+    background: #ffffff;
+    
+}
+.matrix-cell:hover .cell-id {
+    background: var(--dh-pink);
+    color: var(--dh-white);
+}
+.matrix-cell:hover .cell-title {
+    color: var(--dh-white);
+}
+
+/* 当前剧情节点激活状态 (高亮黄底 + 粉色强感知阴影) */
+.matrix-cell.is-active {
+    background: var(--dh-yellow);
+    pointer-events: none; /* 禁用重复点击 */
+    box-shadow: 4px 4px 0px var(--dh-pink);
+}
+.matrix-cell.is-active .cell-id {
+    background: var(--dh-black);
+    color: var(--dh-yellow);
+}
+.matrix-cell.is-active .cell-title {
+    font-weight: 900;
+}
+
+
+.story-tree-container {
+    width: 100%;
+    overflow: auto;
+    background: transparent;
+    padding: 20px 0;
+}
+
+#story-canvas {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+/* 节点基本倾斜变形 */
+.story-svg-node {
+    transform: translate(var(--pos-x), var(--pos-y)) skewX(-10deg);
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: pointer;
+}
+
+/* 霓虹紫立体阴影 */
+.node-shadow {
+    fill: var(--dh-purple);
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 粗边框白底主方块 */
+.node-box {
+    fill: var(--dh-white);
+    stroke: var(--dh-black);
+    stroke-width: 3px;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ID 标签黑色底块 */
+.id-bg {
+    fill: var(--dh-black);
+}
+
+/* ID 亮黄等宽文本 */
+.id-text {
+    fill: var(--dh-yellow);
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    font-weight: 900;
+    pointer-events: none;
+}
+
+/* 粗体标题文本 */
+.title-text {
+    fill: var(--dh-black);
+    font-family: var(--font-pop, sans-serif);
+    font-size: 15px;
+    font-weight: 900;
+    pointer-events: none;
+}
+
+.story-svg-link:hover .story-svg-node {
+    transform: translate(calc(var(--pos-x) - 4px), calc(var(--pos-y) - 4px)) skewX(-10deg);
+}
+.story-svg-link:hover .node-box {
+    fill: var(--dh-yellow);
+}
+.story-svg-link:hover .node-shadow {
+    fill: var(--dh-cyan);
+    transform: translate(2px, 2px);
+}
+
+/* 剧情连线：荧光青流动虚线动画 */
+.story-link-path {
+    fill: none;
+    stroke: var(--dh-cyan);
+    stroke-width: 4px;
+    stroke-dasharray: 10 6;
+    animation: story-flow 25s linear infinite;
+}
+
+@keyframes story-flow {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
