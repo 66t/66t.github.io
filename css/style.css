@@ -15,18 +15,21 @@
     --dh-shadow-hover: 2px 2px 0px var(--dh-black);
     --font-pop: "Arial Black", "Impact", "Noto Sans SC", "Microsoft YaHei", sans-serif;
     --font-mono: "Cascadia Code", "Fira Code", "Courier New", Consolas, monospace;
+    --dh-dohna-blue: #111;      
+    --dh-dohna-darkblue: #f26;  
+    --dh-dohna-cyan: #fc0;      
+    --dh-dohna-light: #EBF7FF;     
+    --dh-dohna-pink: #FF3385;      
+    --dh-dohna-yellow: #FFC900;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 #site-main {
     position: absolute;
     top: 0;
@@ -37,13 +40,11 @@ html {
     overflow-x: hidden;
     transition: none;
 }
-
 @media screen and (max-width: 800px) {
     #site-main {
         width: 100vw;
     }
 }
-
 body {
     -webkit-user-select: none;
     user-select: none;
@@ -3135,8 +3136,8 @@ body.hex-out .dh-hex-cell {
     }
 }
 /* ===================================================
-          故事导航专有样式 (无缝缝合 style.css 粗线强阴影规范)
-          =================================================== */
+ 故事导航专有样式 
+ =================================================== */
 .dohna-story-matrix {
     margin: 60px 0 30px 0;
     border: var(--dh-border);
@@ -3396,279 +3397,269 @@ body.hex-out .dh-hex-cell {
         stroke-dashoffset: -1000;
     }
 }
-/* ============================================
-   多娜多娜风格终端拦截 (Auth Overlay)
-   ============================================ */
+
+
+/* ==========================================================================
+   多娜多娜硬核波普视觉主题样式
+   ========================================================================== */
+:root {
+    --dh-pink: #FF2A6D;
+    --dh-cyan: #05D9E8;
+    --dh-yellow: #FFC200;
+    --dh-black: #111111;
+    --dh-white: #F8F8F8;
+    --dh-green: #39FF14;
+    --dh-box-bg: #EBF7FF; /* 标志性的Limpid亮灰蓝 */
+    --font-pop: "Arial Black", "Impact", "Noto Sans SC", sans-serif;
+    --font-mono: "Cascadia Code", "Fira Code", monospace;
+}
+
 .dh-auth-overlay {
     position: fixed;
     inset: 0;
     z-index: 999999;
     background-color: var(--dh-black);
-    /* 强烈的紫黑色半调波点背景 */
-    background-image: radial-gradient(var(--dh-purple) 2px, transparent 2px);
-    background-size: 20px 20px;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    perspective: 1000px;
 }
 
-/* 背景滚动的巨大警告字 */
-.dh-auth-bg-text {
+/* 半调波点背景滤镜 */
+.dh-auth-overlay::before {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 200%;
-    transform: translateY(-50%) rotate(-10deg);
-    font-family: var(--font-pop);
-    font-size: 150px;
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 42, 109, 0.2); /* 粉色镂空字 */
-    white-space: nowrap;
-    pointer-events: none;
-    animation: scrollText 20s linear infinite;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 42, 109, 0.25) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
     z-index: 0;
+    pointer-events: none;
 }
 
-@keyframes scrollText {
-    0% { transform: translateY(-50%) rotate(-10deg) translateX(0); }
-    100% { transform: translateY(-50%) rotate(-10deg) translateX(-50%); }
-}
-
-/* 主体认证框：错位双重阴影 */
-.dh-auth-box {
-    position: relative;
-    z-index: 10;
-    background: var(--dh-white);
-    border: var(--dh-border);
-    padding: 50px 40px 30px;
-    width: 90%;
-    max-width: 500px;
-    transform: skewX(-6deg);
-    /* 青色与粉色的错位硬阴影 */
-    box-shadow:
-            15px 15px 0 var(--dh-cyan),
-            -10px -10px 0 var(--dh-pink);
-    display: flex;
-    flex-direction: column;
-}
-
-/* 顶部与底部警告封条 */
-.dh-auth-tape {
+/* 蜂巢矩阵基础容器 */
+.dh-auth-hex-container {
     position: absolute;
-    top: -15px;
-    left: -30px;
-    right: -30px;
-    height: 30px;
-    background: repeating-linear-gradient(
-            45deg,
-            var(--dh-yellow),
-            var(--dh-yellow) 15px,
-            var(--dh-black) 15px,
-            var(--dh-black) 30px
-    );
-    border: 3px solid var(--dh-black);
-    transform: rotate(-3deg);
-    z-index: 20;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
 }
 
-.dh-auth-tape.tape-bottom {
-    top: auto;
-    bottom: -15px;
-    transform: rotate(2deg);
-    background: repeating-linear-gradient(
-            -45deg,
-            var(--dh-pink),
-            var(--dh-pink) 15px,
-            var(--dh-black) 15px,
-            var(--dh-black) 30px
-    );
+/* 高性能完美蜂巢单元 */
+.dh-auth-hex {
+    position: absolute;
+    width: 64px;
+    height: 74px;
+    background-color: #1d1d21;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transform: scale(0.85);
+    will-change: transform, background-color, opacity, filter;
+    transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: auto !important;
+    cursor: crosshair;
 }
 
-/* 标题区域布局 */
-.dh-auth-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+/* 掏空内部，制造纯硬核高科技窄边框 */
+.dh-auth-hex::before {
+    content: "";
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    background-color: var(--dh-black);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: background-color 0.2s;
 }
 
+/* 鼠标交互：极具反馈感的色块瞬间膨胀爆发 */
+.dh-auth-hex:hover {
+    transform: scale(1.15) rotate(15deg);
+    background-color: var(--dh-pink) !important;
+    z-index: 5;
+    filter: drop-shadow(0 0 12px var(--dh-pink));
+}
+.dh-auth-hex:hover::before {
+    background-color: var(--dh-yellow);
+}
+
+/* 静态闪烁点 */
+.dh-auth-hex.static-color {
+    background-color: var(--hex-bg);
+    animation: dhHexFlicker 4s ease-in-out infinite alternate;
+}
+
+/* 自动化多轨信号游走效果 */
+.dh-auth-hex.tracer-active {
+    background-color: var(--dh-cyan);
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px var(--dh-cyan)) brightness(1.3);
+    z-index: 4;
+}
+
+/* ==========================================================================
+   块2 & 3: 警示跑马灯带与多娜核心表单
+   ========================================================================== */
+.dh-auth-waveform-band {
+    position: absolute;
+    top: 22%; left: -10vw; width: 120vw; height: 50px;
+    transform: rotate(-3.5deg);
+    background: #000;
+    border-top: 4px solid var(--dh-pink);
+    border-bottom: 4px solid var(--dh-cyan);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    display: flex; align-items: center; overflow: hidden;
+    z-index: 2; pointer-events: none;
+}
+.dh-auth-waveform-band::before {
+    content: 'SYSTEM_LOCKED // UNAUTHORIZED_ACCESS_DETECTED // NO.09-X77 // LOCK_STATE_ACTIVE // ';
+    font-family: var(--font-pop); font-size: 26px; font-weight: 900;
+    color: var(--dh-yellow); white-space: nowrap;
+    text-shadow: 2px 2px 0 var(--dh-pink);
+    animation: dhTextScroll 8s linear infinite;
+}
+
+/* 主认证框体 */
+.dh-auth-box {
+    position: relative; z-index: 10;
+    background: var(--dh-box-bg); border: 5px solid #000;
+    padding: 45px 35px 25px; width: 90%; max-width: 460px;
+    transform: skewX(-4deg);
+    box-shadow: 12px 12px 0 #000, 18px 18px 0 var(--dh-cyan), -10px -10px 0 var(--dh-pink);
+    animation: dhBoxFloat 4s ease-in-out infinite;
+}
+
+/* 装饰胶带 */
+.dh-auth-tape {
+    position: absolute; height: 20px; border: 3px solid #000; z-index: 20;
+    background: repeating-linear-gradient(45deg, var(--dh-yellow), var(--dh-yellow) 12px, #000 12px, #000 24px);
+}
+.tape-top-left { top: -11px; left: -25px; right: 40%; transform: rotate(-2deg); }
+.tape-bottom-right { bottom: -11px; right: -25px; left: 40%; transform: rotate(1.5deg);
+    background: repeating-linear-gradient(-45deg, var(--dh-pink), var(--dh-pink) 12px, #000 12px, #000 24px); }
+
+.dh-auth-header { display: flex; align-items: center; margin-bottom: 18px; }
 .dh-auth-icon {
-    background: var(--dh-pink);
-    color: var(--dh-white);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    font-weight: 900;
-    border: 3px solid var(--dh-black);
-    margin-right: 15px;
-    box-shadow: 3px 3px 0 var(--dh-black);
-    transform: skewX(6deg); /* 修正内部倾斜 */
+    background: var(--dh-pink); color: #FFF; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-pop); font-size: 28px; font-weight: 900;
+    border: 4px solid #000; margin-right: 15px; transform: skewX(6deg);
+    box-shadow: 4px 4px 0 #000;
 }
-
-.dh-auth-title {
-    font-size: 32px;
-    font-weight: 900;
-    font-family: var(--font-pop);
-    color: var(--dh-black);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+.dh-auth-title { font-family: var(--font-pop); font-size: 30px; font-weight: 900; color: #000; text-shadow: 3px 3px 0 var(--dh-cyan); }
 
 .dh-auth-subtitle {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 900;
-    color: var(--dh-white);
-    background: var(--dh-black);
-    padding: 6px 12px;
-    display: inline-flex;
-    align-self: flex-start;
-    margin-bottom: 30px;
-    border: 2px solid var(--dh-cyan);
-    box-shadow: 4px 4px 0 var(--dh-cyan);
+    font-family: var(--font-mono); font-size: 13px; font-weight: 900; background: #000;
+    padding: 5px 10px; display: inline-flex; margin-bottom: 25px;
+    border: 3px solid #000; box-shadow: 3px 3px 0 var(--dh-yellow); color: #FFF;
 }
+.blink-cursor { color: var(--dh-pink); margin-left: 6px; animation: dhBlink 0.9s step-end infinite; }
 
-.blink-cursor {
-    color: var(--dh-pink);
-    margin-left: 8px;
-    animation: blink 1s step-end infinite;
-}
-
-@keyframes blink { 50% { opacity: 0; } }
-
-/* 输入框组合 */
+/* 密码输入框包围组 */
 .dh-input-group {
-    display: flex;
-    border: 4px solid var(--dh-black);
-    background: var(--dh-white);
-    box-shadow: 6px 6px 0 var(--dh-black);
-    margin-bottom: 20px;
-    transition: all 0.2s;
-    position: relative;
+    display: flex; border: 4px solid #000; background: #FFF;
+    box-shadow: 6px 6px 0 #000; margin-bottom: 18px; position: relative; overflow: hidden;
 }
-
 .dh-input-group:focus-within {
-    border-color: var(--dh-pink);
-    box-shadow: 8px 8px 0 var(--dh-pink);
-    transform: translate(-2px, -2px);
+    border-color: var(--dh-pink); box-shadow: 8px 8px 0 var(--dh-pink); transform: translate(-2px, -2px);
 }
-
 .input-prefix {
-    background: var(--dh-black);
-    color: var(--dh-yellow);
-    font-family: var(--font-mono);
-    font-weight: 900;
-    font-size: 18px;
-    padding: 12px 15px;
-    display: flex;
-    align-items: center;
+    font-family: var(--font-mono); font-weight: 900; font-size: 16px;
+    padding: 12px 14px; background: #000; color: var(--dh-cyan); display: flex; align-items: center;
 }
-
 #dh-auth-input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 12px 15px;
-    font-size: 24px;
-    font-family: var(--font-mono);
-    font-weight: 900;
-    color: var(--dh-black);
-    outline: none;
-    width: 100%;
+    flex: 1; border: none; background: transparent; padding: 12px;
+    font-size: 22px; font-family: var(--font-mono); font-weight: 900; color: #000; outline: none;
 }
 
-#dh-auth-input::placeholder {
-    color: rgba(17, 17, 17, 0.2);
-}
-
-/* 授权按钮 */
+/* 强冲击力解锁按钮 */
 .dh-auth-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--dh-yellow);
-    color: var(--dh-black);
-    border: 4px solid var(--dh-black);
-    padding: 12px 20px;
-    font-family: var(--font-pop);
-    font-size: 22px;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 6px 6px 0 var(--dh-black);
-    transition: all 0.1s;
-    text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 20px; font-family: var(--font-pop); font-size: 20px; font-weight: 900;
+    cursor: pointer; background: #FFF; color: #000; border: 4px solid #000;
+    box-shadow: 5px 5px 0 #000, 10px 10px 0 var(--dh-pink);
+    transition: all 0.1s ease;
+}
+.dh-auth-btn:hover { background: var(--dh-cyan); transform: translate(2px, 2px); box-shadow: 3px 3px 0 #000, 7px 7px 0 var(--dh-pink); }
+.dh-auth-btn:active { background: var(--dh-pink); color: #fff; transform: translate(5px, 5px); box-shadow: 0px 0px 0 #000; }
+
+.dh-auth-err { font-family: var(--font-mono); font-weight: 900; font-size: 13px; color: var(--dh-pink); min-height: 20px; margin-top: 12px; text-align: right; }
+.dh-auth-footer { margin-top: 15px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 12px; color: #000; opacity: 0.7; }
+.barcode { transform: scaleY(1.4); transform-origin: bottom; font-weight: bold; }
+
+/* ==========================================================================
+   块4 & 5: 失败警报状态与成功瓦解状态机调度
+   ========================================================================== */
+
+/* 全局失败警报状态 */
+.dh-auth-overlay.sys-alarm {
+    background-color: #2e000f;
+    animation: dhOverlayShake 0.15s infinite;
+}
+.dh-auth-overlay.sys-alarm .dh-auth-hex {
+    background-color: var(--dh-pink) !important;
+    transform: scale(0.9) skewX(-15deg) !important;
+}
+.dh-auth-overlay.sys-alarm .dh-auth-hex::before { background-color: transparent; } /* 撕裂变成纯色实体块 */
+.dh-auth-overlay.sys-alarm .dh-auth-box {
+    animation: dhBoxAlarmShake 0.1s infinite !important;
+    box-shadow: 15px 15px 0 var(--dh-pink), -15px -15px 0 var(--dh-yellow) !important;
+    background: #fff; border-color: var(--dh-pink);
 }
 
-.dh-auth-btn:hover {
-    background: var(--dh-cyan);
-    transform: translate(2px, 2px);
-    box-shadow: 4px 4px 0 var(--dh-black);
+/* 全局解密成功瓦解状态 */
+.dh-auth-overlay.sys-success {
+    background-color: transparent;
+    transition: background-color 0.6s ease-out;
+}
+.dh-auth-overlay.sys-success .dh-auth-box {
+    animation: dhSuccessCompress 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
 }
 
-.dh-auth-btn:active {
-    background: var(--dh-pink);
-    color: var(--dh-white);
-    transform: translate(6px, 6px);
-    box-shadow: 0px 0px 0 var(--dh-black);
+/* 核心要求：成功时蜂巢变色、向外爆炸式大范围虚化瓦解 */
+.dh-auth-hex.is-success-hide {
+    background-color: var(--dh-green) !important;
+    transform: scale(2.2) rotate(60deg) translate3d(0, -40px, 200px) !important;
+    opacity: 0;
+    filter: blur(12px) brightness(2.5);
+    transition-property: transform, opacity, filter, background-color !important;
+    transition-duration: 0.8s !important;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+.dh-auth-hex.is-success-hide::before { background-color: transparent; }
+
+/* ==========================================================================
+   动效关键帧定义 (GPU加速优化)
+   ========================================================================== */
+@keyframes dhHexFlicker {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; transform: scale(0.92); }
+}
+@keyframes dhBlink { 50% { opacity: 0; } }
+@keyframes dhTextScroll { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-33.33%, 0, 0); } }
+@keyframes dhBoxFloat {
+    0%, 100% { transform: skewX(-4deg) translate3d(0,0,0); }
+    50% { transform: skewX(-4deg) translate3d(0,-8px,0); }
+}
+@keyframes dhOverlayShake {
+    0%, 100% { transform: translate3d(0,0,0); }
+    25% { transform: translate3d(3px, -2px, 0); }
+    75% { transform: translate3d(-3px, 2px, 0); }
+}
+@keyframes dhBoxAlarmShake {
+    0%, 100% { transform: skewX(-4deg) translate3d(0,0,0); }
+    30% { transform: skewX(-2deg) translate3d(-8px, 4px, 0); }
+    70% { transform: skewX(-6deg) translate3d(8px, -4px, 0); }
+}
+@keyframes dhSuccessCompress {
+    0% { transform: skewX(-4deg) scale(1); filter: brightness(1); opacity: 1; }
+    30% { transform: skewX(-4deg) scale(1.08); filter: brightness(1.5); box-shadow: 0 0 50px var(--dh-green); }
+    100% { transform: skewX(10deg) scale(0, 0); opacity: 0; filter: blur(20px); }
 }
 
-.btn-decor {
-    font-family: var(--font-mono);
-    letter-spacing: -2px;
-    opacity: 0.5;
-}
-
-/* 错误提示 */
-.dh-auth-err {
-    margin-top: 15px;
-    min-height: 20px;
-    color: var(--dh-pink);
-    font-family: var(--font-mono);
-    font-weight: 900;
-    font-size: 14px;
-    text-align: right;
-    text-transform: uppercase;
-}
-
-/* 底部无意义装饰 */
-.dh-auth-footer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    font-family: var(--font-mono);
-    color: var(--dh-black);
-    opacity: 0.6;
-}
-
-.barcode {
-    font-weight: 900;
-    font-size: 18px;
-    letter-spacing: 2px;
-    transform: scaleY(1.5);
-    transform-origin: bottom;
-}
-
-.serial {
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* 拒绝访问时的剧烈震动动画 */
-@keyframes errorShake {
-    0%, 100% { transform: skewX(-6deg) translateX(0); }
-    20% { transform: skewX(-6deg) translateX(-15px) rotate(-2deg); }
-    40% { transform: skewX(-6deg) translateX(15px) rotate(2deg); }
-    60% { transform: skewX(-6deg) translateX(-10px) rotate(-1deg); }
-    80% { transform: skewX(-6deg) translateX(10px) rotate(1deg); }
-}
-
-@keyframes hexAuthOut {
-    0% { opacity: 1; transform: scale(1); filter: blur(0); }
-    100% { opacity: 0; transform: scale(1.2) rotate(5deg); filter: blur(20px); }
+/* 移动端完美轻量化适配 */
+@media (max-width: 480px) {
+    .dh-auth-box { padding: 30px 20px 20px; width: 92%; transform: skewX(-2deg); box-shadow: 8px 8px 0 #000, 12px 12px 0 var(--dh-cyan); }
+    .dh-auth-title { font-size: 22px; }
+    .dh-auth-waveform-band { height: 38px; top: 15%; }
+    .dh-auth-waveform-band::before { font-size: 18px; }
+    .dh-auth-hex { transform: scale(0.65); }
+    .dh-auth-hex:hover { transform: scale(0.85); }
 }

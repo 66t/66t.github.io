@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>
@@ -16,11 +16,14 @@
 <meta name="generator" content="Hexo 8.1.2"></head>
 <body class="dohna-body">
 <div id="dh-auth-overlay" class="dh-auth-overlay">
-    <div class="dh-auth-bg-text">RESTRICTED_AREA // DO_NOT_ENTER //</div>
+    <div id="dh-auth-hex-matrix" class="dh-auth-hex-container"></div>
+
+    <div class="dh-auth-waveform-band"></div>
 
     <div class="dh-auth-box">
-        <div class="dh-auth-tape"></div>
-        <div class="dh-auth-tape tape-bottom"></div>
+        <div class="dh-auth-tape tape-top-left"></div>
+        <div class="dh-auth-tape tape-bottom-right"></div>
+        <div class="box-glitch-layer"></div>
 
         <div class="dh-auth-header">
             <div class="dh-auth-icon">!</div>
@@ -36,7 +39,8 @@
 
         <div class="dh-input-group">
             <span class="input-prefix">KEY &gt;</span>
-            <input type="password" id="dh-auth-input" placeholder="********" autocomplete="off">
+            <input type="password" id="dh-auth-input" placeholder="********" autocomplete="off" autofocus>
+            <div class="input-scanline"></div>
         </div>
 
         <button id="dh-auth-btn" class="dh-auth-btn">
@@ -48,41 +52,35 @@
 
         <div class="dh-auth-footer">
             <div class="barcode">||| |||| | || |||</div>
-            <div class="serial">NO.09-X77</div>
+            <div id="dh-random-hex" class="serial">NO.09-X77</div>
         </div>
     </div>
 </div>
 
-<script>
-    // 为底部的极客数值添加一个好玩的随机刷新效果
-    setInterval(() => {
-        const el = document.getElementById('dh-random-hex');
-        if(el) el.innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
-    }, 400);
-</script>
+
 <canvas id="skyCanvas"></canvas>
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <header class="mobile-header">
-  <nav class="menu">
+    <nav class="menu">
   <a href="/">Home</a>
   <a href="/categories/">Categories</a>
   <a href="/heroes/">Heroes</a>
   <a href="/items/">Items</a>
   <a href="/story/">Story</a>
 </nav>
-  <div class="mobile-menu-btn" id="mobileMenuBtn">
-    <span class="m-icon"></span>
-    <span class="m-icon"></span>
-    <span class="m-icon"></span>
-  </div>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+    </div>
 </header>
 
 <div id="app-wrapper" class="wiki-layout">
 
-  
+    
 
-  <aside id="site-sidebar" class="wiki-sidebar">
-    <nav class="tree-nav dohna-sidebar-container">
+    <aside id="site-sidebar" class="wiki-sidebar">
+        <nav class="tree-nav dohna-sidebar-container">
     <div class="sidebar-handle desktop-only">
     </div>
     <div class="sidebar-content-scroll">
@@ -134,122 +132,6 @@
                     <li class="tree-folder">
                         <div class="tree-item folder-toggle" style="cursor:pointer;">
                             <span class="folder-icon">[+]</span>
-                            <span class="folder-name">程序</span>
-                        </div>
-                        <ul class="tree-sub ">
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
-                                        JRRG的构建
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Array扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
-                                        Minecraft红石系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
-                                        RpgMaker 事件
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Bitmap 扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
-                                        JavaScript Math扩展
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
-                                        Minecraft红石系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
-                                        帧动画系统
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
-                                        声明式UI-UX
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
-                                        视觉小说
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
-                                        游戏editor
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
-                                        游戏runtime
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
-                                        TOUHOU弹幕
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    
-                    <li class="tree-folder">
-                        <div class="tree-item folder-toggle" style="cursor:pointer;">
-                            <span class="folder-icon">[+]</span>
-                            <span class="folder-name">策划</span>
-                        </div>
-                        <ul class="tree-sub ">
-                            
-                                <li>
-                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/Minecraft%E5%90%88%E6%88%90%E5%8F%B0%20UX/" class="tree-item link ">
-                                        Minecraft合成台 UX
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
-                                        独立物品系统
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    
-                    <li class="tree-folder">
-                        <div class="tree-item folder-toggle" style="cursor:pointer;">
-                            <span class="folder-icon">[+]</span>
                             <span class="folder-name">游戏日记</span>
                         </div>
                         <ul class="tree-sub ">
@@ -275,13 +157,19 @@
                     <li class="tree-folder">
                         <div class="tree-item folder-toggle" style="cursor:pointer;">
                             <span class="folder-icon">[+]</span>
-                            <span class="folder-name">音乐</span>
+                            <span class="folder-name">策划</span>
                         </div>
                         <ul class="tree-sub ">
                             
                                 <li>
-                                    <a href="/2026/05/03/%E9%9F%B3%E4%B9%90/%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="tree-item link ">
-                                        AI提示词
+                                    <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        独立物品系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/Minecraft%E5%90%88%E6%88%90%E5%8F%B0%20UX/" class="tree-item link ">
+                                        Minecraft合成台 UX
                                     </a>
                                 </li>
                             
@@ -298,19 +186,129 @@
                     <li class="tree-folder">
                         <div class="tree-item folder-toggle" style="cursor:pointer;">
                             <span class="folder-icon">[+]</span>
+                            <span class="folder-name">音乐</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E9%9F%B3%E4%B9%90/%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="tree-item link ">
+                                        AI提示词
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">程序</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
+                                        JRRG的构建
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Array扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Math扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Bitmap 扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
+                                        TOUHOU弹幕
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
+                                        RpgMaker 事件
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
+                                        游戏editor
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        帧动画系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
+                                        声明式UI-UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
+                                        视觉小说
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
+                                        游戏runtime
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
                             <span class="folder-name">编剧</span>
                         </div>
                         <ul class="tree-sub ">
                             
                                 <li>
-                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
-                                        神之罪与人之理：存在论视域下的剥削与觉醒
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
+                                        剧本模板
                                     </a>
                                 </li>
                             
                                 <li>
-                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
-                                        剧本模板
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
+                                        神之罪与人之理：存在论视域下的剥削与觉醒
                                     </a>
                                 </li>
                             
@@ -321,20 +319,20 @@
         </ul>
     </div>
 </nav>
-  </aside>
+    </aside>
 
-  <main id="site-main" class="wiki-main">
-    <header class="sticky-header">
-      <nav class="menu">
+    <main id="site-main" class="wiki-main">
+        <header class="sticky-header">
+            <nav class="menu">
   <a href="/">Home</a>
   <a href="/categories/">Categories</a>
   <a href="/heroes/">Heroes</a>
   <a href="/items/">Items</a>
   <a href="/story/">Story</a>
 </nav>
-    </header>
-    <div class="dohna-content-inner">
-      <div class="post-layout">
+        </header>
+        <div class="dohna-content-inner">
+            <div class="post-layout">
     <div class="post-head">
         <h1 class="post-title">路线B</h1>
         <div class="post-meta">
@@ -585,369 +583,227 @@
         });
     })();
 </script>
-    </div>
-  </main>
+        </div>
+    </main>
 
 </div>
 <script src="/js/celestial-bg.js"></script>
 
 <script>
-    let currentPathname = window.location.pathname;
-    let currentSearch = window.location.search; 
-    
-    
-  function initPageInteract() {
-    const overlay = document.getElementById('mobileOverlay');
-    const sidebar = document.getElementById('site-sidebar');
-    const menuBtn = document.getElementById('mobileMenuBtn');
-
-    if (menuBtn && sidebar && overlay) {
-      menuBtn.onclick = () => {
-        sidebar.classList.add('show');
-        overlay.classList.add('active');
-      };
-    }
-
-    if (overlay) {
-      overlay.onclick = () => {
-        if (sidebar) sidebar.classList.remove('show');
-        const toc = document.getElementById('postToc');
-        if (toc) toc.classList.remove('active');
-        overlay.classList.remove('active');
-        const dohnaToc = document.getElementById('dohna-toc');
-        if (dohnaToc) dohnaToc.classList.remove('show');
-        const filter = document.getElementById('filterPanel');
-        if (filter) filter.classList.remove('active');
-        overlay.classList.remove('active');
-      };
-    }
-
-    const tocBtn = document.getElementById('mobileTocBtn');
-    const toc = document.getElementById('postToc');
-    if (tocBtn && toc && overlay) {
-      tocBtn.onclick = () => {
-        toc.classList.add('active');
-        overlay.classList.add('active');
-      };
-    }
-
-    const filterBtn = document.getElementById('mobileFilterBtn');
-    const filterPanel = document.getElementById('filterPanel');
-    if (filterBtn && filterPanel && overlay) {
-      filterBtn.onclick = () => {
-        filterPanel.classList.add('active');
-        overlay.classList.add('active');
-      };
-    }
-
-    document.querySelectorAll('.folder-toggle').forEach(el => {
-      el.onclick = () => {
-        const sub = el.nextElementSibling;
-        if (sub && sub.classList.contains('tree-sub')) {
-          sub.classList.toggle('open');
-          const icon = el.querySelector('.folder-icon');
-          if (icon) {
-            icon.textContent = sub.classList.contains('open') ? '[-]' : '[+]';
-          }
-        }
-      };
-    });
-
-    const checkboxes = document.querySelectorAll('.filter-checkbox');
-    const cards = document.querySelectorAll('.dohna-card');
-    if (checkboxes.length > 0) {
-      checkboxes.forEach(cb => {
-        cb.onchange = () => {
-          const activeTags = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
-          cards.forEach(card => {
-            if (activeTags.length === 0) {
-              card.classList.remove('hidden');
-            } else {
-              const cardTags = (card.getAttribute('data-tags') || '').split(',');
-              const isMatch = activeTags.some(t => cardTags.includes(t));
-              if (isMatch) card.classList.remove('hidden');
-              else card.classList.add('hidden');
-            }
-          });
-        };
-      });
-    }
-  }
-
-  /**
-   * 2. Pjax 无刷新加载与内容替换核心函数
-   */
-  function loadPage(href, shouldPushState = true) {
-    document.body.classList.remove('hex-out');
-    document.body.classList.add('hex-in');
-    fetch(href)
-            .then(response => {
-              if (!response.ok) throw new Error('Network response was not ok');
-              return response.text();
-            })
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              setTimeout(() => {
-                const newAppWrapper = doc.getElementById('app-wrapper');
-                const currentAppWrapper = document.getElementById('app-wrapper');
-                if (newAppWrapper && currentAppWrapper) {
-                  currentAppWrapper.innerHTML = newAppWrapper.innerHTML;
-                }
-                const newMobileHeader = doc.querySelector('.mobile-header');
-                const currentMobileHeader = document.querySelector('.mobile-header');
-                if (newMobileHeader && currentMobileHeader) {
-                  currentMobileHeader.innerHTML = newMobileHeader.innerHTML;
-                }
-                document.title = doc.title;
-                if (shouldPushState) {
-                  history.pushState(null, doc.title, href);
-                }
-                window.scrollTo(0, 0);
-                const siteMain = document.getElementById('site-main');
-                if (siteMain) siteMain.scrollTo(0, 0);
-                if (currentAppWrapper) {
-                  const scripts = currentAppWrapper.querySelectorAll('script');
-                  scripts.forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                    newScript.textContent = oldScript.textContent;
-                    oldScript.parentNode.replaceChild(newScript, oldScript);
-                  });
-                }
-                initPageInteract();
-                
-                if (window.MathJax) {
-                  if (window.MathJax.typesetClear) {
-                    window.MathJax.typesetClear();
-                  }
-                  if (window.MathJax.typesetPromise) {
-                    window.MathJax.typesetPromise();
-                  }
-                }
-
-                document.body.classList.remove('hex-in');
-                document.body.classList.add('hex-out');
-                setTimeout(() => {
-                  document.body.classList.remove('hex-out');
-                }, 1000);
-
-              }, 500);
-            })
-            .catch(err => {
-              console.warn('Pjax 载入失败，降级为常规全刷跳转:', err);
-              window.location.href = href;
-            });
-  }
-
-  /**
-   * 3. 首屏初始化与全局事件委托监听
-   */
-  document.addEventListener('DOMContentLoaded', () => {
-    initPageInteract();
-    const transitionContainer = document.createElement('div');
-    transitionContainer.id = 'dh-hex-transition';
-    const loadingText = document.createElement('div');
-    loadingText.className = 'hex-loading-text';
-    loadingText.innerText = '';
-    transitionContainer.appendChild(loadingText);
-    document.body.appendChild(transitionContainer);
-    
-    
-    const hexSize = 60;
-    const hexHeight = hexSize * 1.1547;
-    const rowHeight = hexHeight * 0.75;
-
-    let cols = Math.ceil(window.innerWidth / hexSize) + 2;
-    let rows = Math.ceil(window.innerHeight / rowHeight) + 2;
-
-    const colors = ['c-pink', 'c-cyan', 'c-yellow'];
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const maxDist = Math.sqrt(Math.pow(centerX, 2) + Math.pow(centerY, 2));
-    
-    for (let r = -1; r < rows; r++) {
-      for (let c = -1; c < cols; c++) {
-        const hex = document.createElement('div');
-        hex.className = 'dh-hex-cell';
-
-        if (Math.random() > 0.92) {
-          hex.classList.add(colors[Math.floor(Math.random() * colors.length)]);
-        }
-
-        const x = c * hexSize + (r % 2 === 0 ? hexSize / 2 : 0);
-        const y = r * rowHeight;
-
-        hex.style.left = `${x}px`;
-        hex.style.top = `${y}px`;
-
-        const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-        const delayIn = (dist / maxDist) * 0.5;
-        const delayOut = Math.random() * 0.4;
-
-        hex.style.setProperty('--delay-in', `${delayIn}s`);
-        hex.style.setProperty('--delay-out', `${delayOut}s`);
-        hex.style.transition = 'none';
-
-        transitionContainer.appendChild(hex);
-      }
-    }
-    document.body.classList.add('hex-in');
-    transitionContainer.offsetHeight;
-    document.querySelectorAll('.dh-hex-cell').forEach(hex => {
-      hex.style.transition = '';
-    });
-    
-    setTimeout(() => {
-      document.body.classList.remove('hex-in');
-      document.body.classList.add('hex-out');
-      setTimeout(() => {
-        document.body.classList.remove('hex-out');
-      }, 1000);
-    }, 50);
-
-      document.body.addEventListener('click', function(e) {
-          if (document.body.classList.contains('hex-in') || document.body.classList.contains('hex-out')) {
-              e.preventDefault();
-              e.stopPropagation();
-              return;
-          }
-          const link = e.target.closest('a');
-          if (!link) return;
-
-          const href = link.getAttribute('href');
-          if (!href || href.startsWith('http') || link.target) {
-              return;
-          }
-
-          // --- 核心修改区域：处理同页跳转与 TOC 点击 ---
-          if (href.startsWith('#') || link.pathname === window.location.pathname) {
-              // 1. 阻止浏览器默认行为，防止触发全局的转场判断
-              e.preventDefault();
-
-              // 2. 关闭移动端的 TOC 面板和遮罩层
-              const toc = document.getElementById('postToc');
-              const overlay = document.getElementById('mobileOverlay');
-              if (toc && toc.classList.contains('active')) {
-                  toc.classList.remove('active');
-                  if (overlay) overlay.classList.remove('active');
-              }
-
-              // 3. 执行平滑的同页锚点跳转
-              const targetId = href.startsWith('#') ? href : link.hash;
-              if (targetId && targetId !== '#') {
-                  const targetElement = document.querySelector(targetId);
-                  if (targetElement) {
-                      // 如果你的 wiki-main 是局部滚动的容器，用 siteMain 滚动
-                      const siteMain = document.getElementById('site-main');
-                      if (siteMain) {
-                          // 计算目标元素相对于 siteMain 的位置
-                          const targetTop = targetElement.getBoundingClientRect().top;
-                          const mainTop = siteMain.getBoundingClientRect().top;
-
-                          // 改变为 instant（瞬间）或者直接使用 scrollTop 赋值
-                          siteMain.scrollBy({
-                              top: targetTop - mainTop - 60, // 60 是你的 sticky-header 的预留高度
-                              behavior: 'instant'            // 改为 instant 实现瞬间定位
-                          });
-
-                          // 备用方案：如果某些老旧浏览器不支持 behavior: 'instant'，可以直接操作 scrollTop：
-                          // siteMain.scrollTop += (targetTop - mainTop - 60);
-
-                      } else {
-                          // 如果是整页滚动，改为 instant
-                          targetElement.scrollIntoView({ behavior: 'instant' });
-                      }
-
-                      // 可选：更新浏览器地址栏的 hash 状态而不刷新页面
-                      history.pushState(null, document.title, window.location.pathname + window.location.search + targetId);
-                  }
-              }
-              return;
-          }
-          // --- 修改结束 ---
-
-          console.log(1111)
-          e.preventDefault();
-          loadPage(href, true);
-      });
-    
-    window.addEventListener('popstate', function() {
-      loadPage(window.location.href, false);
-    });
-    
-    window.addEventListener('pageshow', function (event) {
-      if (event.persisted) {
-        document.body.classList.remove('hex-in');
-        document.body.classList.add('hex-out');
-      }
-    });
-  });
-</script>
-<script>
-    (function initDohnaAuth() {
-        
+    (function initDohnaAuthEngine() {
+        // 原始 SHA-256 密钥哈希值保持一致
         const TARGET_HASH = 'e3803a6b63c7bbf3d1595457d9acca1012acfcdb70ef47fb7a45d2223ba5cbcf';
 
         const overlay = document.getElementById('dh-auth-overlay');
+        if (!overlay) return;
+
+        // 若已授权，直接移除
+        if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+            overlay.remove();
+            return;
+        }
+
         const input = document.getElementById('dh-auth-input');
         const btn = document.getElementById('dh-auth-btn');
         const err = document.getElementById('dh-auth-err');
-        
-        if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
-            overlay.style.display = 'none';
-            return;
-        }
-        
+        const matrixContainer = document.getElementById('dh-auth-hex-matrix');
+
         document.body.style.overflow = 'hidden';
-        async function verifyPassword() {
-            const pwd = input.value.trim();
-            if (!pwd) return;
 
-            btn.innerText = 'VERIFYING...';
-            btn.style.pointerEvents = 'none';
+        /**
+         * 1. 极致优化的蜂巢网格生成器
+         */
+        let hexElements = [];
+        function renderHexGrid() {
+            matrixContainer.innerHTML = '';
+            hexElements = [];
 
-            try {
-                const buffer = new TextEncoder().encode(pwd);
-                const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
-                const hashArray = Array.from(new Uint8Array(hashBuffer));
-                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            const hexW = 64; // 紧凑型六边形宽度
+            const hexH = Math.ceil(hexW * 1.1547);
+            const rowH = Math.ceil(hexH * 0.75); // 紧密契合行高
 
-                if (hashHex === TARGET_HASH) {
-                    err.innerText = 'ACCESS GRANTED';
-                    err.style.color = 'var(--dh-green)';
-                    sessionStorage.setItem('dh_terminal_access', 'GRANTED');
+            const cols = Math.ceil(window.innerWidth / hexW) + 1;
+            const rows = Math.ceil(window.innerHeight / rowH) + 1;
 
-                    // 动画退场
-                    overlay.style.animation = 'hexAuthOut 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards';
-                    setTimeout(() => {
-                        overlay.style.display = 'none';
-                        document.body.style.overflow = '';
-                    }, 500);
-                } else {
-                    throw new Error('KEY_MISMATCH');
+            const fragment = document.createDocumentFragment();
+            const colors = ['--dh-pink', '--dh-cyan', '--dh-yellow'];
+
+            for (let r = -1; r < rows; r++) {
+                for (let c = -1; c < cols; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'dh-auth-hex';
+
+                    // 偶数行交错偏移，完美形成范德华力嵌合排列
+                    const x = c * hexW + (r % 2 === 0 ? hexW / 2 : 0);
+                    const y = r * rowH;
+
+                    cell.style.left = `${x}px`;
+                    cell.style.top = `${y}px`;
+
+                    // 预留 6% 静态科技噪点闪烁
+                    if (Math.random() > 0.94) {
+                        cell.style.setProperty('--hex-bg', `var(${colors[Math.floor(Math.random() * colors.length)]})`);
+                        cell.classList.add('static-color');
+                    }
+
+                    fragment.appendChild(cell);
+                    hexElements.push({ el: cell, x: x + hexW/2, y: y + hexH/2 });
                 }
-            } catch (e) {
-                err.innerText = 'ERROR: INVALID_KEY';
-                input.value = '';
-                input.focus();
-                // 错误抖动反馈
-                const box = document.querySelector('.dh-auth-box');
-                box.style.animation = 'none';
-                box.offsetHeight; // trigger reflow
-                box.style.animation = 'errorShake 0.4s';
-            } finally {
-                btn.innerText = 'VERIFY';
-                btn.style.pointerEvents = 'auto';
             }
+            matrixContainer.appendChild(fragment);
         }
 
-        btn.addEventListener('click', verifyPassword);
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') verifyPassword();
+        renderHexGrid();
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(renderHexGrid, 250);
         });
+
+        /**
+         * 2. 多轨多线程数据信号流游走算法 (Hex Tracer)
+         */
+        function launchSignalTracers() {
+            const tracerCount = Math.min(5, Math.ceil(hexElements.length / 150)); // 根据屏幕尺寸动态分配光轨数
+            let activeTracers = [];
+
+            setInterval(() => {
+                // 清理上一轮过期的光轨
+                activeTracers.forEach(cell => cell && cell.classList.remove('tracer-active'));
+                activeTracers = [];
+
+                // 爆发新一轮多轨网络交叉扩散
+                for (let i = 0; i < tracerCount; i++) {
+                    const idx = Math.floor(Math.random() * hexElements.length);
+                    const target = hexElements[idx]?.el;
+                    if (target && !target.classList.contains('static-color')) {
+                        target.classList.add('tracer-active');
+                        activeTracers.push(target);
+                    }
+                }
+            }, 800); // 适中的扫描频率
+        }
+        launchSignalTracers();
+
+        /**
+         * 3. 密码验证与瓦解过渡动画逻辑
+         */
+        async function verifyKey() {
+            const key = input.value.trim();
+            if (!key || btn.style.pointerEvents === 'none') return;
+
+            btn.style.pointerEvents = 'none';
+            btn.querySelector('.btn-txt').innerText = 'DECRYPTING...';
+
+            // 赛博破译数据流伪装
+            let simInterval = setInterval(() => {
+                input.value = Math.random().toString(36).substring(2, 10).toUpperCase();
+            }, 40);
+
+            setTimeout(async () => {
+                clearInterval(simInterval);
+                input.value = key;
+
+                try {
+                    const buffer = new TextEncoder().encode(key);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const currentHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                    if (currentHash === TARGET_HASH) {
+                        // 解密成功：执行矩阵向外崩塌与色块爆发效果
+                        overlay.classList.add('sys-success');
+                        err.innerText = '>>> DECRYPTION SUCCESS <<<';
+
+                        const icon = document.querySelector('.dh-auth-icon');
+                        if (icon) icon.innerText = '✓';
+
+                        const titleText = document.querySelector('.glitch-text');
+                        if (titleText) titleText.innerText = 'SYSTEM_UNLOCKED';
+
+                        sessionStorage.setItem('dh_terminal_access', 'GRANTED');
+
+                        // 基于极坐标中心距的蜂巢阵列衰减瓦解算法
+                        const centerX = window.innerWidth / 2;
+                        const centerY = window.innerHeight / 2;
+                        const maxDist = Math.sqrt(centerX * centerX + centerY * centerY);
+
+                        hexElements.forEach(item => {
+                            const dist = Math.sqrt(Math.pow(item.x - centerX, 2) + Math.pow(item.y - centerY, 2));
+                            const delay = (dist / maxDist) * 0.6; // 从内向外爆炸式扩散
+                            item.el.style.transitionDelay = `${delay}s`;
+                            item.el.classList.add('is-success-hide');
+                        });
+
+                        setTimeout(() => {
+                            securityObserver.disconnect();
+                            clearInterval(securityHeartbeat);
+                            overlay.remove();
+                            document.body.style.overflow = '';
+                        }, 1400);
+
+                    } else {
+                        throw new Error('MISMATCH');
+                    }
+                } catch (e) {
+                    // 验证失败：触发暴走警报
+                    overlay.classList.add('sys-alarm');
+                    err.innerText = 'CRITICAL ERROR: INVALID_TERMINAL_KEY';
+
+                    const titleText = document.querySelector('.glitch-text');
+                    if (titleText) titleText.innerText = 'ACCESS_DENIED';
+
+                    let alarmFlicker = setInterval(() => {
+                        err.innerText = 'FATAL: 0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase() + '!!';
+                    }, 50);
+
+                    setTimeout(() => {
+                        clearInterval(alarmFlicker);
+                        overlay.classList.remove('sys-alarm');
+                        if (titleText) titleText.innerText = 'SYSTEM_LOCKED';
+                        err.innerText = 'ERROR: INVALID_KEY';
+                        input.value = '';
+                        input.focus();
+                        btn.style.pointerEvents = 'auto';
+                        btn.querySelector('.btn-txt').innerText = 'AUTHORIZE';
+                    }, 800);
+                }
+            }, 400);
+        }
+
+        // 事件绑定
+        btn.addEventListener('click', verifyKey);
+        input.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyKey(); });
+        overlay.addEventListener('contextmenu', e => e.preventDefault());
+
+        // 极客数值底部刷新
+        setInterval(() => {
+            const el = document.getElementById('dh-random-hex');
+            if (el && !overlay.classList.contains('sys-alarm')) {
+                el.innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+            }
+        }, 300);
+
+        /**
+         * 4. 防篡改高级防御机制 (Security Observer)
+         */
+        const enforceSecurity = () => {
+            if (!document.body.contains(overlay)) {
+                document.body.appendChild(overlay);
+                input.focus();
+            }
+            if (window.getComputedStyle(overlay).display === 'none' || overlay.style.opacity === '0') {
+                overlay.style.setProperty('display', 'flex', 'important');
+                overlay.style.opacity = '1';
+            }
+            if (document.body.style.overflow !== 'hidden') document.body.style.overflow = 'hidden';
+        };
+
+        const securityObserver = new MutationObserver(() => enforceSecurity());
+        securityObserver.observe(document.body, { childList: true, attributes: true, attributeFilter: ['style', 'class'] });
+        securityObserver.observe(overlay, { attributes: true, attributeFilter: ['style', 'class'] });
+        const securityHeartbeat = setInterval(enforceSecurity, 300);
     })();
 </script>
-
 </body>
 </html>
