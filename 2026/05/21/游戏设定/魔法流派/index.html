@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>
+  
+    魔法流派 | LIMPID
+  
+</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body class="dohna-body">
+<script>
+    if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+        document.write('<style>.dh-auth-overlay { display: none !important; }</style>');
+    }
+</script>
+<div id="dh-auth-overlay" class="dh-auth-overlay">
+    <canvas id="dh-auth-canvas" class="dh-auth-canvas"></canvas>
+
+    <div class="dh-auth-waveform-band"></div>
+
+    <div class="dh-auth-box">
+        <div class="dh-auth-tape tape-top-left"></div>
+        <div class="dh-auth-tape tape-bottom-right"></div>
+        <div class="box-glitch-layer"></div>
+
+        <div class="dh-auth-header">
+            <div class="dh-auth-icon">!</div>
+            <div class="dh-auth-title">
+                <span class="glitch-text" data-text="SYSTEM_LOCKED">SYSTEM_LOCKED</span>
+            </div>
+        </div>
+
+        <div class="dh-auth-subtitle">
+            <span>PLEASE_INPUT_TERMINAL_KEY</span>
+            <span class="blink-cursor">█</span>
+        </div>
+
+        <div class="dh-input-group">
+            <span class="input-prefix">KEY &gt;</span>
+            <input type="password" id="dh-auth-input" placeholder="********" autocomplete="off" autofocus>
+            <div class="input-scanline"></div>
+        </div>
+
+        <button id="dh-auth-btn" class="dh-auth-btn">
+            <span class="btn-txt">AUTHORIZE</span>
+            <span class="btn-decor">///</span>
+        </button>
+
+        <div id="dh-auth-err" class="dh-auth-err"></div>
+
+        <div class="dh-auth-footer">
+            <div class="barcode">||| |||| | || |||</div>
+            <div id="dh-random-hex" class="serial">NO.09-X77</div>
+        </div>
+    </div>
+</div>
+
+
+<canvas id="skyCanvas"></canvas>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<header class="mobile-header">
+    <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/story/">Story</a>
+</nav>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+    </div>
+</header>
+
+<div id="app-wrapper" class="wiki-layout">
+
+    
+
+    <aside id="site-sidebar" class="wiki-sidebar">
+        <nav class="tree-nav dohna-sidebar-container">
+    <div class="sidebar-handle desktop-only">
+    </div>
+    <div class="sidebar-content-scroll">
+        <ul class="tree-root">
+            <li><a href="/" class="tree-item link ">~ / Home</a></li>
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">游戏日记</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/18/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%805%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开5月记录
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/04/11/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%804%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开4月记录
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">策划</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/Minecraft%E5%90%88%E6%88%90%E5%8F%B0%20UX/" class="tree-item link ">
+                                        Minecraft合成台 UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        独立物品系统
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[-]</span>
+                            <span class="folder-name">世界观设定</span>
+                        </div>
+                        <ul class="tree-sub open">
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E9%AD%94%E6%B3%95%E6%B5%81%E6%B4%BE/" class="tree-item link active">
+                                        魔法流派
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E5%9C%B0%E7%8B%B1%E8%AE%BE%E5%AE%9A/" class="tree-item link ">
+                                        地狱设定
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">程序</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
+                                        JRRG的构建
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Array扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
+                                        RpgMaker 事件
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
+                                        声明式UI-UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Math扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
+                                        TOUHOU弹幕
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
+                                        游戏editor
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Bitmap 扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
+                                        视觉小说
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        帧动画系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
+                                        游戏runtime
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">音乐</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E9%9F%B3%E4%B9%90/%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="tree-item link ">
+                                        AI提示词
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">编剧</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
+                                        剧本模板
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
+                                        神之罪与人之理：存在论视域下的剥削与觉醒
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+        </ul>
+    </div>
+</nav>
+    </aside>
+
+    <main id="site-main" class="wiki-main">
+        <header class="sticky-header">
+            <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/story/">Story</a>
+</nav>
+        </header>
+        <div class="dohna-content-inner">
+            <div class="post-layout">
+    <div class="post-head">
+        <h1 class="post-title">魔法流派</h1>
+        <div class="post-meta">
+            <span class="date">Terminal Update: 2026-05-21 07:10</span>
+        </div>
+    </div>
+    <article class="post-content">
+        <p><u1>防护</u1></p>
+<h1 id="防护-Abjuration"><a href="#防护-Abjuration" class="headerlink" title="防护(Abjuration)"></a>防护(Abjuration)</h1><h3 id="职业-法师克星-Antimage"><a href="#职业-法师克星-Antimage" class="headerlink" title="职业:法师克星(Antimage)"></a>职业:法师克星(Antimage)</h3><h2 id="类本质-社会契约-公意"><a href="#类本质-社会契约-公意" class="headerlink" title="类本质 社会契约 公意"></a>类本质 社会契约 公意</h2><h3 id="准则"><a href="#准则" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>以「定言命令」规范公平与稳定。</p>
+</blockquote>
+<h3 id="使命"><a href="#使命" class="headerlink" title="使命"></a>使命</h3><blockquote>
+<p>通过构建并守护公平可靠的规则，维护平衡和秩序。专注抵御外界的混乱和异动，确保一切归于平和与安宁。</p>
+</blockquote>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>防护，不必掌握魔法，只需掌握抵抗魔法的方法。<br>作为上层统治者，接受贵族教育的她们能够获取大量的的魔法原理。<br>可以每日悠闲的在<code>打理园林</code>中思索空间意境，通过<code>绘画</code>来勾勒事物的原貌。<br>闲情逸致下多余精力便来思考更深层次的谋划，在<code>对弈</code>间洞察每步棋的意图与动向。<br>并拟定有利于自身并被普遍认同的<code>审美潮流</code>与<code>竞争规则</code>。</p>
+</blockquote>
+<h3 id="派系"><a href="#派系" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>剥离(Detach)</strong><br><strong>抵拒(Resist)</strong><br><strong>干扰(Interfere)</strong><br><strong>力场(Field)</strong><br><strong>瓦解(Crumble)</strong></p>
+</blockquote>
+<h3 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h3><blockquote>
+<p><strong>黄金律</strong><br><strong>七艺八德</strong><br><strong>玫瑰剑技</strong><br><strong>运筹帷幄</strong><br><strong>华美赋格</strong><br><strong>慈悦加魅</strong><br><strong>御心术</strong></p>
+</blockquote>
+<p><u1>咒法</u1></p>
+<h1 id="咒法-Summon"><a href="#咒法-Summon" class="headerlink" title="咒法(Summon)"></a>咒法(Summon)</h1><h3 id="职业-巫师-Warlock"><a href="#职业-巫师-Warlock" class="headerlink" title="职业:巫师(Warlock)"></a>职业:巫师(Warlock)</h3><h2 id="符号-时空-恶魔学"><a href="#符号-时空-恶魔学" class="headerlink" title="符号 时空 恶魔学"></a>符号 时空 恶魔学</h2><h3 id="准则-1"><a href="#准则-1" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>改写物理常数的「原初符文」。</p>
+</blockquote>
+<h3 id="使命-1"><a href="#使命-1" class="headerlink" title="使命"></a>使命</h3><blockquote>
+<p>掌握基本语言和符号，感知维度间的能量流动。用咒语引导这些能量，操控异界力量为己所用。</p>
+</blockquote>
+<h3 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>咒令，一种恶魔语，通过吟诵<code>六芒星</code>符文，感知并掌控时空动向，将<code>回忆</code>或<code>心象</code>中的事物具现化。<br>借助咒令，施术者能够与不同次元的恶魔进行交涉，通过缔结<code>交易</code>来获取更强大的力量。<br>跨次元沟通需开启<code>次元裂隙</code>或<code>时空门</code>——不仅可用于传递信息，亦能直接完成时空跨越与传送。</p>
+</blockquote>
+<h3 id="派系-1"><a href="#派系-1" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>传送(Teleport)</strong><br><strong>创造(Creation)</strong><br><strong>具现(Recall)</strong><br><strong>祈求(Invoked)</strong><br><strong>咒令(Relocate)</strong></p>
+</blockquote>
+<h3 id="技能-1"><a href="#技能-1" class="headerlink" title="技能"></a>技能</h3><blockquote>
+<p><strong>异世法理</strong><br><strong>唤魔咒令</strong><br><strong>真红录</strong><br><strong>七十二柱</strong><br><strong>阳炎真身</strong><br><strong>超维界门</strong><br><strong>龙灵焰魂</strong></p>
+</blockquote>
+<p><u1>死灵</u1></p>
+<h1 id="死灵-Necro"><a href="#死灵-Necro" class="headerlink" title="死灵(Necro)"></a>死灵(Necro)</h1><h3 id="职业-死灵法师-Necromancer"><a href="#职业-死灵法师-Necromancer" class="headerlink" title="职业:死灵法师(Necromancer)"></a>职业:死灵法师(Necromancer)</h3><h2 id="暗能量-恶与恨-遗骸"><a href="#暗能量-恶与恨-遗骸" class="headerlink" title="暗能量 恶与恨 遗骸"></a>暗能量 恶与恨 遗骸</h2><h3 id="准则-2"><a href="#准则-2" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>超越常理、生命界限的「死亡边锋」。</p>
+</blockquote>
+<h3 id="使命-2"><a href="#使命-2" class="headerlink" title="使命"></a>使命</h3><blockquote>
+<p>信仰着超越生死界限的致命能量，没有善恶观念的卑劣歹徒，肆意亵渎生命的价值来证明其他存在的荒谬。</p>
+</blockquote>
+<h3 id="背景-2"><a href="#背景-2" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>死亡，一股来自虚无暗影中的致命能量，超乎生者对常规世界的认知。<br>但现世的生命无法真正踏入那片虚无来掌控这股力量。<br>死灵术，模仿着死亡的姿态但并非真正的暗影之力，而是一种试图僭越界限的危险技艺。<br>包括污垢肮脏的<code>不洁魔法</code>，散播具有传播性的<code>瘟疫</code>，或将情绪通过邪念施加的<code>恶毒诅咒</code>或<code>怨恨缠身</code>，还有虽然不及真正的暗影之力，但从效果上也名副其实的<code>死亡魔法</code>。</p>
+</blockquote>
+<h3 id="派系-2"><a href="#派系-2" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>积怨(Curse)</strong><br><strong>凭依(Haunt)</strong><br><strong>献祭(Vanish)</strong><br><strong>邪秽(Unclean)</strong><br><strong>疫病(Plague)</strong></p>
+</blockquote>
+<h3 id="技能-2"><a href="#技能-2" class="headerlink" title="技能"></a>技能</h3><h5 id="秘契灵知"><a href="#秘契灵知" class="headerlink" title="秘契灵知"></a>秘契灵知</h5><h5 id="生死劫"><a href="#生死劫" class="headerlink" title="生死劫"></a>生死劫</h5><h5 id="蛛丝迷雾"><a href="#蛛丝迷雾" class="headerlink" title="蛛丝迷雾"></a>蛛丝迷雾</h5><h5 id="虚无主义"><a href="#虚无主义" class="headerlink" title="虚无主义"></a>虚无主义</h5><h5 id="暗影净化"><a href="#暗影净化" class="headerlink" title="暗影净化"></a>暗影净化</h5><h5 id="索命离魂"><a href="#索命离魂" class="headerlink" title="索命离魂"></a>索命离魂</h5><h5 id="无边死亡"><a href="#无边死亡" class="headerlink" title="无边死亡"></a>无边死亡</h5><p><u1>惑控</u1></p>
+<h1 id="惑控-Illusion"><a href="#惑控-Illusion" class="headerlink" title="惑控(Illusion)"></a>惑控(Illusion)</h1><h3 id="职业-奇术师-Magician"><a href="#职业-奇术师-Magician" class="headerlink" title="职业:奇术师(Magician)"></a>职业:奇术师(Magician)</h3><h2 id="神经元-知觉-幻象"><a href="#神经元-知觉-幻象" class="headerlink" title="神经元 知觉 幻象"></a>神经元 知觉 幻象</h2><h3 id="准则-3"><a href="#准则-3" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>承载集体意识的情感将超越现实本身，构建一种「超真实」境界。</p>
+</blockquote>
+<h3 id="使命-3"><a href="#使命-3" class="headerlink" title="使命"></a>使命</h3><blockquote>
+</blockquote>
+<h3 id="背景-3"><a href="#背景-3" class="headerlink" title="背景"></a>背景</h3><blockquote>
+</blockquote>
+<h3 id="派系-3"><a href="#派系-3" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>暗示(Suggest)</strong><br><strong>操控(Control)</strong><br><strong>幻象(Phantasm)</strong><br><strong>同步(Synchro)</strong><br><strong>心灵(Mind)</strong></p>
+</blockquote>
+<h3 id="技能-3"><a href="#技能-3" class="headerlink" title="技能"></a>技能</h3><h5 id="神魂颠倒"><a href="#神魂颠倒" class="headerlink" title="神魂颠倒"></a>神魂颠倒</h5><h5 id="心外无物"><a href="#心外无物" class="headerlink" title="心外无物"></a>心外无物</h5><h5 id="幻真神通"><a href="#幻真神通" class="headerlink" title="幻真神通"></a>幻真神通</h5><h5 id="炫目彩艳"><a href="#炫目彩艳" class="headerlink" title="炫目彩艳"></a>炫目彩艳</h5><h5 id="乱漫天音"><a href="#乱漫天音" class="headerlink" title="乱漫天音"></a>乱漫天音</h5><h5 id="超常感性"><a href="#超常感性" class="headerlink" title="超常感性"></a>超常感性</h5><h5 id="化妆镜"><a href="#化妆镜" class="headerlink" title="化妆镜"></a>化妆镜</h5><p><u1>调和</u1></p>
+<h1 id="调和-Balance"><a href="#调和-Balance" class="headerlink" title="调和(Balance)"></a>调和(Balance)</h1><h3 id="职业-风水师-Geomancer"><a href="#职业-风水师-Geomancer" class="headerlink" title="职业:风水师(Geomancer)"></a>职业:风水师(Geomancer)</h3><h2 id="查克拉-精气神-元气"><a href="#查克拉-精气神-元气" class="headerlink" title="查克拉 精气神 元气"></a>查克拉 精气神 元气</h2><h3 id="准则-4"><a href="#准则-4" class="headerlink" title="准则"></a>准则</h3><blockquote>
+</blockquote>
+<h3 id="使命-4"><a href="#使命-4" class="headerlink" title="使命"></a>使命</h3><blockquote>
+<p>内修澄澈自我，无为顺应大势，中庸贯通内外。从心所欲不逾矩，逍遥自在。</p>
+</blockquote>
+<h3 id="背景-4"><a href="#背景-4" class="headerlink" title="背景"></a>背景</h3><blockquote>
+</blockquote>
+<h3 id="派系-4"><a href="#派系-4" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>地卜(Geomancy)</strong><br><strong>共鸣(Zen)</strong><br><strong>化气(Awake)</strong><br><strong>平衡(Taiji)</strong><br><strong>奇门(Kimon)</strong></p>
+</blockquote>
+<h3 id="技能-4"><a href="#技能-4" class="headerlink" title="技能"></a>技能</h3><h5 id="自然秩序"><a href="#自然秩序" class="headerlink" title="自然秩序"></a>自然秩序</h5><h5 id="五遁忍法"><a href="#五遁忍法" class="headerlink" title="五遁忍法"></a>五遁忍法</h5><h5 id="九字密印"><a href="#九字密印" class="headerlink" title="九字密印"></a>九字密印</h5><h5 id="森罗万象"><a href="#森罗万象" class="headerlink" title="森罗万象"></a>森罗万象</h5><h5 id="阴阳役使"><a href="#阴阳役使" class="headerlink" title="阴阳役使"></a>阴阳役使</h5><h5 id="舞风祝祈"><a href="#舞风祝祈" class="headerlink" title="舞风祝祈"></a>舞风祝祈</h5><h5 id="一心不乱"><a href="#一心不乱" class="headerlink" title="一心不乱"></a>一心不乱</h5><p><u1>妖邪</u1></p>
+<h1 id="妖邪-Eldritch"><a href="#妖邪-Eldritch" class="headerlink" title="妖邪(Eldritch)"></a>妖邪(Eldritch)</h1><h3 id="职业-妖术士-Hexer"><a href="#职业-妖术士-Hexer" class="headerlink" title="职业:妖术士(Hexer)"></a>职业:妖术士(Hexer)</h3><h2 id="力比多-血肉欲望-蛊虫"><a href="#力比多-血肉欲望-蛊虫" class="headerlink" title="力比多 血肉欲望 蛊虫"></a>力比多 血肉欲望 蛊虫</h2><h3 id="准则-5"><a href="#准则-5" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>超越常理、生命界限的「死亡边锋」。</p>
+</blockquote>
+<h3 id="使命-5"><a href="#使命-5" class="headerlink" title="使命"></a>使命</h3><blockquote>
+</blockquote>
+<h3 id="背景-5"><a href="#背景-5" class="headerlink" title="背景"></a>背景</h3><blockquote>
+</blockquote>
+<h3 id="派系-5"><a href="#派系-5" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>蛊毒(Maleficium)</strong><br><strong>祸根(Bane)</strong><br><strong>殁煞(Doom)</strong><br><strong>血疽(Sepsi)</strong><br><strong>幽魇(Nightmare)</strong></p>
+</blockquote>
+<h3 id="技能-5"><a href="#技能-5" class="headerlink" title="技能"></a>技能</h3><h5 id="纳祸入体"><a href="#纳祸入体" class="headerlink" title="纳祸入体"></a>纳祸入体</h5><h5 id="积尸气"><a href="#积尸气" class="headerlink" title="积尸气"></a>积尸气</h5><h5 id="心魔八苦"><a href="#心魔八苦" class="headerlink" title="心魔八苦"></a>心魔八苦</h5><h5 id="怨结缘"><a href="#怨结缘" class="headerlink" title="怨结缘"></a>怨结缘</h5><h5 id="如蛊蚀心"><a href="#如蛊蚀心" class="headerlink" title="如蛊蚀心"></a>如蛊蚀心</h5><h5 id="颠倒妄想"><a href="#颠倒妄想" class="headerlink" title="颠倒妄想"></a>颠倒妄想</h5><h5 id="统摄恶相"><a href="#统摄恶相" class="headerlink" title="统摄恶相"></a>统摄恶相</h5><p><u1>非法</u1></p>
+<h1 id="非法-Illegal"><a href="#非法-Illegal" class="headerlink" title="非法(Illegal)"></a>非法(Illegal)</h1><h3 id="职业-违法者-Lawbreaker"><a href="#职业-违法者-Lawbreaker" class="headerlink" title="职业:违法者(Lawbreaker)"></a>职业:违法者(Lawbreaker)</h3><h2 id="算力-信息-武器"><a href="#算力-信息-武器" class="headerlink" title="算力 信息 武器"></a>算力 信息 武器</h2><h3 id="准则-6"><a href="#准则-6" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>将一切系统转化为可预测、可优化的「控制对象」。</p>
+</blockquote>
+<h3 id="使命-6"><a href="#使命-6" class="headerlink" title="使命"></a>使命</h3><blockquote>
+</blockquote>
+<h3 id="背景-6"><a href="#背景-6" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>非法，将芯片植入人体对身体进行改造，不依靠先天禀赋与勤勉付出便可廉价获取知识与智慧——这种行径备受正统派系唾弃。<br>尽管所有形式的芯片植入皆属违法，仍有人出于不同目的选择改造自我。最主要的动机是增强<code>计算能力</code>，配合网络接入即可实现快速的<code>信息检索</code>。<br>身为社会意义上的非法者，他们必须时刻进行着<code>渗透</code>与<code>伪装</code>的工作。<br>但这其中并非尽是投机取巧的罪犯——亦有天才与行动力兼具的<code>革新</code>者，试图借助这项技术重塑秩序。</p>
+</blockquote>
+<h3 id="派系-6"><a href="#派系-6" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>定位(Locate)</strong><br><strong>革新(Disruptor)</strong><br><strong>计算(Calc)</strong><br><strong>渗透(Penetrate)</strong><br><strong>伪装(Dissimilate)</strong></p>
+</blockquote>
+<h3 id="技能-6"><a href="#技能-6" class="headerlink" title="技能"></a>技能</h3><h5 id="幽灵信号"><a href="#幽灵信号" class="headerlink" title="幽灵信号"></a>幽灵信号</h5><h5 id="协同作战"><a href="#协同作战" class="headerlink" title="协同作战"></a>协同作战</h5><h5 id="适应力"><a href="#适应力" class="headerlink" title="适应力"></a>适应力</h5><h5 id="智械整合"><a href="#智械整合" class="headerlink" title="智械整合"></a>智械整合</h5><h5 id="纳米晶元"><a href="#纳米晶元" class="headerlink" title="纳米晶元"></a>纳米晶元</h5><h5 id="特工秘技"><a href="#特工秘技" class="headerlink" title="特工秘技"></a>特工秘技</h5><h5 id="机心灵能"><a href="#机心灵能" class="headerlink" title="机心灵能"></a>机心灵能</h5><p><u1>变化</u1></p>
+<h1 id="变化-Changes"><a href="#变化-Changes" class="headerlink" title="变化(Changes)"></a>变化(Changes)</h1><h3 id="职业-炼金术士-Alchemist"><a href="#职业-炼金术士-Alchemist" class="headerlink" title="职业:炼金术士(Alchemist)"></a>职业:炼金术士(Alchemist)</h3><h2 id="物之本质-嬗变-炼金术"><a href="#物之本质-嬗变-炼金术" class="headerlink" title="物之本质 嬗变 炼金术"></a>物之本质 嬗变 炼金术</h2><h3 id="准则-7"><a href="#准则-7" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>「魔能源质」在物质-意识间循环，分解与重组底层现实。</p>
+</blockquote>
+<h3 id="使命-7"><a href="#使命-7" class="headerlink" title="使命"></a>使命</h3><blockquote>
+<p>变化即秩序，嬗变即恒常。通过实证寻求全知全能的技术神话。</p>
+</blockquote>
+<h3 id="背景-7"><a href="#背景-7" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>变化，坚信世界能因自己的双手而改变，真理将在实践中被触及。<br>探求本源的信念驱使着<code>万能之人</code>满怀热忱，投身于伟大事业。<br>其目标便是那四项永恒的杰作：<br>记载万物变化的根本图谱<code>炼金宝典</code>；转化本质、贯通形而上与形而下的<code>贤者之石</code><br>使生命与自然和谐圆满的<code>灵丹妙药</code>；理解并再现生灵，创造与真人无异的<code>人造人</code>。</p>
+</blockquote>
+<h3 id="派系-7"><a href="#派系-7" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>变身(Shapeshift)</strong><br><strong>炼成(Bonding)</strong><br><strong>相变(Transition)</strong><br><strong>异化(Mutagenic)</strong><br><strong>转变(Transform)</strong></p>
+</blockquote>
+<h3 id="技能-7"><a href="#技能-7" class="headerlink" title="技能"></a>技能</h3><h5 id="等价交换"><a href="#等价交换" class="headerlink" title="等价交换"></a>等价交换</h5><h5 id="工程学"><a href="#工程学" class="headerlink" title="工程学"></a>工程学</h5><h5 id="魔能嬗变"><a href="#魔能嬗变" class="headerlink" title="魔能嬗变"></a>魔能嬗变</h5><h5 id="黄金比例"><a href="#黄金比例" class="headerlink" title="黄金比例"></a>黄金比例</h5><h5 id="实相扭结"><a href="#实相扭结" class="headerlink" title="实相扭结"></a>实相扭结</h5><h5 id="造物科学"><a href="#造物科学" class="headerlink" title="造物科学"></a>造物科学</h5><h5 id="伟大探求"><a href="#伟大探求" class="headerlink" title="伟大探求"></a>伟大探求</h5><p><u1>塑能</u1></p>
+<h1 id="塑能-Evocation"><a href="#塑能-Evocation" class="headerlink" title="塑能(Evocation)"></a>塑能(Evocation)</h1><h3 id="职业-奥法师-Elementalist"><a href="#职业-奥法师-Elementalist" class="headerlink" title="职业:奥法师(Elementalist)"></a>职业:奥法师(Elementalist)</h3><h2 id="元素-魔法晶石-魔导器"><a href="#元素-魔法晶石-魔导器" class="headerlink" title="元素 魔法晶石 魔导器"></a>元素 魔法晶石 魔导器</h2><h3 id="准则-8"><a href="#准则-8" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>确立共同世界观，为科学立法的「哲学范式」。</p>
+</blockquote>
+<h3 id="使命-8"><a href="#使命-8" class="headerlink" title="使命"></a>使命</h3><blockquote>
+</blockquote>
+<h3 id="背景-8"><a href="#背景-8" class="headerlink" title="背景"></a>背景</h3><blockquote>
+</blockquote>
+<h3 id="派系-8"><a href="#派系-8" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>传导(Conduction)</strong><br><strong>环绕(Surround)</strong><br><strong>聚合(Aggregation)</strong><br><strong>扩散(Diffusion)</strong><br><strong>脉冲(Pulse)</strong></p>
+</blockquote>
+<h3 id="技能-8"><a href="#技能-8" class="headerlink" title="技能"></a>技能</h3><h5 id="数理奥术"><a href="#数理奥术" class="headerlink" title="数理奥术"></a>数理奥术</h5><h5 id="元素领域"><a href="#元素领域" class="headerlink" title="元素领域"></a>元素领域</h5><h5 id="远古力量"><a href="#远古力量" class="headerlink" title="远古力量"></a>远古力量</h5><h5 id="导力魔法"><a href="#导力魔法" class="headerlink" title="导力魔法"></a>导力魔法</h5><h5 id="超能振波"><a href="#超能振波" class="headerlink" title="超能振波"></a>超能振波</h5><h5 id="磁潮电络"><a href="#磁潮电络" class="headerlink" title="磁潮电络"></a>磁潮电络</h5><h5 id="冷致离解"><a href="#冷致离解" class="headerlink" title="冷致离解"></a>冷致离解</h5><p><u1>预言</u1></p>
+<h1 id="预言-Prophecy"><a href="#预言-Prophecy" class="headerlink" title="预言(Prophecy)"></a>预言(Prophecy)</h1><h3 id="职业-占星师-Astrologian"><a href="#职业-占星师-Astrologian" class="headerlink" title="职业:占星师(Astrologian)"></a>职业:占星师(Astrologian)</h3><h2 id="阿卡夏-灵感-言灵"><a href="#阿卡夏-灵感-言灵" class="headerlink" title="阿卡夏 灵感 言灵"></a>阿卡夏 灵感 言灵</h2><h3 id="准则-9"><a href="#准则-9" class="headerlink" title="准则"></a>准则</h3><blockquote>
+<p>静默对有形世界的感知，「未形之空」由此涌现。</p>
+</blockquote>
+<h3 id="使命-9"><a href="#使命-9" class="headerlink" title="使命"></a>使命</h3><blockquote>
+</blockquote>
+<h3 id="背景-9"><a href="#背景-9" class="headerlink" title="背景"></a>背景</h3><blockquote>
+</blockquote>
+<h3 id="派系-9"><a href="#派系-9" class="headerlink" title="派系"></a>派系</h3><blockquote>
+<p><strong>观察(Observe)</strong><br><strong>揭示(Reveal)</strong><br><strong>先兆(Omen)</strong><br><strong>言灵(Utter)</strong><br><strong>因果(Karma)</strong></p>
+</blockquote>
+<h3 id="技能-9"><a href="#技能-9" class="headerlink" title="技能"></a>技能</h3><h5 id="蝴蝶效应"><a href="#蝴蝶效应" class="headerlink" title="蝴蝶效应"></a>蝴蝶效应</h5><h5 id="星虹宝花"><a href="#星虹宝花" class="headerlink" title="星虹宝花"></a>星虹宝花</h5><h5 id="超然物外"><a href="#超然物外" class="headerlink" title="超然物外"></a>超然物外</h5><h5 id="太一率"><a href="#太一率" class="headerlink" title="太一率"></a>太一率</h5><h5 id="梦之隐蚀"><a href="#梦之隐蚀" class="headerlink" title="梦之隐蚀"></a>梦之隐蚀</h5><h5 id="空灵天音"><a href="#空灵天音" class="headerlink" title="空灵天音"></a>空灵天音</h5><h5 id="多维扭曲"><a href="#多维扭曲" class="headerlink" title="多维扭曲"></a>多维扭曲</h5>
+        
+        
+        
+        
+        
+
+
+        
+    </article>
+</div>
+<div class="dohna-toc-container" id="dohna-toc">
+    <div class="toc-header">
+        <span class="toc-title">TOC</span>
+    </div>
+    <div class="toc-body" id="toc-tree">
+    </div>
+</div>
+
+<button id="toc-mobile-toggle" class="dohna-toc-fab">TOC</button>
+
+<script>
+    (function initTOC() {
+        const tocTree = document.getElementById('toc-tree');
+        const content = document.querySelector('.post-content');
+        const tocContainer = document.getElementById('dohna-toc');
+        const mobileToggle = document.getElementById('toc-mobile-toggle');
+
+        if (!tocTree || !content) return;
+
+        // 获取所有自定义的标题标签 u1, u2, u3 (保持你的自定义实现不变)
+        const headers = content.querySelectorAll('u1, u2, u3');
+        if (headers.length === 0) {
+            if(tocContainer) tocContainer.style.display = 'none';
+            if(mobileToggle) mobileToggle.style.display = 'none';
+            return;
+        }
+
+        let rootUl = document.createElement('ul');
+        rootUl.className = 'toc-list level-1';
+        let currentParent = { 1: rootUl, 2: null, 3: null };
+        let lastItem = { 1: null, 2: null, 3: null };
+
+        headers.forEach((h, i) => {
+            // 分配锚点 ID 以便点击跳转
+            if (!h.id) h.id = 'dh-heading-' + i;
+            const level = parseInt(h.tagName.substring(1));
+
+            const li = document.createElement('li');
+            li.className = 'toc-item';
+
+            const linkWrapper = document.createElement('div');
+            linkWrapper.className = 'toc-link-wrapper';
+
+            const icon = document.createElement('span');
+            icon.className = 'toc-icon';
+            icon.textContent = ' '; // 没有子层级时的占位符
+
+            const link = document.createElement('a');
+            link.href = '#' + h.id;
+            link.className = 'toc-link';
+            link.textContent = h.textContent;
+
+            linkWrapper.appendChild(icon);
+            linkWrapper.appendChild(link);
+            li.appendChild(linkWrapper);
+
+            // 构建树状包含逻辑
+            if (level === 1) {
+                currentParent[1].appendChild(li);
+                lastItem[1] = li;
+                currentParent[2] = null;
+                currentParent[3] = null;
+            } else if (level === 2) {
+                if (!currentParent[2]) {
+                    currentParent[2] = document.createElement('ul');
+                    currentParent[2].className = 'toc-list level-2 tree-sub';
+                    if (lastItem[1]) {
+                        lastItem[1].appendChild(currentParent[2]);
+                        lastItem[1].querySelector('.toc-icon').textContent = '[-]';
+                        lastItem[1].classList.add('has-child', 'open');
+                    } else {
+                        currentParent[1].appendChild(currentParent[2]);
+                    }
+                }
+                currentParent[2].appendChild(li);
+                lastItem[2] = li;
+                currentParent[3] = null;
+            } else if (level === 3) {
+                if (!currentParent[3]) {
+                    currentParent[3] = document.createElement('ul');
+                    currentParent[3].className = 'toc-list level-3 tree-sub';
+                    if (lastItem[2]) {
+                        lastItem[2].appendChild(currentParent[3]);
+                        lastItem[2].querySelector('.toc-icon').textContent = '[-]';
+                        lastItem[2].classList.add('has-child', 'open');
+                    } else if (currentParent[2]) {
+                        currentParent[2].appendChild(currentParent[3]);
+                    }
+                }
+                if(currentParent[3]) currentParent[3].appendChild(li);
+            }
+        });
+
+        tocTree.appendChild(rootUl);
+
+        // 绑定 [+] / [-] 的展开折叠事件
+        tocTree.querySelectorAll('.toc-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                const li = icon.closest('.toc-item');
+                if (li.classList.contains('has-child')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    li.classList.toggle('open');
+                    icon.textContent = li.classList.contains('open') ? '[-]' : '[+]';
+                }
+            });
+        });
+
+        // 移动端菜单切换逻辑
+        const mobileClose = document.getElementById('toc-mobile-close');
+        const mobileOverlay = document.getElementById('mobileOverlay'); // 获取全局遮罩
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                tocContainer.classList.add('show');
+                if(mobileOverlay) mobileOverlay.classList.add('active'); // 呼出遮罩
+            });
+        }
+        const closeToc = () => {
+            tocContainer.classList.remove('show');
+            if(mobileOverlay) mobileOverlay.classList.remove('active'); // 隐藏遮罩
+        };
+
+        if (mobileClose) {
+            mobileClose.addEventListener('click', closeToc);
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 850 && tocContainer.classList.contains('show')) {
+                if (!tocContainer.contains(e.target) && e.target !== mobileToggle) {
+                    closeToc();
+                }
+            }
+        });
+    })();
+</script>
+        </div>
+    </main>
+
+</div>
+<script src="/js/celestial-bg.js"></script>
+
+<script>
+    (function initDohnaAuthEngine() {
+        const TARGET_HASH = 'e3803a6b63c7bbf3d1595457d9acca1012acfcdb70ef47fb7a45d2223ba5cbcf';
+
+        const overlay = document.getElementById('dh-auth-overlay');
+        if (!overlay) return;
+        if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+            overlay.remove();
+            return;
+        }
+
+        const input = document.getElementById('dh-auth-input');
+        const btn = document.getElementById('dh-auth-btn');
+        const err = document.getElementById('dh-auth-err');
+        const authBox = document.querySelector('.dh-auth-box');
+        const canvas = document.getElementById('dh-auth-canvas');
+
+        const ctx = canvas.getContext('2d', { alpha: true });
+        document.body.style.overflow = 'hidden';
+
+        // 绘制矩阵 (D)
+        const GLYPH_MATRIX = [
+            [0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 1, 1, 1, 1, 0, 0, 0]
+        ];
+        const GLYPH_ROWS = GLYPH_MATRIX.length;
+        const GLYPH_COLS = GLYPH_MATRIX[0].length;
+
+        let particles = [];
+        let animationFrameId;
+        let systemState = 'LIQUID';
+        let cWidth = window.innerWidth;
+        let cHeight = window.innerHeight;
+        let lastTime = performance.now();
+        let globalCanvasBgAlpha = 0;
+        let glassMeltTimer = 0;
+
+        const mouse = { x: -1000, y: -1000 };
+        let isMouseDown = false;
+        overlay.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        overlay.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; isMouseDown = false; });
+        overlay.addEventListener('mousedown', () => isMouseDown = true);
+        window.addEventListener('mouseup', () => isMouseDown = false);
+
+        const COLOR_POOL = ['#FF2A6D', '#05D9E8', '#FFC200'];
+        const COS_TABLE = [], SIN_TABLE = [];
+        for (let i = 0; i < 6; i++) {
+            COS_TABLE.push(Math.cos((Math.PI / 3) * i));
+            SIN_TABLE.push(Math.sin((Math.PI / 3) * i));
+        }
+
+        class PhaseParticle {
+            constructor(baseX, baseY, radius, r, c) {
+                this.baseX = baseX;
+                this.baseY = baseY;
+                this.x = baseX + (Math.random() - 0.5) * 150;
+                this.y = baseY + (Math.random() - 0.5) * 150;
+                this.vx = 0;
+                this.vy = 0;
+                this.radius = radius;
+
+                this.color = COLOR_POOL[Math.floor(Math.random() * COLOR_POOL.length)];
+                this.bgGlassHue = Math.random() > 0.5 ? 220 + Math.random() * 20 : 260 + Math.random() * 20;
+
+                this.alpha = Math.random() * 0.4 + 0.2;
+                this.phase = Math.random() * Math.PI * 2;
+
+                this.isGlyph = false;
+                this.angle = 0;
+                this.vAngle = 0;
+                this.meltProgress = 0;
+            }
+
+            update(dt) {
+                const timeModifier = Math.min(dt / 16.666, 2.5);
+
+                if (systemState === 'SUCCESS_SHATTER') {
+                    this.x += this.vx * timeModifier;
+                    this.y += this.vy * timeModifier;
+                    this.vy += 1.5 * timeModifier;
+                    this.angle += this.vAngle * timeModifier;
+                    this.alpha -= 0.015 * timeModifier;
+                    return;
+                }
+
+                let fSpring = 0.02;
+                let fFriction = 0.85;
+                let noise = 0.6;
+
+                switch (systemState) {
+                    case 'SUCCESS_ALIGN':
+                        fSpring = 0.35;
+                        fFriction = 0.55;
+                        noise = 0;
+                        break;
+                    case 'SUCCESS_MELT':
+                        fSpring = 0.8;
+                        fFriction = 0.3;
+                        noise = 0;
+                        // 控制融化过渡的速度
+                        if (this.meltProgress < 1) this.meltProgress += 0.012 * timeModifier;
+                        break;
+                    case 'ALARM_GAS':
+                        fSpring = 0.002;
+                        fFriction = 0.97;
+                        noise = 8.0;
+                        break;
+                    case 'DECRYPTING':
+                        fSpring = 0.008;
+                        fFriction = 0.92;
+                        noise = 2.5;
+                        break;
+                }
+
+                this.vx += (this.baseX - this.x) * fSpring * timeModifier;
+                this.vy += (this.baseY - this.y) * fSpring * timeModifier;
+
+                if ((systemState === 'LIQUID' || systemState === 'DECRYPTING') && mouse.x !== -1000) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+
+                    if (isMouseDown && dist < 300) {
+                        const pull = (300 - dist) * 0.001;
+                        this.vx += dx * pull * timeModifier;
+                        this.vy += dy * pull * timeModifier;
+                    } else if (dist < 150) {
+                        const push = (150 - dist) * 0.02;
+                        this.vx -= dx * push * timeModifier;
+                        this.vy -= dy * push * timeModifier;
+                    }
+                }
+
+                this.vx += (Math.random() - 0.5) * noise * timeModifier;
+                this.vy += (Math.random() - 0.5) * noise * timeModifier;
+                this.vx *= Math.pow(fFriction, timeModifier);
+                this.vy *= Math.pow(fFriction, timeModifier);
+
+                this.x += this.vx * timeModifier;
+                this.y += this.vy * timeModifier;
+
+                if (systemState === 'ALARM_GAS') {
+                    const r = this.radius;
+                    if (this.x < r) { this.x = r; this.vx *= -1; }
+                    if (this.x > cWidth - r) { this.x = cWidth - r; this.vx *= -1; }
+                    if (this.y < r) { this.y = r; this.vy *= -1; }
+                    if (this.y > cHeight - r) { this.y = cHeight - r; this.vy *= -1; }
+                }
+
+                this.phase += 0.04 * timeModifier;
+            }
+
+            draw(ctx) {
+                if (this.alpha <= 0) return;
+
+                let cx = this.x, cy = this.y, baseR = this.radius;
+                let needsTransform = (systemState === 'SUCCESS_SHATTER' && this.angle !== 0);
+
+                if (needsTransform) {
+                    ctx.save();
+                    ctx.translate(cx, cy);
+                    ctx.rotate(this.angle);
+                    cx = 0; cy = 0;
+                }
+
+                // 封装绘制单一六边形路径的方法
+                const drawHexPath = (radius) => {
+                    ctx.beginPath();
+                    ctx.moveTo(cx + radius * COS_TABLE[0], cy + radius * SIN_TABLE[0]);
+                    for (let i = 1; i < 6; i++) {
+                        ctx.lineTo(cx + radius * COS_TABLE[i], cy + radius * SIN_TABLE[i]);
+                    }
+                    ctx.closePath();
+                };
+
+                // ================= 新版混合渲染管线 =================
+
+                if (systemState === 'LIQUID' || systemState === 'DECRYPTING' || systemState === 'SUCCESS_ALIGN') {
+                    // 常态液态 & 对齐阵列状态（保持线框风格）
+                    drawHexPath(baseR);
+                    const breath = Math.sin(this.phase) * 0.25 + 0.75;
+                    ctx.fillStyle = 'rgba(12, 12, 18, 0.4)';
+                    ctx.fill();
+
+                    ctx.strokeStyle = this.color;
+                    ctx.globalAlpha = this.alpha * breath;
+                    ctx.lineWidth = 2.0;
+                    ctx.stroke();
+                    ctx.globalAlpha = 1.0;
+
+                } else if (systemState === 'SUCCESS_MELT') {
+                    // 核心改动：材质与物理双重过度混合 (Crossfade)
+                    let meltP = this.meltProgress;
+
+                    // 1. 逐渐淡出旧的液态线框
+                    if (meltP < 1.0) {
+                        drawHexPath(baseR);
+                        const breath = Math.sin(this.phase) * 0.25 + 0.75;
+                        ctx.fillStyle = 'rgba(12, 12, 18, 0.4)';
+                        ctx.fill();
+                        ctx.strokeStyle = this.color;
+                        ctx.globalAlpha = this.alpha * breath * (1 - meltP); // 透明度随进度衰减
+                        ctx.lineWidth = 2.0;
+                        ctx.stroke();
+                        ctx.globalAlpha = 1.0;
+                    }
+
+                    // 2. 逐渐淡入新的大教堂实心玻璃
+                    if (meltP > 0) {
+                        let expandedR = baseR + 1.5 * meltP; // 物理体积：随进度平滑膨胀，慢慢互相咬合无缝
+                        drawHexPath(expandedR);
+
+                        ctx.globalAlpha = meltP; // 材质透明度：随进度平滑显现
+
+                        if (this.isGlyph) {
+                            const hueShift = (Date.now() * 0.08 + this.baseX * 0.2) % 360;
+                            ctx.fillStyle = `hsl(${hueShift}, 100%, 65%)`;
+                            ctx.shadowColor = ctx.fillStyle;
+                            ctx.shadowBlur = 30 * meltP; // 光晕平滑变亮
+                        } else {
+                            ctx.fillStyle = `hsl(${this.bgGlassHue}, 20%, 8%)`;
+                            ctx.shadowBlur = 0;
+                        }
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+
+                        // 沉重的黑色铅框平滑浮现
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 4.0;
+                        ctx.stroke();
+
+                        // 微距倒角高光
+                        ctx.beginPath();
+                        ctx.moveTo(cx + expandedR * COS_TABLE[3], cy + expandedR * SIN_TABLE[3]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[4], cy + expandedR * SIN_TABLE[4]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[5], cy + expandedR * SIN_TABLE[5]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[0], cy + expandedR * SIN_TABLE[0]);
+                        let highlightAlpha = this.isGlyph ? 0.3 : 0.1;
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${highlightAlpha})`;
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+
+                        ctx.globalAlpha = 1.0;
+                    }
+
+                } else if (systemState === 'SUCCESS_SHATTER') {
+                    // 爆破碎裂阶段：彻底变为实心物理块，并随重力下落透明消失
+                    let expandedR = baseR + 1.5;
+                    drawHexPath(expandedR);
+
+                    ctx.globalAlpha = this.alpha; // 恢复单独粒子的透明度管理，实现碎裂淡出
+
+                    if (this.isGlyph) {
+                        const hueShift = (Date.now() * 0.08 + this.baseX * 0.2) % 360;
+                        ctx.fillStyle = `hsl(${hueShift}, 100%, 65%)`;
+                        ctx.shadowColor = ctx.fillStyle;
+                        ctx.shadowBlur = 30;
+                    } else {
+                        ctx.fillStyle = `hsl(${this.bgGlassHue}, 20%, 8%)`;
+                        ctx.shadowBlur = 0;
+                    }
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = 4.0;
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.moveTo(cx + expandedR * COS_TABLE[3], cy + expandedR * SIN_TABLE[3]);
+                    ctx.lineTo(cx + expandedR * COS_TABLE[4], cy + expandedR * SIN_TABLE[4]);
+                    ctx.lineTo(cx + expandedR * COS_TABLE[5], cy + expandedR * SIN_TABLE[5]);
+                    ctx.lineTo(cx + expandedR * COS_TABLE[0], cy + expandedR * SIN_TABLE[0]);
+                    let highlightAlpha = this.isGlyph ? 0.3 : 0.1;
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${highlightAlpha})`;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    ctx.globalAlpha = 1.0;
+
+                } else if (systemState === 'ALARM_GAS') {
+                    drawHexPath(baseR);
+                    ctx.fillStyle = `rgba(255, 30, 70, ${Math.random() * 0.3 + 0.1})`;
+                    ctx.strokeStyle = `rgba(255, 30, 70, ${Math.random() * 0.8 + 0.2})`;
+                    ctx.lineWidth = 2.0;
+                    ctx.fill(); ctx.stroke();
+                }
+
+                if (needsTransform) ctx.restore();
+            }
+        }
+
+        function initPhysicsGrid() {
+            cWidth = window.innerWidth;
+            cHeight = window.innerHeight;
+            canvas.width = cWidth;
+            canvas.height = cHeight;
+
+            const hexR = 36;
+            const hexW = hexR * Math.sqrt(3);
+            const hexH = hexR * 2;
+            const rowH = hexH * 0.75;
+            const cols = Math.ceil(cWidth / hexW) + 2;
+            const rows = Math.ceil(cHeight / rowH) + 2;
+
+            const centerRow = Math.floor(rows / 2);
+            const centerCol = Math.floor(cols / 2);
+            const rStart = centerRow - Math.floor(GLYPH_ROWS / 2);
+            const cStart = centerCol - Math.floor(GLYPH_COLS / 2);
+
+            const newParticles = [];
+            for (let r = -1; r < rows; r++) {
+                for (let c = -1; c < cols; c++) {
+                    const x = c * hexW + (r % 2 === 0 ? hexW / 2 : 0);
+                    const y = r * rowH;
+
+                    const p = new PhaseParticle(x, y, hexR - 1.5, r, c);
+                    if (r >= rStart && r < rStart + GLYPH_ROWS && c >= cStart && c < cStart + GLYPH_COLS) {
+                        if (GLYPH_MATRIX[r - rStart][c - cStart] === 1) p.isGlyph = true;
+                    }
+                    newParticles.push(p);
+                }
+            }
+            particles = newParticles;
+        }
+
+        function drawFrame(now) {
+            const dt = now - lastTime;
+            lastTime = now;
+
+            ctx.clearRect(0, 0, cWidth, cHeight);
+
+            if (systemState === 'SUCCESS_SHATTER') {
+                globalCanvasBgAlpha -= 0.06 * (dt / 16.6);
+            } else if (systemState === 'ALARM_GAS') {
+                globalCanvasBgAlpha = 0.5;
+            } else if (systemState === 'SUCCESS_MELT' || systemState === 'SUCCESS_ALIGN') {
+                // 背景黑幕也改为平滑变黑，消除突兀感
+                if (globalCanvasBgAlpha < 1.0) {
+                    globalCanvasBgAlpha += 0.03 * (dt / 16.6);
+                }
+            } else {
+                if (globalCanvasBgAlpha < 0.85) globalCanvasBgAlpha += 0.02 * (dt / 16.6);
+            }
+
+            globalCanvasBgAlpha = Math.max(0, Math.min(globalCanvasBgAlpha, 1));
+
+            if (globalCanvasBgAlpha > 0) {
+                ctx.fillStyle = systemState === 'ALARM_GAS'
+                    ? `rgba(30, 5, 5, ${globalCanvasBgAlpha})`
+                    : `rgba(6, 6, 8, ${globalCanvasBgAlpha})`;
+                ctx.fillRect(0, 0, cWidth, cHeight);
+            }
+
+            const len = particles.length;
+            for (let i = 0; i < len; i++) {
+                particles[i].update(dt);
+                particles[i].draw(ctx);
+            }
+
+            if (systemState === 'SUCCESS_MELT') {
+                glassMeltTimer += dt;
+                let sheenOffset = (glassMeltTimer * 1.5) % (cWidth * 2.5) - cWidth;
+
+                ctx.save();
+                ctx.globalCompositeOperation = 'screen';
+                let grad = ctx.createLinearGradient(sheenOffset, 0, sheenOffset + 400, cHeight);
+                grad.addColorStop(0, 'rgba(255,255,255,0)');
+                // 扫描光的强度也跟随溶解进度平滑开启
+                grad.addColorStop(0.5, `rgba(255,255,255,${0.25 * particles[0].meltProgress})`);
+                grad.addColorStop(1, 'rgba(255,255,255,0)');
+
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, cWidth, cHeight);
+                ctx.restore();
+            }
+
+            animationFrameId = requestAnimationFrame(drawFrame);
+        }
+
+        setTimeout(() => {
+            initPhysicsGrid();
+            lastTime = performance.now();
+            animationFrameId = requestAnimationFrame(drawFrame);
+        }, 100);
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initPhysicsGrid, 200);
+        });
+
+        async function verifyKey() {
+            const key = input.value.trim();
+            if (!key || btn.style.pointerEvents === 'none') return;
+
+            btn.style.pointerEvents = 'none';
+            btn.querySelector('.btn-txt').innerText = 'DECRYPTING...';
+            systemState = 'DECRYPTING';
+
+            let simInterval = setInterval(() => {
+                input.value = Math.random().toString(36).substring(2, 10).toUpperCase();
+            }, 40);
+
+            setTimeout(async () => {
+                clearInterval(simInterval);
+                input.value = key;
+
+                try {
+                    const buffer = new TextEncoder().encode(key);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const currentHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                    if (currentHash === TARGET_HASH) {
+                        overlay.classList.add('sys-success');
+                        err.innerText = '>>> DECRYPTION SUCCESS <<<';
+                        document.querySelector('.dh-auth-icon').innerText = '✓';
+                        document.querySelector('.glitch-text').innerText = 'SYSTEM_UNLOCKED';
+                        sessionStorage.setItem('dh_terminal_access', 'GRANTED');
+
+                        if (authBox) {
+                            authBox.style.transition = 'transform 0.5s cubic-bezier(0.8, 0, 0.2, 1), opacity 0.4s ease';
+                            authBox.style.transform = 'skewX(15deg) scale(1.3) translate3d(0, -120px, 0)';
+                            authBox.style.opacity = '0';
+                            authBox.style.pointerEvents = 'none';
+                        }
+
+                        // 阶段1：磁吸回防阵位，还是线框状态
+                        systemState = 'SUCCESS_ALIGN';
+
+                        setTimeout(() => {
+                            // 阶段2：开始材质过度与体积膨胀融合
+                            systemState = 'SUCCESS_MELT';
+                            glassMeltTimer = 0;
+
+                            setTimeout(() => {
+                                // 阶段3：实体玻璃爆破坠落
+                                systemState = 'SUCCESS_SHATTER';
+                                const cx = cWidth / 2, cy = cHeight / 2;
+
+                                particles.forEach(p => {
+                                    const dx = p.x - cx;
+                                    const dy = p.y - cy;
+                                    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+
+                                    const force = (1 - Math.min(dist / cWidth, 1)) * 45 + 15;
+                                    p.vx = (dx / dist) * force + (Math.random() - 0.5) * 15;
+                                    p.vy = (dy / dist) * force - (Math.random() * 30 + 20);
+                                    p.vAngle = (Math.random() - 0.5) * 1.5;
+                                });
+
+                                setTimeout(() => {
+                                    securityObserver.disconnect();
+                                    clearInterval(securityHeartbeat);
+                                    cancelAnimationFrame(animationFrameId);
+                                    overlay.remove();
+                                    document.body.style.overflow = '';
+                                }, 1800);
+
+                            }, 1800);
+                        }, 400); // 对齐动作耗时 400ms
+
+                    } else {
+                        throw new Error('MISMATCH');
+                    }
+                } catch (e) {
+                    overlay.classList.add('sys-alarm');
+                    systemState = 'ALARM_GAS';
+                    document.querySelector('.glitch-text').innerText = 'ACCESS_DENIED';
+
+                    let alarmFlicker = setInterval(() => {
+                        err.innerText = 'FATAL: 0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase() + '!!';
+                    }, 50);
+
+                    setTimeout(() => {
+                        clearInterval(alarmFlicker);
+                        overlay.classList.remove('sys-alarm');
+                        systemState = 'LIQUID';
+
+                        document.querySelector('.glitch-text').innerText = 'SYSTEM_LOCKED';
+                        err.innerText = 'ERROR: INVALID_KEY';
+                        input.value = '';
+                        input.focus();
+
+                        btn.style.pointerEvents = 'auto';
+                        btn.querySelector('.btn-txt').innerText = 'AUTHORIZE';
+                    }, 1000);
+                }
+            }, 600);
+        }
+
+        btn.addEventListener('click', verifyKey);
+        input.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyKey(); });
+        overlay.addEventListener('contextmenu', e => e.preventDefault());
+
+        if (authBox) {
+            authBox.addEventListener('mousedown', e => e.stopPropagation());
+            authBox.addEventListener('mousemove', e => e.stopPropagation());
+        }
+
+        setInterval(() => {
+            const el = document.getElementById('dh-random-hex');
+            if (el && !overlay.classList.contains('sys-alarm')) {
+                el.innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+            }
+        }, 300);
+
+        const enforceSecurity = () => {
+            if (!document.body.contains(overlay)) document.body.appendChild(overlay);
+            if (window.getComputedStyle(overlay).display === 'none') {
+                overlay.style.setProperty('display', 'flex', 'important');
+                overlay.style.opacity = '1';
+            }
+        };
+
+        const securityObserver = new MutationObserver(enforceSecurity);
+        securityObserver.observe(document.body, { childList: true });
+        const securityHeartbeat = setInterval(enforceSecurity, 500);
+    })();
+</script>
+<div id="dh-hex-transition"></div>
+<script>
+    /**
+     * ============================================
+     * 多娜多娜风：全局 Pjax 与蜂巢转场动画
+     * ============================================
+     */
+
+// 1. 初始化并生成蜂巢矩阵网格
+    function initHexTransitionGrid() {
+        let transitionContainer = document.getElementById('dh-hex-transition');
+        if (!transitionContainer) {
+            transitionContainer = document.createElement('div');
+            transitionContainer.id = 'dh-hex-transition';
+            document.body.appendChild(transitionContainer);
+        } else {
+            transitionContainer.innerHTML = ''; // 窗口重置时清空旧节点
+        }
+
+        const hexSize = 60;
+        const hexHeight = hexSize * 1.1547;
+        const rowHeight = hexHeight * 0.75;
+        const cols = Math.ceil(window.innerWidth / hexSize) + 2;
+        const rows = Math.ceil(window.innerHeight / rowHeight) + 2;
+
+        const colors = ['c-pink', 'c-cyan', 'c-yellow'];
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const maxDist = Math.sqrt(Math.pow(centerX, 2) + Math.pow(centerY, 2));
+
+        for (let r = -1; r < rows; r++) {
+            for (let c = -1; c < cols; c++) {
+                const hex = document.createElement('div');
+                hex.className = 'dh-hex-cell';
+
+                // 随机分配故障色点缀
+                if (Math.random() > 0.92) {
+                    hex.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+                }
+
+                const x = c * hexSize + (r % 2 === 0 ? hexSize / 2 : 0);
+                const y = r * rowHeight;
+                hex.style.left = `${x}px`;
+                hex.style.top = `${y}px`;
+
+                // 进场呈波纹状扩散，退场完全随机
+                const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+                const delayIn = (dist / maxDist) * 0.5;
+                const delayOut = Math.random() * 0.4;
+
+                hex.style.setProperty('--delay-in', `${delayIn}s`);
+                hex.style.setProperty('--delay-out', `${delayOut}s`);
+
+                transitionContainer.appendChild(hex);
+            }
+        }
+    }
+
+    // 2. Pjax 无刷新加载与内容替换
+    function loadPage(href, shouldPushState = true) {
+        // 触发闭合动画
+        document.body.classList.remove('hex-out');
+        document.body.classList.add('hex-in');
+
+        fetch(href)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // 延迟 500ms（等待蜂巢闭合动画结束）再替换 DOM
+                setTimeout(() => {
+                    const newAppWrapper = doc.getElementById('app-wrapper');
+                    const currentAppWrapper = document.getElementById('app-wrapper');
+                    if (newAppWrapper && currentAppWrapper) {
+                        currentAppWrapper.innerHTML = newAppWrapper.innerHTML;
+                    }
+
+                    const newMobileHeader = doc.querySelector('.mobile-header');
+                    const currentMobileHeader = document.querySelector('.mobile-header');
+                    if (newMobileHeader && currentMobileHeader) {
+                        currentMobileHeader.innerHTML = newMobileHeader.innerHTML;
+                    }
+
+                    document.title = doc.title;
+                    if (shouldPushState) history.pushState(null, doc.title, href);
+                    window.scrollTo(0, 0);
+
+                    const siteMain = document.getElementById('site-main');
+                    if (siteMain) siteMain.scrollTo(0, 0);
+
+                    // 重新执行局部内的 Script 标签
+                    if (currentAppWrapper) {
+                        const scripts = currentAppWrapper.querySelectorAll('script');
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+                            Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                            newScript.textContent = oldScript.textContent;
+                            oldScript.parentNode.replaceChild(newScript, oldScript);
+                        });
+                    }
+
+                    // 重新绑定交互并清理 MathJax 缓存
+                    if (typeof initPageInteract === 'function') initPageInteract();
+                    if (window.MathJax) {
+                        if (window.MathJax.typesetClear) window.MathJax.typesetClear();
+                        if (window.MathJax.typesetPromise) window.MathJax.typesetPromise();
+                    }
+
+                    // 触发蜂巢消散（展开）动画
+                    document.body.classList.remove('hex-in');
+                    document.body.classList.add('hex-out');
+                    setTimeout(() => { document.body.classList.remove('hex-out'); }, 1000);
+                }, 500);
+            })
+            .catch(err => {
+                console.warn('Pjax 载入失败，降级为常规全刷新跳转:', err);
+                window.location.href = href;
+            });
+    }
+
+    // 3. 全局事件拦截与初始化
+    document.addEventListener('DOMContentLoaded', () => {
+        initHexTransitionGrid();
+
+        // 页面首次载入的入场动画
+        document.body.classList.add('hex-in');
+        setTimeout(() => {
+            document.body.classList.remove('hex-in');
+            document.body.classList.add('hex-out');
+            setTimeout(() => { document.body.classList.remove('hex-out'); }, 1000);
+        }, 50);
+
+        // 全局 A 标签拦截
+        document.body.addEventListener('click', function(e) {
+            // 防止在动画期间连击引发错乱
+            if (document.body.classList.contains('hex-in') || document.body.classList.contains('hex-out')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('http') || link.target) return; // 外链、新标签页放行
+
+            // 处理同页锚点滚动跳转 (TOC等)
+            if (href.startsWith('#') || link.pathname === window.location.pathname) {
+                e.preventDefault();
+                const targetId = href.startsWith('#') ? href : link.hash;
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const siteMain = document.getElementById('site-main');
+                        if (siteMain) {
+                            const targetTop = targetElement.getBoundingClientRect().top;
+                            const mainTop = siteMain.getBoundingClientRect().top;
+                            siteMain.scrollBy({ top: targetTop - mainTop - 60, behavior: 'auto' });
+                        } else {
+                            targetElement.scrollIntoView({ behavior: 'auto' });
+                        }
+                        history.pushState(null, document.title, window.location.pathname + window.location.search + targetId);
+                    }
+                }
+                return;
+            }
+            e.preventDefault();
+            loadPage(href, true);
+        });
+
+        // 浏览器前进后退接管
+        window.addEventListener('popstate', () => { loadPage(window.location.href, false); });
+
+        // 处理 BFCache 回退黑屏问题
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.remove('hex-in');
+                document.body.classList.add('hex-out');
+            }
+        });
+
+        // 窗口尺寸改变时重绘蜂巢，避免边缘穿帮
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initHexTransitionGrid, 200);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('click', function(e) {
+        const toggleBtn = e.target.closest('.folder-toggle');
+        if (!toggleBtn) return;
+        const subList = toggleBtn.nextElementSibling;
+        const icon = toggleBtn.querySelector('.folder-icon');
+        if (subList && subList.classList.contains('tree-sub')) {
+            const isOpen = subList.classList.toggle('open');
+            if (icon) {
+                icon.textContent = isOpen ? '[-]' : '[+]';
+            }
+        }
+    });
+</script>
+</body>
+</html>

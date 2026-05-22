@@ -3400,7 +3400,7 @@ body.hex-out .dh-hex-cell {
 
 
 /* ==========================================================================
-   多娜多娜硬核波普视觉主题样式
+   多娜多娜硬核波普视觉主题样式 (物理 Canvas 粒子进化版)
    ========================================================================== */
 :root {
     --dh-pink: #FF2A6D;
@@ -3433,80 +3433,51 @@ body.hex-out .dh-hex-cell {
     inset: 0;
     background-image: radial-gradient(rgba(255, 42, 109, 0.25) 1.5px, transparent 1.5px);
     background-size: 32px 32px;
-    z-index: 0;
+    z-index: 2; /* 提升至 Canvas 之上，使分子粒子隐约带有半调网点滤镜质感 */
     pointer-events: none;
 }
 
-/* 蜂巢矩阵基础容器 */
-.dh-auth-hex-container {
+/* 高性能 Canvas 物理背景容器 */
+.dh-auth-canvas {
     position: absolute;
     inset: 0;
-    z-index: 1;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none; /* 防止阻碍可能需要的点击 */
+}
+.dh-auth-overlay.screen-shake {
+    animation: dhExplodeShake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
-/* 高性能完美蜂巢单元 */
-.dh-auth-hex {
-    position: absolute;
-    width: 64px;
-    height: 74px;
-    background-color: #1d1d21;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    transform: scale(0.85);
-    will-change: transform, background-color, opacity, filter;
-    transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
-    pointer-events: auto !important;
-    cursor: crosshair;
+@keyframes dhExplodeShake {
+    10%, 90% { transform: translate3d(-2px, 1px, 0) scale(1.01); }
+    20%, 80% { transform: translate3d(4px, -2px, 0); }
+    30%, 50%, 70% { transform: translate3d(-5px, -4px, 0) scale(1.0); }
+    40%, 60% { transform: translate3d(5px, 3px, 0); }
 }
-
-/* 掏空内部，制造纯硬核高科技窄边框 */
-.dh-auth-hex::before {
-    content: "";
-    position: absolute;
-    top: 3px; left: 3px; right: 3px; bottom: 3px;
-    background-color: var(--dh-black);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    transition: background-color 0.2s;
-}
-
-/* 鼠标交互：极具反馈感的色块瞬间膨胀爆发 */
-.dh-auth-hex:hover {
-    transform: scale(1.15) rotate(15deg);
-    background-color: var(--dh-pink) !important;
-    z-index: 5;
-    filter: drop-shadow(0 0 12px var(--dh-pink));
-}
-.dh-auth-hex:hover::before {
-    background-color: var(--dh-yellow);
-}
-
-/* 静态闪烁点 */
-.dh-auth-hex.static-color {
-    background-color: var(--hex-bg);
-    animation: dhHexFlicker 4s ease-in-out infinite alternate;
-}
-
-/* 自动化多轨信号游走效果 */
-.dh-auth-hex.tracer-active {
-    background-color: var(--dh-cyan);
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 15px var(--dh-cyan)) brightness(1.3);
-    z-index: 4;
-}
-
 /* ==========================================================================
    块2 & 3: 警示跑马灯带与多娜核心表单
    ========================================================================== */
 .dh-auth-waveform-band {
     position: absolute;
-    top: 22%; left: -10vw; width: 120vw; height: 50px;
+    top: 15%; left: -10vw; width: 120vw; height: 50px;
     transform: rotate(-3.5deg);
     background: #000;
     border-top: 4px solid var(--dh-pink);
     border-bottom: 4px solid var(--dh-cyan);
     box-shadow: 0 10px 25px rgba(0,0,0,0.7);
     display: flex; align-items: center; overflow: hidden;
-    z-index: 2; pointer-events: none;
+    z-index: 3; pointer-events: none;
+}
+.dh-auth-overlay.sys-success .dh-auth-waveform-band {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .dh-auth-waveform-band::before {
     content: 'SYSTEM_LOCKED // UNAUTHORIZED_ACCESS_DETECTED // NO.09-X77 // LOCK_STATE_ACTIVE // ';
@@ -3593,11 +3564,6 @@ body.hex-out .dh-hex-cell {
     background-color: #2e000f;
     animation: dhOverlayShake 0.15s infinite;
 }
-.dh-auth-overlay.sys-alarm .dh-auth-hex {
-    background-color: var(--dh-pink) !important;
-    transform: scale(0.9) skewX(-15deg) !important;
-}
-.dh-auth-overlay.sys-alarm .dh-auth-hex::before { background-color: transparent; } /* 撕裂变成纯色实体块 */
 .dh-auth-overlay.sys-alarm .dh-auth-box {
     animation: dhBoxAlarmShake 0.1s infinite !important;
     box-shadow: 15px 15px 0 var(--dh-pink), -15px -15px 0 var(--dh-yellow) !important;
@@ -3613,25 +3579,9 @@ body.hex-out .dh-hex-cell {
     animation: dhSuccessCompress 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
 }
 
-/* 核心要求：成功时蜂巢变色、向外爆炸式大范围虚化瓦解 */
-.dh-auth-hex.is-success-hide {
-    background-color: var(--dh-green) !important;
-    transform: scale(2.2) rotate(60deg) translate3d(0, -40px, 200px) !important;
-    opacity: 0;
-    filter: blur(12px) brightness(2.5);
-    transition-property: transform, opacity, filter, background-color !important;
-    transition-duration: 0.8s !important;
-    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-.dh-auth-hex.is-success-hide::before { background-color: transparent; }
-
 /* ==========================================================================
    动效关键帧定义 (GPU加速优化)
    ========================================================================== */
-@keyframes dhHexFlicker {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.9; transform: scale(0.92); }
-}
 @keyframes dhBlink { 50% { opacity: 0; } }
 @keyframes dhTextScroll { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-33.33%, 0, 0); } }
 @keyframes dhBoxFloat {
@@ -3660,6 +3610,4 @@ body.hex-out .dh-hex-cell {
     .dh-auth-title { font-size: 22px; }
     .dh-auth-waveform-band { height: 38px; top: 15%; }
     .dh-auth-waveform-band::before { font-size: 18px; }
-    .dh-auth-hex { transform: scale(0.65); }
-    .dh-auth-hex:hover { transform: scale(0.85); }
 }
