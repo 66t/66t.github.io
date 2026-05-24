@@ -3473,7 +3473,7 @@ body.hex-out .dh-hex-cell {
     border-bottom: 4px solid var(--dh-cyan);
     box-shadow: 0 10px 25px rgba(0,0,0,0.7);
     display: flex; align-items: center; overflow: hidden;
-    z-index: 3; pointer-events: none;
+    z-index: 10; pointer-events: none;
 }
 .dh-auth-overlay.sys-success .dh-auth-waveform-band {
     opacity: 0;
@@ -3611,3 +3611,4 @@ body.hex-out .dh-hex-cell {
     .dh-auth-waveform-band { height: 38px; top: 15%; }
     .dh-auth-waveform-band::before { font-size: 18px; }
 }
+
