@@ -1,4 +1,3 @@
-
 /* ============================================
    块1: 核心变量与基础重置
    ============================================ */
@@ -15,21 +14,24 @@
     --dh-shadow-hover: 2px 2px 0px var(--dh-black);
     --font-pop: "Arial Black", "Impact", "Noto Sans SC", "Microsoft YaHei", sans-serif;
     --font-mono: "Cascadia Code", "Fira Code", "Courier New", Consolas, monospace;
-    --dh-dohna-blue: #111;      
-    --dh-dohna-darkblue: #f26;  
-    --dh-dohna-cyan: #fc0;      
-    --dh-dohna-light: #EBF7FF;     
-    --dh-dohna-pink: #FF3385;      
+    --dh-dohna-blue: #111;
+    --dh-dohna-darkblue: #f26;
+    --dh-dohna-cyan: #fc0;
+    --dh-dohna-light: #EBF7FF;
+    --dh-dohna-pink: #FF3385;
     --dh-dohna-yellow: #FFC900;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 #site-main {
     position: absolute;
     top: 0;
@@ -40,11 +42,13 @@ html {
     overflow-x: hidden;
     transition: none;
 }
+
 @media screen and (max-width: 800px) {
     #site-main {
         width: 100vw;
     }
 }
+
 body {
     -webkit-user-select: none;
     user-select: none;
@@ -1070,7 +1074,7 @@ mjx-container:not([display="true"]) {
 .dohna-item-grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
     gap: 20px;
 }
 
@@ -2023,7 +2027,7 @@ mjx-container:not([display="true"]) {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
-        background-color: rgba(17, 17, 17, 0.95) !important; 
+        background-color: rgba(17, 17, 17, 0.95) !important;
         border-bottom: 2px solid var(--dh-pink);
         z-index: 999;
         display: flex;
@@ -2695,10 +2699,9 @@ mjx-container:not([display="true"]) {
     right: 30px;
     width: 260px;
     max-height: calc(100vh - 140px);
-    background: var(--dh-white); /* 变更为白底 */
+    background: var(--dh-white);
     border: 4px solid var(--dh-black);
-    border-radius: 12px; /* 增加圆角以匹配图片 */
-    /* 双重阴影：内层黄，外层黑，完美还原图片的错位感 */
+    border-radius: 12px;
     box-shadow: 8px 8px 0px var(--dh-yellow), 12px 12px 0px var(--dh-black);
     z-index: 90;
     display: flex;
@@ -2707,7 +2710,6 @@ mjx-container:not([display="true"]) {
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 滚动条定制 (适配白底) */
 .dohna-toc-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -2726,7 +2728,6 @@ mjx-container:not([display="true"]) {
     align-items: center;
     position: relative;
 }
-/* 黑底粉字的 TOC 标题块 */
 .toc-title {
     display: block;
     width: 100%;
@@ -2757,25 +2758,23 @@ mjx-container:not([display="true"]) {
 .toc-body {
     padding: 15px 25px 25px 25px;
     overflow-y: auto;
-    color: var(--dh-black); /* 列表文字变黑 */
+    color: var(--dh-black);
 }
 .toc-list {
     list-style: none;
     margin: 0;
     padding: 0;
 }
-/* 子层级缩进 */
 .toc-list.level-2 { padding-left: 20px; }
 .toc-list.level-3 { padding-left: 20px; }
 .toc-item {
-    margin: 16px 0; /* 加大行距，匹配图片疏朗感 */
+    margin: 16px 0;
 }
 .toc-link-wrapper {
     display: flex;
     align-items: flex-start;
     gap: 12px;
 }
-/* 粉色加号/减号图标 */
 .toc-icon {
     color: var(--dh-pink);
     font-family: var(--font-mono);
@@ -2789,7 +2788,6 @@ mjx-container:not([display="true"]) {
 .toc-icon:hover {
     transform: scale(1.2);
 }
-/* 黑色粗体链接 */
 .toc-link {
     color: var(--dh-black);
     text-decoration: none;
@@ -2811,7 +2809,6 @@ mjx-container:not([display="true"]) {
     display: block;
     animation: uiPop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
-/* 移动端唤醒按钮 (同步改为白黄风格) */
 .dohna-toc-fab {
     display: none;
     position: fixed;
@@ -2839,7 +2836,6 @@ mjx-container:not([display="true"]) {
 
 @media screen and (max-width: 850px) {
     .dohna-toc-container {
-        /* 移动端改为屏幕居中的弹窗样式，更符合圆角卡片的设计 */
         top: 50%;
         right: 50%;
         transform: translate(50%, -50%) scale(0.9);
@@ -2861,11 +2857,10 @@ mjx-container:not([display="true"]) {
     #toc-mobile-close {
         display: block;
     }
-    
+
 }
 @media screen and (min-width: 851px) {
     .post-layout {
-        /* 核心：将正文宽度限制在刨去 TOC 及其间距之后的尺寸 */
         width: calc(100% - 300px) !important;
         margin-right: 300px;
     }
@@ -2874,7 +2869,6 @@ mjx-container:not([display="true"]) {
 
 
 @media screen and (max-width: 800px) {
-    /* 1. 全局扫描线覆盖 */
     .mobile-view {
         position: relative;
     }
@@ -2885,19 +2879,16 @@ mjx-container:not([display="true"]) {
         background: linear-gradient(to bottom, transparent 50%, rgba(5, 217, 232, 0.15) 51%, transparent 52%);
         background-size: 100% 6px;
         animation: tech-scanline 4s linear infinite;
-        pointer-events: none; /* 防止遮挡点击 */
+        pointer-events: none;
         z-index: 10;
     }
-    /* 2. LIMPID 名字的 Glitch 故障效果 */
     .m-name {
         animation: glitch-text 3.5s infinite;
         position: relative;
     }
-    /* 3. RANK 徽章悬浮效果 */
     .m-rank-badge {
         animation: badge-float 2.5s ease-in-out infinite;
     }
-    /* 5. 技能芯片错层滑入 */
     .m-skill-chip {
         opacity: 0;
         animation: chip-slide-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -2935,7 +2926,6 @@ mjx-container:not([display="true"]) {
     animation: dh-main-glitch 4s infinite;
 }
 
-/* 名字的幻影层 */
 .dh-char-name::before, .dh-char-name::after {
     content: 'LIMPID';
     position: absolute;
@@ -2966,12 +2956,10 @@ mjx-container:not([display="true"]) {
     animation: dh-text-flicker 2s infinite;
 }
 
-/* --- 进度条加载动画 --- */
 .dh-fill {
     transform-origin: left;
     animation: dh-bar-entrance 1.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
-/* --- 关键帧动画定义 --- */
 @keyframes dh-main-glitch {
     0%, 90%, 100% { transform: skew(0deg); }
     91% { transform: skew(10deg); }
@@ -3027,7 +3015,6 @@ body.hex-out #dh-hex-transition {
     pointer-events: auto;
 }
 
-/* 单个蜂巢单元 */
 .dh-hex-cell {
     position: absolute;
     width: 64px;
@@ -3037,26 +3024,20 @@ body.hex-out #dh-hex-transition {
     transform: scale(0) rotate(-30deg);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
-    /* 默认/静止状态使用退场的随机延迟 */
     transition-delay: var(--delay-out, 0s);
 }
 
-/* 随机颜色的数据碎片点缀 */
 .dh-hex-cell.c-pink { background: var(--dh-pink); z-index: 2; }
 .dh-hex-cell.c-cyan { background: var(--dh-cyan); z-index: 2; }
 .dh-hex-cell.c-yellow { background: var(--dh-yellow); z-index: 2; }
-/* 页面离开：入场遮盖（蜂巢闭合） */
 body.hex-in .dh-hex-cell {
     transform: scale(1.05) rotate(0deg);
     opacity: 1;
-    /* 入场时切换为波浪扩散延迟 */
     transition-delay: var(--delay-in, 0s);
 }
-/* 页面进入：退场显示（蜂巢消散） */
 body.hex-out .dh-hex-cell {
     transform: scale(0) rotate(30deg);
     opacity: 0;
-    /* 退场时切换回随机延迟 */
     transition-delay: var(--delay-out, 0s);
 }
 .pagination {
@@ -3067,7 +3048,6 @@ body.hex-out .dh-hex-cell {
     margin: 50px 0 30px;
     font-family: var(--font-pop);
 }
-/* 页码与前后页按钮的基础样式 */
 .pagination .page-number,
 .pagination .extend {
     display: inline-flex;
@@ -3081,14 +3061,13 @@ body.hex-out .dh-hex-cell {
     border: 3px solid var(--dh-white);
     outline: 4px solid var(--dh-black);
     text-decoration: none;
-    transform: skewX(-10deg); /* 标志性的倾斜裁剪 */
+    transform: skewX(-10deg);
     box-shadow: 4px 4px 0px var(--dh-black);
     transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
     position: relative;
     cursor: pointer;
     user-select: none;
 }
-/* 悬停交互动效（向上微弹 + 换成粉蓝霓虹色） */
 .pagination a.page-number:hover,
 .pagination a.extend:hover {
     background: var(--dh-pink);
@@ -3098,7 +3077,6 @@ body.hex-out .dh-hex-cell {
     box-shadow: 5px 5px 0px var(--dh-yellow);
     transform: skewX(-10deg) translate(-2px, -2px);
 }
-/* 当前被选中的高亮页码 */
 .pagination .page-number.current {
     background: var(--dh-yellow);
     color: var(--dh-black);
@@ -3106,9 +3084,8 @@ body.hex-out .dh-hex-cell {
     outline-color: var(--dh-yellow);
     box-shadow: 5px 5px 0px var(--dh-pink);
     transform: skewX(-10deg) scale(1.05);
-    pointer-events: none; /* 当前页禁止重复点击 */
+    pointer-events: none;
 }
-/* 针对 PREV 和 NEXT 翻页按钮的框线差异化颜色 */
 .pagination .extend.prev {
     border-color: var(--dh-yellow);
 }
@@ -3125,10 +3102,9 @@ body.hex-out .dh-hex-cell {
     outline-color: var(--dh-pink);
     box-shadow: 5px 5px 0px var(--dh-yellow);
 }
-/* 移动端图片自适应容器 */
 @media (max-width: 850px) {
     .dohna-content-inner img {
-        width: 100% !important;   /* 强制覆盖 HTML/MD 标签里写死的 width="35%" */
+        width: 100% !important;
         max-width: 100% !important;
         height: auto !important;
         display: block;
@@ -3146,7 +3122,6 @@ body.hex-out .dh-hex-cell {
     font-family: var(--font-pop);
 }
 
-/* 页眉设计 - 保持与页面其他大板块一致的黑底高亮风格 */
 .matrix-header {
     background: var(--dh-black);
     color: var(--dh-white);
@@ -3190,7 +3165,6 @@ body.hex-out .dh-hex-cell {
     );
 }
 
-/* 容器主体：改回明亮底色，彻底消除暗色块带来的视觉碎片感 */
 .matrix-body {
     padding: 30px;
     background: var(--dh-white);
@@ -3203,7 +3177,6 @@ body.hex-out .dh-hex-cell {
     margin-bottom: 0;
 }
 
-/* 分类标签：硬边方块 + 动态色点 (极简游戏菜单流) */
 .matrix-badge {
     display: inline-flex;
     align-items: center;
@@ -3225,14 +3198,12 @@ body.hex-out .dh-hex-cell {
     border: 1px solid var(--dh-black);
 }
 
-/* 网格布局：完美对齐道具槽 */
 .matrix-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 16px;
 }
 
-/* 单个卡片单元：高还原度的“道具/技能解锁槽”视觉 */
 .matrix-cell {
     display: flex;
     align-items: center;
@@ -3247,7 +3218,6 @@ body.hex-out .dh-hex-cell {
     overflow: hidden;
 }
 
-/* 单元左侧ID区 */
 .matrix-cell .cell-id {
     font-family: var(--font-mono);
     font-size: 0.85rem;
@@ -3262,7 +3232,6 @@ body.hex-out .dh-hex-cell {
     transition: background 0.15s ease;
 }
 
-/* 单元标题区 */
 .matrix-cell .cell-title {
     font-size: 0.9rem;
     font-weight: bold;
@@ -3274,7 +3243,6 @@ body.hex-out .dh-hex-cell {
     flex: 1;
 }
 
-/* 边缘指示线：提供细腻的色彩锚定 */
 .matrix-cell .cell-indicator {
     position: absolute;
     top: 0;
@@ -3288,7 +3256,7 @@ body.hex-out .dh-hex-cell {
     transform: translate(-3px, -3px);
     box-shadow: 7px 7px 0px var(--dh-black);
     background: #ffffff;
-    
+
 }
 .matrix-cell:hover .cell-id {
     background: var(--dh-pink);
@@ -3298,10 +3266,9 @@ body.hex-out .dh-hex-cell {
     color: var(--dh-white);
 }
 
-/* 当前剧情节点激活状态 (高亮黄底 + 粉色强感知阴影) */
 .matrix-cell.is-active {
     background: var(--dh-yellow);
-    pointer-events: none; /* 禁用重复点击 */
+    pointer-events: none;
     box-shadow: 4px 4px 0px var(--dh-pink);
 }
 .matrix-cell.is-active .cell-id {
@@ -3328,20 +3295,17 @@ body.hex-out .dh-hex-cell {
     overflow: visible;
 }
 
-/* 节点基本倾斜变形 */
 .story-svg-node {
     transform: translate(var(--pos-x), var(--pos-y)) skewX(-10deg);
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     cursor: pointer;
 }
 
-/* 霓虹紫立体阴影 */
 .node-shadow {
     fill: var(--dh-purple);
     transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 粗边框白底主方块 */
 .node-box {
     fill: var(--dh-white);
     stroke: var(--dh-black);
@@ -3349,12 +3313,10 @@ body.hex-out .dh-hex-cell {
     transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ID 标签黑色底块 */
 .id-bg {
     fill: var(--dh-black);
 }
 
-/* ID 亮黄等宽文本 */
 .id-text {
     fill: var(--dh-yellow);
     font-family: var(--font-mono, monospace);
@@ -3363,7 +3325,6 @@ body.hex-out .dh-hex-cell {
     pointer-events: none;
 }
 
-/* 粗体标题文本 */
 .title-text {
     fill: var(--dh-black);
     font-family: var(--font-pop, sans-serif);
@@ -3383,7 +3344,6 @@ body.hex-out .dh-hex-cell {
     transform: translate(2px, 2px);
 }
 
-/* 剧情连线：荧光青流动虚线动画 */
 .story-link-path {
     fill: none;
     stroke: var(--dh-cyan);
@@ -3409,7 +3369,7 @@ body.hex-out .dh-hex-cell {
     --dh-black: #111111;
     --dh-white: #F8F8F8;
     --dh-green: #39FF14;
-    --dh-box-bg: #EBF7FF; /* 标志性的Limpid亮灰蓝 */
+    --dh-box-bg: #EBF7FF;
     --font-pop: "Arial Black", "Impact", "Noto Sans SC", sans-serif;
     --font-mono: "Cascadia Code", "Fira Code", monospace;
 }
@@ -3426,18 +3386,16 @@ body.hex-out .dh-hex-cell {
     perspective: 1000px;
 }
 
-/* 半调波点背景滤镜 */
 .dh-auth-overlay::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: radial-gradient(rgba(255, 42, 109, 0.25) 1.5px, transparent 1.5px);
     background-size: 32px 32px;
-    z-index: 2; /* 提升至 Canvas 之上，使分子粒子隐约带有半调网点滤镜质感 */
+    z-index: 2;
     pointer-events: none;
 }
 
-/* 高性能 Canvas 物理背景容器 */
 .dh-auth-canvas {
     position: absolute;
     inset: 0;
@@ -3446,7 +3404,7 @@ body.hex-out .dh-hex-cell {
     width: 100%;
     height: 100%;
     z-index: 10;
-    pointer-events: none; /* 防止阻碍可能需要的点击 */
+    pointer-events: none;
 }
 .dh-auth-overlay.screen-shake {
     animation: dhExplodeShake 0.4s cubic-bezier(.36,.07,.19,.97) both;
@@ -3487,7 +3445,6 @@ body.hex-out .dh-hex-cell {
     animation: dhTextScroll 8s linear infinite;
 }
 
-/* 主认证框体 */
 .dh-auth-box {
     position: relative; z-index: 10;
     background: var(--dh-box-bg); border: 5px solid #000;
@@ -3497,7 +3454,6 @@ body.hex-out .dh-hex-cell {
     animation: dhBoxFloat 4s ease-in-out infinite;
 }
 
-/* 装饰胶带 */
 .dh-auth-tape {
     position: absolute; height: 20px; border: 3px solid #000; z-index: 20;
     background: repeating-linear-gradient(45deg, var(--dh-yellow), var(--dh-yellow) 12px, #000 12px, #000 24px);
@@ -3523,7 +3479,6 @@ body.hex-out .dh-hex-cell {
 }
 .blink-cursor { color: var(--dh-pink); margin-left: 6px; animation: dhBlink 0.9s step-end infinite; }
 
-/* 密码输入框包围组 */
 .dh-input-group {
     display: flex; border: 4px solid #000; background: #FFF;
     box-shadow: 6px 6px 0 #000; margin-bottom: 18px; position: relative; overflow: hidden;
@@ -3540,7 +3495,6 @@ body.hex-out .dh-hex-cell {
     font-size: 22px; font-family: var(--font-mono); font-weight: 900; color: #000; outline: none;
 }
 
-/* 强冲击力解锁按钮 */
 .dh-auth-btn {
     display: flex; justify-content: space-between; align-items: center;
     padding: 12px 20px; font-family: var(--font-pop); font-size: 20px; font-weight: 900;
@@ -3559,7 +3513,6 @@ body.hex-out .dh-hex-cell {
    块4 & 5: 失败警报状态与成功瓦解状态机调度
    ========================================================================== */
 
-/* 全局失败警报状态 */
 .dh-auth-overlay.sys-alarm {
     background-color: #2e000f;
     animation: dhOverlayShake 0.15s infinite;
@@ -3570,7 +3523,6 @@ body.hex-out .dh-hex-cell {
     background: #fff; border-color: var(--dh-pink);
 }
 
-/* 全局解密成功瓦解状态 */
 .dh-auth-overlay.sys-success {
     background-color: transparent;
     transition: background-color 0.6s ease-out;
@@ -3579,9 +3531,6 @@ body.hex-out .dh-hex-cell {
     animation: dhSuccessCompress 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
 }
 
-/* ==========================================================================
-   动效关键帧定义 (GPU加速优化)
-   ========================================================================== */
 @keyframes dhBlink { 50% { opacity: 0; } }
 @keyframes dhTextScroll { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-33.33%, 0, 0); } }
 @keyframes dhBoxFloat {
@@ -3604,7 +3553,6 @@ body.hex-out .dh-hex-cell {
     100% { transform: skewX(10deg) scale(0, 0); opacity: 0; filter: blur(20px); }
 }
 
-/* 移动端完美轻量化适配 */
 @media (max-width: 480px) {
     .dh-auth-box { padding: 30px 20px 20px; width: 92%; transform: skewX(-2deg); box-shadow: 8px 8px 0 #000, 12px 12px 0 var(--dh-cyan); }
     .dh-auth-title { font-size: 22px; }
@@ -3612,3 +3560,25 @@ body.hex-out .dh-hex-cell {
     .dh-auth-waveform-band::before { font-size: 18px; }
 }
 
+.game-dialogue-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.dialogue-box {
+    display: flex;
+    align-items: center;
+    border: var(--dh-border);
+    padding: 10px;
+    background: var(--dh-white);
+    box-shadow: var(--dh-shadow);
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border: var(--dh-border);
+    margin-right: 15px;
+}
