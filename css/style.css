@@ -9,6 +9,7 @@
     --dh-black: #111111;
     --dh-white: #F8F8F8;
     --dh-green: #39FF14;
+    --dh-gray: #EAEAEA;
     --dh-border: 4px solid var(--dh-black);
     --dh-shadow: 8px 8px 0px var(--dh-black);
     --dh-shadow-hover: 2px 2px 0px var(--dh-black);
@@ -20,6 +21,8 @@
     --dh-dohna-light: #EBF7FF;
     --dh-dohna-pink: #FF3385;
     --dh-dohna-yellow: #FFC900;
+    --dh-border-thick: 3px solid var(--dh-black);
+    --dh-border-thin: 2px solid var(--dh-black);
 }
 
 * {
@@ -41,6 +44,10 @@ html {
     overflow-y: auto;
     overflow-x: hidden;
     transition: none;
+    transform: translate3d(0, 0, 0); 
+    backface-visibility: hidden;     
+    perspective: 1000px;             
+    will-change: transform;          
 }
 
 @media screen and (max-width: 800px) {
@@ -64,6 +71,9 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 ::-webkit-scrollbar {
@@ -970,7 +980,15 @@ mjx-container:not([display="true"]) {
     margin: 20px auto;
     color: var(--dh-black);
 }
-
+.post-layout,
+.page-content,
+.category-card,
+.dohna-card,
+.dohna-hero-card,
+.sticky-header {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
 .sticky-header {
     background-color: var(--dh-white);
     border-bottom: var(--dh-border);
@@ -981,6 +999,9 @@ mjx-container:not([display="true"]) {
     padding: 20px;
     margin-bottom: 10px;
     z-index: 100;
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-font-smoothing: antialiased; 
 }
 
 .menu {
@@ -1364,112 +1385,153 @@ mjx-container:not([display="true"]) {
 .type-npc .hero-name {
     background-image: linear-gradient(transparent 60%, var(--dh-cyan) 40%);
 }
-
-/* Wiki Terminal */
-.dohna-wiki-terminal {
-    margin: 60px 0;
-    background: var(--dh-white);
-    border: 5px solid var(--dh-black);
-    padding: 30px;
-    box-shadow: 15px 15px 0px var(--dh-black);
+/* ============================================
+   程序板块：极简科技终端风 (企业级单机质感)
+   ============================================ */
+.dh-stealth-wiki {
+    margin: 30px 0;
+    border: 1px solid rgba(5, 217, 232, 0.3);
+    background: #08080a; /* 极深渊色，而非纯黑 */
+    font-family: var(--font-mono); /* 全局切换为等宽代码字体 */
+    box-shadow: 0 0 20px rgba(5, 217, 232, 0.05) inset;
     position: relative;
 }
 
-.terminal-decor-top {
+/* 顶部装饰线 */
+.dh-stealth-wiki::before {
+    content: '';
     position: absolute;
-    top: 5px;
-    right: 10px;
-    font-family: var(--font-mono);
-    font-size: 10px;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dh-cyan), transparent);
+    opacity: 0.5;
 }
 
-.terminal-decor-bottom {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-}
-
-.wiki-header-banner {
+.stealth-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 5px solid var(--dh-black);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    align-items: flex-end;
+    padding: 15px 20px;
+    background: transparent;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
 }
 
-.banner-skew {
-    background: var(--dh-black);
-    padding: 5px 30px;
-    transform: skewX(-20deg);
+.sys-title {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: var(--dh-cyan);
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(5, 217, 232, 0.4);
 }
 
-.banner-text {
-    color: var(--dh-yellow);
-    font-size: 1.5rem;
-    transform: skewX(20deg);
-    display: block;
-    font-weight: 900;
+.sys-meta {
+    font-size: 10px;
+    color: #666;
+    background: transparent;
+    padding: 0;
+    border: none;
 }
 
-.banner-status {
-    background: var(--dh-green);
-    padding: 2px 8px;
-    border: 2px solid var(--dh-black);
-    font-weight: bold;
+.stealth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.05); /* 充当极细网格线 */
 }
 
-.wiki-type-label {
-    display: inline-block;
-    background: var(--dh-pink);
-    color: white;
-    font-weight: 900;
-    padding: 4px 20px;
-    border: 3px solid var(--dh-black);
-    margin-bottom: 15px;
-    box-shadow: 4px 4px 0px var(--dh-black);
-}
-
-.wiki-card:hover,
-.wiki-card.is-active {
-    background: var(--dh-yellow);
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px var(--dh-black);
-}
-
-.wiki-card {
-    display: block;
-    background: var(--dh-white);
-    border: 3px solid var(--dh-black);
-    text-decoration: none;
-    color: var(--dh-black);
-    transition: 0.15s ease-out;
-}
-
-.wiki-card .card-inner {
+.stealth-module {
+    background: #08080a;
+    padding: 15px 20px;
     display: flex;
+    flex-direction: column;
+}
+
+.mod-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(5, 217, 232, 0.2);
+    padding-bottom: 6px;
+}
+
+.mod-name {
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.mod-count {
+    font-size: 10px;
+    color: var(--dh-cyan);
+    opacity: 0.7;
+}
+
+.mod-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1;
+}
+
+.mod-item {
+    margin: 0 0 2px 0 !important;
+    padding: 0 !important;
+}
+
+.mod-item a {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 8px;
+    padding: 6px 8px;
+    text-decoration: none !important;
+    color: #888;
+    position: relative;
+    background: transparent;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease-out;
 }
 
-.wiki-card .card-id {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 900;
-    padding: 2px 6px;
-    margin-right: 10px;
-    border: 2px solid var(--dh-black);
+.mod-item a::after {
+    content: attr(data-id);
+    font-size: 9px;
+    color: #444;
+    transition: all 0.2s ease-out;
 }
 
-.wiki-card .card-name {
-    font-weight: 900;
-    font-size: 14px;
+.item-title {
+    font-size: 12px;
+    position: relative;
+    z-index: 1;
+    padding-left: 10px;
+    transition: color 0.2s;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/* 悬停态：科技扫描仪光标 */
+.mod-item:hover a {
+    background: linear-gradient(90deg, rgba(5, 217, 232, 0.1), transparent);
+    border-left: 2px solid var(--dh-cyan);
+    color: #fff;
+    padding-left: 12px; /* 轻微缩进代替暴力错位 */
+}
+
+.mod-item:hover a::after {
+    color: var(--dh-cyan);
+    content: '[ ' attr(data-status) ' ]'; /* 变为状态指示器 */
+}
+
+/* 激活状态 */
+.mod-item.is-active a {
+    border-left: 2px solid var(--dh-yellow);
+    color: var(--dh-yellow);
+    background: rgba(255, 194, 0, 0.05);
+}
+.mod-item.is-active a::after {
+    color: var(--dh-yellow);
+    content: '< ACTIVE >';
+}
 /* Categories 页面专属样式 */
 .categories-header {
     margin-bottom: 40px;
@@ -3560,25 +3622,337 @@ body.hex-out .dh-hex-cell {
     .dh-auth-waveform-band::before { font-size: 18px; }
 }
 
-.game-dialogue-wrapper {
+.story-doc-stream {
+    width: 100%;
+    max-width: 850px;
+    margin: 30px auto;
+    font-family: inherit;
+}
+
+.doc-timeline-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin: 20px 0;
+    gap: 20px;
+    padding: 10px;
 }
 
-.dialogue-box {
+/* ============================================
+   1. 场景大纲节点 (Scene Banner)
+   ============================================ */
+.doc-node-scene {
+    background-size: cover;
+    background-position: center;
+    border: var(--dh-border-thick);
+    padding: 30px 20px;
+    color: var(--dh-white);
+    box-shadow: 5px 5px 0 var(--dh-black);
+    margin: 15px 0;
+}
+.doc-node-scene .scene-tag {
+    display: inline-block;
+    background: var(--dh-pink);
+    color: var(--dh-white);
+    font-size: 11px;
+    font-weight: 900;
+    padding: 2px 8px;
+    border: var(--dh-border-thin);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+.doc-node-scene .scene-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 0 var(--dh-black);
+}
+
+/* ============================================
+   2. 状态更迭节点 (Meta Log)
+   ============================================ */
+.doc-node-meta {
     display: flex;
     align-items: center;
-    border: var(--dh-border);
-    padding: 10px;
-    background: var(--dh-white);
-    box-shadow: var(--dh-shadow);
+    gap: 12px;
+    background: var(--dh-gray);
+    border: var(--dh-border-thin);
+    padding: 8px 15px;
+    font-size: 13px;
+    color: var(--dh-black);
+}
+.doc-node-meta .meta-badge {
+    background: var(--dh-black);
+    color: var(--dh-yellow);
+    font-weight: 900;
+    padding: 1px 6px;
+    font-size: 10px;
 }
 
-.avatar {
-    width: 60px;
-    height: 60px;
-    border: var(--dh-border);
-    margin-right: 15px;
+/* ============================================
+   3. 对话文献节点 (Dialogue Box)
+   ============================================ */
+.doc-node-dialogue {
+    display: flex;
+    background: var(--dh-white);
+    border: var(--dh-border-thick);
+    box-shadow: 5px 5px 0 var(--dh-cyan);
+    transition: transform 0.2s;
+}
+.doc-node-dialogue:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--dh-pink);
+}
+
+/* 异常状态样式扩展（如警告/警报对话） */
+.doc-node-dialogue.alarm {
+    border-color: var(--dh-pink);
+    box-shadow: 5px 5px 0 var(--dh-black);
+}
+.doc-node-dialogue.alarm .doc-name {
+    color: var(--dh-pink) !important;
+}
+
+.doc-avatar-box {
+    padding: 15px;
+    border-right: var(--dh-border-thin);
+    background: var(--dh-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.doc-avatar {
+    width: 65px;
+    height: 65px;
+    border: var(--dh-border-thin);
+    background: var(--dh-white);
+}
+
+.doc-content-box {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+.doc-name {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--dh-black);
+    margin-bottom: 6px;
+    border-bottom: 2px solid var(--dh-yellow);
+    padding-bottom: 2px;
+    align-self: flex-start;
+}
+.doc-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    font-weight: 500;
+    word-break: break-all;
+}
+
+/* ============================================
+   4. 分支路由节点 (Menu Archive)
+   ============================================ */
+.doc-node-menu {
+    border: var(--dh-border-thick);
+    background: var(--dh-black);
+    color: var(--dh-white);
+    padding: 15px 20px;
+    box-shadow: 5px 5px 0 var(--dh-yellow);
+}
+.doc-node-menu .menu-header {
+    font-weight: 900;
+    color: var(--dh-yellow);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+.doc-menu-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.doc-opt-line {
+    background: #222;
+    border: 1px dashed #555;
+    padding: 10px 15px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.doc-jump-tag {
+    color: var(--dh-cyan);
+    font-family: monospace;
+    font-size: 11px;
+}
+
+.doc-error-box {
+    border: var(--dh-border-thick);
+    background: #fff0f0;
+    color: #ff0000;
+    padding: 15px;
+    font-weight: bold;
+}
+
+/* ============================================
+   移动端响应式适配
+   ============================================ */
+@media screen and (max-width: 768px) {
+    .doc-timeline-wrapper {
+        gap: 15px;
+        padding: 5px;
+    }
+
+    .doc-node-dialogue {
+        flex-direction: column; /* 小屏幕下头像移到上方 */
+    }
+
+    .doc-avatar-box {
+        border-right: none;
+        border-bottom: var(--dh-border-thin);
+        padding: 10px;
+        justify-content: flex-start;
+    }
+
+    .doc-avatar {
+        width: 45px;
+        height: 45px;
+    }
+
+    .doc-content-box {
+        padding: 12px 15px;
+    }
+
+    .doc-node-scene .scene-title {
+        font-size: 1.25rem;
+    }
+
+    .doc-opt-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+/* ============================================
+   故事板块：移动端降维响应式适配 (终端分支样式)
+   ============================================ */
+
+/* 默认响应式显隐开关 */
+#story-tree {
+    display: block !important;
+}
+#story-mobile-list {
+    display: none !important;
+}
+
+/* 窄屏 (移动端/缩放窗口) 状态 */
+@media screen and (max-width: 850px) {
+    #story-tree {
+        display: none !important;
+    }
+    #story-mobile-list {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    /* 移动端包裹面板 */
+    .story-mobile-tracker {
+        background: #08080a;
+        border: 1px solid rgba(5, 217, 232, 0.2);
+        padding: 15px;
+        font-family: var(--font-mono);
+        box-shadow: 0 0 15px rgba(0,0,0,0.5) inset;
+    }
+
+    .story-timeline-root {
+        font-size: 11px;
+        color: var(--dh-yellow);
+        letter-spacing: 1px;
+        padding: 10px 0 5px 0;
+        border-bottom: 1px dashed rgba(255,194,0,0.2);
+        margin-bottom: 10px;
+    }
+
+    /* 单个故事线路节点 */
+    .mobile-story-node {
+        margin-bottom: 8px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    /* 节点元数据（ID与连线符号） */
+    .node-meta {
+        font-size: 11px;
+        line-height: 1.5;
+        display: flex;
+        align-items: center;
+        color: #555;
+    }
+
+    .branch-symbol {
+        color: rgba(5, 217, 232, 0.4);
+        margin-right: 5px;
+        font-weight: bold;
+    }
+
+    .node-id {
+        color: #666;
+        background: rgba(255,255,255,0.03);
+        padding: 0 4px;
+        border-radius: 2px;
+    }
+
+    /* 故事主干卡片链接 */
+    .node-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #111114;
+        border-left: 2px solid rgba(5, 217, 232, 0.3);
+        padding: 10px 12px;
+        margin-top: 4px;
+        text-decoration: none !important;
+        transition: all 0.2s ease;
+        /* 根据递归深度，让内容区产生微妙的视觉右移偏置 */
+        margin-left: calc(var(--depth) * 8px);
+    }
+
+    .node-name {
+        font-size: 13px;
+        color: #dddddf;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+        padding-right: 10px;
+    }
+
+    /* 分支与结局状态标 */
+    .node-fork-tag {
+        font-size: 9px;
+        color: var(--dh-cyan);
+        border: 1px solid rgba(5, 217, 232, 0.4);
+        padding: 1px 5px;
+        background: rgba(5, 217, 232, 0.05);
+    }
+
+    .node-end-tag {
+        font-size: 9px;
+        color: #666;
+        border: 1px solid #333;
+        padding: 1px 5px;
+    }
+
+    /* 交互激活态 */
+    .node-link:active {
+        background: linear-gradient(90deg, rgba(5, 217, 232, 0.15), transparent);
+        border-left-color: var(--dh-cyan);
+    }
+    .node-link:active .node-name {
+        color: #fff;
+    }
 }

@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>
+  
+    DOTA2角色配音指南 | LIMPID
+  
+</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body class="dohna-body">
+<script>
+    if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+        document.write('<style>.dh-auth-overlay { display: none !important; }</style>');
+    }
+</script>
+<div id="dh-auth-overlay" class="dh-auth-overlay">
+    <canvas id="dh-auth-canvas" class="dh-auth-canvas"></canvas>
+
+    <div class="dh-auth-waveform-band"></div>
+
+    <div class="dh-auth-box">
+        <div class="dh-auth-tape tape-top-left"></div>
+        <div class="dh-auth-tape tape-bottom-right"></div>
+        <div class="box-glitch-layer"></div>
+
+        <div class="dh-auth-header">
+            <div class="dh-auth-icon">!</div>
+            <div class="dh-auth-title">
+                <span class="glitch-text" data-text="SYSTEM_LOCKED">SYSTEM_LOCKED</span>
+            </div>
+        </div>
+
+        <div class="dh-auth-subtitle">
+            <span>PLEASE_INPUT_TERMINAL_KEY</span>
+            <span class="blink-cursor">█</span>
+        </div>
+
+        <div class="dh-input-group">
+            <span class="input-prefix">KEY &gt;</span>
+            <input type="password" id="dh-auth-input" placeholder="********" autocomplete="off" autofocus>
+            <div class="input-scanline"></div>
+        </div>
+
+        <button id="dh-auth-btn" class="dh-auth-btn">
+            <span class="btn-txt">AUTHORIZE</span>
+            <span class="btn-decor">///</span>
+        </button>
+
+        <div id="dh-auth-err" class="dh-auth-err"></div>
+
+        <div class="dh-auth-footer">
+            <div class="barcode">||| |||| | || |||</div>
+            <div id="dh-random-hex" class="serial">NO.09-X77</div>
+        </div>
+    </div>
+</div>
+
+
+<canvas id="skyCanvas"></canvas>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<header class="mobile-header">
+    <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/story/">Story</a>
+</nav>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+    </div>
+</header>
+
+<div id="app-wrapper" class="wiki-layout">
+
+    
+
+    <aside id="site-sidebar" class="wiki-sidebar">
+        <nav class="tree-nav dohna-sidebar-container">
+    <div class="sidebar-handle desktop-only">
+    </div>
+    <div class="sidebar-content-scroll">
+        <ul class="tree-root">
+            <li><a href="/" class="tree-item link ">~ / Home</a></li>
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">游戏日记</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/18/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%805%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开5月记录
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/04/11/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%804%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开4月记录
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">程序</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
+                                        JRRG的构建
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Bitmap 扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Array扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
+                                        TOUHOU弹幕
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        帧动画系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
+                                        声明式UI-UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
+                                        RpgMaker 事件
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Math扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
+                                        视觉小说
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
+                                        游戏runtime
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
+                                        游戏editor
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">编剧</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
+                                        剧本模板
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
+                                        神之罪与人之理：存在论视域下的剥削与觉醒
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">世界观设定</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E5%8A%9F%E8%83%BD%E5%AE%9A%E4%BD%8D/" class="tree-item link ">
+                                        功能定位
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E5%9C%B0%E7%8B%B1%E8%AE%BE%E5%AE%9A/" class="tree-item link ">
+                                        地狱设定
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E5%B7%A5%E5%8E%82%E4%BA%A7%E7%BA%BF/" class="tree-item link ">
+                                        工厂产线
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E6%88%98%E6%9C%AF/" class="tree-item link ">
+                                        战术
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/" class="tree-item link ">
+                                        角色设定
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E9%98%B5%E8%90%A5%E4%B9%9D%E5%AE%AB%E6%A0%BC/" class="tree-item link ">
+                                        阵营九宫格
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E9%AD%94%E6%B3%95%E6%B5%81%E6%B4%BE/" class="tree-item link ">
+                                        魔法流派
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E9%AD%94%E6%B3%95%E6%A6%82%E8%BF%B0/" class="tree-item link ">
+                                        魔法概述
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[-]</span>
+                            <span class="folder-name">策划</span>
+                        </div>
+                        <ul class="tree-sub open">
+                            
+                                <li>
+                                    <a href="/2026/05/23/%E7%AD%96%E5%88%92/DOTA2%E8%8B%B1%E9%9B%84%E4%BB%8B%E7%BB%8D/" class="tree-item link ">
+                                        DOTA2英雄介绍
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/27/%E7%AD%96%E5%88%92/DOTA2%E8%8B%B1%E9%9B%84%E9%85%8D%E9%9F%B3%E6%8C%87%E5%8D%97/" class="tree-item link active">
+                                        DOTA2角色配音指南
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        独立物品系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/Minecraft%E5%90%88%E6%88%90%E5%8F%B0%20UX/" class="tree-item link ">
+                                        Minecraft合成台 UX
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">音乐</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/%E9%9F%B3%E4%B9%90%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="tree-item link ">
+                                        AI提示词
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+        </ul>
+    </div>
+</nav>
+    </aside>
+
+    <main id="site-main" class="wiki-main">
+        <header class="sticky-header">
+            <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/story/">Story</a>
+</nav>
+        </header>
+        <div class="dohna-content-inner">
+            <div class="post-layout">
+    <div class="post-head">
+        <h1 class="post-title">DOTA2角色配音指南</h1>
+        <div class="post-meta">
+            <span class="date">Terminal Update: 2026-05-27 00:00</span>
+        </div>
+    </div>
+    <article class="post-content">
+        <p><u1>台本设计原则</u1></p>
+<h1 id="台本设计原则"><a href="#台本设计原则" class="headerlink" title="台本设计原则"></a>台本设计原则</h1><h2 id="时长控制"><a href="#时长控制" class="headerlink" title="时长控制"></a>时长控制</h2><h3 id="除Introduction、Spawn、Victory-Defeat，其余局内语音应避免冗长文本。"><a href="#除Introduction、Spawn、Victory-Defeat，其余局内语音应避免冗长文本。" class="headerlink" title="除Introduction、Spawn、Victory&#x2F;Defeat，其余局内语音应避免冗长文本。"></a>除Introduction、Spawn、Victory&#x2F;Defeat，其余局内语音应避免冗长文本。</h3><h2 id="语音唤醒率"><a href="#语音唤醒率" class="headerlink" title="语音唤醒率"></a>语音唤醒率</h2><h3 id="高频触发的指令，必须提供-3-5句差异化文本-轮播，防止玩家产生听觉疲劳。"><a href="#高频触发的指令，必须提供-3-5句差异化文本-轮播，防止玩家产生听觉疲劳。" class="headerlink" title="高频触发的指令，必须提供 3-5句差异化文本 轮播，防止玩家产生听觉疲劳。"></a>高频触发的指令，必须提供 3-5句差异化文本 轮播，防止玩家产生听觉疲劳。</h3><h2 id="文本功能性"><a href="#文本功能性" class="headerlink" title="文本功能性"></a>文本功能性</h2><h3 id="台词的第一任务是外化角色当下的行为状态，其次才是展现人设。禁止因过度追求文采而导致信息传达模糊。"><a href="#台词的第一任务是外化角色当下的行为状态，其次才是展现人设。禁止因过度追求文采而导致信息传达模糊。" class="headerlink" title="台词的第一任务是外化角色当下的行为状态，其次才是展现人设。禁止因过度追求文采而导致信息传达模糊。"></a>台词的第一任务是外化角色当下的行为状态，其次才是展现人设。禁止因过度追求文采而导致信息传达模糊。</h3><p><u1>登场与基础行为</u1></p>
+<h1 id="Phase-I-Introduction-Movement-登场与基础行为"><a href="#Phase-I-Introduction-Movement-登场与基础行为" class="headerlink" title="Phase I: Introduction &amp; Movement (登场与基础行为)"></a>Phase I: Introduction &amp; Movement (登场与基础行为)</h1><h6 id="本阶段语音奠定角色的核心性格基调与战场初印象，建立叙事厚度。"><a href="#本阶段语音奠定角色的核心性格基调与战场初印象，建立叙事厚度。" class="headerlink" title="本阶段语音奠定角色的核心性格基调与战场初印象，建立叙事厚度。"></a>本阶段语音奠定角色的核心性格基调与战场初印象，建立叙事厚度。</h6><p><u2>角色展示</u2></p>
+<h2 id="Introduction-角色展示"><a href="#Introduction-角色展示" class="headerlink" title="Introduction (角色展示)"></a>Introduction (角色展示)</h2><h6 id="大厅-图鉴界面展示，核心人设台词，需体现角色在世界观内的标志性身份。"><a href="#大厅-图鉴界面展示，核心人设台词，需体现角色在世界观内的标志性身份。" class="headerlink" title="大厅&#x2F;图鉴界面展示，核心人设台词，需体现角色在世界观内的标志性身份。"></a>大厅&#x2F;图鉴界面展示，核心人设台词，需体现角色在世界观内的标志性身份。</h6><h6 id="交代“角色是谁”以及“角色的核心驱动力”。"><a href="#交代“角色是谁”以及“角色的核心驱动力”。" class="headerlink" title="交代“角色是谁”以及“角色的核心驱动力”。"></a>交代“角色是谁”以及“角色的核心驱动力”。</h6><p><u2>角色征召</u2></p>
+<h2 id="Pick-角色征召"><a href="#Pick-角色征召" class="headerlink" title="Pick (角色征召)"></a>Pick (角色征召)</h2><h6 id="BP阶段玩家锁定该角色时的台本。"><a href="#BP阶段玩家锁定该角色时的台本。" class="headerlink" title="BP阶段玩家锁定该角色时的台本。"></a>BP阶段玩家锁定该角色时的台本。</h6><h6 id="对玩家的选择给予认可，或展现角色准备入局的姿态。"><a href="#对玩家的选择给予认可，或展现角色准备入局的姿态。" class="headerlink" title="对玩家的选择给予认可，或展现角色准备入局的姿态。"></a>对玩家的选择给予认可，或展现角色准备入局的姿态。</h6><p><u2>角色禁用</u2></p>
+<h2 id="Ban-角色禁用"><a href="#Ban-角色禁用" class="headerlink" title="Ban (角色禁用)"></a>Ban (角色禁用)</h2><h6 id="角色被Ban时的回应。角色需要表现出对被禁用的态度。"><a href="#角色被Ban时的回应。角色需要表现出对被禁用的态度。" class="headerlink" title="角色被Ban时的回应。角色需要表现出对被禁用的态度。"></a>角色被Ban时的回应。角色需要表现出对被禁用的态度。</h6><h6 id="体现角色被束缚、被忌惮、或计划被打乱的反应。"><a href="#体现角色被束缚、被忌惮、或计划被打乱的反应。" class="headerlink" title="体现角色被束缚、被忌惮、或计划被打乱的反应。"></a>体现角色被束缚、被忌惮、或计划被打乱的反应。</h6><p><u2>角色诞生</u2></p>
+<h2 id="Spawn-角色诞生"><a href="#Spawn-角色诞生" class="headerlink" title="Spawn (角色诞生)"></a>Spawn (角色诞生)</h2><h6 id="开局泉水出生。这是玩家在游戏内听到的角色的第一句对白。"><a href="#开局泉水出生。这是玩家在游戏内听到的角色的第一句对白。" class="headerlink" title="开局泉水出生。这是玩家在游戏内听到的角色的第一句对白。"></a>开局泉水出生。这是玩家在游戏内听到的角色的第一句对白。</h6><h6 id="为角色对战场环境的评价，或与角色为何加入战场的相关的宣言。"><a href="#为角色对战场环境的评价，或与角色为何加入战场的相关的宣言。" class="headerlink" title="为角色对战场环境的评价，或与角色为何加入战场的相关的宣言。"></a>为角色对战场环境的评价，或与角色为何加入战场的相关的宣言。</h6><p><u2>全军出击</u2></p>
+<h2 id="Game-Start-全军出击"><a href="#Game-Start-全军出击" class="headerlink" title="Game Start (全军出击)"></a>Game Start (全军出击)</h2><h6 id="游戏进入正式对线-战争阶段，这个角色为什么要在此时此地，率领身后的军队去摧毁敌方？"><a href="#游戏进入正式对线-战争阶段，这个角色为什么要在此时此地，率领身后的军队去摧毁敌方？" class="headerlink" title="游戏进入正式对线&#x2F;战争阶段，这个角色为什么要在此时此地，率领身后的军队去摧毁敌方？"></a>游戏进入正式对线&#x2F;战争阶段，这个角色为什么要在此时此地，率领身后的军队去摧毁敌方？</h6><h6 id="为角色的战斗宣言，"><a href="#为角色的战斗宣言，" class="headerlink" title="为角色的战斗宣言，"></a>为角色的战斗宣言，</h6><p><u2>待机</u2></p>
+<h2 id="Idle-待机"><a href="#Idle-待机" class="headerlink" title="Idle (待机)"></a>Idle (待机)</h2><h6 id="角色长时间没接受指令，原地挂机时出现的台本。"><a href="#角色长时间没接受指令，原地挂机时出现的台本。" class="headerlink" title="角色长时间没接受指令，原地挂机时出现的台本。"></a>角色长时间没接受指令，原地挂机时出现的台本。</h6><h6 id="根据角色的性格体进行描写生活化突出日常化的细节，用于呼应-补充角色的背景故事。"><a href="#根据角色的性格体进行描写生活化突出日常化的细节，用于呼应-补充角色的背景故事。" class="headerlink" title="根据角色的性格体进行描写生活化突出日常化的细节，用于呼应&#x2F;补充角色的背景故事。"></a>根据角色的性格体进行描写生活化突出日常化的细节，用于呼应&#x2F;补充角色的背景故事。</h6><p><u2>移动指令</u2></p>
+<h2 id="Move-移动指令"><a href="#Move-移动指令" class="headerlink" title="Move (移动指令)"></a>Move (移动指令)</h2><h6 id="角色移动赶路时的台本"><a href="#角色移动赶路时的台本" class="headerlink" title="角色移动赶路时的台本"></a>角色移动赶路时的台本</h6><h6 id="极度简短。关于行军、寻找方向、探索地形、或者纯粹的行进节奏感。"><a href="#极度简短。关于行军、寻找方向、探索地形、或者纯粹的行进节奏感。" class="headerlink" title="极度简短。关于行军、寻找方向、探索地形、或者纯粹的行进节奏感。"></a>极度简短。关于行军、寻找方向、探索地形、或者纯粹的行进节奏感。</h6><p><u1>战斗与交互</u1></p>
+<h1 id="Phase-II-Combat-Interactions-战斗与交互"><a href="#Phase-II-Combat-Interactions-战斗与交互" class="headerlink" title="Phase II: Combat &amp; Interactions (战斗与交互)"></a>Phase II: Combat &amp; Interactions (战斗与交互)</h1><h6 id="本阶段处于游戏高频对抗中，台词必须充满情绪张力。"><a href="#本阶段处于游戏高频对抗中，台词必须充满情绪张力。" class="headerlink" title="本阶段处于游戏高频对抗中，台词必须充满情绪张力。"></a>本阶段处于游戏高频对抗中，台词必须充满情绪张力。</h6><p><u2>攻击指令</u2></p>
+<h2 id="Attack-攻击指令"><a href="#Attack-攻击指令" class="headerlink" title="Attack (攻击指令)"></a>Attack (攻击指令)</h2><h6 id="角色发出普攻指令时触发的台本。"><a href="#角色发出普攻指令时触发的台本。" class="headerlink" title="角色发出普攻指令时触发的台本。"></a>角色发出普攻指令时触发的台本。</h6><h6 id="避免使用长难句或解释性语言。此文案的核心任务是外化角色侵略性与攻击动作的发力感。"><a href="#避免使用长难句或解释性语言。此文案的核心任务是外化角色侵略性与攻击动作的发力感。" class="headerlink" title="避免使用长难句或解释性语言。此文案的核心任务是外化角色侵略性与攻击动作的发力感。"></a>避免使用长难句或解释性语言。此文案的核心任务是外化角色侵略性与攻击动作的发力感。</h6><p><u2>等级提升</u2></p>
+<h2 id="Level-Up-等级提升"><a href="#Level-Up-等级提升" class="headerlink" title="Level Up (等级提升)"></a>Level Up (等级提升)</h2><h6 id="角色通过获取经验值升级时触发的台本。"><a href="#角色通过获取经验值升级时触发的台本。" class="headerlink" title="角色通过获取经验值升级时触发的台本。"></a>角色通过获取经验值升级时触发的台本。</h6><h6 id="自我进化、阶段性顿悟、或力量觉醒的叙事外显。根据角色的底层背景，赋予“升级”不同的叙事包装。"><a href="#自我进化、阶段性顿悟、或力量觉醒的叙事外显。根据角色的底层背景，赋予“升级”不同的叙事包装。" class="headerlink" title="自我进化、阶段性顿悟、或力量觉醒的叙事外显。根据角色的底层背景，赋予“升级”不同的叙事包装。"></a>自我进化、阶段性顿悟、或力量觉醒的叙事外显。根据角色的底层背景，赋予“升级”不同的叙事包装。</h6><p><u2>补刀</u2></p>
+<h2 id="Last-Hit-补刀"><a href="#Last-Hit-补刀" class="headerlink" title="Last Hit (补刀)"></a>Last Hit (补刀)</h2><h6 id="角色成功对敌方小兵或中立野怪造成致死伤害，并跳出金币特效时触发的台本。"><a href="#角色成功对敌方小兵或中立野怪造成致死伤害，并跳出金币特效时触发的台本。" class="headerlink" title="角色成功对敌方小兵或中立野怪造成致死伤害，并跳出金币特效时触发的台本。"></a>角色成功对敌方小兵或中立野怪造成致死伤害，并跳出金币特效时触发的台本。</h6><h6 id="侧重表达对资源的积累、对战利品的玩味、或者是对底层劳动的务实态度。对线期核心基本功的即时听觉奖励，强化玩家的成就感。"><a href="#侧重表达对资源的积累、对战利品的玩味、或者是对底层劳动的务实态度。对线期核心基本功的即时听觉奖励，强化玩家的成就感。" class="headerlink" title="侧重表达对资源的积累、对战利品的玩味、或者是对底层劳动的务实态度。对线期核心基本功的即时听觉奖励，强化玩家的成就感。"></a>侧重表达对资源的积累、对战利品的玩味、或者是对底层劳动的务实态度。对线期核心基本功的即时听觉奖励，强化玩家的成就感。</h6><p><u2>反补</u2></p>
+<h2 id="Last-Hit-补刀-1"><a href="#Last-Hit-补刀-1" class="headerlink" title="Last Hit (补刀)"></a>Last Hit (补刀)</h2><h6 id="角色精准击杀己方残血小兵，切断敌方对线角色的经验与金币收益时触发的台本。"><a href="#角色精准击杀己方残血小兵，切断敌方对线角色的经验与金币收益时触发的台本。" class="headerlink" title="角色精准击杀己方残血小兵，切断敌方对线角色的经验与金币收益时触发的台本。"></a>角色精准击杀己方残血小兵，切断敌方对线角色的经验与金币收益时触发的台本。</h6><h6 id="需要带有明显的挑衅性，直击对手“到嘴的鸭子飞了”的痛点。用傲慢的姿态评价对方的无能。承载极高的破坏对方心态的功能。"><a href="#需要带有明显的挑衅性，直击对手“到嘴的鸭子飞了”的痛点。用傲慢的姿态评价对方的无能。承载极高的破坏对方心态的功能。" class="headerlink" title="需要带有明显的挑衅性，直击对手“到嘴的鸭子飞了”的痛点。用傲慢的姿态评价对方的无能。承载极高的破坏对方心态的功能。"></a>需要带有明显的挑衅性，直击对手“到嘴的鸭子飞了”的痛点。用傲慢的姿态评价对方的无能。承载极高的破坏对方心态的功能。</h6><p><u2>第一滴血</u2></p>
+<h2 id="First-Blood-第一滴血"><a href="#First-Blood-第一滴血" class="headerlink" title="First Blood (第一滴血)"></a>First Blood (第一滴血)</h2><h6 id="该角色拿下了整场对局的第一个敌方角色人头时触发。"><a href="#该角色拿下了整场对局的第一个敌方角色人头时触发。" class="headerlink" title="该角色拿下了整场对局的第一个敌方角色人头时触发。"></a>该角色拿下了整场对局的第一个敌方角色人头时触发。</h6><h6 id="是战场平衡被打破的第一高潮。此时系统播报与角色语音会产生激烈的碰撞，必须具备极强的戏剧张力。要展现出本场对局的局势走向被该角色彻底接管的笃定。"><a href="#是战场平衡被打破的第一高潮。此时系统播报与角色语音会产生激烈的碰撞，必须具备极强的戏剧张力。要展现出本场对局的局势走向被该角色彻底接管的笃定。" class="headerlink" title="是战场平衡被打破的第一高潮。此时系统播报与角色语音会产生激烈的碰撞，必须具备极强的戏剧张力。要展现出本场对局的局势走向被该角色彻底接管的笃定。"></a>是战场平衡被打破的第一高潮。此时系统播报与角色语音会产生激烈的碰撞，必须具备极强的戏剧张力。要展现出本场对局的局势走向被该角色彻底接管的笃定。</h6><p><u2>常规击杀</u2></p>
+<h2 id="Kill-常规击杀"><a href="#Kill-常规击杀" class="headerlink" title="Kill (常规击杀)"></a>Kill (常规击杀)</h2><h6 id="击杀除彩蛋角色以外的常规敌方角色时触发。用于向全队和被击杀者展现该角色对“死亡”、“胜负”以及“手下败将”的常态化态度与行为惯性。"><a href="#击杀除彩蛋角色以外的常规敌方角色时触发。用于向全队和被击杀者展现该角色对“死亡”、“胜负”以及“手下败将”的常态化态度与行为惯性。" class="headerlink" title="击杀除彩蛋角色以外的常规敌方角色时触发。用于向全队和被击杀者展现该角色对“死亡”、“胜负”以及“手下败将”的常态化态度与行为惯性。"></a>击杀除彩蛋角色以外的常规敌方角色时触发。用于向全队和被击杀者展现该角色对“死亡”、“胜负”以及“手下败将”的常态化态度与行为惯性。</h6><h6 id="展现角色在战场上的“职业常态”与“核心行为逻辑”，该角色将“击杀”视为自身生命中的哪一种日常常态，明确出角色将“击杀敌方”视为一件什么性质的事。"><a href="#展现角色在战场上的“职业常态”与“核心行为逻辑”，该角色将“击杀”视为自身生命中的哪一种日常常态，明确出角色将“击杀敌方”视为一件什么性质的事。" class="headerlink" title="展现角色在战场上的“职业常态”与“核心行为逻辑”，该角色将“击杀”视为自身生命中的哪一种日常常态，明确出角色将“击杀敌方”视为一件什么性质的事。"></a>展现角色在战场上的“职业常态”与“核心行为逻辑”，该角色将“击杀”视为自身生命中的哪一种日常常态，明确出角色将“击杀敌方”视为一件什么性质的事。</h6><p><u2>大破</u2></p>
+<h2 id="Injured-大破"><a href="#Injured-大破" class="headerlink" title="Injured (大破)"></a>Injured (大破)</h2><h6 id="当角色的生命值（HP）在短时间内被压低至-30-以下，处于危险环境时触发。"><a href="#当角色的生命值（HP）在短时间内被压低至-30-以下，处于危险环境时触发。" class="headerlink" title="当角色的生命值（HP）在短时间内被压低至 30% 以下，处于危险环境时触发。"></a>当角色的生命值（HP）在短时间内被压低至 30% 以下，处于危险环境时触发。</h6><h6 id="借由极端濒死环境强行剥离角色社会化伪装，将其最本质的“核心人格面具”通过愤怒反噬、意志死守、超脱冷漠或濒死癫狂等异化心理进行极限外化，而绝非单一的生理痛苦惨叫。"><a href="#借由极端濒死环境强行剥离角色社会化伪装，将其最本质的“核心人格面具”通过愤怒反噬、意志死守、超脱冷漠或濒死癫狂等异化心理进行极限外化，而绝非单一的生理痛苦惨叫。" class="headerlink" title="借由极端濒死环境强行剥离角色社会化伪装，将其最本质的“核心人格面具”通过愤怒反噬、意志死守、超脱冷漠或濒死癫狂等异化心理进行极限外化，而绝非单一的生理痛苦惨叫。"></a>借由极端濒死环境强行剥离角色社会化伪装，将其最本质的“核心人格面具”通过愤怒反噬、意志死守、超脱冷漠或濒死癫狂等异化心理进行极限外化，而绝非单一的生理痛苦惨叫。</h6><p><u2>技能冷却中</u2></p>
+<h2 id="Cooldown-技能冷却中"><a href="#Cooldown-技能冷却中" class="headerlink" title="Cooldown (技能冷却中)"></a>Cooldown (技能冷却中)</h2><h6 id="当玩家点击角色处于-CD（冷却中）的技能快捷键时触发。"><a href="#当玩家点击角色处于-CD（冷却中）的技能快捷键时触发。" class="headerlink" title="当玩家点击角色处于 CD（冷却中）的技能快捷键时触发。"></a>当玩家点击角色处于 CD（冷却中）的技能快捷键时触发。</h6><h6 id="简短急促。机制上告诉玩家“技能尚未准备就绪”，叙事上将玩家急躁的点击动作转化为角色在战场上节奏受阻的不耐烦。"><a href="#简短急促。机制上告诉玩家“技能尚未准备就绪”，叙事上将玩家急躁的点击动作转化为角色在战场上节奏受阻的不耐烦。" class="headerlink" title="简短急促。机制上告诉玩家“技能尚未准备就绪”，叙事上将玩家急躁的点击动作转化为角色在战场上节奏受阻的不耐烦。"></a>简短急促。机制上告诉玩家“技能尚未准备就绪”，叙事上将玩家急躁的点击动作转化为角色在战场上节奏受阻的不耐烦。</h6><p><u2>法力不足</u2></p>
+<h2 id="Out-of-Mana-法力不足"><a href="#Out-of-Mana-法力不足" class="headerlink" title="Out of Mana (法力不足)"></a>Out of Mana (法力不足)</h2><h6 id="当玩家试图施放技能，但角色的能力资源低于技能消耗线时触发。"><a href="#当玩家试图施放技能，但角色的能力资源低于技能消耗线时触发。" class="headerlink" title="当玩家试图施放技能，但角色的能力资源低于技能消耗线时触发。"></a>当玩家试图施放技能，但角色的能力资源低于技能消耗线时触发。</h6><h6 id="简短急促。外化能量-魔法不足时的空洞感。表达无法调动力量的无奈，提醒玩家需要补给魔法。"><a href="#简短急促。外化能量-魔法不足时的空洞感。表达无法调动力量的无奈，提醒玩家需要补给魔法。" class="headerlink" title="简短急促。外化能量&#x2F;魔法不足时的空洞感。表达无法调动力量的无奈，提醒玩家需要补给魔法。"></a>简短急促。外化能量&#x2F;魔法不足时的空洞感。表达无法调动力量的无奈，提醒玩家需要补给魔法。</h6><p><u2>施放技能</u2></p>
+<h2 id="Cast-Ability-施放技能"><a href="#Cast-Ability-施放技能" class="headerlink" title="Cast Ability (施放技能)"></a>Cast Ability (施放技能)</h2><h6 id="角色技能在各阶段生效时触发。"><a href="#角色技能在各阶段生效时触发。" class="headerlink" title="角色技能在各阶段生效时触发。"></a>角色技能在各阶段生效时触发。</h6><h6 id="这块需要结合角色背景-性格-技能的形态-功能综合考量。请与角色设计师确认并深度打磨。"><a href="#这块需要结合角色背景-性格-技能的形态-功能综合考量。请与角色设计师确认并深度打磨。" class="headerlink" title="这块需要结合角色背景&#x2F;性格 技能的形态 功能综合考量。请与角色设计师确认并深度打磨。"></a>这块需要结合角色背景&#x2F;性格 技能的形态 功能综合考量。请与角色设计师确认并深度打磨。</h6><p><u2>获得装备</u2></p>
+<h2 id="Equip-Item-获得装备"><a href="#Equip-Item-获得装备" class="headerlink" title="Equip Item (获得装备)"></a>Equip Item (获得装备)</h2><h6 id="当角色在商店获得了对其机制产生“引发打法质变”的核心大件装备时触发。"><a href="#当角色在商店获得了对其机制产生“引发打法质变”的核心大件装备时触发。" class="headerlink" title="当角色在商店获得了对其机制产生“引发打法质变”的核心大件装备时触发。"></a>当角色在商店获得了对其机制产生“引发打法质变”的核心大件装备时触发。</h6><h6 id="是角色实现“战术野心”或打破“自身局限性”的终极拼图，角色以不容置疑的意志，宣告下一步将如何使用它。"><a href="#是角色实现“战术野心”或打破“自身局限性”的终极拼图，角色以不容置疑的意志，宣告下一步将如何使用它。" class="headerlink" title="是角色实现“战术野心”或打破“自身局限性”的终极拼图，角色以不容置疑的意志，宣告下一步将如何使用它。"></a>是角色实现“战术野心”或打破“自身局限性”的终极拼图，角色以不容置疑的意志，宣告下一步将如何使用它。</h6><p><u2>友军互动彩蛋</u2></p>
+<h2 id="Ally-Interaction-友军互动彩蛋"><a href="#Ally-Interaction-友军互动彩蛋" class="headerlink" title="Ally Interaction (友军互动彩蛋)"></a>Ally Interaction (友军互动彩蛋)</h2><h6 id="当角色与彩蛋角色存在于同一阵营，并肩作战时触发。"><a href="#当角色与彩蛋角色存在于同一阵营，并肩作战时触发。" class="headerlink" title="当角色与彩蛋角色存在于同一阵营，并肩作战时触发。"></a>当角色与彩蛋角色存在于同一阵营，并肩作战时触发。</h6><h6 id="查阅双方角色的背景故事后，展现角色之间鲜为人知的私密关系，构建世界观内错综复杂的人物关系网络，让冷冰冰的阵容搭配变成真正的团队。"><a href="#查阅双方角色的背景故事后，展现角色之间鲜为人知的私密关系，构建世界观内错综复杂的人物关系网络，让冷冰冰的阵容搭配变成真正的团队。" class="headerlink" title="查阅双方角色的背景故事后，展现角色之间鲜为人知的私密关系，构建世界观内错综复杂的人物关系网络，让冷冰冰的阵容搭配变成真正的团队。"></a>查阅双方角色的背景故事后，展现角色之间鲜为人知的私密关系，构建世界观内错综复杂的人物关系网络，让冷冰冰的阵容搭配变成真正的团队。</h6><p><u2>敌对遭遇彩蛋</u2></p>
+<h2 id="Enemy-Encounter-敌对遭遇彩蛋"><a href="#Enemy-Encounter-敌对遭遇彩蛋" class="headerlink" title="Enemy Encounter (敌对遭遇彩蛋)"></a>Enemy Encounter (敌对遭遇彩蛋)</h2><h6 id="当角色与彩蛋角色在敌对阵营时，双方首次进入彼此视野时触发。"><a href="#当角色与彩蛋角色在敌对阵营时，双方首次进入彼此视野时触发。" class="headerlink" title="当角色与彩蛋角色在敌对阵营时，双方首次进入彼此视野时触发。"></a>当角色与彩蛋角色在敌对阵营时，双方首次进入彼此视野时触发。</h6><h6 id="查阅双方角色的背景故事后，识别他们属于以下哪种“因立场错位而被迫交锋”的关系状态，精准捕捉两人在战场狭路相逢时那夹杂着战术警惕、唏嘘旧情或滔天杀意的复杂情感溢出。"><a href="#查阅双方角色的背景故事后，识别他们属于以下哪种“因立场错位而被迫交锋”的关系状态，精准捕捉两人在战场狭路相逢时那夹杂着战术警惕、唏嘘旧情或滔天杀意的复杂情感溢出。" class="headerlink" title="查阅双方角色的背景故事后，识别他们属于以下哪种“因立场错位而被迫交锋”的关系状态，精准捕捉两人在战场狭路相逢时那夹杂着战术警惕、唏嘘旧情或滔天杀意的复杂情感溢出。"></a>查阅双方角色的背景故事后，识别他们属于以下哪种“因立场错位而被迫交锋”的关系状态，精准捕捉两人在战场狭路相逢时那夹杂着战术警惕、唏嘘旧情或滔天杀意的复杂情感溢出。</h6><p><u2>击杀彩蛋</u2></p>
+<h2 id="Execute-Target-击杀彩蛋"><a href="#Execute-Target-击杀彩蛋" class="headerlink" title="Execute Target (击杀彩蛋)"></a>Execute Target (击杀彩蛋)</h2><h6 id="角色亲手将彩蛋角色斩杀时触发。"><a href="#角色亲手将彩蛋角色斩杀时触发。" class="headerlink" title="角色亲手将彩蛋角色斩杀时触发。"></a>角色亲手将彩蛋角色斩杀时触发。</h6><h6 id="查阅双方角色的背景故事后，进行符合双方背景故事的一个处决宣言，作为长线故事在局内微观层面的短暂清算。"><a href="#查阅双方角色的背景故事后，进行符合双方背景故事的一个处决宣言，作为长线故事在局内微观层面的短暂清算。" class="headerlink" title="查阅双方角色的背景故事后，进行符合双方背景故事的一个处决宣言，作为长线故事在局内微观层面的短暂清算。"></a>查阅双方角色的背景故事后，进行符合双方背景故事的一个处决宣言，作为长线故事在局内微观层面的短暂清算。</h6><p><u2>高光时刻</u2></p>
+<h2 id="Celebrate-高光时刻"><a href="#Celebrate-高光时刻" class="headerlink" title="Celebrate (高光时刻)"></a>Celebrate (高光时刻)</h2><h6 id="角色完成暴走（Rampage）个人秀时触发。"><a href="#角色完成暴走（Rampage）个人秀时触发。" class="headerlink" title="角色完成暴走（Rampage）个人秀时触发。"></a>角色完成暴走（Rampage）个人秀时触发。</h6><h6 id="角色在聚光灯下达到情绪的最高峰，进行极致情绪释放的如神般的宣告。"><a href="#角色在聚光灯下达到情绪的最高峰，进行极致情绪释放的如神般的宣告。" class="headerlink" title="角色在聚光灯下达到情绪的最高峰，进行极致情绪释放的如神般的宣告。"></a>角色在聚光灯下达到情绪的最高峰，进行极致情绪释放的如神般的宣告。</h6><p><u2>阵亡</u2></p>
+<h2 id="Death-阵亡"><a href="#Death-阵亡" class="headerlink" title="Death (阵亡)"></a>Death (阵亡)</h2><h6 id="角色完成暴走（Rampage）个人秀时触发。-1"><a href="#角色完成暴走（Rampage）个人秀时触发。-1" class="headerlink" title="角色完成暴走（Rampage）个人秀时触发。"></a>角色完成暴走（Rampage）个人秀时触发。</h6><h6 id="角色的遗言。交代未竟的事业、对死亡的释然、或对敌人的诅咒。"><a href="#角色的遗言。交代未竟的事业、对死亡的释然、或对敌人的诅咒。" class="headerlink" title="角色的遗言。交代未竟的事业、对死亡的释然、或对敌人的诅咒。"></a>角色的遗言。交代未竟的事业、对死亡的释然、或对敌人的诅咒。</h6><p><u2>复活</u2></p>
+<h2 id="Respawn-复活"><a href="#Respawn-复活" class="headerlink" title="Respawn (复活)"></a>Respawn (复活)</h2><h6 id="角色因生命值（HP）归零并阵亡时触发。"><a href="#角色因生命值（HP）归零并阵亡时触发。" class="headerlink" title="角色因生命值（HP）归零并阵亡时触发。"></a>角色因生命值（HP）归零并阵亡时触发。</h6><h6 id="角色死亡中醒来，宣告归来，在经历上一次死亡后，如何消化了败北，准备以何种姿态重新校准接下来的走向"><a href="#角色死亡中醒来，宣告归来，在经历上一次死亡后，如何消化了败北，准备以何种姿态重新校准接下来的走向" class="headerlink" title="角色死亡中醒来，宣告归来，在经历上一次死亡后，如何消化了败北，准备以何种姿态重新校准接下来的走向"></a>角色死亡中醒来，宣告归来，在经历上一次死亡后，如何消化了败北，准备以何种姿态重新校准接下来的走向</h6><p><u2>买活</u2></p>
+<h2 id="Buyback-买活"><a href="#Buyback-买活" class="headerlink" title="Buyback (买活)"></a>Buyback (买活)</h2><h6 id="玩家在角色阵亡期间，消耗金币使角色在泉水瞬间复活时触发。"><a href="#玩家在角色阵亡期间，消耗金币使角色在泉水瞬间复活时触发。" class="headerlink" title="玩家在角色阵亡期间，消耗金币使角色在泉水瞬间复活时触发。"></a>玩家在角色阵亡期间，消耗金币使角色在泉水瞬间复活时触发。</h6><h6 id="一个戏剧张力点最满，战场仇恨最高的爆发点，将角色的自尊、野心、或破坏欲被推向了绝对的顶峰。用于明确告诉所有人：一个不计代价、砸碎生死规则的战力已经回归。"><a href="#一个戏剧张力点最满，战场仇恨最高的爆发点，将角色的自尊、野心、或破坏欲被推向了绝对的顶峰。用于明确告诉所有人：一个不计代价、砸碎生死规则的战力已经回归。" class="headerlink" title="一个戏剧张力点最满，战场仇恨最高的爆发点，将角色的自尊、野心、或破坏欲被推向了绝对的顶峰。用于明确告诉所有人：一个不计代价、砸碎生死规则的战力已经回归。"></a>一个戏剧张力点最满，战场仇恨最高的爆发点，将角色的自尊、野心、或破坏欲被推向了绝对的顶峰。用于明确告诉所有人：一个不计代价、砸碎生死规则的战力已经回归。</h6><p><u2>胜利</u2></p>
+<h2 id="Victory-胜利"><a href="#Victory-胜利" class="headerlink" title="Victory (胜利)"></a>Victory (胜利)</h2><h6 id="当敌方遗迹轰然碎裂，己方胜利的瞬间触发。"><a href="#当敌方遗迹轰然碎裂，己方胜利的瞬间触发。" class="headerlink" title="当敌方遗迹轰然碎裂，己方胜利的瞬间触发。"></a>当敌方遗迹轰然碎裂，己方胜利的瞬间触发。</h6><h6 id="禁止流于表面、空洞的局外欢呼，而是将其作为整场博弈的情绪终点，高调外化角色在世界观宿命下对胜利因果的优雅-宏大消解"><a href="#禁止流于表面、空洞的局外欢呼，而是将其作为整场博弈的情绪终点，高调外化角色在世界观宿命下对胜利因果的优雅-宏大消解" class="headerlink" title="禁止流于表面、空洞的局外欢呼，而是将其作为整场博弈的情绪终点，高调外化角色在世界观宿命下对胜利因果的优雅&#x2F;宏大消解"></a>禁止流于表面、空洞的局外欢呼，而是将其作为整场博弈的情绪终点，高调外化角色在世界观宿命下对胜利因果的优雅&#x2F;宏大消解</h6><p><u2>失败</u2></p>
+<h2 id="Defeat-失败"><a href="#Defeat-失败" class="headerlink" title="Defeat (失败)"></a>Defeat (失败)</h2><h6 id="当我方遗迹轰然碎裂，己方失败的瞬间触发。"><a href="#当我方遗迹轰然碎裂，己方失败的瞬间触发。" class="headerlink" title="当我方遗迹轰然碎裂，己方失败的瞬间触发。"></a>当我方遗迹轰然碎裂，己方失败的瞬间触发。</h6><h6 id="用以安抚玩家紧绷的神经，为整场戏剧写下悲壮的句号。"><a href="#用以安抚玩家紧绷的神经，为整场戏剧写下悲壮的句号。" class="headerlink" title="用以安抚玩家紧绷的神经，为整场戏剧写下悲壮的句号。"></a>用以安抚玩家紧绷的神经，为整场戏剧写下悲壮的句号。</h6><p><u1>战术与快捷轮盘</u1></p>
+<h1 id="Phase-III-Communications-Expressions-战术与快捷轮盘"><a href="#Phase-III-Communications-Expressions-战术与快捷轮盘" class="headerlink" title="Phase III: Communications &amp; Expressions (战术与快捷轮盘)"></a>Phase III: Communications &amp; Expressions (战术与快捷轮盘)</h1><h6 id="本阶段为玩家提供情感宣泄的代入工具。局内信号语音须做到绝对形式化，轮盘则代表玩家的纯粹情绪。"><a href="#本阶段为玩家提供情感宣泄的代入工具。局内信号语音须做到绝对形式化，轮盘则代表玩家的纯粹情绪。" class="headerlink" title="本阶段为玩家提供情感宣泄的代入工具。局内信号语音须做到绝对形式化，轮盘则代表玩家的纯粹情绪。"></a>本阶段为玩家提供情感宣泄的代入工具。局内信号语音须做到绝对形式化，轮盘则代表玩家的纯粹情绪。</h6><p><u2>推进</u2></p>
+<h2 id="Pushing-推进"><a href="#Pushing-推进" class="headerlink" title="Pushing (推进)"></a>Pushing (推进)</h2><h6 id="发起集结信号。"><a href="#发起集结信号。" class="headerlink" title="发起集结信号。"></a>发起集结信号。</h6><h6 id="带有强烈的号召力，强调“团队”、“向前”、“进攻”。"><a href="#带有强烈的号召力，强调“团队”、“向前”、“进攻”。" class="headerlink" title="带有强烈的号召力，强调“团队”、“向前”、“进攻”。"></a>带有强烈的号召力，强调“团队”、“向前”、“进攻”。</h6><p><u2>提示危险</u2></p>
+<h2 id="Danger-提示危险"><a href="#Danger-提示危险" class="headerlink" title="Danger (提示危险)"></a>Danger (提示危险)</h2><h6 id="发送Miss信号。"><a href="#发送Miss信号。" class="headerlink" title="发送Miss信号。"></a>发送Miss信号。</h6><h6 id="短促！警告！带有发现伏击时的低声警告，切忌拖泥带水。"><a href="#短促！警告！带有发现伏击时的低声警告，切忌拖泥带水。" class="headerlink" title="短促！警告！带有发现伏击时的低声警告，切忌拖泥带水。"></a>短促！警告！带有发现伏击时的低声警告，切忌拖泥带水。</h6><p><u2>请求支援</u2></p>
+<h2 id="Support-请求支援"><a href="#Support-请求支援" class="headerlink" title="Support (请求支援)"></a>Support (请求支援)</h2><h6 id="向队友发出求援信号。"><a href="#向队友发出求援信号。" class="headerlink" title="向队友发出求援信号。"></a>向队友发出求援信号。</h6><h6 id="表达需要助力，强调机会的转瞬即逝-根据角色的性格，强调利益，强调大局或强调自我尊严。"><a href="#表达需要助力，强调机会的转瞬即逝-根据角色的性格，强调利益，强调大局或强调自我尊严。" class="headerlink" title="表达需要助力，强调机会的转瞬即逝.根据角色的性格，强调利益，强调大局或强调自我尊严。"></a>表达需要助力，强调机会的转瞬即逝.根据角色的性格，强调利益，强调大局或强调自我尊严。</h6><p><u2>请求撤退</u2></p>
+<h2 id="Retreat-请求撤退"><a href="#Retreat-请求撤退" class="headerlink" title="Retreat (请求撤退)"></a>Retreat (请求撤退)</h2><h6 id="通知队友撤退-重整旗鼓。"><a href="#通知队友撤退-重整旗鼓。" class="headerlink" title="通知队友撤退&#x2F;重整旗鼓。"></a>通知队友撤退&#x2F;重整旗鼓。</h6><h6 id="否定当下的无谓纠缠。勒令队友即时止损，不要做无谓的牺牲。"><a href="#否定当下的无谓纠缠。勒令队友即时止损，不要做无谓的牺牲。" class="headerlink" title="否定当下的无谓纠缠。勒令队友即时止损，不要做无谓的牺牲。"></a>否定当下的无谓纠缠。勒令队友即时止损，不要做无谓的牺牲。</h6><p><u2>感谢</u2></p>
+<h2 id="Thank-Ally-感谢"><a href="#Thank-Ally-感谢" class="headerlink" title="Thank Ally (感谢)"></a>Thank Ally (感谢)</h2><h6 id="玩家主动发送感谢指令时，角色进行感谢的台词。"><a href="#玩家主动发送感谢指令时，角色进行感谢的台词。" class="headerlink" title="玩家主动发送感谢指令时，角色进行感谢的台词。"></a>玩家主动发送感谢指令时，角色进行感谢的台词。</h6><h6 id="角色如何对待“欠人情”这件事。自尊心强的角色会记下这笔账，傲慢的角色会当成理所当然，务实的角色会用“下次我救你一命”来两清。不要说“谢谢”两个字，除非这个角色从来不说。"><a href="#角色如何对待“欠人情”这件事。自尊心强的角色会记下这笔账，傲慢的角色会当成理所当然，务实的角色会用“下次我救你一命”来两清。不要说“谢谢”两个字，除非这个角色从来不说。" class="headerlink" title="角色如何对待“欠人情”这件事。自尊心强的角色会记下这笔账，傲慢的角色会当成理所当然，务实的角色会用“下次我救你一命”来两清。不要说“谢谢”两个字，除非这个角色从来不说。"></a>角色如何对待“欠人情”这件事。自尊心强的角色会记下这笔账，傲慢的角色会当成理所当然，务实的角色会用“下次我救你一命”来两清。不要说“谢谢”两个字，除非这个角色从来不说。</h6><p><u2>鼓励</u2></p>
+<h2 id="Encourage-鼓励"><a href="#Encourage-鼓励" class="headerlink" title="Encourage (鼓励)"></a>Encourage (鼓励)</h2><h6 id="玩家主动发送鼓励指令时，角色加油打气的台词。"><a href="#玩家主动发送鼓励指令时，角色加油打气的台词。" class="headerlink" title="玩家主动发送鼓励指令时，角色加油打气的台词。"></a>玩家主动发送鼓励指令时，角色加油打气的台词。</h6><h6 id="角色看不起失败，或者看不起放弃。不是安慰，是推一把。用他的人生信条去要求队友：战士的宿命、刺客的耐心、法师的意志。让这句话说出来之后，队友觉得不打赢就对不起他。"><a href="#角色看不起失败，或者看不起放弃。不是安慰，是推一把。用他的人生信条去要求队友：战士的宿命、刺客的耐心、法师的意志。让这句话说出来之后，队友觉得不打赢就对不起他。" class="headerlink" title="角色看不起失败，或者看不起放弃。不是安慰，是推一把。用他的人生信条去要求队友：战士的宿命、刺客的耐心、法师的意志。让这句话说出来之后，队友觉得不打赢就对不起他。"></a>角色看不起失败，或者看不起放弃。不是安慰，是推一把。用他的人生信条去要求队友：战士的宿命、刺客的耐心、法师的意志。让这句话说出来之后，队友觉得不打赢就对不起他。</h6><p><u2>垃圾话</u2></p>
+<h2 id="Taunt-垃圾话"><a href="#Taunt-垃圾话" class="headerlink" title="Taunt (垃圾话)"></a>Taunt (垃圾话)</h2><h6 id="玩家主动发送嘲讽指令时，角色用于激怒对手的台词。"><a href="#玩家主动发送嘲讽指令时，角色用于激怒对手的台词。" class="headerlink" title="玩家主动发送嘲讽指令时，角色用于激怒对手的台词。"></a>玩家主动发送嘲讽指令时，角色用于激怒对手的台词。</h6><h6 id="最刺痛的羞辱。不是骂脏话，是戳对方最在意的东西——实力、身份、过往的失败。用角色自己的优越感做武器，让对方听了想关语音。"><a href="#最刺痛的羞辱。不是骂脏话，是戳对方最在意的东西——实力、身份、过往的失败。用角色自己的优越感做武器，让对方听了想关语音。" class="headerlink" title="最刺痛的羞辱。不是骂脏话，是戳对方最在意的东西——实力、身份、过往的失败。用角色自己的优越感做武器，让对方听了想关语音。"></a>最刺痛的羞辱。不是骂脏话，是戳对方最在意的东西——实力、身份、过往的失败。用角色自己的优越感做武器，让对方听了想关语音。</h6><p><u2>致歉</u2></p>
+<h2 id="Apologize-致歉"><a href="#Apologize-致歉" class="headerlink" title="Apologize (致歉)"></a>Apologize (致歉)</h2><h6 id="玩家主动发送致歉指令时，角色用于表达歉意的台词。"><a href="#玩家主动发送致歉指令时，角色用于表达歉意的台词。" class="headerlink" title="玩家主动发送致歉指令时，角色用于表达歉意的台词。"></a>玩家主动发送致歉指令时，角色用于表达歉意的台词。</h6><h6 id="骄傲的人如何认错。嘴硬的人会说“我的失误我补回来”，偏执的人会怪情况、怪装备，就是不怪自己。真正的“对不起”很难从大多数角色嘴里听到，他们只会说“没有下次”。"><a href="#骄傲的人如何认错。嘴硬的人会说“我的失误我补回来”，偏执的人会怪情况、怪装备，就是不怪自己。真正的“对不起”很难从大多数角色嘴里听到，他们只会说“没有下次”。" class="headerlink" title="骄傲的人如何认错。嘴硬的人会说“我的失误我补回来”，偏执的人会怪情况、怪装备，就是不怪自己。真正的“对不起”很难从大多数角色嘴里听到，他们只会说“没有下次”。"></a>骄傲的人如何认错。嘴硬的人会说“我的失误我补回来”，偏执的人会怪情况、怪装备，就是不怪自己。真正的“对不起”很难从大多数角色嘴里听到，他们只会说“没有下次”。</h6><p><u2>悲伤</u2></p>
+<h2 id="Sorrow-悲伤"><a href="#Sorrow-悲伤" class="headerlink" title="Sorrow (悲伤)"></a>Sorrow (悲伤)</h2><h6 id="玩家主动发送悲伤指令时，角色用于表达无力感与悲伤的台词。"><a href="#玩家主动发送悲伤指令时，角色用于表达无力感与悲伤的台词。" class="headerlink" title="玩家主动发送悲伤指令时，角色用于表达无力感与悲伤的台词。"></a>玩家主动发送悲伤指令时，角色用于表达无力感与悲伤的台词。</h6><h6 id="角色怎么处理“输了”、“亏了”、“被坑了”的情绪。有的会沉默，有的会低吼，有的会用一句很颓的话承认现实。不要让角色哭，除非他是个会哭的设定。"><a href="#角色怎么处理“输了”、“亏了”、“被坑了”的情绪。有的会沉默，有的会低吼，有的会用一句很颓的话承认现实。不要让角色哭，除非他是个会哭的设定。" class="headerlink" title="角色怎么处理“输了”、“亏了”、“被坑了”的情绪。有的会沉默，有的会低吼，有的会用一句很颓的话承认现实。不要让角色哭，除非他是个会哭的设定。"></a>角色怎么处理“输了”、“亏了”、“被坑了”的情绪。有的会沉默，有的会低吼，有的会用一句很颓的话承认现实。不要让角色哭，除非他是个会哭的设定。</h6><p><u2>傲慢</u2></p>
+<h2 id="Arrogance-傲慢"><a href="#Arrogance-傲慢" class="headerlink" title="Arrogance (傲慢)"></a>Arrogance (傲慢)</h2><h6 id="玩家主动发送傲慢指令时，角色用于表达狂妄与自大的台词。"><a href="#玩家主动发送傲慢指令时，角色用于表达狂妄与自大的台词。" class="headerlink" title="玩家主动发送傲慢指令时，角色用于表达狂妄与自大的台词。"></a>玩家主动发送傲慢指令时，角色用于表达狂妄与自大的台词。</h6><h6 id="角色已经认定自己赢了。不是炫耀，是陈述一个在他看来的事实。让这句话说出来之后，场上所有人都觉得他在蔑视一切，包括自己的队友。"><a href="#角色已经认定自己赢了。不是炫耀，是陈述一个在他看来的事实。让这句话说出来之后，场上所有人都觉得他在蔑视一切，包括自己的队友。" class="headerlink" title="角色已经认定自己赢了。不是炫耀，是陈述一个在他看来的事实。让这句话说出来之后，场上所有人都觉得他在蔑视一切，包括自己的队友。"></a>角色已经认定自己赢了。不是炫耀，是陈述一个在他看来的事实。让这句话说出来之后，场上所有人都觉得他在蔑视一切，包括自己的队友。</h6><p><u2>决意</u2></p>
+<h2 id="Resolve-决意"><a href="#Resolve-决意" class="headerlink" title="Resolve (决意)"></a>Resolve (决意)</h2><h6 id="玩家主动发送决意指令时，角色准备开启决战的坚定誓言。"><a href="#玩家主动发送决意指令时，角色准备开启决战的坚定誓言。" class="headerlink" title="玩家主动发送决意指令时，角色准备开启决战的坚定誓言。"></a>玩家主动发送决意指令时，角色准备开启决战的坚定誓言。</h6><h6 id="角色说“这一波必须打”的那一刻。不留退路，不预设失败。这句话是一个标记点，告诉所有人：从这里开始，不回头了。"><a href="#角色说“这一波必须打”的那一刻。不留退路，不预设失败。这句话是一个标记点，告诉所有人：从这里开始，不回头了。" class="headerlink" title="角色说“这一波必须打”的那一刻。不留退路，不预设失败。这句话是一个标记点，告诉所有人：从这里开始，不回头了。"></a>角色说“这一波必须打”的那一刻。不留退路，不预设失败。这句话是一个标记点，告诉所有人：从这里开始，不回头了。</h6><p><u2>挫败</u2></p>
+<h2 id="Frustration-挫败"><a href="#Frustration-挫败" class="headerlink" title="Frustration (挫败)"></a>Frustration (挫败)</h2><h6 id="玩家主动发送挫败指令时，角色用于表达抱怨与沮丧的台词。"><a href="#玩家主动发送挫败指令时，角色用于表达抱怨与沮丧的台词。" class="headerlink" title="玩家主动发送挫败指令时，角色用于表达抱怨与沮丧的台词。"></a>玩家主动发送挫败指令时，角色用于表达抱怨与沮丧的台词。</h6><h6 id="角色被压制时的真实反应。暴躁的会抱怨队友或对手，阴沉的会压低声音说丧气话，乐观的会自我解嘲。允许他短暂地不像个角色，但不能丢掉骨子里的固执。"><a href="#角色被压制时的真实反应。暴躁的会抱怨队友或对手，阴沉的会压低声音说丧气话，乐观的会自我解嘲。允许他短暂地不像个角色，但不能丢掉骨子里的固执。" class="headerlink" title="角色被压制时的真实反应。暴躁的会抱怨队友或对手，阴沉的会压低声音说丧气话，乐观的会自我解嘲。允许他短暂地不像个角色，但不能丢掉骨子里的固执。"></a>角色被压制时的真实反应。暴躁的会抱怨队友或对手，阴沉的会压低声音说丧气话，乐观的会自我解嘲。允许他短暂地不像个角色，但不能丢掉骨子里的固执。</h6><p><u2>厌恶</u2></p>
+<h2 id="Disgust-厌恶"><a href="#Disgust-厌恶" class="headerlink" title="Disgust (厌恶)"></a>Disgust (厌恶)</h2><h6 id="玩家主动发送厌恶指令时，角色用于表达嫌弃与恶心的台词。"><a href="#玩家主动发送厌恶指令时，角色用于表达嫌弃与恶心的台词。" class="headerlink" title="玩家主动发送厌恶指令时，角色用于表达嫌弃与恶心的台词。"></a>玩家主动发送厌恶指令时，角色用于表达嫌弃与恶心的台词。</h6><h6 id="角色被恶心到的时候。可以用他最讨厌的东西做比喻——腐烂、虫子、背叛、怯懦。让对方听起来不是被骂，而是被嫌弃到骨子里。"><a href="#角色被恶心到的时候。可以用他最讨厌的东西做比喻——腐烂、虫子、背叛、怯懦。让对方听起来不是被骂，而是被嫌弃到骨子里。" class="headerlink" title="角色被恶心到的时候。可以用他最讨厌的东西做比喻——腐烂、虫子、背叛、怯懦。让对方听起来不是被骂，而是被嫌弃到骨子里。"></a>角色被恶心到的时候。可以用他最讨厌的东西做比喻——腐烂、虫子、背叛、怯懦。让对方听起来不是被骂，而是被嫌弃到骨子里。</h6><p><u2>恐惧</u2></p>
+<h2 id="Fear-恐惧"><a href="#Fear-恐惧" class="headerlink" title="Fear (恐惧)"></a>Fear (恐惧)</h2><h6 id="玩家主动发送恐惧指令时，角色用于表达惊慌与战栗的台词。"><a href="#玩家主动发送恐惧指令时，角色用于表达惊慌与战栗的台词。" class="headerlink" title="玩家主动发送恐惧指令时，角色用于表达惊慌与战栗的台词。"></a>玩家主动发送恐惧指令时，角色用于表达惊慌与战栗的台词。</h6><h6 id="角色害怕的瞬间。大多数角色不会轻易喊怕，所以这句话要珍贵。只有遇到真正的天敌、触发旧伤、或者面对不该出现在战场上的东西时，才露出这一面。"><a href="#角色害怕的瞬间。大多数角色不会轻易喊怕，所以这句话要珍贵。只有遇到真正的天敌、触发旧伤、或者面对不该出现在战场上的东西时，才露出这一面。" class="headerlink" title="角色害怕的瞬间。大多数角色不会轻易喊怕，所以这句话要珍贵。只有遇到真正的天敌、触发旧伤、或者面对不该出现在战场上的东西时，才露出这一面。"></a>角色害怕的瞬间。大多数角色不会轻易喊怕，所以这句话要珍贵。只有遇到真正的天敌、触发旧伤、或者面对不该出现在战场上的东西时，才露出这一面。</h6><p><u2>惊讶</u2></p>
+<h2 id="Surprise-惊讶"><a href="#Surprise-惊讶" class="headerlink" title="Surprise (惊讶)"></a>Surprise (惊讶)</h2><h6 id="玩家主动发送惊讶指令时，角色用于表达惊叹的台词。"><a href="#玩家主动发送惊讶指令时，角色用于表达惊叹的台词。" class="headerlink" title="玩家主动发送惊讶指令时，角色用于表达惊叹的台词。"></a>玩家主动发送惊讶指令时，角色用于表达惊叹的台词。</h6><h6 id="角色被打脸或看到意外场面时的反应。可以是承认对手有两下子，也可以是质疑这怎么可能发生。用他的认知去衡量眼前的“不正常”。"><a href="#角色被打脸或看到意外场面时的反应。可以是承认对手有两下子，也可以是质疑这怎么可能发生。用他的认知去衡量眼前的“不正常”。" class="headerlink" title="角色被打脸或看到意外场面时的反应。可以是承认对手有两下子，也可以是质疑这怎么可能发生。用他的认知去衡量眼前的“不正常”。"></a>角色被打脸或看到意外场面时的反应。可以是承认对手有两下子，也可以是质疑这怎么可能发生。用他的认知去衡量眼前的“不正常”。</h6><p><u2>疑问</u2></p>
+<h2 id="Question-疑问"><a href="#Question-疑问" class="headerlink" title="Question (疑问)"></a>Question (疑问)</h2><h6 id="玩家主动发送疑问指令时，角色用于表达疑惑的台词。"><a href="#玩家主动发送疑问指令时，角色用于表达疑惑的台词。" class="headerlink" title="玩家主动发送疑问指令时，角色用于表达疑惑的台词。"></a>玩家主动发送疑问指令时，角色用于表达疑惑的台词。</h6><h6 id="角色不理解的时候。不是真的提问，是用他的逻辑去质疑一个他看不懂的决定或场面。潜台词经常是“你在干什么”、“这怎么可能”。"><a href="#角色不理解的时候。不是真的提问，是用他的逻辑去质疑一个他看不懂的决定或场面。潜台词经常是“你在干什么”、“这怎么可能”。" class="headerlink" title="角色不理解的时候。不是真的提问，是用他的逻辑去质疑一个他看不懂的决定或场面。潜台词经常是“你在干什么”、“这怎么可能”。"></a>角色不理解的时候。不是真的提问，是用他的逻辑去质疑一个他看不懂的决定或场面。潜台词经常是“你在干什么”、“这怎么可能”。</h6><p><u2>应战</u2></p>
+<h2 id="Engage-应战"><a href="#Engage-应战" class="headerlink" title="Engage (应战)"></a>Engage (应战)</h2><h6 id="玩家主动发送应战指令时，角色向敌人发出挑战的台词。"><a href="#玩家主动发送应战指令时，角色向敌人发出挑战的台词。" class="headerlink" title="玩家主动发送应战指令时，角色向敌人发出挑战的台词。"></a>玩家主动发送应战指令时，角色向敌人发出挑战的台词。</h6><h6 id="角色说“我来”、“朝我这边打”、“你的对手是我”。把对方的注意力拉到自己身上，带着决死的姿态。这句话是用来开团点火的那一声。"><a href="#角色说“我来”、“朝我这边打”、“你的对手是我”。把对方的注意力拉到自己身上，带着决死的姿态。这句话是用来开团点火的那一声。" class="headerlink" title="角色说“我来”、“朝我这边打”、“你的对手是我”。把对方的注意力拉到自己身上，带着决死的姿态。这句话是用来开团点火的那一声。"></a>角色说“我来”、“朝我这边打”、“你的对手是我”。把对方的注意力拉到自己身上，带着决死的姿态。这句话是用来开团点火的那一声。</h6>
+        
+        
+        
+        
+        
+
+
+        
+    </article>
+</div>
+<div class="dohna-toc-container" id="dohna-toc">
+    <div class="toc-header">
+        <span class="toc-title">TOC</span>
+    </div>
+    <div class="toc-body" id="toc-tree">
+    </div>
+</div>
+
+<button id="toc-mobile-toggle" class="dohna-toc-fab">TOC</button>
+
+<script>
+    (function initTOC() {
+        const tocTree = document.getElementById('toc-tree');
+        const content = document.querySelector('.post-content');
+        const tocContainer = document.getElementById('dohna-toc');
+        const mobileToggle = document.getElementById('toc-mobile-toggle');
+
+        if (!tocTree || !content) return;
+
+        // 获取所有自定义的标题标签 u1, u2, u3 (保持你的自定义实现不变)
+        const headers = content.querySelectorAll('u1, u2, u3');
+        if (headers.length === 0) {
+            if(tocContainer) tocContainer.style.display = 'none';
+            if(mobileToggle) mobileToggle.style.display = 'none';
+            return;
+        }
+
+        let rootUl = document.createElement('ul');
+        rootUl.className = 'toc-list level-1';
+        let currentParent = { 1: rootUl, 2: null, 3: null };
+        let lastItem = { 1: null, 2: null, 3: null };
+
+        headers.forEach((h, i) => {
+            // 分配锚点 ID 以便点击跳转
+            if (!h.id) h.id = 'dh-heading-' + i;
+            const level = parseInt(h.tagName.substring(1));
+
+            const li = document.createElement('li');
+            li.className = 'toc-item';
+
+            const linkWrapper = document.createElement('div');
+            linkWrapper.className = 'toc-link-wrapper';
+
+            const icon = document.createElement('span');
+            icon.className = 'toc-icon';
+            icon.textContent = ' '; // 没有子层级时的占位符
+
+            const link = document.createElement('a');
+            link.href = '#' + h.id;
+            link.className = 'toc-link';
+            link.textContent = h.textContent;
+
+            linkWrapper.appendChild(icon);
+            linkWrapper.appendChild(link);
+            li.appendChild(linkWrapper);
+
+            // 构建树状包含逻辑
+            if (level === 1) {
+                currentParent[1].appendChild(li);
+                lastItem[1] = li;
+                currentParent[2] = null;
+                currentParent[3] = null;
+            }
+            else if (level === 2) {
+                if (!currentParent[2]) {
+                    currentParent[2] = document.createElement('ul');
+                    currentParent[2].className = 'toc-list level-2 tree-sub';
+                    if (lastItem[1]) {
+                        lastItem[1].appendChild(currentParent[2]);
+                        lastItem[1].querySelector('.toc-icon').textContent = '[+]'; 
+                        lastItem[1].classList.add('has-child');
+                    } else {
+                        currentParent[1].appendChild(currentParent[2]);
+                    }
+                }
+                currentParent[2].appendChild(li);
+                lastItem[2] = li;
+                currentParent[3] = null;
+            }
+            else if (level === 3) {
+                if (!currentParent[3]) {
+                    currentParent[3] = document.createElement('ul');
+                    currentParent[3].className = 'toc-list level-3 tree-sub';
+                    if (lastItem[2]) {
+                        lastItem[2].appendChild(currentParent[3]);
+                        lastItem[2].querySelector('.toc-icon').textContent = '[-]';
+                        lastItem[2].classList.add('has-child', 'open');
+                    } else if (currentParent[2]) {
+                        currentParent[2].appendChild(currentParent[3]);
+                    }
+                }
+                if(currentParent[3]) currentParent[3].appendChild(li);
+            }
+        });
+
+        tocTree.appendChild(rootUl);
+
+        // 绑定 [+] / [-] 的展开折叠事件
+        tocTree.querySelectorAll('.toc-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                const li = icon.closest('.toc-item');
+                if (li.classList.contains('has-child')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    li.classList.toggle('open');
+                    icon.textContent = li.classList.contains('open') ? '[-]' : '[+]';
+                }
+            });
+        });
+
+        // 移动端菜单切换逻辑
+        const mobileClose = document.getElementById('toc-mobile-close');
+        const mobileOverlay = document.getElementById('mobileOverlay'); // 获取全局遮罩
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                tocContainer.classList.add('show');
+                if(mobileOverlay) mobileOverlay.classList.add('active'); // 呼出遮罩
+            });
+        }
+        const closeToc = () => {
+            tocContainer.classList.remove('show');
+            if(mobileOverlay) mobileOverlay.classList.remove('active'); // 隐藏遮罩
+        };
+
+        if (mobileClose) {
+            mobileClose.addEventListener('click', closeToc);
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 850 && tocContainer.classList.contains('show')) {
+                if (!tocContainer.contains(e.target) && e.target !== mobileToggle) {
+                    closeToc();
+                }
+            }
+        });
+    })();
+</script>
+
+
+        </div>
+    </main>
+
+</div>
+<script src="/js/celestial-bg.js"></script>
+
+<script>
+    (function initDohnaAuthEngine() {
+        const TARGET_HASH = 'e3803a6b63c7bbf3d1595457d9acca1012acfcdb70ef47fb7a45d2223ba5cbcf';
+
+        const overlay = document.getElementById('dh-auth-overlay');
+        if (!overlay) return;
+        if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+            overlay.remove();
+            return;
+        }
+
+        const input = document.getElementById('dh-auth-input');
+        const btn = document.getElementById('dh-auth-btn');
+        const err = document.getElementById('dh-auth-err');
+        const authBox = document.querySelector('.dh-auth-box');
+        const canvas = document.getElementById('dh-auth-canvas');
+
+        const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
+        document.body.style.overflow = 'hidden';
+
+        overlay.style.backgroundColor = 'rgba(6, 6, 9, 1.0)';
+        setTimeout(() => {
+            overlay.style.transition = 'background-color 0.4s cubic-bezier(0.19, 1, 0.22, 1)';
+        }, 50);
+
+        const GLYPH_MATRIX = [
+            [0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 1, 1, 1, 1, 0, 0, 0]
+        ];
+        const GLYPH_ROWS = GLYPH_MATRIX.length;
+        const GLYPH_COLS = GLYPH_MATRIX[0].length;
+
+        let particles = [];
+        let animationFrameId;
+        let systemState = 'LIQUID';
+        let cWidth = window.innerWidth;
+        let cHeight = window.innerHeight;
+        let lastTime = performance.now();
+
+        const mouse = { x: -1000, y: -1000 };
+        const forceField = { x: -1000, y: -1000, active: false, power: 0 };
+        let isMouseDown = false;
+
+        overlay.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        overlay.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; isMouseDown = false; });
+        overlay.addEventListener('mousedown', () => isMouseDown = true);
+        window.addEventListener('mouseup', () => isMouseDown = false);
+
+        // 多娜多娜核心霓虹色系
+        const COLOR_POOL = ['#FF2A6D', '#05D9E8', '#FFC200'];
+        const COLOR_POOL_LEN = COLOR_POOL.length;
+
+        const COS_TABLE = [], SIN_TABLE = [];
+        for (let i = 0; i < 6; i++) {
+            COS_TABLE.push(Math.cos((Math.PI / 3) * i));
+            SIN_TABLE.push(Math.sin((Math.PI / 3) * i));
+        }
+
+        const easeInOutCubic = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+        const easeOutQuad = x => 1 - (1 - x) * (1 - x);
+
+        class PhaseParticle {
+            constructor(baseX, baseY, radius, r, c) {
+                this.baseX = baseX;
+                this.baseY = baseY;
+                this.x = baseX + (Math.random() - 0.5) * 150;
+                this.y = baseY + (Math.random() - 0.5) * 150;
+                this.vx = 0;
+                this.vy = 0;
+                this.radius = radius;
+
+                this.baseColor = COLOR_POOL[Math.floor(Math.random() * COLOR_POOL_LEN)];
+                this.color = this.baseColor;
+                this.altColor = Math.random() > 0.5 ? '#FFFFFF' : '#000000';
+
+                // 抛弃透明度衰减，采用相位硬切
+                this.phase = Math.random() * Math.PI * 2;
+                this.blinkOffset = Math.random();
+
+                this.isGlyph = false;
+                this.angle = 0;
+                this.vAngle = 0;
+
+                this.crystallizeDelay = Math.random() * 12 + (baseX % 10);
+                this.crystallizeTime = 0;
+                this.crystallizeProgress = 0;
+                this.isCrystallized = false;
+
+                this.revealDelay = Math.random() * 8 + (this.isGlyph ? 0 : 5);
+                this.revealTime = 0;
+                this.revealProgress = 0;
+                this.isRevealed = false;
+            }
+
+            update(dt) {
+                const timeModifier = Math.min(dt / 16.666, 2.5);
+
+                if (systemState === 'SUCCESS_SHATTER') {
+                    // 碎片炸出屏幕的过程
+                    this.x += this.vx * timeModifier;
+                    this.y += this.vy * timeModifier;
+                    this.vy += 0.45 * timeModifier;
+                    this.vx *= Math.pow(0.982, timeModifier);
+                    this.vy *= Math.pow(0.982, timeModifier);
+                    this.angle += this.vAngle * timeModifier;
+                    // 碎片可以稍微淡出以防遮挡，因为底层页面已经可见
+                    this.phase += 0.1 * timeModifier;
+                    return;
+                }
+
+                let kSpring = 0.08;
+                let cFriction = 0.65;
+                let noise = 1.2;
+
+                switch (systemState) {
+                    case 'SUCCESS_ALIGN':
+                        kSpring = 0.75; cFriction = 0.25; noise = 0; break;
+                    case 'SUCCESS_CRYSTALLIZE':
+                        kSpring = 0.95; cFriction = 0.12; noise = 0;
+                        if (this.crystallizeDelay > 0) {
+                            this.crystallizeDelay -= timeModifier;
+                        } else if (this.crystallizeTime < 1.0) {
+                            this.crystallizeTime += 0.05 * timeModifier;
+                            if (this.crystallizeTime >= 1.0) {
+                                this.crystallizeTime = 1.0;
+                                this.isCrystallized = true;
+                            }
+                            this.crystallizeProgress = easeInOutCubic(this.crystallizeTime);
+                        }
+                        break;
+                    case 'SUCCESS_REVEAL':
+                        kSpring = 0.95; cFriction = 0.1; noise = 0;
+                        this.crystallizeProgress = 1.0;
+                        this.isCrystallized = true;
+                        if (this.revealDelay > 0) {
+                            this.revealDelay -= timeModifier;
+                        } else if (this.revealTime < 1.0) {
+                            this.revealTime += 0.06 * timeModifier;
+                            if (this.revealTime >= 1.0) {
+                                this.revealTime = 1.0;
+                                this.isRevealed = true;
+                            }
+                            this.revealProgress = easeOutQuad(this.revealTime);
+                        }
+                        break;
+                    case 'ALARM_GAS':
+                        // 报警状态：急剧的布朗噪声，强力顿挫摩擦感
+                        kSpring = 0.005; cFriction = 0.82; noise = 18.0; break;
+                    case 'DECRYPTING':
+                        kSpring = 0.008; cFriction = 0.92; noise = 2.5; break;
+                }
+
+                this.vx += (this.baseX - this.x) * kSpring * timeModifier;
+                this.vy += (this.baseY - this.y) * kSpring * timeModifier;
+
+                if ((systemState === 'LIQUID' || systemState === 'DECRYPTING') && mouse.x !== -1000) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                    if (isMouseDown && dist < 300) {
+                        const pull = (300 - dist) * 0.0015;
+                        this.vx += dx * pull * timeModifier;
+                        this.vy += dy * pull * timeModifier;
+                    } else if (dist < 150) {
+                        const push = (150 - dist) * 0.025;
+                        this.vx -= dx * push * timeModifier;
+                        this.vy -= dy * push * timeModifier;
+                    }
+                }
+
+                if (forceField.active) {
+                    const dx = forceField.x - this.x;
+                    const dy = forceField.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                    if (dist < 300) {
+                        const force = (300 - dist) * forceField.power * timeModifier;
+                        this.vx += (dx / dist) * force;
+                        this.vy += (dy / dist) * force;
+                    }
+                }
+
+                this.vx += (Math.random() - 0.5) * noise * timeModifier;
+                this.vy += (Math.random() - 0.5) * noise * timeModifier;
+                this.vx *= Math.pow(cFriction, timeModifier);
+                this.vy *= Math.pow(cFriction, timeModifier);
+                this.x += this.vx * timeModifier;
+                this.y += this.vy * timeModifier;
+
+                if (systemState === 'ALARM_GAS') {
+                    const r = this.radius;
+                    if (this.x < r) { this.x = r; this.vx *= -1; }
+                    if (this.x > cWidth - r) { this.x = cWidth - r; this.vx *= -1; }
+                    if (this.y < r) { this.y = r; this.vy *= -1; }
+                    if (this.y > cHeight - r) { this.y = cHeight - r; this.vy *= -1; }
+                }
+
+                this.phase += 0.045 * timeModifier;
+            }
+
+            draw(ctx) {
+                let cx = this.x, cy = this.y, baseR = this.radius;
+
+                // 报警状态下的暴力错位切割 (Glitch offset)
+                if (systemState === 'ALARM_GAS' && Math.random() > 0.7) {
+                    cx += (Math.random() * 20 - 10);
+                    cy += (Math.random() * 20 - 10);
+                }
+
+                let needsTransform = (systemState === 'SUCCESS_SHATTER' && this.angle !== 0);
+                if (needsTransform) {
+                    ctx.save();
+                    ctx.translate(cx, cy);
+                    ctx.rotate(this.angle);
+                    cx = 0; cy = 0;
+                }
+
+                const drawHexPath = (radius) => {
+                    ctx.beginPath();
+                    ctx.moveTo(cx + radius * COS_TABLE[0], cy + radius * SIN_TABLE[0]);
+                    for (let i = 1; i < 6; i++) {
+                        ctx.lineTo(cx + radius * COS_TABLE[i], cy + radius * SIN_TABLE[i]);
+                    }
+                    ctx.closePath();
+                };
+
+                // ===== 1. 常规怠速态 / 解码态 (多娜多娜极简波普线框) =====
+                if (systemState === 'LIQUID' || systemState === 'DECRYPTING' || systemState === 'SUCCESS_ALIGN') {
+                    ctx.globalCompositeOperation = 'source-over';
+
+                    // 1. 底层纯黑遮罩：保证几何图形边缘绝对锋利，没有重叠透视
+                    drawHexPath(baseR);
+                    ctx.fillStyle = '#060609';
+                    ctx.fill();
+
+                    // 降低频率，让波浪更舒缓，配合规律化的 blinkOffset
+                    const pulse = Math.sin(this.phase * 0.2 + this.blinkOffset * Math.PI * 2);
+
+                    // 提高阈值到 0.6，减少高亮块的密集度，让画面有留白
+                    if (pulse > 0.6) {
+                        // 【波普风块面】：错位的高亮底色 + 极粗的黑色轮廓
+
+                        // 绘制高亮底色（稍微向左下错位，营造印刷错位感）
+                        ctx.save();
+                        ctx.translate(-2, 2);
+                        drawHexPath(baseR);
+                        ctx.fillStyle = this.baseColor;
+                        ctx.fill();
+                        ctx.restore();
+
+                        // 绘制主位黑底，覆盖错位底色，形成月牙状的高光边缘
+                        drawHexPath(baseR);
+                        ctx.fillStyle = '#000000';
+                        ctx.fill();
+
+                        // 内部填充一个稍小的亮色蜂巢，体现工业切割感
+                        drawHexPath(baseR * 0.75);
+                        ctx.fillStyle = this.baseColor;
+                        ctx.fill();
+
+                    } else if (pulse < -0.85) {
+                        // 【暴走准星】：放弃原本温柔的细线，改用粗暴的加号
+                        ctx.beginPath();
+                        // 刻意让十字准星不对称，突破蜂巢边界
+                        ctx.moveTo(cx - baseR * 0.8, cy);
+                        ctx.lineTo(cx + baseR * 1.2, cy);
+                        ctx.moveTo(cx, cy - baseR * 1.2);
+                        ctx.lineTo(cx, cy + baseR * 0.6);
+                        ctx.strokeStyle = this.altColor;
+                        ctx.lineWidth = 4.0; // 加粗
+                        ctx.stroke();
+
+                    } else {
+                        // 【常规怠速】：加粗描边，展现多娜多娜独特的粗犷 UI 特征
+                        drawHexPath(baseR);
+                        ctx.strokeStyle = this.baseColor;
+                        ctx.lineWidth = 3.5; // 从 2.0 加粗到 3.5
+                        ctx.stroke();
+                    }
+
+                    // ===== 2. 成功结晶/破碎态 (无透明度纯色块面切割) =====
+                } else if (systemState === 'SUCCESS_CRYSTALLIZE' || systemState === 'SUCCESS_REVEAL' || systemState === 'SUCCESS_SHATTER') {
+                    let cp = this.crystallizeProgress;
+                    let expandedR = baseR + (cp > 0.8 ? 2.5 : 0);
+
+                    if (cp < 1.0 && systemState !== 'SUCCESS_SHATTER') {
+                        drawHexPath(baseR);
+                        ctx.fillStyle = '#060609';
+                        ctx.fill();
+                        ctx.strokeStyle = this.color;
+                        ctx.lineWidth = 2.0;
+                        ctx.stroke();
+                    }
+
+                    if (cp > 0.1) {
+                        ctx.save();
+                        ctx.globalCompositeOperation = 'source-over';
+
+                        if (systemState === 'SUCCESS_SHATTER') {
+                            ctx.globalAlpha = Math.max(0, 1.0 - (this.phase % 1.0) * 0.5); // 碎片略微闪烁淡出
+                        }
+
+                        // 底色填充：D区全黑，周边全彩
+                        drawHexPath(expandedR);
+                        ctx.fillStyle = this.isGlyph ? '#000000' : this.baseColor;
+                        ctx.fill();
+
+                        // 几何色块锐利切割
+                        ctx.beginPath();
+                        ctx.moveTo(cx, cy);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[3], cy + expandedR * SIN_TABLE[3]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[4], cy + expandedR * SIN_TABLE[4]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[5], cy + expandedR * SIN_TABLE[5]);
+                        ctx.closePath();
+                        ctx.fillStyle = this.isGlyph ? this.baseColor : '#000000';
+                        ctx.fill();
+
+                        ctx.beginPath();
+                        ctx.moveTo(cx + expandedR * COS_TABLE[1], cy + expandedR * SIN_TABLE[1]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[4], cy + expandedR * SIN_TABLE[4]);
+                        ctx.strokeStyle = this.altColor;
+                        ctx.lineWidth = 3.5;
+                        ctx.stroke();
+
+                        // 工业极粗黑边
+                        drawHexPath(expandedR);
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 4.5;
+                        ctx.stroke();
+
+                        ctx.restore();
+                    }
+
+                    if (systemState === 'SUCCESS_REVEAL' && this.isGlyph && this.revealProgress > 0) {
+                        let holeRadius = expandedR * this.revealProgress;
+                        ctx.save();
+                        ctx.globalCompositeOperation = 'destination-out';
+                        drawHexPath(holeRadius);
+                        ctx.fillStyle = 'rgba(0,0,0,1.0)';
+                        ctx.fill();
+                        ctx.restore();
+
+                        ctx.save();
+                        drawHexPath(holeRadius);
+                        ctx.strokeStyle = this.altColor === '#FFFFFF' ? '#05D9E8' : '#FF2A6D';
+                        ctx.lineWidth = 4.0;
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+
+                    // ===== 3. 失败报警态 (暴力的红黑崩溃与警示条纹) =====
+                } else if (systemState === 'ALARM_GAS') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    drawHexPath(baseR);
+
+                    if (Math.random() > 0.5) {
+                        // 红底黑边
+                        ctx.fillStyle = '#FF2A6D';
+                        ctx.fill();
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 4.0;
+                        ctx.stroke();
+                    } else {
+                        // 黑底红边
+                        ctx.fillStyle = '#000000';
+                        ctx.fill();
+                        ctx.strokeStyle = '#FF2A6D';
+                        ctx.lineWidth = 3.5;
+                        ctx.stroke();
+
+                        // 随机绘制危险警示黄黑斑马线
+                        if (Math.random() > 0.7) {
+                            ctx.beginPath();
+                            ctx.moveTo(cx - baseR * 0.8, cy - baseR * 0.4);
+                            ctx.lineTo(cx + baseR * 0.8, cy + baseR * 0.4);
+                            ctx.strokeStyle = '#FFC200';
+                            ctx.lineWidth = 5.0;
+                            ctx.stroke();
+                        }
+                    }
+
+                    // 局部屏幕撕裂切片 (Chromatic/Glitch Slicing)
+                    if (Math.random() > 0.9) {
+                        ctx.beginPath();
+                        ctx.rect(cx - baseR, cy - baseR * 0.2, baseR * 2, baseR * 0.4);
+                        ctx.fillStyle = '#05D9E8'; // 青色色差错位
+                        ctx.fill();
+                    }
+                }
+
+                if (needsTransform) ctx.restore();
+            }
+        }
+
+        function initPhysicsGrid() {
+            cWidth = window.innerWidth;
+            cHeight = window.innerHeight;
+            canvas.width = cWidth;
+            canvas.height = cHeight;
+
+            const hexR = 36;
+            const hexW = hexR * Math.sqrt(3);
+            const hexH = hexR * 2;
+            const rowH = hexH * 0.75;
+            const cols = Math.ceil(cWidth / hexW) + 2;
+            const rows = Math.ceil(cHeight / rowH) + 2;
+
+            const centerRow = Math.floor(rows / 2);
+            const centerCol = Math.floor(cols / 2);
+            const rStart = centerRow - Math.floor(GLYPH_ROWS / 2);
+            const cStart = centerCol - Math.floor(GLYPH_COLS / 2);
+
+            particles = [];
+            let r = -1;
+            const CHUNK_SIZE = 6;
+
+            function chunkAllocate() {
+                const maxRow = Math.min(r + CHUNK_SIZE, rows);
+                for (; r < maxRow; r++) {
+                    for (let c = -1; c < cols; c++) {
+                        const x = c * hexW + (r % 2 === 0 ? hexW / 2 : 0);
+                        const y = r * rowH;
+
+                        const p = new PhaseParticle(x, y, hexR - 1.5, r, c);
+                        if (r >= rStart && r < rStart + GLYPH_ROWS && c >= cStart && c < cStart + GLYPH_COLS) {
+                            if (GLYPH_MATRIX[r - rStart][c - cStart] === 1) p.isGlyph = true;
+                        }
+                        particles.push(p);
+                    }
+                }
+                if (r < rows) {
+                    requestAnimationFrame(chunkAllocate);
+                }
+            }
+            chunkAllocate();
+        }
+
+        function drawFrame(now) {
+            const dt = now - lastTime;
+            lastTime = now;
+
+            ctx.clearRect(0, 0, cWidth, cHeight);
+            const len = particles.length;
+            for (let i = 0; i < len; i++) {
+                particles[i].update(dt);
+                particles[i].draw(ctx);
+            }
+
+            animationFrameId = requestAnimationFrame(drawFrame);
+        }
+
+        setTimeout(() => {
+            initPhysicsGrid();
+            lastTime = performance.now();
+            animationFrameId = requestAnimationFrame(drawFrame);
+        }, 80);
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initPhysicsGrid, 200);
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') return;
+
+            const rect = input.getBoundingClientRect();
+            const cursorOffsetX = Math.min(input.value.length * 13, rect.width - 20);
+
+            forceField.x = rect.left + cursorOffsetX;
+            forceField.y = rect.top + (rect.height / 2);
+            forceField.active = true;
+
+            forceField.power = 40.0;
+            setTimeout(() => { forceField.power = -25.0; }, 40);
+            setTimeout(() => { forceField.active = false; }, 120);
+
+            authBox.style.transform = `skewX(-4deg) translate3d(${(Math.random()-0.5)*6}px, ${(Math.random()-0.5)*6}px, 0)`;
+            setTimeout(() => {
+                if(systemState === 'LIQUID' || systemState === 'DECRYPTING') {
+                    authBox.style.transform = 'skewX(-4deg) translate3d(0,0,0)';
+                }
+            }, 30);
+        });
+
+        async function verifyKey() {
+            const key = input.value.trim();
+            if (!key || btn.style.pointerEvents === 'none') return;
+
+            btn.style.pointerEvents = 'none';
+            btn.querySelector('.btn-txt').innerText = 'DECRYPTING...';
+            systemState = 'DECRYPTING';
+
+            let simInterval = setInterval(() => {
+                input.value = Math.random().toString(36).substring(2, 10).toUpperCase();
+            }, 40);
+
+            setTimeout(async () => {
+                clearInterval(simInterval);
+                input.value = key;
+
+                try {
+                    const buffer = new TextEncoder().encode(key);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const currentHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                    if (currentHash === TARGET_HASH) {
+                        overlay.classList.add('sys-success');
+                        err.innerText = '>>> DECRYPTION SUCCESS <<<';
+                        document.querySelector('.dh-auth-icon').innerText = '✓';
+                        document.querySelector('.glitch-text').innerText = 'SYSTEM_UNLOCKED';
+                        sessionStorage.setItem('dh_terminal_access', 'GRANTED');
+
+                        if (authBox) {
+                            authBox.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+                            authBox.style.transform = 'skewX(15deg) scale(1.35) translate3d(0, -180px, 0)';
+                            authBox.style.opacity = '0';
+                            authBox.style.pointerEvents = 'none';
+                        }
+
+                        const waveformBand = document.querySelector('.dh-auth-waveform-band');
+                        if (waveformBand) {
+                            waveformBand.style.transition = 'opacity 0.3s ease';
+                            waveformBand.style.opacity = '0';
+                        }
+
+                        systemState = 'SUCCESS_ALIGN';
+
+                        setTimeout(() => {
+                            systemState = 'SUCCESS_CRYSTALLIZE';
+
+                            let monitorCrystallization = setInterval(() => {
+                                let isComplete = particles.every(p => p.isCrystallized);
+                                if (isComplete) {
+                                    clearInterval(monitorCrystallization);
+                                    systemState = 'SUCCESS_REVEAL';
+
+                                    overlay.style.backgroundColor = 'rgba(6, 6, 9, 0)';
+
+                                    let monitorReveal = setInterval(() => {
+                                        let isRevealed = particles.filter(p => p.isGlyph).every(p => p.isRevealed);
+                                        if (isRevealed) {
+                                            clearInterval(monitorReveal);
+
+                                            systemState = 'SUCCESS_SHATTER';
+                                            overlay.style.pointerEvents = 'none';
+                                            document.body.style.overflow = '';
+
+                                            const cx = cWidth / 2, cy = cHeight / 2;
+                                            particles.forEach(p => {
+                                                const dx = p.x - cx;
+                                                const dy = p.y - cy;
+                                                const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                                                const force = (1 - Math.min(dist / cWidth, 1)) * 50 + 15;
+
+                                                p.vx = (dx / dist) * force + (Math.random() - 0.5) * 25;
+                                                p.vy = (dy / dist) * force - (Math.random() * 30 + 15);
+                                                p.vAngle = (Math.random() - 0.5) * 0.8;
+                                            });
+
+                                            setTimeout(() => {
+                                                securityObserver.disconnect();
+                                                clearInterval(securityHeartbeat);
+                                                cancelAnimationFrame(animationFrameId);
+                                                overlay.remove();
+                                            }, 2000);
+                                        }
+                                    }, 20);
+                                }
+                            }, 20);
+                        }, 250);
+
+                    } else {
+                        throw new Error('MISMATCH');
+                    }
+                } catch (e) {
+                    overlay.classList.add('sys-alarm');
+                    systemState = 'ALARM_GAS';
+                    document.querySelector('.glitch-text').innerText = 'ACCESS_DENIED';
+                    overlay.style.backgroundColor = 'rgba(28, 6, 6, 1.0)';
+
+                    let alarmFlicker = setInterval(() => {
+                        err.innerText = 'FATAL: 0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase() + '!!';
+                    }, 50);
+
+                    setTimeout(() => {
+                        clearInterval(alarmFlicker);
+                        overlay.classList.remove('sys-alarm');
+                        systemState = 'LIQUID';
+                        overlay.style.backgroundColor = 'rgba(6, 6, 9, 1.0)';
+                        document.querySelector('.glitch-text').innerText = 'SYSTEM_LOCKED';
+                        err.innerText = 'ERROR: INVALID_KEY';
+                        input.value = '';
+                        input.focus();
+                        btn.style.pointerEvents = 'auto';
+                        btn.querySelector('.btn-txt').innerText = 'AUTHORIZE';
+                    }, 1000);
+                }
+            }, 600);
+        }
+
+        btn.addEventListener('click', verifyKey);
+        input.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyKey(); });
+        overlay.addEventListener('contextmenu', e => e.preventDefault());
+
+        if (authBox) {
+            authBox.addEventListener('mousedown', e => e.stopPropagation());
+            authBox.addEventListener('mousemove', e => e.stopPropagation());
+        }
+
+        setInterval(() => {
+            const el = document.getElementById('dh-random-hex');
+            if (el && !overlay.classList.contains('sys-alarm')) {
+                el.innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+            }
+        }, 300);
+
+        const enforceSecurity = () => {
+            if (systemState === 'SUCCESS_SHATTER') return;
+            if (!document.body.contains(overlay)) document.body.appendChild(overlay);
+            if (window.getComputedStyle(overlay).display === 'none') {
+                overlay.style.setProperty('display', 'flex', 'important');
+                overlay.style.opacity = '1';
+            }
+        };
+
+        const securityObserver = new MutationObserver(enforceSecurity);
+        securityObserver.observe(document.body, { childList: true });
+        const securityHeartbeat = setInterval(enforceSecurity, 500);
+    })();
+</script>
+<div id="dh-hex-transition"></div>
+<script>
+    /**
+     * ============================================
+     * 多娜多娜风：全局 Pjax 与蜂巢转场动画
+     * ============================================
+     */
+
+// 1. 初始化并生成蜂巢矩阵网格
+    function initHexTransitionGrid() {
+        let transitionContainer = document.getElementById('dh-hex-transition');
+        if (!transitionContainer) {
+            transitionContainer = document.createElement('div');
+            transitionContainer.id = 'dh-hex-transition';
+            document.body.appendChild(transitionContainer);
+        } else {
+            transitionContainer.innerHTML = ''; // 窗口重置时清空旧节点
+        }
+
+        const hexSize = 60;
+        const hexHeight = hexSize * 1.1547;
+        const rowHeight = hexHeight * 0.75;
+        const cols = Math.ceil(window.innerWidth / hexSize) + 2;
+        const rows = Math.ceil(window.innerHeight / rowHeight) + 2;
+
+        const colors = ['c-pink', 'c-cyan', 'c-yellow'];
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const maxDist = Math.sqrt(Math.pow(centerX, 2) + Math.pow(centerY, 2));
+
+        for (let r = -1; r < rows; r++) {
+            for (let c = -1; c < cols; c++) {
+                const hex = document.createElement('div');
+                hex.className = 'dh-hex-cell';
+
+                // 随机分配故障色点缀
+                if (Math.random() > 0.92) {
+                    hex.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+                }
+
+                const x = c * hexSize + (r % 2 === 0 ? hexSize / 2 : 0);
+                const y = r * rowHeight;
+                hex.style.left = `${x}px`;
+                hex.style.top = `${y}px`;
+
+                // 进场呈波纹状扩散，退场完全随机
+                const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+                const delayIn = (dist / maxDist) * 0.5;
+                const delayOut = Math.random() * 0.4;
+
+                hex.style.setProperty('--delay-in', `${delayIn}s`);
+                hex.style.setProperty('--delay-out', `${delayOut}s`);
+
+                transitionContainer.appendChild(hex);
+            }
+        }
+    }
+
+    // 2. Pjax 无刷新加载与内容替换
+    function loadPage(href, shouldPushState = true) {
+        // 触发闭合动画
+        document.body.classList.remove('hex-out');
+        document.body.classList.add('hex-in');
+
+        fetch(href)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // 延迟 500ms（等待蜂巢闭合动画结束）再替换 DOM
+                setTimeout(() => {
+                    const newAppWrapper = doc.getElementById('app-wrapper');
+                    const currentAppWrapper = document.getElementById('app-wrapper');
+                    if (newAppWrapper && currentAppWrapper) {
+                        currentAppWrapper.innerHTML = newAppWrapper.innerHTML;
+                    }
+
+                    const newMobileHeader = doc.querySelector('.mobile-header');
+                    const currentMobileHeader = document.querySelector('.mobile-header');
+                    if (newMobileHeader && currentMobileHeader) {
+                        currentMobileHeader.innerHTML = newMobileHeader.innerHTML;
+                    }
+
+                    document.title = doc.title;
+                    if (shouldPushState) history.pushState(null, doc.title, href);
+                    window.scrollTo(0, 0);
+
+                    const siteMain = document.getElementById('site-main');
+                    if (siteMain) siteMain.scrollTo(0, 0);
+
+                    // 重新执行局部内的 Script 标签
+                    if (currentAppWrapper) {
+                        const scripts = currentAppWrapper.querySelectorAll('script');
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+                            Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                            newScript.textContent = oldScript.textContent;
+                            oldScript.parentNode.replaceChild(newScript, oldScript);
+                        });
+                    }
+
+                    // 重新绑定交互并清理 MathJax 缓存
+                    if (typeof initPageInteract === 'function') initPageInteract();
+                    if (window.MathJax) {
+                        if (window.MathJax.typesetClear) window.MathJax.typesetClear();
+                        if (window.MathJax.typesetPromise) window.MathJax.typesetPromise();
+                    }
+
+                    // 触发蜂巢消散（展开）动画
+                    document.body.classList.remove('hex-in');
+                    document.body.classList.add('hex-out');
+                    setTimeout(() => { document.body.classList.remove('hex-out'); }, 1000);
+                }, 500);
+            })
+            .catch(err => {
+                console.warn('Pjax 载入失败，降级为常规全刷新跳转:', err);
+                window.location.href = href;
+            });
+    }
+
+    // 3. 全局事件拦截与初始化
+    document.addEventListener('DOMContentLoaded', () => {
+        initHexTransitionGrid();
+
+        // 页面首次载入的入场动画
+        document.body.classList.add('hex-in');
+        setTimeout(() => {
+            document.body.classList.remove('hex-in');
+            document.body.classList.add('hex-out');
+            setTimeout(() => { document.body.classList.remove('hex-out'); }, 1000);
+        }, 50);
+
+        // 全局 A 标签拦截
+        document.body.addEventListener('click', function(e) {
+            // 防止在动画期间连击引发错乱
+            if (document.body.classList.contains('hex-in') || document.body.classList.contains('hex-out')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('http') || link.target) return; // 外链、新标签页放行
+
+            // 处理同页锚点滚动跳转 (TOC等)
+            if (href.startsWith('#') || link.pathname === window.location.pathname) {
+                e.preventDefault();
+                const targetId = href.startsWith('#') ? href : link.hash;
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const siteMain = document.getElementById('site-main');
+                        if (siteMain) {
+                            const targetTop = targetElement.getBoundingClientRect().top;
+                            const mainTop = siteMain.getBoundingClientRect().top;
+                            siteMain.scrollBy({ top: targetTop - mainTop - 60, behavior: 'auto' });
+                        } else {
+                            targetElement.scrollIntoView({ behavior: 'auto' });
+                        }
+                        history.pushState(null, document.title, window.location.pathname + window.location.search + targetId);
+                    }
+                }
+                return;
+            }
+            e.preventDefault();
+            loadPage(href, true);
+        });
+
+        // 浏览器前进后退接管
+        window.addEventListener('popstate', () => { loadPage(window.location.href, false); });
+
+        // 处理 BFCache 回退黑屏问题
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.remove('hex-in');
+                document.body.classList.add('hex-out');
+            }
+        });
+
+        // 窗口尺寸改变时重绘蜂巢，避免边缘穿帮
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initHexTransitionGrid, 200);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('click', function(e) {
+        const toggleBtn = e.target.closest('.folder-toggle');
+        if (!toggleBtn) return;
+        const subList = toggleBtn.nextElementSibling;
+        const icon = toggleBtn.querySelector('.folder-icon');
+        if (subList && subList.classList.contains('tree-sub')) {
+            const isOpen = subList.classList.toggle('open');
+            if (icon) {
+                icon.textContent = isOpen ? '[-]' : '[+]';
+            }
+        }
+    });
+</script>
+</body>
+</html>
