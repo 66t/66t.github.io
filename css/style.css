@@ -878,6 +878,7 @@ mjx-container:not([display="true"]) {
     overflow-x: hidden;
     padding: 20px;
     padding-right: 35px;
+    scrollbar-gutter: stable;
 }
 
 .sidebar-content-scroll::-webkit-scrollbar {
@@ -2821,6 +2822,7 @@ mjx-container:not([display="true"]) {
     padding: 15px 25px 25px 25px;
     overflow-y: auto;
     color: var(--dh-black);
+    scrollbar-gutter: stable;
 }
 .toc-list {
     list-style: none;
