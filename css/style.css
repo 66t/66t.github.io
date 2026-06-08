@@ -2875,7 +2875,7 @@ mjx-container:not([display="true"]) {
 }
 .dohna-toc-fab {
     display: none;
-    position: fixed;
+    position: fixed !important;
     bottom: 30px;
     right: 20px;
     width: 60px;
