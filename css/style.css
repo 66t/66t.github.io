@@ -1,6 +1,7 @@
 /* ============================================
-   块1: 核心变量与基础重置
+   一、核心变量与基础重置
    ============================================ */
+
 :root {
     --dh-pink: #FF2A6D;
     --dh-cyan: #05D9E8;
@@ -44,10 +45,10 @@ html {
     overflow-y: auto;
     overflow-x: hidden;
     transition: none;
-    transform: translate3d(0, 0, 0); 
-    backface-visibility: hidden;     
-    perspective: 1000px;             
-    will-change: transform;          
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
 }
 
 @media screen and (max-width: 800px) {
@@ -105,8 +106,9 @@ pre::-webkit-scrollbar-thumb {
 }
 
 /* ============================================
-   块2: 排版与文章内容样式 (全局通用)
+   二、排版与文章内容样式 (全局通用)
    ============================================ */
+
 .post-content, .page-content {
     background: transparent;
     border: none;
@@ -664,7 +666,6 @@ pre,
     background: #0d0d12 !important;
     color: #e0e0e0;
     box-shadow: 6px 6px 0 var(--dh-purple);
-    border-radius: 8px;
     margin: 20px 0;
     font-family: var(--font-mono);
     font-size: 13px;
@@ -838,8 +839,9 @@ mjx-container:not([display="true"]) {
 }
 
 /* ============================================
-   块3: 布局与框架 (悬浮抽屉)
+   三、布局与框架 (悬浮抽屉)
    ============================================ */
+
 .wiki-layout {
     display: flex;
     overflow-x: hidden;
@@ -981,6 +983,7 @@ mjx-container:not([display="true"]) {
     margin: 20px auto;
     color: var(--dh-black);
 }
+
 .post-layout,
 .page-content,
 .category-card,
@@ -990,6 +993,7 @@ mjx-container:not([display="true"]) {
     transform-style: preserve-3d;
     backface-visibility: hidden;
 }
+
 .sticky-header {
     background-color: var(--dh-white);
     border-bottom: var(--dh-border);
@@ -1002,7 +1006,7 @@ mjx-container:not([display="true"]) {
     z-index: 100;
     transform: translateZ(0);
     will-change: transform;
-    -webkit-font-smoothing: antialiased; 
+    -webkit-font-smoothing: antialiased;
 }
 
 .menu {
@@ -1031,8 +1035,9 @@ mjx-container:not([display="true"]) {
 }
 
 /* ============================================
-   块4: 卡片组件 (Items & Heroes & Categories)
+   四、卡片组件 (Items & Heroes & Categories)
    ============================================ */
+
 .main-layout {
     display: flex;
     flex-direction: row-reverse;
@@ -1386,19 +1391,20 @@ mjx-container:not([display="true"]) {
 .type-npc .hero-name {
     background-image: linear-gradient(transparent 60%, var(--dh-cyan) 40%);
 }
+
 /* ============================================
    程序板块：极简科技终端风 (企业级单机质感)
    ============================================ */
+
 .dh-stealth-wiki {
     margin: 30px 0;
     border: 1px solid rgba(5, 217, 232, 0.3);
-    background: #08080a; /* 极深渊色，而非纯黑 */
-    font-family: var(--font-mono); /* 全局切换为等宽代码字体 */
+    background: #08080a;
+    font-family: var(--font-mono);
     box-shadow: 0 0 20px rgba(5, 217, 232, 0.05) inset;
     position: relative;
 }
 
-/* 顶部装饰线 */
 .dh-stealth-wiki::before {
     content: '';
     position: absolute;
@@ -1436,7 +1442,7 @@ mjx-container:not([display="true"]) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1px;
-    background: rgba(255, 255, 255, 0.05); /* 充当极细网格线 */
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .stealth-module {
@@ -1510,29 +1516,29 @@ mjx-container:not([display="true"]) {
     text-overflow: ellipsis;
 }
 
-/* 悬停态：科技扫描仪光标 */
 .mod-item:hover a {
     background: linear-gradient(90deg, rgba(5, 217, 232, 0.1), transparent);
     border-left: 2px solid var(--dh-cyan);
     color: #fff;
-    padding-left: 12px; /* 轻微缩进代替暴力错位 */
+    padding-left: 12px;
 }
 
 .mod-item:hover a::after {
     color: var(--dh-cyan);
-    content: '[ ' attr(data-status) ' ]'; /* 变为状态指示器 */
+    content: '[ ' attr(data-status) ' ]';
 }
 
-/* 激活状态 */
 .mod-item.is-active a {
     border-left: 2px solid var(--dh-yellow);
     color: var(--dh-yellow);
     background: rgba(255, 194, 0, 0.05);
 }
+
 .mod-item.is-active a::after {
     color: var(--dh-yellow);
     content: '< ACTIVE >';
 }
+
 /* Categories 页面专属样式 */
 .categories-header {
     margin-bottom: 40px;
@@ -1688,8 +1694,9 @@ mjx-container:not([display="true"]) {
 }
 
 /* ============================================
-   块5: 角色/首页大面板 (dh-character-screen)
+   五、角色/首页大面板 (dh-character-screen)
    ============================================ */
+
 .dh-character-screen {
     position: relative;
     height: calc(100vh - 200px);
@@ -1887,8 +1894,9 @@ mjx-container:not([display="true"]) {
 }
 
 /* ============================================
-   块6: 桌面端专用样式 (min-width: 801px)
+   六、桌面端专用样式 (min-width: 801px)
    ============================================ */
+
 @media (min-width: 801px) {
     .mobile-only {
         display: none !important;
@@ -1964,8 +1972,9 @@ mjx-container:not([display="true"]) {
 }
 
 /* ============================================
-   块7: 移动端专属样式 (max-width: 800px)
+   七、移动端专属样式 (max-width: 800px)
    ============================================ */
+
 @media screen and (max-width: 800px) {
     .desktop-view {
         display: none !important;
@@ -2141,7 +2150,7 @@ mjx-container:not([display="true"]) {
         box-shadow: 1px 1px 0px #000;
         transform: translate(2px, 2px) !important;
     }
-    /* 3. 针对导航栏里面的文字/链接进行加粗与颜色提亮 */
+
     .mobile-header a,
     .mobile-header span,
     .mobile-header .nav-item {
@@ -2150,6 +2159,7 @@ mjx-container:not([display="true"]) {
         letter-spacing: 0.5px;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
+
     .mobile-site-title {
         color: var(--dh-yellow);
         font-size: 18px;
@@ -2418,17 +2428,14 @@ mjx-container:not([display="true"]) {
     pre, .highlight {
         max-width: 100%;
         overflow-x: auto;
-        padding: 30px 10px 10px;
         margin: 15px 0;
     }
 
     .post-content table {
-        display: block;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
 
-    /* 移动端 TOC 不固定，流式显示 */
     .post-toc {
         position: relative;
         top: auto;
@@ -2439,8 +2446,9 @@ mjx-container:not([display="true"]) {
 }
 
 /* ============================================
-   块8: 极窄屏幕额外适配 (max-width: 360px)
+   八、极窄屏幕额外适配 (max-width: 360px)
    ============================================ */
+
 @media screen and (max-width: 360px) {
     .dohna-hero-grid {
         grid-template-columns: 1fr !important;
@@ -2461,8 +2469,9 @@ mjx-container:not([display="true"]) {
 }
 
 /* ============================================
-   块9: 正文隐式锚点 & 其他辅助
+   九、正文隐式锚点 & 其他辅助
    ============================================ */
+
 .post-content u1,
 .post-content u2,
 .post-content u3,
@@ -2522,6 +2531,7 @@ mjx-container:not([display="true"]) {
     margin-top: 0;
     margin-left: auto;
 }
+
 .mini-hero-index,
 .mini-item-index {
     margin-top: 50px;
@@ -2537,6 +2547,7 @@ mjx-container:not([display="true"]) {
     );
     position: relative;
 }
+
 .mini-divider {
     display: inline-block;
     padding: 4px 20px;
@@ -2558,6 +2569,7 @@ mjx-container:not([display="true"]) {
     box-shadow: 4px 4px 0px 0px #000;
     overflow: hidden;
 }
+
 .mini-divider::before {
     content: '';
     position: absolute;
@@ -2569,11 +2581,13 @@ mjx-container:not([display="true"]) {
     background-size: 4px 4px;
     z-index: -1;
 }
+
 .mini-hero-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     gap: 15px;
 }
+
 .mini-hero-card {
     position: relative;
     background: var(--dh-black);
@@ -2584,6 +2598,7 @@ mjx-container:not([display="true"]) {
     display: flex;
     flex-direction: column;
 }
+
 .mini-hero-card img {
     width: 100%;
     aspect-ratio: 1;
@@ -2592,6 +2607,7 @@ mjx-container:not([display="true"]) {
     filter: grayscale(1) contrast(1.2);
     transition: 0.3s;
 }
+
 .mini-name {
     position: absolute;
     bottom: -8px;
@@ -2612,31 +2628,40 @@ mjx-container:not([display="true"]) {
     box-shadow: 3px 3px 0 var(--dh-cyan);
     z-index: 2;
 }
+
 .mini-hero-card:hover {
     transform: scale(1.08) rotate(1deg);
     z-index: 10;
 }
+
 .mini-hero-card:hover img,
 .mini-hero-card.is-active img {
     filter: grayscale(0) contrast(1);
+    object-fit: cover;
+    object-position: top; /* 从顶部对齐 */
 }
+
 .mini-hero-card.is-active {
     border-color: var(--dh-pink);
 }
+
 .mini-hero-card.is-active .mini-name {
     background: var(--dh-yellow);
     box-shadow: 3px 3px 0 var(--dh-pink);
 }
+
 .mini-filter-group {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 15px;
 }
+
 .mini-tag-btn {
     cursor: pointer;
     font-size: 12px;
 }
+
 .mini-tag-btn input { display: none; }
 .mini-tag-btn span {
     display: block;
@@ -2647,16 +2672,19 @@ mjx-container:not([display="true"]) {
     transform: skewX(-10deg);
     transition: 0.1s;
 }
+
 .mini-tag-btn input:checked + span {
     background: var(--dh-cyan);
     box-shadow: 3px 3px 0 var(--dh-black);
     transform: skewX(-10deg) translate(-2px, -2px);
 }
+
 .mini-item-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 10px;
 }
+
 .mini-item-node {
     display: flex;
     align-items: center;
@@ -2668,17 +2696,20 @@ mjx-container:not([display="true"]) {
     transform: skewX(-10deg);
     transition: all 0.2s;
 }
+
 .mini-item-node.is-active {
     background: var(--dh-yellow);
     border-color: var(--dh-pink);
     box-shadow: 3px 3px 0 var(--dh-pink);
 }
+
 .mini-item-node img {
     width: 20px;
     height: 20px;
     margin-right: 8px;
     transform: skewX(10deg);
 }
+
 .mini-item-name {
     font-size: 12px;
     font-weight: 900;
@@ -2688,6 +2719,7 @@ mjx-container:not([display="true"]) {
     white-space: nowrap;
     overflow: hidden;
 }
+
 .dohna-wiki-terminal {
     margin: 60px 0;
     background-color: var(--dh-white);
@@ -2698,6 +2730,7 @@ mjx-container:not([display="true"]) {
     position: relative;
     box-shadow: 15px 15px 0px var(--dh-black);
 }
+
 .terminal-decor-top, .terminal-decor-bottom {
     position: absolute;
     font-family: var(--font-mono);
@@ -2706,8 +2739,10 @@ mjx-container:not([display="true"]) {
     opacity: 0.5;
     letter-spacing: 2px;
 }
+
 .terminal-decor-top { top: 5px; right: 10px; }
 .terminal-decor-bottom { bottom: 5px; left: 10px; }
+
 .wiki-header-banner {
     display: flex;
     justify-content: space-between;
@@ -2716,11 +2751,13 @@ mjx-container:not([display="true"]) {
     border-bottom: 5px solid var(--dh-black);
     padding-bottom: 10px;
 }
+
 .banner-skew {
     background: var(--dh-black);
     padding: 5px 30px;
     transform: skewX(-20deg);
 }
+
 .banner-text {
     color: var(--dh-yellow);
     font-family: var(--font-pop);
@@ -2729,6 +2766,7 @@ mjx-container:not([display="true"]) {
     transform: skewX(20deg);
     text-shadow: 2px 2px var(--dh-pink);
 }
+
 .banner-status {
     font-family: var(--font-mono);
     background: var(--dh-green);
@@ -2737,9 +2775,11 @@ mjx-container:not([display="true"]) {
     font-weight: bold;
     border: 2px solid var(--dh-black);
 }
+
 .wiki-group-block {
     margin-bottom: 40px;
 }
+
 .wiki-type-label {
     display: inline-block;
     background: var(--dh-pink);
@@ -2751,7 +2791,9 @@ mjx-container:not([display="true"]) {
     margin-bottom: 15px;
     box-shadow: 4px 4px 0px var(--dh-black);
 }
+
 .type-code { margin-right: 8px; color: var(--dh-yellow); }
+
 /* ============================================
    文章侧边目录 (TOC) - 图片复刻版样式
    ============================================ */
@@ -2784,6 +2826,7 @@ mjx-container:not([display="true"]) {
     background: var(--dh-pink);
     border-radius: 8px;
 }
+
 .toc-header {
     padding: 20px 20px 10px 20px;
     display: flex;
@@ -2791,6 +2834,7 @@ mjx-container:not([display="true"]) {
     align-items: center;
     position: relative;
 }
+
 .toc-title {
     display: block;
     width: 100%;
@@ -2803,6 +2847,7 @@ mjx-container:not([display="true"]) {
     letter-spacing: 2px;
     text-transform: uppercase;
 }
+
 #toc-mobile-close {
     display: none;
     position: absolute;
@@ -2815,30 +2860,37 @@ mjx-container:not([display="true"]) {
     cursor: pointer;
     padding: 2px 8px;
 }
+
 #toc-mobile-close:active {
     transform: scale(0.9);
 }
+
 .toc-body {
     padding: 15px 25px 25px 25px;
     overflow-y: auto;
     color: var(--dh-black);
     scrollbar-gutter: stable;
 }
+
 .toc-list {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 .toc-list.level-2 { padding-left: 20px; }
 .toc-list.level-3 { padding-left: 20px; }
+
 .toc-item {
     margin: 16px 0;
 }
+
 .toc-link-wrapper {
     display: flex;
     align-items: flex-start;
     gap: 12px;
 }
+
 .toc-icon {
     color: var(--dh-pink);
     font-family: var(--font-mono);
@@ -2849,9 +2901,11 @@ mjx-container:not([display="true"]) {
     transition: transform 0.2s;
     line-height: 1.2;
 }
+
 .toc-icon:hover {
     transform: scale(1.2);
 }
+
 .toc-link {
     color: var(--dh-black);
     text-decoration: none;
@@ -2862,17 +2916,21 @@ mjx-container:not([display="true"]) {
     transition: all 0.2s;
     position: relative;
 }
+
 .toc-link:hover {
     color: var(--dh-pink);
     transform: translateX(4px);
 }
+
 .tree-sub {
     display: none;
 }
+
 .toc-item.open > .tree-sub {
     display: block;
     animation: uiPop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
+
 .dohna-toc-fab {
     display: none;
     position: fixed !important;
@@ -2892,11 +2950,11 @@ mjx-container:not([display="true"]) {
     text-align: center;
     border-radius: 12px;
 }
+
 .dohna-toc-fab:active {
     box-shadow: 2px 2px 0px var(--dh-yellow);
     transform: translate(4px, 4px);
 }
-
 
 @media screen and (max-width: 850px) {
     .dohna-toc-container {
@@ -2921,16 +2979,14 @@ mjx-container:not([display="true"]) {
     #toc-mobile-close {
         display: block;
     }
-
 }
+
 @media screen and (min-width: 851px) {
     .post-layout {
         width: calc(100% - 300px) !important;
         margin-right: 300px;
     }
 }
-
-
 
 @media screen and (max-width: 800px) {
     .mobile-view {
@@ -2961,10 +3017,12 @@ mjx-container:not([display="true"]) {
     .m-skill-chip:nth-child(2) { animation-delay: 0.35s; }
     .m-skill-chip:nth-child(3) { animation-delay: 0.5s; }
 }
+
 @keyframes tech-scanline {
     0% { background-position: 0 0; }
     100% { background-position: 0 100vh; }
 }
+
 @keyframes glitch-text {
     0%, 100% { text-shadow: 3px 3px 0 var(--dh-pink); transform: skewX(-5deg); }
     10% { text-shadow: -3px 2px 0 var(--dh-cyan), 2px -2px 0 var(--dh-pink); transform: skewX(-8deg) translate(1px, -1px); }
@@ -2973,18 +3031,22 @@ mjx-container:not([display="true"]) {
     52% { text-shadow: -2px -2px 0 var(--dh-yellow), 2px 2px 0 var(--dh-cyan); transform: skewX(-2deg) translate(-1px, 1px); }
     55% { text-shadow: 3px 3px 0 var(--dh-pink); transform: skewX(-5deg); }
 }
+
 @keyframes badge-float {
     0%, 100% { transform: skewX(-12deg) translateY(0); box-shadow: 4px 4px 0 var(--dh-cyan); }
     50% { transform: skewX(-12deg) translateY(-6px); box-shadow: 8px 10px 0 var(--dh-pink); }
 }
+
 @keyframes bar-scale {
     0% { transform: scaleX(0); }
     100% { transform: scaleX(1); }
 }
+
 @keyframes chip-slide-in {
     0% { opacity: 0; transform: skewX(-2deg) translateX(40px) translateY(10px); box-shadow: none; }
     100% { opacity: 1; transform: skewX(-2deg) translateX(0) translateY(0); }
 }
+
 .dh-char-name {
     position: relative;
     animation: dh-main-glitch 4s infinite;
@@ -3012,6 +3074,7 @@ mjx-container:not([display="true"]) {
     text-shadow: 2px 0 var(--dh-pink);
     animation: dh-glitch-loop-2 3s infinite linear alternate-reverse;
 }
+
 .dh-level-hex {
     animation: dh-hex-float 3s ease-in-out infinite;
 }
@@ -3024,6 +3087,7 @@ mjx-container:not([display="true"]) {
     transform-origin: left;
     animation: dh-bar-entrance 1.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
+
 @keyframes dh-main-glitch {
     0%, 90%, 100% { transform: skew(0deg); }
     91% { transform: skew(10deg); }
@@ -3049,7 +3113,6 @@ mjx-container:not([display="true"]) {
     50% { transform: translateY(-10px) rotate(2deg); }
 }
 
-
 @keyframes dh-bar-entrance {
     0% { transform: scaleX(0); filter: brightness(2); }
     100% { transform: scaleX(1); filter: brightness(1); }
@@ -3061,9 +3124,11 @@ mjx-container:not([display="true"]) {
     96% { opacity: 0.2; text-shadow: none; }
     97% { opacity: 1; }
 }
-/* ===========================================
+
+/* ============================================
    全局转场：蜂巢科技矩阵 (Hexagon Tech Wipe)
-   =========================================== */
+   ============================================ */
+
 #dh-hex-transition {
     position: fixed;
     inset: 0;
@@ -3094,16 +3159,19 @@ body.hex-out #dh-hex-transition {
 .dh-hex-cell.c-pink { background: var(--dh-pink); z-index: 2; }
 .dh-hex-cell.c-cyan { background: var(--dh-cyan); z-index: 2; }
 .dh-hex-cell.c-yellow { background: var(--dh-yellow); z-index: 2; }
+
 body.hex-in .dh-hex-cell {
     transform: scale(1.05) rotate(0deg);
     opacity: 1;
     transition-delay: var(--delay-in, 0s);
 }
+
 body.hex-out .dh-hex-cell {
     transform: scale(0) rotate(30deg);
     opacity: 0;
     transition-delay: var(--delay-out, 0s);
 }
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -3112,6 +3180,7 @@ body.hex-out .dh-hex-cell {
     margin: 50px 0 30px;
     font-family: var(--font-pop);
 }
+
 .pagination .page-number,
 .pagination .extend {
     display: inline-flex;
@@ -3132,6 +3201,7 @@ body.hex-out .dh-hex-cell {
     cursor: pointer;
     user-select: none;
 }
+
 .pagination a.page-number:hover,
 .pagination a.extend:hover {
     background: var(--dh-pink);
@@ -3141,6 +3211,7 @@ body.hex-out .dh-hex-cell {
     box-shadow: 5px 5px 0px var(--dh-yellow);
     transform: skewX(-10deg) translate(-2px, -2px);
 }
+
 .pagination .page-number.current {
     background: var(--dh-yellow);
     color: var(--dh-black);
@@ -3150,34 +3221,40 @@ body.hex-out .dh-hex-cell {
     transform: skewX(-10deg) scale(1.05);
     pointer-events: none;
 }
+
 .pagination .extend.prev {
     border-color: var(--dh-yellow);
 }
+
 .pagination .extend.next {
     border-color: var(--dh-pink);
 }
+
 .pagination a.extend.prev:hover {
     background: var(--dh-yellow);
     outline-color: var(--dh-yellow);
     box-shadow: 5px 5px 0px var(--dh-purple);
 }
+
 .pagination a.extend.next:hover {
     background: var(--dh-pink);
     outline-color: var(--dh-pink);
     box-shadow: 5px 5px 0px var(--dh-yellow);
 }
+
 @media (max-width: 850px) {
     .dohna-content-inner img {
         width: 100% !important;
         max-width: 100% !important;
         height: auto !important;
         display: block;
-        margin: 15px auto !important;
     }
 }
+
 /* ===================================================
- 故事导航专有样式 
- =================================================== */
+   故事导航专有样式
+   =================================================== */
+
 .dohna-story-matrix {
     margin: 60px 0 30px 0;
     border: var(--dh-border);
@@ -3237,6 +3314,7 @@ body.hex-out .dh-hex-cell {
 .matrix-group {
     margin-bottom: 35px;
 }
+
 .matrix-group:last-child {
     margin-bottom: 0;
 }
@@ -3320,12 +3398,13 @@ body.hex-out .dh-hex-cell {
     transform: translate(-3px, -3px);
     box-shadow: 7px 7px 0px var(--dh-black);
     background: #ffffff;
-
 }
+
 .matrix-cell:hover .cell-id {
     background: var(--dh-pink);
     color: var(--dh-white);
 }
+
 .matrix-cell:hover .cell-title {
     color: var(--dh-white);
 }
@@ -3335,14 +3414,15 @@ body.hex-out .dh-hex-cell {
     pointer-events: none;
     box-shadow: 4px 4px 0px var(--dh-pink);
 }
+
 .matrix-cell.is-active .cell-id {
     background: var(--dh-black);
     color: var(--dh-yellow);
 }
+
 .matrix-cell.is-active .cell-title {
     font-weight: 900;
 }
-
 
 .story-tree-container {
     width: 100%;
@@ -3422,10 +3502,10 @@ body.hex-out .dh-hex-cell {
     }
 }
 
-
 /* ==========================================================================
    多娜多娜硬核波普视觉主题样式 (物理 Canvas 粒子进化版)
    ========================================================================== */
+
 :root {
     --dh-pink: #FF2A6D;
     --dh-cyan: #05D9E8;
@@ -3470,6 +3550,7 @@ body.hex-out .dh-hex-cell {
     z-index: 10;
     pointer-events: none;
 }
+
 .dh-auth-overlay.screen-shake {
     animation: dhExplodeShake 0.4s cubic-bezier(.36,.07,.19,.97) both;
     transform: translate3d(0, 0, 0);
@@ -3483,9 +3564,11 @@ body.hex-out .dh-hex-cell {
     30%, 50%, 70% { transform: translate3d(-5px, -4px, 0) scale(1.0); }
     40%, 60% { transform: translate3d(5px, 3px, 0); }
 }
+
 /* ==========================================================================
-   块2 & 3: 警示跑马灯带与多娜核心表单
+   警示跑马灯带与多娜核心表单
    ========================================================================== */
+
 .dh-auth-waveform-band {
     position: absolute;
     top: 15%; left: -10vw; width: 120vw; height: 50px;
@@ -3497,10 +3580,12 @@ body.hex-out .dh-hex-cell {
     display: flex; align-items: center; overflow: hidden;
     z-index: 10; pointer-events: none;
 }
+
 .dh-auth-overlay.sys-success .dh-auth-waveform-band {
     opacity: 0;
     transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
 .dh-auth-waveform-band::before {
     content: 'SYSTEM_LOCKED // UNAUTHORIZED_ACCESS_DETECTED // NO.09-X77 // LOCK_STATE_ACTIVE // ';
     font-family: var(--font-pop); font-size: 26px; font-weight: 900;
@@ -3522,6 +3607,7 @@ body.hex-out .dh-hex-cell {
     position: absolute; height: 20px; border: 3px solid #000; z-index: 20;
     background: repeating-linear-gradient(45deg, var(--dh-yellow), var(--dh-yellow) 12px, #000 12px, #000 24px);
 }
+
 .tape-top-left { top: -11px; left: -25px; right: 40%; transform: rotate(-2deg); }
 .tape-bottom-right { bottom: -11px; right: -25px; left: 40%; transform: rotate(1.5deg);
     background: repeating-linear-gradient(-45deg, var(--dh-pink), var(--dh-pink) 12px, #000 12px, #000 24px); }
@@ -3574,7 +3660,7 @@ body.hex-out .dh-hex-cell {
 .barcode { transform: scaleY(1.4); transform-origin: bottom; font-weight: bold; }
 
 /* ==========================================================================
-   块4 & 5: 失败警报状态与成功瓦解状态机调度
+   失败警报状态与成功瓦解状态机调度
    ========================================================================== */
 
 .dh-auth-overlay.sys-alarm {
@@ -3641,6 +3727,7 @@ body.hex-out .dh-hex-cell {
 /* ============================================
    1. 场景大纲节点 (Scene Banner)
    ============================================ */
+
 .doc-node-scene {
     background-size: cover;
     background-position: center;
@@ -3671,6 +3758,7 @@ body.hex-out .dh-hex-cell {
 /* ============================================
    2. 状态更迭节点 (Meta Log)
    ============================================ */
+
 .doc-node-meta {
     display: flex;
     align-items: center;
@@ -3692,6 +3780,7 @@ body.hex-out .dh-hex-cell {
 /* ============================================
    3. 对话文献节点 (Dialogue Box)
    ============================================ */
+
 .doc-node-dialogue {
     display: flex;
     background: var(--dh-white);
@@ -3704,7 +3793,6 @@ body.hex-out .dh-hex-cell {
     box-shadow: 7px 7px 0 var(--dh-pink);
 }
 
-/* 异常状态样式扩展（如警告/警报对话） */
 .doc-node-dialogue.alarm {
     border-color: var(--dh-pink);
     box-shadow: 5px 5px 0 var(--dh-black);
@@ -3756,6 +3844,7 @@ body.hex-out .dh-hex-cell {
 /* ============================================
    4. 分支路由节点 (Menu Archive)
    ============================================ */
+
 .doc-node-menu {
     border: var(--dh-border-thick);
     background: var(--dh-black);
@@ -3801,6 +3890,7 @@ body.hex-out .dh-hex-cell {
 /* ============================================
    移动端响应式适配
    ============================================ */
+
 @media screen and (max-width: 768px) {
     .doc-timeline-wrapper {
         gap: 15px;
@@ -3808,7 +3898,7 @@ body.hex-out .dh-hex-cell {
     }
 
     .doc-node-dialogue {
-        flex-direction: column; /* 小屏幕下头像移到上方 */
+        flex-direction: column;
     }
 
     .doc-avatar-box {
@@ -3837,11 +3927,11 @@ body.hex-out .dh-hex-cell {
         gap: 5px;
     }
 }
+
 /* ============================================
    故事板块：移动端降维响应式适配 (终端分支样式)
    ============================================ */
 
-/* 默认响应式显隐开关 */
 #story-tree {
     display: block !important;
 }
@@ -3849,7 +3939,6 @@ body.hex-out .dh-hex-cell {
     display: none !important;
 }
 
-/* 窄屏 (移动端/缩放窗口) 状态 */
 @media screen and (max-width: 850px) {
     #story-tree {
         display: none !important;
@@ -3860,7 +3949,6 @@ body.hex-out .dh-hex-cell {
 }
 
 @media screen and (max-width: 850px) {
-    /* 移动端包裹面板 */
     .story-mobile-tracker {
         background: #08080a;
         border: 1px solid rgba(5, 217, 232, 0.2);
@@ -3878,7 +3966,6 @@ body.hex-out .dh-hex-cell {
         margin-bottom: 10px;
     }
 
-    /* 单个故事线路节点 */
     .mobile-story-node {
         margin-bottom: 8px;
         display: flex;
@@ -3886,7 +3973,6 @@ body.hex-out .dh-hex-cell {
         position: relative;
     }
 
-    /* 节点元数据（ID与连线符号） */
     .node-meta {
         font-size: 11px;
         line-height: 1.5;
@@ -3908,7 +3994,6 @@ body.hex-out .dh-hex-cell {
         border-radius: 2px;
     }
 
-    /* 故事主干卡片链接 */
     .node-link {
         display: flex;
         justify-content: space-between;
@@ -3919,7 +4004,6 @@ body.hex-out .dh-hex-cell {
         margin-top: 4px;
         text-decoration: none !important;
         transition: all 0.2s ease;
-        /* 根据递归深度，让内容区产生微妙的视觉右移偏置 */
         margin-left: calc(var(--depth) * 8px);
     }
 
@@ -3933,7 +4017,6 @@ body.hex-out .dh-hex-cell {
         padding-right: 10px;
     }
 
-    /* 分支与结局状态标 */
     .node-fork-tag {
         font-size: 9px;
         color: var(--dh-cyan);
@@ -3949,7 +4032,6 @@ body.hex-out .dh-hex-cell {
         padding: 1px 5px;
     }
 
-    /* 交互激活态 */
     .node-link:active {
         background: linear-gradient(90deg, rgba(5, 217, 232, 0.15), transparent);
         border-left-color: var(--dh-cyan);
