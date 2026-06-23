@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>
+  
+    特性设定 | LIMPID
+  
+</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body class="dohna-body">
+<script>
+    if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+        document.write('<style>.dh-auth-overlay { display: none !important; }</style>');
+    }
+</script>
+<div id="dh-auth-overlay" class="dh-auth-overlay">
+    <canvas id="dh-auth-canvas" class="dh-auth-canvas"></canvas>
+
+    <div class="dh-auth-waveform-band"></div>
+
+    <div class="dh-auth-box">
+        <div class="dh-auth-tape tape-top-left"></div>
+        <div class="dh-auth-tape tape-bottom-right"></div>
+        <div class="box-glitch-layer"></div>
+
+        <div class="dh-auth-header">
+            <div class="dh-auth-icon">!</div>
+            <div class="dh-auth-title">
+                <span class="glitch-text" data-text="SYSTEM_LOCKED">SYSTEM_LOCKED</span>
+            </div>
+        </div>
+
+        <div class="dh-auth-subtitle">
+            <span>PLEASE_INPUT_TERMINAL_KEY</span>
+            <span class="blink-cursor">█</span>
+        </div>
+
+        <div class="dh-input-group">
+            <span class="input-prefix">KEY &gt;</span>
+            <input type="password" id="dh-auth-input" placeholder="********" autocomplete="off" autofocus>
+            <div class="input-scanline"></div>
+        </div>
+
+        <button id="dh-auth-btn" class="dh-auth-btn">
+            <span class="btn-txt">AUTHORIZE</span>
+            <span class="btn-decor">///</span>
+        </button>
+
+        <div id="dh-auth-err" class="dh-auth-err"></div>
+
+        <div class="dh-auth-footer">
+            <div class="barcode">||| |||| | || |||</div>
+            <div id="dh-random-hex" class="serial">NO.09-X77</div>
+        </div>
+    </div>
+</div>
+
+<canvas id="skyCanvas"></canvas>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<header class="mobile-header">
+    <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/story/">Story</a>
+</nav>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+        <span class="m-icon"></span>
+    </div>
+</header>
+
+<div id="app-wrapper" class="wiki-layout">
+    
+
+    <aside id="site-sidebar" class="wiki-sidebar">
+        <nav class="tree-nav dohna-sidebar-container">
+    <div class="sidebar-handle desktop-only">
+    </div>
+    <div class="sidebar-content-scroll">
+        <ul class="tree-root">
+            <li><a href="/" class="tree-item link ">~ / Home</a></li>
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">世界观设定</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E5%9C%BA%E6%99%AF%E7%AD%89%E7%BA%A7/" class="tree-item link ">
+                                        场景等级
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E5%8A%9F%E8%83%BD%E5%AE%9A%E4%BD%8D/" class="tree-item link ">
+                                        功能定位
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E5%9C%B0%E7%8B%B1%E8%AE%BE%E5%AE%9A/" class="tree-item link ">
+                                        地狱设定
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/06/01/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E5%B7%A5%E5%BA%8F%E4%B8%80%E8%A7%88/" class="tree-item link ">
+                                        工序一览
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E8%A7%92%E8%89%B2%E8%AE%BE%E5%AE%9A/" class="tree-item link ">
+                                        角色设定
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E9%98%B5%E8%90%A5%E4%B9%9D%E5%AE%AB%E6%A0%BC/" class="tree-item link ">
+                                        阵营九宫格
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E6%88%98%E6%9C%AF/" class="tree-item link ">
+                                        战术
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E9%AD%94%E6%B3%95%E6%A6%82%E8%BF%B0/" class="tree-item link ">
+                                        魔法概述
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E6%9D%90%E6%96%99%E4%B8%80%E8%A7%88/" class="tree-item link ">
+                                        材料一览
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E5%AE%9A/%E9%AD%94%E6%B3%95%E6%B5%81%E6%B4%BE/" class="tree-item link ">
+                                        魔法流派
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">游戏日记</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/18/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%805%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开5月记录
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/04/11/%E6%B8%B8%E6%88%8F%E6%97%A5%E8%AE%B0/%E6%A2%A6%E5%B9%BB%E4%BA%94%E5%BC%804%E6%9C%88%E8%AE%B0%E5%BD%95/" class="tree-item link ">
+                                        梦幻五开4月记录
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">程序</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/JRPG%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84/" class="tree-item link ">
+                                        JRRG的构建
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Minecraft%E7%BA%A2%E7%9F%B3%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Array%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Array扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/Modifier%E6%A8%A1%E5%BC%8F/" class="tree-item link ">
+                                        Minecraft红石系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%A3%B0%E6%98%8E%E5%BC%8FUI-UX/" class="tree-item link ">
+                                        声明式UI-UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/TOUHOU%E5%BC%B9%E5%B9%95/" class="tree-item link ">
+                                        TOUHOU弹幕
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/02/%E7%A8%8B%E5%BA%8F/JavaScript%20Bitmap%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Bitmap 扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Feditor/" class="tree-item link ">
+                                        游戏editor
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/01/%E7%A8%8B%E5%BA%8F/JavaScript%20Math%E6%89%A9%E5%B1%95/" class="tree-item link ">
+                                        JavaScript Math扩展
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/RpgMaker%E4%BA%8B%E4%BB%B6%E8%A7%A3%E9%87%8A%E5%99%A8/" class="tree-item link ">
+                                        RpgMaker 事件
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E5%B8%A7%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        帧动画系统
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E6%B8%B8%E6%88%8Fruntime/" class="tree-item link ">
+                                        游戏runtime
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%A8%8B%E5%BA%8F/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="tree-item link ">
+                                        视觉小说
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">编剧</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E5%89%A7%E6%9C%AC%E6%A8%A1%E7%89%88/" class="tree-item link ">
+                                        剧本模板
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%BC%96%E5%89%A7/%E7%A5%9E%E4%B9%8B%E7%BD%AA%E4%B8%8E%E4%BA%BA%E4%B9%8B%E7%90%86%EF%BC%9A%E5%AD%98%E5%9C%A8%E8%AE%BA%E8%A7%86%E5%9F%9F%E4%B8%8B%E7%9A%84%E5%89%A5%E5%89%8A%E4%B8%8E%E8%A7%89%E9%86%92/" class="tree-item link ">
+                                        神之罪与人之理：存在论视域下的剥削与觉醒
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[-]</span>
+                            <span class="folder-name">策划</span>
+                        </div>
+                        <ul class="tree-sub open">
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E5%8F%8D%E4%BC%A4%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-反伤相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E5%90%B8%E8%A1%80%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-吸血相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E6%96%BD%E6%B3%95%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-施法相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E7%8B%B1/" class="tree-item link ">
+                                        技能-狱
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E6%9A%B4%E5%87%BB%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-暴击相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E6%AF%92%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-毒相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E7%BD%AA%E6%81%B6/" class="tree-item link ">
+                                        技能-罪恶
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/Minecraft%E5%90%88%E6%88%90%E5%8F%B0%20UX/" class="tree-item link ">
+                                        Minecraft合成台 UX
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E8%BF%9E%E5%87%BB%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-连击相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/23/%E7%AD%96%E5%88%92/DOTA2%E8%8B%B1%E9%9B%84%E4%BB%8B%E7%BB%8D/" class="tree-item link ">
+                                        DOTA2英雄介绍
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E8%BE%93%E5%87%BA%E9%9D%A2%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-输出面相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E9%98%B2%E5%BE%A1%E9%9D%A2%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-防御面相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E9%80%9F%E5%BA%A6%E7%BA%BF%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-速度线相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E7%89%B9%E6%80%A7%E8%AE%BE%E5%AE%9A/" class="tree-item link active">
+                                        特性设定
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/21/%E7%AD%96%E5%88%92/%E6%8A%80%E8%83%BD-%E9%9A%90%E8%BA%AB%E7%9B%B8%E5%85%B3/" class="tree-item link ">
+                                        技能-隐身相关
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/27/%E7%AD%96%E5%88%92/DOTA2%E8%8B%B1%E9%9B%84%E9%85%8D%E9%9F%B3%E6%8C%87%E5%8D%97/" class="tree-item link ">
+                                        DOTA2角色配音指南
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="/2026/05/05/%E7%AD%96%E5%88%92/%E7%8B%AC%E7%AB%8B%E7%89%A9%E5%93%81%E7%B3%BB%E7%BB%9F/" class="tree-item link ">
+                                        独立物品系统
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+                
+            
+                
+                    
+                    <li class="tree-folder">
+                        <div class="tree-item folder-toggle" style="cursor:pointer;">
+                            <span class="folder-icon">[+]</span>
+                            <span class="folder-name">音乐</span>
+                        </div>
+                        <ul class="tree-sub ">
+                            
+                                <li>
+                                    <a href="/2026/05/03/%E7%AD%96%E5%88%92/%E9%9F%B3%E4%B9%90%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="tree-item link ">
+                                        AI提示词
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                
+            
+        </ul>
+    </div>
+</nav>
+    </aside>
+
+    <main id="site-main" class="wiki-main">
+        <header class="sticky-header">
+            <nav class="menu">
+  <a href="/">Home</a>
+  <a href="/categories/">Categories</a>
+  <a href="/heroes/">Heroes</a>
+  <a href="/items/">Items</a>
+  <a href="/story/">Story</a>
+</nav>
+        </header>
+        <div class="dohna-content-inner">
+            <div class="post-layout">
+    <div class="post-head">
+        <h1 class="post-title">特性设定</h1>
+        <div class="post-meta">
+            <span class="date">Terminal Update: 2026-05-21 07:10</span>
+        </div>
+    </div>
+    <article class="post-content">
+        <p><u2>无畏</u2></p>
+<h3 id="无畏"><a href="#无畏" class="headerlink" title="无畏"></a>无畏</h3><blockquote>
+<p>行动时有几率解除控制效果，根据场上人数几率变高；基础为20%，每个单位提高3%。</p>
+</blockquote>
+<h3 id="高级无畏"><a href="#高级无畏" class="headerlink" title="高级无畏"></a>高级无畏</h3><blockquote>
+<p>行动时有几率解除控制效果，根据场上人数几率变高；基础为30%，每个单位提高5%。</p>
+</blockquote>
+<p><u1>龙系相关</u1></p>
+<h1 id="龙系相关"><a href="#龙系相关" class="headerlink" title="龙系相关"></a>龙系相关</h1><p><u2>龙之血</u2></p>
+<h3 id="龙之血"><a href="#龙之血" class="headerlink" title="龙之血"></a>龙之血</h3><blockquote>
+<p>增加血量</p>
+</blockquote>
+<h3 id="高级龙之血"><a href="#高级龙之血" class="headerlink" title="高级龙之血"></a>高级龙之血</h3><blockquote>
+<p>大幅增加血量<br><u2>龙之爪</u2></p>
+</blockquote>
+<h3 id="龙之爪"><a href="#龙之爪" class="headerlink" title="龙之爪"></a>龙之爪</h3><blockquote>
+<p>增加攻击力</p>
+</blockquote>
+<h3 id="高级龙之爪"><a href="#高级龙之爪" class="headerlink" title="高级龙之爪"></a>高级龙之爪</h3><blockquote>
+<p>大幅增加攻击力<br><u2>龙之鳞</u2></p>
+</blockquote>
+<h3 id="龙之鳞"><a href="#龙之鳞" class="headerlink" title="龙之鳞"></a>龙之鳞</h3><blockquote>
+<p>增加防御</p>
+</blockquote>
+<h3 id="高级龙之鳞"><a href="#高级龙之鳞" class="headerlink" title="高级龙之鳞"></a>高级龙之鳞</h3><blockquote>
+<p>大幅增加攻击力<br><u2>龙之怒</u2></p>
+</blockquote>
+<h3 id="龙之怒"><a href="#龙之怒" class="headerlink" title="龙之怒"></a>龙之怒</h3><blockquote>
+<p>增加魔攻</p>
+</blockquote>
+<h3 id="高级龙之怒"><a href="#高级龙之怒" class="headerlink" title="高级龙之怒"></a>高级龙之怒</h3><blockquote>
+<p>大幅增加魔攻<br><u2>龙之歌</u2></p>
+</blockquote>
+<h3 id="龙之歌"><a href="#龙之歌" class="headerlink" title="龙之歌"></a>龙之歌</h3><blockquote>
+<p>增加魔抗</p>
+</blockquote>
+<h3 id="高级龙之歌"><a href="#高级龙之歌" class="headerlink" title="高级龙之歌"></a>高级龙之歌</h3><blockquote>
+<p>大幅增加魔抗<br><u2>龙之波</u2></p>
+</blockquote>
+<h3 id="龙之波"><a href="#龙之波" class="headerlink" title="龙之波"></a>龙之波</h3><blockquote>
+<p>增加速度</p>
+</blockquote>
+<h3 id="高级龙之波"><a href="#高级龙之波" class="headerlink" title="高级龙之波"></a>高级龙之波</h3><blockquote>
+<p>大幅增加速度<br><u2>好胜</u2></p>
+</blockquote>
+<h3 id="好胜"><a href="#好胜" class="headerlink" title="好胜"></a>好胜</h3><blockquote>
+<p>在进行比较判断时，数值永远更大。</p>
+</blockquote>
+<h3 id="高级好胜"><a href="#高级好胜" class="headerlink" title="高级好胜"></a>高级好胜</h3><blockquote>
+<p>在进行比较判断时，将永远处于优势。</p>
+</blockquote>
+
+        
+        
+        
+        
+        
+
+
+        
+    </article>
+</div>
+<div class="dohna-toc-container" id="dohna-toc">
+    <div class="toc-header">
+        <span class="toc-title">TOC</span>
+    </div>
+    <div class="toc-body" id="toc-tree">
+    </div>
+</div>
+
+<button id="toc-mobile-toggle" class="dohna-toc-fab">TOC</button>
+
+<script>
+    (function initTOC() {
+        const tocTree = document.getElementById('toc-tree');
+        const content = document.querySelector('.post-content');
+        const tocContainer = document.getElementById('dohna-toc');
+        const mobileToggle = document.getElementById('toc-mobile-toggle');
+        
+        const appWrapper = document.getElementById('app-wrapper');
+        if (appWrapper && tocContainer && mobileToggle) {
+            appWrapper.appendChild(tocContainer);
+            appWrapper.appendChild(mobileToggle);
+        }
+
+        if (!tocTree || !content) return;
+        // 获取所有自定义的标题标签 u1, u2, u3 (保持你的自定义实现不变)
+        const headers = content.querySelectorAll('u1, u2, u3');
+        if (headers.length === 0) {
+            if(tocContainer) tocContainer.style.display = 'none';
+            if(mobileToggle) mobileToggle.style.display = 'none';
+            return;
+        }
+
+        let rootUl = document.createElement('ul');
+        rootUl.className = 'toc-list level-1';
+        let currentParent = { 1: rootUl, 2: null, 3: null };
+        let lastItem = { 1: null, 2: null, 3: null };
+
+        headers.forEach((h, i) => {
+            // 分配锚点 ID 以便点击跳转
+            if (!h.id) h.id = 'dh-heading-' + i;
+            const level = parseInt(h.tagName.substring(1));
+
+            const li = document.createElement('li');
+            li.className = 'toc-item';
+
+            const linkWrapper = document.createElement('div');
+            linkWrapper.className = 'toc-link-wrapper';
+
+            const icon = document.createElement('span');
+            icon.className = 'toc-icon';
+            icon.textContent = ' '; // 没有子层级时的占位符
+
+            const link = document.createElement('a');
+            link.href = '#' + h.id;
+            link.className = 'toc-link';
+            link.textContent = h.textContent;
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 850) {
+                    closeToc();
+                }
+            });
+            linkWrapper.appendChild(icon);
+            linkWrapper.appendChild(link);
+            li.appendChild(linkWrapper);
+
+            // 构建树状包含逻辑
+            if (level === 1) {
+                currentParent[1].appendChild(li);
+                lastItem[1] = li;
+                currentParent[2] = null;
+                currentParent[3] = null;
+            }
+            else if (level === 2) {
+                if (!currentParent[2]) {
+                    currentParent[2] = document.createElement('ul');
+                    currentParent[2].className = 'toc-list level-2 tree-sub';
+                    if (lastItem[1]) {
+                        lastItem[1].appendChild(currentParent[2]);
+                        lastItem[1].querySelector('.toc-icon').textContent = '[+]'; 
+                        lastItem[1].classList.add('has-child');
+                    } else {
+                        currentParent[1].appendChild(currentParent[2]);
+                    }
+                }
+                currentParent[2].appendChild(li);
+                lastItem[2] = li;
+                currentParent[3] = null;
+            }
+            else if (level === 3) {
+                if (!currentParent[3]) {
+                    currentParent[3] = document.createElement('ul');
+                    currentParent[3].className = 'toc-list level-3 tree-sub';
+                    if (lastItem[2]) {
+                        lastItem[2].appendChild(currentParent[3]);
+                        lastItem[2].querySelector('.toc-icon').textContent = '[+]';
+                        lastItem[2].classList.add('has-child');
+                    } else if (currentParent[2]) {
+                        currentParent[2].appendChild(currentParent[3]);
+                    }
+                }
+                if(currentParent[3]) currentParent[3].appendChild(li);
+            }
+        });
+
+        tocTree.appendChild(rootUl);
+
+        // 绑定 [+] / [-] 的展开折叠事件
+        tocTree.querySelectorAll('.toc-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                const li = icon.closest('.toc-item');
+                if (li.classList.contains('has-child')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    li.classList.toggle('open');
+                    icon.textContent = li.classList.contains('open') ? '[-]' : '[+]';
+                }
+            });
+        });
+
+        // 移动端菜单切换逻辑
+        const mobileClose = document.getElementById('toc-mobile-close');
+        const mobileOverlay = document.getElementById('mobileOverlay'); // 获取全局遮罩
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                tocContainer.classList.add('show');
+                if(mobileOverlay) mobileOverlay.classList.add('active'); // 呼出遮罩
+            });
+        }
+        const closeToc = () => {
+            tocContainer.classList.remove('show');
+            if(mobileOverlay) mobileOverlay.classList.remove('active'); // 隐藏遮罩
+        };
+
+        if (mobileClose) {
+            mobileClose.addEventListener('click', closeToc);
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 850 && tocContainer.classList.contains('show')) {
+                if (!tocContainer.contains(e.target) && e.target !== mobileToggle) {
+                    closeToc();
+                }
+            }
+        });
+    })();
+  
+</script>
+
+
+        </div>
+    </main>
+</div>
+<script src="/js/celestial-bg.js"></script>
+
+<script>
+    (function initDohnaAuthEngine() {
+        const TARGET_HASH = 'e3803a6b63c7bbf3d1595457d9acca1012acfcdb70ef47fb7a45d2223ba5cbcf';
+
+        const overlay = document.getElementById('dh-auth-overlay');
+        if (!overlay) return;
+        if (sessionStorage.getItem('dh_terminal_access') === 'GRANTED') {
+            overlay.remove();
+            return;
+        }
+
+        const input = document.getElementById('dh-auth-input');
+        const btn = document.getElementById('dh-auth-btn');
+        const err = document.getElementById('dh-auth-err');
+        const authBox = document.querySelector('.dh-auth-box');
+        const canvas = document.getElementById('dh-auth-canvas');
+
+        const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
+        document.body.style.overflow = 'hidden';
+
+        overlay.style.backgroundColor = 'rgba(6, 6, 9, 1.0)';
+        setTimeout(() => {
+            overlay.style.transition = 'background-color 0.4s cubic-bezier(0.19, 1, 0.22, 1)';
+        }, 50);
+
+        const GLYPH_MATRIX = [
+            [0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 1, 1, 1, 1, 0, 0, 0]
+        ];
+
+        const GLYPH_ROWS = GLYPH_MATRIX.length;
+        const GLYPH_COLS = GLYPH_MATRIX[0].length;
+
+        let particles = [];
+        let particleMap = new Map();
+        let animationFrameId;
+        let systemState = 'LIQUID';
+        let lastLifeTick = performance.now();
+
+        let globalCrystallizedCount = 0;
+        let globalRevealedCount = 0;
+        let glyphParticleCount = 0;
+
+        // 全局过场防御性计时器
+        let crystallizeStateTimer = 0;
+        let revealStateTimer = 0;
+
+        const transitionEffect = {
+            progress: 0,
+            color: '#FFFFFF',
+            isActive: false,
+            type: 'FLASH'
+        };
+
+        function triggerState(newState) {
+            if (systemState === newState) return;
+            transitionEffect.isActive = true;
+            transitionEffect.progress = 0;
+
+            if (newState.includes('SUCCESS')) {
+                transitionEffect.color = '#05D9E8';
+                transitionEffect.type = 'FLASH';
+            } else if (newState === 'ALARM_GAS') {
+                transitionEffect.color = '#FF2A6D';
+                transitionEffect.type = 'GLITCH';
+            }
+
+            setTimeout(() => {
+                systemState = newState;
+                if (newState.includes('SUCCESS')) {
+                    particles.forEach(p => {
+                        const dx = p.x - (cWidth / 2);
+                        const dy = p.y - (cHeight / 2);
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        p.stateDelay = dist / 2500;
+                    });
+                }
+            }, 100);
+        }
+
+        let cWidth = window.innerWidth;
+        let cHeight = window.innerHeight;
+        let lastTime = performance.now();
+        const mouse = { x: -1000, y: -1000 };
+        const forceField = { x: -1000, y: -1000, active: false, power: 0 };
+        let isMouseDown = false;
+
+        overlay.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        overlay.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; isMouseDown = false; });
+        overlay.addEventListener('mousedown', () => isMouseDown = true);
+        window.addEventListener('mouseup', () => isMouseDown = false);
+
+        const COS_TABLE = [], SIN_TABLE = [];
+        for (let i = 0; i < 6; i++) {
+            COS_TABLE.push(Math.cos((Math.PI / 3) * i));
+            SIN_TABLE.push(Math.sin((Math.PI / 3) * i));
+        }
+
+        const easeInOutCubic = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+        const easeOutQuad = x => 1 - (1 - x) * (1 - x);
+
+        class PhaseParticle {
+            constructor(baseX, baseY, radius, r, c) {
+                this.baseX = baseX;
+                this.baseY = baseY;
+                this.x = baseX + (Math.random() - 0.5) * 10;
+                this.y = baseY + (Math.random() - 0.5) * 10;
+                this.vx = 0;
+                this.vy = 0;
+                this.radius = radius;
+                this.baseColor = Math.random() > 0.5 ? '#05D9E8' : '#FF2A6D';
+                this.color = this.baseColor;
+                this.altColor = Math.random() > 0.5 ? '#FFFFFF' : '#000000';
+                this.phase = Math.random() * Math.PI * 2;
+                this.blinkOffset = Math.random();
+                this.alarmMode = Math.random();
+                this.isGlyph = false;
+                this.angle = 0;
+                this.vAngle = 0;
+
+                this.gridR = r;
+                this.gridC = c;
+                this.isAlive = Math.random() > 0.85;
+                this.nextAlive = false;
+                this.age = this.isAlive ? Math.floor(Math.random() * 10) : 0;
+
+                this.currentOpacity = this.isAlive ? 1.0 : 0.0;
+                this.currentScale = this.isAlive ? 1.0 : 0.5;
+
+                this.crystallizeDelay = Math.random() * 12 + (baseX % 10);
+                this.crystallizeTime = 0;
+                this.crystallizeProgress = 0;
+                this.isCrystallized = false;
+
+                this.revealDelay = Math.random() * 8 + (this.isGlyph ? 0 : 5);
+                this.revealTime = 0;
+                this.revealProgress = 0;
+                this.isRevealed = false;
+
+                this.stateDelay = 0;
+
+                this.currentKSpring = 0.08;
+                this.currentCFriction = 0.65;
+            }
+
+            update(dt) {
+                const timeModifier = Math.min(dt / 16.666, 2.5);
+                let displayState = systemState;
+
+                if (systemState.includes('SUCCESS') && this.stateDelay > 0) {
+                    this.stateDelay -= 0.016 * timeModifier;
+                    if (this.stateDelay > 0) displayState = 'DECRYPTING';
+                }
+
+                if (displayState === 'SUCCESS_SHATTER') {
+                    this.x += this.vx * timeModifier;
+                    this.y += this.vy * timeModifier;
+                    this.vy += 0.45 * timeModifier;
+                    this.vx *= Math.pow(0.982, timeModifier);
+                    this.vy *= Math.pow(0.982, timeModifier);
+                    this.angle += this.vAngle * timeModifier;
+                    this.phase += 0.1 * timeModifier;
+                    return;
+                }
+
+                let targetSpring = 0.08;
+                let targetFriction = 0.65;
+                let noise = 1.2;
+
+                switch (displayState) {
+                    case 'SUCCESS_ALIGN':
+                    case 'SUCCESS_CRYSTALLIZE':
+                        // 修正阻尼衰减区间（从0.82滑动到0.70），保留足够的物理动能回归原位
+                        targetSpring = 0.12 + (this.crystallizeProgress * 0.68);
+                        targetFriction = 0.82 - (this.crystallizeProgress * 0.12);
+                        noise = 1.2 * (1 - this.crystallizeProgress);
+
+                        if (displayState === 'SUCCESS_CRYSTALLIZE') {
+                            if (this.crystallizeDelay > 0) {
+                                this.crystallizeDelay -= timeModifier;
+                            } else if (this.crystallizeTime < 1.0) {
+                                this.crystallizeTime += 0.05 * timeModifier;
+                                if (this.crystallizeTime >= 1.0) {
+                                    this.crystallizeTime = 1.0;
+                                    if (!this.isCrystallized) {
+                                        this.isCrystallized = true;
+                                        globalCrystallizedCount++;
+                                    }
+                                }
+                                this.crystallizeProgress = easeInOutCubic(this.crystallizeTime);
+                            }
+                        }
+
+                        // 核心增强：结晶时施加直接的坐标引力补间（Lerp），确保绝对精准“归位”不失控
+                        if (this.crystallizeProgress > 0) {
+                            this.x += (this.baseX - this.x) * this.crystallizeProgress * 0.18 * timeModifier;
+                            this.y += (this.baseY - this.y) * this.crystallizeProgress * 0.18 * timeModifier;
+                        }
+                        break;
+                    case 'SUCCESS_REVEAL':
+                        targetSpring = 0.95;
+                        targetFriction = 0.1;
+                        noise = 0;
+                        this.x += (this.baseX - this.x) * 0.25 * timeModifier;
+                        this.y += (this.baseY - this.y) * 0.25 * timeModifier;
+                        this.crystallizeProgress = 1.0;
+                        this.isCrystallized = true;
+
+                        if (this.revealDelay > 0) {
+                            this.revealDelay -= timeModifier;
+                        } else if (this.revealTime < 1.0) {
+                            this.revealTime += 0.06 * timeModifier;
+                            if (this.revealTime >= 1.0) {
+                                this.revealTime = 1.0;
+                                if (!this.isRevealed) {
+                                    this.isRevealed = true;
+                                    if (this.isGlyph) globalRevealedCount++;
+                                }
+                            }
+                            this.revealProgress = easeOutQuad(this.revealTime);
+                        }
+                        break;
+                    case 'ALARM_GAS':
+                        targetSpring = 0.02;
+                        targetFriction = 0.88;
+                        noise = 3.5;
+                        this.vy -= 0.3 * timeModifier;
+                        this.x += Math.sin(this.baseY + performance.now() * 0.005) * 3.0 * timeModifier;
+                        break;
+                    case 'DECRYPTING':
+                        targetSpring = 0.01;
+                        targetFriction = 0.92;
+                        noise = 2.8;
+                        break;
+                }
+
+                this.currentKSpring += (targetSpring - this.currentKSpring) * 0.1 * timeModifier;
+                this.currentCFriction += (targetFriction - this.currentCFriction) * 0.1 * timeModifier;
+
+                this.vx += (this.baseX - this.x) * this.currentKSpring * timeModifier;
+                this.vy += (this.baseY - this.y) * this.currentKSpring * timeModifier;
+
+                if (displayState === 'LIQUID' || displayState === 'ALARM_GAS' || displayState === 'DECRYPTING') {
+                    let targetOpacity = this.isAlive ? 1.0 : 0.0;
+                    let targetScale = this.isAlive ? 0.95 : 0.6;
+
+                    if (displayState === 'ALARM_GAS') {
+                        targetOpacity = this.isAlive ? 0.8 : 0.2;
+                    }
+
+                    this.currentOpacity += (targetOpacity - this.currentOpacity) * 0.06 * timeModifier;
+                    this.currentScale += (targetScale - this.currentScale) * 0.12 * timeModifier;
+
+                    if (mouse.x !== -1000) {
+                        const mx = mouse.x - this.x;
+                        const my = mouse.y - this.y;
+                        const dist = Math.sqrt(mx * mx + my * my) || 1;
+                        if (dist < 100) {
+                            this.isAlive = true;
+                        }
+                        if (isMouseDown && dist < 300) {
+                            const pull = (300 - dist) * 0.0015;
+                            this.vx += mx * pull * timeModifier;
+                            this.vy += my * pull * timeModifier;
+                        } else if (dist < 150) {
+                            const push = (150 - dist) * 0.015;
+                            this.vx -= mx * push * timeModifier;
+                            this.vy -= my * push * timeModifier;
+                        }
+                    }
+                } else {
+                    let targetOpacity = 1.0;
+                    let targetScale = 1.0;
+
+                    this.currentOpacity += (targetOpacity - this.currentOpacity) * (0.05 + this.crystallizeProgress * 0.1) * timeModifier;
+                    this.currentScale += (targetScale - this.currentScale) * (0.05 + this.crystallizeProgress * 0.1) * timeModifier;
+
+                    if (displayState === 'SUCCESS_ALIGN' && mouse.x !== -1000) {
+                        const mx = mouse.x - this.x;
+                        const my = mouse.y - this.y;
+                        const dist = Math.sqrt(mx * mx + my * my) || 1;
+                        if (isMouseDown && dist < 300) {
+                            const pull = (300 - dist) * 0.0015 * (1 - this.crystallizeProgress);
+                            this.vx += mx * pull * timeModifier;
+                            this.vy += my * pull * timeModifier;
+                        } else if (dist < 150) {
+                            const push = (150 - dist) * 0.025 * (1 - this.crystallizeProgress);
+                            this.vx -= mx * push * timeModifier;
+                            this.vy -= my * push * timeModifier;
+                        }
+                    }
+                }
+
+                if (forceField.active) {
+                    const fx = forceField.x - this.x;
+                    const fy = forceField.y - this.y;
+                    const dist = Math.sqrt(fx * fx + fy * fy) || 1;
+                    if (dist < 300) {
+                        const force = (300 - dist) * forceField.power * timeModifier;
+                        this.vx += (fx / dist) * force;
+                        this.vy += (fy / dist) * force;
+                    }
+                }
+
+                this.vx += (Math.random() - 0.5) * noise * timeModifier;
+                this.vy += (Math.random() - 0.5) * noise * timeModifier;
+                this.vx *= Math.pow(this.currentCFriction, timeModifier);
+                this.vy *= Math.pow(this.currentCFriction, timeModifier);
+                this.x += this.vx * timeModifier;
+                this.y += this.vy * timeModifier;
+
+                this.phase += 0.045 * timeModifier;
+            }
+
+            draw(ctx) {
+                let cx = this.x, cy = this.y, baseR = this.radius;
+                let displayState = systemState;
+
+                if (systemState.includes('SUCCESS') && this.stateDelay > 0) {
+                    displayState = 'DECRYPTING';
+                }
+
+                let needsTransform = (displayState === 'SUCCESS_SHATTER' && this.angle !== 0);
+                if (needsTransform) {
+                    ctx.save();
+                    ctx.translate(cx, cy);
+                    ctx.rotate(this.angle);
+                    cx = 0; cy = 0;
+                }
+
+                const drawHexPath = (radius) => {
+                    ctx.beginPath();
+                    ctx.moveTo(cx + radius * COS_TABLE[0], cy + radius * SIN_TABLE[0]);
+                    for (let i = 1; i < 6; i++) {
+                        ctx.lineTo(cx + radius * COS_TABLE[i], cy + radius * SIN_TABLE[i]);
+                    }
+                    ctx.closePath();
+                };
+
+                if (displayState === 'LIQUID') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    drawHexPath(baseR * 0.85);
+                    ctx.fillStyle = '#060609';
+                    ctx.fill();
+                    ctx.strokeStyle = 'rgba(5, 217, 232, 0.08)';
+                    ctx.lineWidth = 1.0;
+                    ctx.stroke();
+
+                    if (this.currentOpacity > 0.01) {
+                        ctx.globalAlpha = this.currentOpacity;
+                        drawHexPath(baseR * this.currentScale);
+                        ctx.fillStyle = this.baseColor;
+                        ctx.fill();
+
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 2.0;
+                        ctx.stroke();
+
+                        ctx.globalAlpha = 1.0;
+                    }
+
+                } else if (displayState === 'DECRYPTING' || displayState === 'SUCCESS_ALIGN') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.globalAlpha = this.currentOpacity;
+                    let dynamicR = baseR * this.currentScale;
+
+                    const speedMultiplier = displayState === 'DECRYPTING' ? 2.8 : 0.6;
+                    const pulse = Math.sin(this.phase * speedMultiplier + this.blinkOffset * Math.PI * 2);
+
+                    if (pulse > 0.75) {
+                        let popScale = displayState === 'DECRYPTING' ? 1.05 : 0.95;
+                        let offset = displayState === 'DECRYPTING' ? 6 : 4;
+
+                        ctx.save();
+                        ctx.translate(-offset, offset);
+                        drawHexPath(dynamicR * popScale);
+                        ctx.fillStyle = '#000000';
+                        ctx.fill();
+                        ctx.restore();
+
+                        drawHexPath(dynamicR * popScale);
+                        ctx.fillStyle = this.baseColor;
+                        ctx.fill();
+
+                        if (this.blinkOffset > 0.5) {
+                            ctx.save();
+                            ctx.clip();
+                            ctx.beginPath();
+                            for (let l = -dynamicR * 2; l < dynamicR * 2; l += 6) {
+                                ctx.moveTo(cx - dynamicR, cy + l);
+                                ctx.lineTo(cx + dynamicR * 2, cy + l - dynamicR * 2);
+                            }
+                            ctx.strokeStyle = 'rgba(0, 0, 0, 0.25)';
+                            ctx.lineWidth = 2.5;
+                            ctx.stroke();
+                            ctx.restore();
+                        }
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 4.0;
+                        ctx.stroke();
+
+                    } else {
+                        let idleScale = 0.85 + (pulse + 1) * 0.03;
+                        drawHexPath(dynamicR * idleScale);
+                        ctx.fillStyle = '#060609';
+                        ctx.fill();
+
+                        ctx.strokeStyle = (displayState === 'DECRYPTING' && this.blinkOffset > 0.7)
+                            ? this.baseColor : 'rgba(5, 217, 232, 0.15)';
+                        ctx.lineWidth = 2.0;
+                        ctx.stroke();
+
+                        if (pulse > 0.2 && displayState === 'DECRYPTING') {
+                            drawHexPath(dynamicR * 0.25);
+                            ctx.fillStyle = this.baseColor;
+                            ctx.fill();
+                            ctx.strokeStyle = '#000000';
+                            ctx.lineWidth = 2.0;
+                            ctx.stroke();
+                        }
+                    }
+                    ctx.globalAlpha = 1.0;
+
+                } else if (displayState === 'SUCCESS_CRYSTALLIZE' || displayState === 'SUCCESS_REVEAL' || displayState === 'SUCCESS_SHATTER') {
+                    let cp = this.crystallizeProgress;
+                    let expandedR = baseR + (cp > 0.8 ? 2.5 : 0);
+
+                    if (cp < 1.0 && displayState !== 'SUCCESS_SHATTER') {
+                        drawHexPath(baseR);
+                        ctx.fillStyle = '#060609';
+                        ctx.fill();
+                        ctx.strokeStyle = this.color;
+                        ctx.lineWidth = 2.0;
+                        ctx.stroke();
+                    }
+
+                    if (cp > 0.1) {
+                        ctx.save();
+                        ctx.globalCompositeOperation = 'source-over';
+                        ctx.globalAlpha = cp;
+
+                        if (displayState === 'SUCCESS_SHATTER') {
+                            ctx.globalAlpha = Math.max(0, 1.0 - (this.phase % 1.0) * 0.5);
+                        }
+
+                        drawHexPath(expandedR);
+                        ctx.fillStyle = this.isGlyph ? '#000000' : this.baseColor;
+                        ctx.fill();
+
+                        ctx.beginPath();
+                        ctx.moveTo(cx, cy);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[3], cy + expandedR * SIN_TABLE[3]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[4], cy + expandedR * SIN_TABLE[4]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[5], cy + expandedR * SIN_TABLE[5]);
+                        ctx.closePath();
+                        ctx.fillStyle = this.isGlyph ? this.baseColor : '#000000';
+                        ctx.fill();
+
+                        ctx.beginPath();
+                        ctx.moveTo(cx + expandedR * COS_TABLE[1], cy + expandedR * SIN_TABLE[1]);
+                        ctx.lineTo(cx + expandedR * COS_TABLE[4], cy + expandedR * SIN_TABLE[4]);
+                        ctx.strokeStyle = this.altColor;
+                        ctx.lineWidth = 3.5;
+                        ctx.stroke();
+
+                        drawHexPath(expandedR);
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 4.5;
+                        ctx.stroke();
+
+                        ctx.restore();
+                    }
+
+                    if (displayState === 'SUCCESS_REVEAL' && this.isGlyph && this.revealProgress > 0) {
+                        let holeRadius = expandedR * this.revealProgress;
+                        ctx.save();
+                        ctx.globalCompositeOperation = 'destination-out';
+                        drawHexPath(holeRadius);
+                        ctx.fillStyle = 'rgba(0,0,0,1.0)';
+                        ctx.fill();
+                        ctx.restore();
+
+                        ctx.save();
+                        drawHexPath(holeRadius);
+                        ctx.strokeStyle = this.altColor === '#FFFFFF' ? '#05D9E8' : '#FF2A6D';
+                        ctx.lineWidth = 4.0;
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+
+                } else if (displayState === 'ALARM_GAS') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    let globalBeat = Math.floor(performance.now() / 120) % 4;
+
+                    ctx.globalAlpha = this.currentOpacity;
+                    ctx.save();
+
+                    if (globalBeat === 0) {
+                        ctx.save();
+                        ctx.translate(cx + 10, cy);
+                        drawHexPath(baseR);
+                        ctx.fillStyle = '#05D9E8';
+                        ctx.fill();
+                        ctx.restore();
+                        ctx.translate(cx - 5, cy);
+                    } else {
+                        ctx.translate(cx, cy);
+                    }
+
+                    drawHexPath(baseR);
+
+                    if (this.alarmMode > 0.6) {
+                        ctx.fillStyle = '#FF2A6D';
+                        ctx.fill();
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 4.0;
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        let xSize = baseR * 0.55;
+                        ctx.moveTo(-xSize, -xSize); ctx.lineTo(xSize, xSize);
+                        ctx.moveTo(xSize, -xSize); ctx.lineTo(-xSize, xSize);
+                        ctx.strokeStyle = '#000000';
+                        ctx.lineWidth = 5.0;
+                        ctx.stroke();
+                    } else if (this.alarmMode > 0.3) {
+                        ctx.fillStyle = '#000000';
+                        ctx.fill();
+
+                        ctx.save();
+                        ctx.clip();
+                        ctx.beginPath();
+                        let scrollOffset = (performance.now() * 0.05) % 20;
+                        for (let l = -baseR * 2; l < baseR * 2; l += 12) {
+                            ctx.moveTo(-baseR, l + scrollOffset);
+                            ctx.lineTo(baseR * 2, l - baseR * 2 + scrollOffset);
+                        }
+                        ctx.strokeStyle = '#FFC200';
+                        ctx.lineWidth = 6.0;
+                        ctx.stroke();
+                        ctx.restore();
+
+                        ctx.strokeStyle = '#FF2A6D';
+                        ctx.lineWidth = 4.0;
+                        ctx.stroke();
+                    } else {
+                        ctx.fillStyle = globalBeat === 1 ? '#FFFFFF' : '#000000';
+                        ctx.fill();
+
+                        if (globalBeat !== 1) {
+                            let barW = baseR * 1.5;
+                            ctx.fillStyle = '#FF2A6D';
+                            ctx.fillRect(-barW/2, -baseR*0.2, barW, baseR*0.4);
+                        }
+                    }
+                    ctx.restore();
+                    ctx.globalAlpha = 1.0;
+                }
+
+                if (needsTransform) ctx.restore();
+            }
+        }
+
+        function initPhysicsGrid() {
+            cWidth = window.innerWidth;
+            cHeight = window.innerHeight;
+            canvas.width = cWidth;
+            canvas.height = cHeight;
+
+            const hexR = 45;
+            const hexW = hexR * Math.sqrt(3);
+            const hexH = hexR * 2;
+            const rowH = hexH * 0.75;
+            const cols = Math.ceil(cWidth / hexW) + 2;
+            const rows = Math.ceil(cHeight / rowH) + 2;
+            const centerRow = Math.floor(rows / 2);
+            const centerCol = Math.floor(cols / 2);
+            const rStart = centerRow - Math.floor(GLYPH_ROWS / 2);
+            const cStart = centerCol - Math.floor(GLYPH_COLS / 2);
+
+            particles = [];
+            particleMap.clear();
+            globalCrystallizedCount = 0;
+            globalRevealedCount = 0;
+            glyphParticleCount = 0;
+
+            let r = -1;
+            const CHUNK_SIZE = 6;
+            function chunkAllocate() {
+                const maxRow = Math.min(r + CHUNK_SIZE, rows);
+                for (; r < maxRow; r++) {
+                    for (let c = -1; c < cols; c++) {
+                        const x = c * hexW + (r % 2 === 0 ? hexW / 2 : 0);
+                        const y = r * rowH;
+                        const p = new PhaseParticle(x, y, hexR - 1.5, r, c);
+                        if (r >= rStart && r < rStart + GLYPH_ROWS && c >= cStart && c < cStart + GLYPH_COLS) {
+                            if (GLYPH_MATRIX[r - rStart][c - cStart] === 1) {
+                                p.isGlyph = true;
+                                glyphParticleCount++;
+                            }
+                        }
+                        particles.push(p);
+                        particleMap.set(`${r},${c}`, p);
+                    }
+                }
+                if (r < rows) {
+                    requestAnimationFrame(chunkAllocate);
+                }
+            }
+            chunkAllocate();
+        }
+
+        function updateGameOfLife(now) {
+            if (systemState === 'SUCCESS_SHATTER' || systemState === 'SUCCESS_REVEAL') return;
+           
+            const LIFE_TICK_RATE = systemState === 'ALARM_GAS' ?
+                100 : (systemState === 'DECRYPTING' ? 120 : 200); 
+            if (now - lastLifeTick < LIFE_TICK_RATE) return;
+            lastLifeTick = now;
+
+            let currentAliveCount = 0; // 新增：记录当前帧即将存活的细胞总数
+
+            for (let i = 0; i < particles.length; i++) { 
+                let p = particles[i];
+                // [cite: 181]
+                if (p.isCrystallized) { 
+                    p.nextAlive = p.isAlive;
+                    continue;
+                }
+
+                let aliveNeighbors = 0;
+                let crystallizedNeighbors = 0;
+
+                for (let dr = -1; dr <= 1; dr++) { 
+                    for (let dc = -1; dc <= 1; dc++) { 
+                        if (dr === 0 && dc === 0) continue;
+                        let neighbor = particleMap.get(`${p.gridR + dr},${p.gridC + dc}`);
+                        
+                        if (neighbor) { 
+                            if (neighbor.isAlive) aliveNeighbors++;
+                            if (neighbor.isCrystallized) crystallizedNeighbors++;
+                        }
+                    }
+                }
+
+                if (systemState === 'SUCCESS_CRYSTALLIZE' && crystallizedNeighbors > 2) { 
+                    p.crystallizeDelay -= crystallizedNeighbors * 0.5;
+                }
+
+                if (systemState === 'SUCCESS_ALIGN' || systemState === 'SUCCESS_CRYSTALLIZE') {
+                    p.nextAlive = true;
+                } else if (p.isAlive) { // 
+                    p.nextAlive = (aliveNeighbors === 2 || aliveNeighbors === 3);
+                } else {
+                    p.nextAlive = (aliveNeighbors === 3);
+                    if (Math.random() < 0.001) p.nextAlive = true;
+                }
+
+                if (p.nextAlive) currentAliveCount++; 
+            }
+            const MIN_ALIVE_RATIO = 0.06;
+            if (systemState === 'LIQUID' && currentAliveCount < particles.length * MIN_ALIVE_RATIO) {
+                const spawnClusters = 4; 
+
+                for (let c = 0; c < spawnClusters; c++) {
+                    const centerIdx = Math.floor(Math.random() * particles.length);
+                    const centerP = particles[centerIdx];
+                    
+                    for (let dr = -1; dr <= 1; dr++) {
+                        for (let dc = -1; dc <= 1; dc++) {
+                            if (Math.random() > 0.3) {
+                                let neighbor = particleMap.get(`${centerP.gridR + dr},${centerP.gridC + dc}`);
+                                if (neighbor && !neighbor.isCrystallized) {
+                                    neighbor.nextAlive = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // =====================================================================
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.isAlive = p.nextAlive;
+                if (p.isAlive) {
+                    p.age++;
+                } else { 
+                    p.age = 0;
+                }
+            }
+        }
+
+        function drawOverlayEffect(ctx, canvas) {
+            if (!transitionEffect.isActive) return;
+            transitionEffect.progress += 0.035;
+
+            ctx.save();
+            if (transitionEffect.type === 'FLASH') {
+                let p = transitionEffect.progress;
+                let cx = canvas.width / 2;
+                let cy = canvas.height / 2;
+                let maxRadius = Math.sqrt(cx * cx + cy * cy) * 1.2;
+                let flashAlpha = p < 0.15 ? (p / 0.15) : Math.pow(1 - ((p - 0.15) / 0.85), 1.8);
+
+                ctx.globalAlpha = flashAlpha;
+                ctx.fillStyle = transitionEffect.color;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.globalAlpha = flashAlpha * 0.4;
+                ctx.translate(cx, cy);
+                ctx.rotate(p * 1.5);
+                ctx.beginPath();
+                for (let i = 0; i < 16; i++) {
+                    ctx.moveTo(0, 0);
+                    ctx.arc(0, 0, maxRadius, i * (Math.PI / 8), (i + 0.4) * (Math.PI / 8));
+                    ctx.lineTo(0, 0);
+                }
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fill();
+                ctx.rotate(-p * 1.5);
+
+                if (p > 0.1) {
+                    let wipeProgress = (p - 0.1) / 0.9;
+                    let wipeRadius = maxRadius * Math.pow(wipeProgress, 2.5);
+
+                    ctx.globalCompositeOperation = 'destination-out';
+                    ctx.globalAlpha = 1.0;
+                    ctx.beginPath();
+                    for (let i = 0; i < 6; i++) {
+                        let angle = (Math.PI / 3) * i;
+                        let hx = Math.cos(angle) * wipeRadius;
+                        let hy = Math.sin(angle) * wipeRadius;
+                        if (i === 0) ctx.moveTo(hx, hy);
+                        else ctx.lineTo(hx, hy);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = '#FFFFFF';
+                    ctx.lineWidth = 40 * (1 - wipeProgress);
+                    ctx.stroke();
+                }
+
+            } else {
+                ctx.globalAlpha = Math.max(0, (1 - transitionEffect.progress) * 0.9);
+                for(let i = 0; i < 10; i++) {
+                    ctx.fillStyle = Math.random() > 0.5 ? '#FF2A6D' : '#000000';
+                    ctx.fillRect(0, Math.random() * canvas.height, canvas.width, Math.random() * 50);
+                }
+            }
+            ctx.restore();
+            if (transitionEffect.progress >= 1) {
+                transitionEffect.isActive = false;
+            }
+        }
+
+        function triggerShatterLogic() {
+            systemState = 'SUCCESS_SHATTER';
+            overlay.style.pointerEvents = 'none';
+            document.body.style.overflow = '';
+
+            const cx = cWidth / 2, cy = cHeight / 2;
+            particles.forEach(p => {
+                const dx = p.x - cx;
+                const dy = p.y - cy;
+                const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                const force = (1 - Math.min(dist / cWidth, 1)) * 30 + 10;
+
+                p.vx += (dx / dist) * force + (Math.random() - 0.5) * 20;
+                p.vy += (dy / dist) * force - (Math.random() * 25 + 10);
+                p.vAngle = (Math.random() - 0.5) * 0.8;
+            });
+            setTimeout(() => {
+                securityObserver.disconnect();
+                clearInterval(securityHeartbeat);
+                cancelAnimationFrame(animationFrameId);
+                overlay.remove();
+            }, 2000);
+        }
+
+        function drawFrame(now) {
+            const dt = now - lastTime;
+            lastTime = now;
+
+            updateGameOfLife(now);
+
+            ctx.clearRect(0, 0, cWidth, cHeight);
+            const len = particles.length;
+
+            const isHexActive = document.body.classList.contains('hex-in');
+            if (isHexActive) {
+                ctx.globalAlpha = 0.6;
+            }
+
+            for (let i = 0; i < len; i++) {
+                particles[i].update(dt);
+                particles[i].draw(ctx);
+            }
+            ctx.globalAlpha = 1.0;
+
+            drawOverlayEffect(ctx, canvas);
+            
+            if (systemState === 'SUCCESS_CRYSTALLIZE') {
+                crystallizeStateTimer += dt;
+                if (globalCrystallizedCount >= len * 0.96 || crystallizeStateTimer > 1200) {
+                    systemState = 'SUCCESS_REVEAL';
+                    revealStateTimer = 0;
+                    overlay.style.backgroundColor = 'rgba(6, 6, 9, 0)';
+                    particles.forEach(p => {
+                        if (!p.isCrystallized) {
+                            p.isCrystallized = true;
+                            p.crystallizeProgress = 1.0;
+                        }
+                    });
+                }
+            } else if (systemState === 'SUCCESS_REVEAL') {
+                revealStateTimer += dt;
+                if (globalRevealedCount >= glyphParticleCount || revealStateTimer > 1000) {
+                    triggerShatterLogic();
+                }
+            }
+
+            animationFrameId = requestAnimationFrame(drawFrame);
+        }
+
+        setTimeout(() => {
+            initPhysicsGrid();
+            lastTime = performance.now();
+            animationFrameId = requestAnimationFrame(drawFrame);
+        }, 80);
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initPhysicsGrid, 200);
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') return;
+            const rect = input.getBoundingClientRect();
+            const cursorOffsetX = Math.min(input.value.length * 13, rect.width - 20);
+
+            forceField.x = rect.left + cursorOffsetX;
+            forceField.y = rect.top + (rect.height / 2);
+
+            forceField.active = true;
+            forceField.power = 40.0;
+            setTimeout(() => { forceField.power = -25.0; }, 40);
+            setTimeout(() => { forceField.active = false; }, 120);
+
+            authBox.style.transform = `skewX(-4deg) translate3d(${(Math.random()-0.5)*6}px, ${(Math.random()-0.5)*6}px, 0)`;
+            setTimeout(() => {
+                if(systemState === 'LIQUID' || systemState === 'DECRYPTING') {
+                    authBox.style.transform = 'skewX(-4deg) translate3d(0,0,0)';
+                }
+            }, 30);
+        });
+        async function verifyKey() {
+            const key = input.value.trim();
+            if (!key || btn.style.pointerEvents === 'none') return;
+
+            btn.style.pointerEvents = 'none';
+            btn.querySelector('.btn-txt').innerText = 'DECRYPTING...';
+            systemState = 'DECRYPTING';
+            let simInterval = setInterval(() => {
+                input.value = Math.random().toString(36).substring(2, 10).toUpperCase();
+            }, 40);
+            setTimeout(async () => {
+                clearInterval(simInterval);
+                input.value = key;
+
+                try {
+                    const buffer = new TextEncoder().encode(key);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const currentHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                    if (currentHash === TARGET_HASH) {
+                        overlay.classList.add('sys-success');
+                        err.innerText = '>>> DECRYPTION SUCCESS <<<';
+                        document.querySelector('.dh-auth-icon').innerText = '✓';
+                        document.querySelector('.glitch-text').innerText = 'SYSTEM_UNLOCKED';
+
+                        sessionStorage.setItem('dh_terminal_access', 'GRANTED');
+
+                        particles.forEach(p => {
+                            p.vy -= Math.random() * 4 + 2;
+                        });
+
+                        if (authBox) {
+                            authBox.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease';
+                            authBox.style.transform = 'skewX(8deg) scale(1.1) translate3d(0, -50px, 0)';
+                            authBox.style.opacity = '0';
+                            authBox.style.pointerEvents = 'none';
+                        }
+
+                        const waveformBand = document.querySelector('.dh-auth-waveform-band');
+                        if (waveformBand) {
+                            waveformBand.style.transition = 'opacity 0.3s ease';
+                            waveformBand.style.opacity = '0';
+                        }
+
+                        triggerState('SUCCESS_ALIGN');
+                        setTimeout(() => {
+                            systemState = 'SUCCESS_CRYSTALLIZE';
+                            crystallizeStateTimer = 0; // 重置结晶计时器
+                        }, 500);
+                    } else {
+                        throw new Error('MISMATCH');
+                    }
+                } catch (e) {
+                    overlay.classList.add('sys-alarm');
+                    overlay.classList.add('screen-shake');
+
+                    triggerState('ALARM_GAS');
+
+                    document.querySelector('.glitch-text').innerText = 'ACCESS_DENIED';
+                    overlay.style.backgroundColor = 'rgba(28, 6, 6, 1.0)';
+                    let alarmFlicker = setInterval(() => {
+                        err.innerText = 'FATAL: 0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase() + '!!';
+                    }, 50);
+                    setTimeout(() => {
+                        clearInterval(alarmFlicker);
+                        overlay.classList.remove('sys-alarm');
+                        overlay.classList.remove('screen-shake');
+                        systemState = 'LIQUID';
+
+                        particles.forEach(p => {
+                            p.isAlive = Math.random() > 0.85;
+                            p.age = p.isAlive ? Math.floor(Math.random() * 10) : 0;
+                        });
+
+                        overlay.style.backgroundColor = 'rgba(6, 6, 9, 1.0)';
+                        document.querySelector('.glitch-text').innerText = 'SYSTEM_LOCKED';
+                        err.innerText = 'ERROR: INVALID_KEY';
+                        input.value = '';
+
+                        input.focus();
+                        btn.style.pointerEvents = 'auto';
+                        btn.querySelector('.btn-txt').innerText = 'AUTHORIZE';
+                    }, 1000);
+                }
+            }, 600);
+        }
+
+        btn.addEventListener('click', verifyKey);
+        input.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyKey(); });
+        overlay.addEventListener('contextmenu', e => e.preventDefault());
+
+        if (authBox) {
+            authBox.addEventListener('mousedown', e => e.stopPropagation());
+            authBox.addEventListener('mousemove', e => e.stopPropagation());
+        }
+
+        setInterval(() => {
+            const el = document.getElementById('dh-random-hex');
+            if (el && !overlay.classList.contains('sys-alarm')) {
+                el.innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+            }
+        }, 300);
+        const enforceSecurity = () => {
+            if (systemState === 'SUCCESS_SHATTER') return;
+            if (!document.body.contains(overlay)) document.body.appendChild(overlay);
+            if (window.getComputedStyle(overlay).display === 'none') {
+                overlay.style.setProperty('display', 'flex', 'important');
+                overlay.style.opacity = '1';
+            }
+        };
+
+        const securityObserver = new MutationObserver(enforceSecurity);
+        securityObserver.observe(document.body, { childList: true });
+        const securityHeartbeat = setInterval(enforceSecurity, 500);
+    })();
+</script>
+
+<div id="dh-hex-transition"></div>
+<script>
+    function initHexTransitionGrid() {
+        let transitionContainer = document.getElementById('dh-hex-transition');
+        if (!transitionContainer) {
+            transitionContainer = document.createElement('div');
+            transitionContainer.id = 'dh-hex-transition';
+            document.body.appendChild(transitionContainer);
+        } else {
+            transitionContainer.innerHTML = '';
+        }
+
+        const hexSize = 60;
+        const hexHeight = hexSize * 1.1547;
+        const rowHeight = hexHeight * 0.75;
+        const cols = Math.ceil(window.innerWidth / hexSize) + 2;
+        const rows = Math.ceil(window.innerHeight / rowHeight) + 2;
+
+        const colors = ['c-pink', 'c-cyan', 'c-yellow'];
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const maxDist = Math.sqrt(Math.pow(centerX, 2) + Math.pow(centerY, 2));
+        for (let r = -1; r < rows; r++) {
+            for (let c = -1; c < cols; c++) {
+                const hex = document.createElement('div');
+                hex.className = 'dh-hex-cell';
+
+                if (Math.random() > 0.92) {
+                    hex.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+                }
+
+                const x = c * hexSize + (r % 2 === 0 ? hexSize / 2 : 0);
+                const y = r * rowHeight;
+                hex.style.left = `${x}px`;
+                hex.style.top = `${y}px`;
+                const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+                const delayIn = (dist / maxDist) * 0.5;
+                const delayOut = Math.random() * 0.4;
+
+                hex.style.setProperty('--delay-in', `${delayIn}s`);
+                hex.style.setProperty('--delay-out', `${delayOut}s`);
+
+                transitionContainer.appendChild(hex);
+            }
+        }
+    }
+
+    function loadPage(href, shouldPushState = true) {
+        document.body.classList.remove('hex-out');
+        document.body.classList.add('hex-in');
+
+        fetch(href)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                setTimeout(() => {
+                    const newAppWrapper = doc.getElementById('app-wrapper');
+                    const currentAppWrapper = document.getElementById('app-wrapper');
+
+                    if (newAppWrapper && currentAppWrapper) {
+                        currentAppWrapper.innerHTML = newAppWrapper.innerHTML;
+                    }
+
+                    const newMobileHeader = doc.querySelector('.mobile-header');
+                    const currentMobileHeader = document.querySelector('.mobile-header');
+                    if (newMobileHeader && currentMobileHeader) {
+                        currentMobileHeader.innerHTML = newMobileHeader.innerHTML;
+                    }
+
+                    document.title = doc.title;
+                    if (shouldPushState) history.pushState(null, doc.title, href);
+                    window.scrollTo(0, 0);
+
+                    const siteMain = document.getElementById('site-main');
+                    if (siteMain) siteMain.scrollTo(0, 0);
+                    if (currentAppWrapper) {
+                        const scripts = currentAppWrapper.querySelectorAll('script');
+                        scripts.forEach(oldScript => {
+                            const newScript = document.createElement('script');
+                            Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                            newScript.textContent = oldScript.textContent;
+                            oldScript.parentNode.replaceChild(newScript, oldScript);
+                        });
+                    }
+
+                    if (typeof initPageInteract === 'function') initPageInteract();
+                    if (window.MathJax) {
+                        if (window.MathJax.typesetClear) window.MathJax.typesetClear();
+                        if (window.MathJax.typesetPromise) window.MathJax.typesetPromise();
+                    }
+
+                    document.body.classList.remove('hex-in');
+                    document.body.classList.add('hex-out');
+                    setTimeout(() => { document.body.classList.remove('hex-out'); }, 1000);
+                }, 500);
+            })
+            .catch(err => {
+                console.warn('Pjax 载入失败，降级为常规全刷新跳转:', err);
+                window.location.href = href;
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initHexTransitionGrid();
+
+        document.body.classList.add('hex-in');
+        setTimeout(() => {
+            document.body.classList.remove('hex-in');
+            document.body.classList.add('hex-out');
+            setTimeout(() => { document.body.classList.remove('hex-out'); }, 1000);
+        }, 50);
+
+        document.body.addEventListener('click', function(e) {
+            if (document.body.classList.contains('hex-in') || document.body.classList.contains('hex-out')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('http') || link.target) return;
+
+            if (href.startsWith('#') || link.pathname === window.location.pathname) {
+                e.preventDefault();
+                const targetId = href.startsWith('#') ? href : link.hash;
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const siteMain = document.getElementById('site-main');
+                        if (siteMain) {
+                            const targetTop = targetElement.getBoundingClientRect().top;
+                            const mainTop = siteMain.getBoundingClientRect().top;
+                            siteMain.scrollBy({ top: targetTop - mainTop - 60, behavior: 'auto' });
+                        } else {
+                            targetElement.scrollIntoView({ behavior: 'auto' });
+                        }
+                        history.pushState(null, document.title, window.location.pathname + window.location.search + targetId);
+                    }
+                }
+                return;
+            }
+            e.preventDefault();
+            loadPage(href, true);
+        });
+        window.addEventListener('popstate', () => { loadPage(window.location.href, false); });
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.remove('hex-in');
+                document.body.classList.add('hex-out');
+            }
+        });
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initHexTransitionGrid, 200);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('click', function(e) {
+        const menuBtn = e.target.closest('#mobileMenuBtn');
+        const sidebar = document.getElementById('site-sidebar');
+        const overlay = document.getElementById('mobileOverlay');
+        if (menuBtn) {
+            if (sidebar) sidebar.classList.toggle('show');
+            if (overlay && sidebar) {
+                overlay.classList.toggle('active', sidebar.classList.contains('show'));
+                overlay.style.zIndex = '1500'; // 确保遮盖底层内容
+            }
+            return;
+        }
+        if (overlay && e.target === overlay) {
+            if (sidebar && sidebar.classList.contains('show')) {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('active');
+            }
+        }
+    });
+    document.addEventListener('click', function(e) {
+        const toggleBtn = e.target.closest('.folder-toggle');
+        if (!toggleBtn) return;
+        const subList = toggleBtn.nextElementSibling;
+        const icon = toggleBtn.querySelector('.folder-icon');
+        if (subList && subList.classList.contains('tree-sub')) {
+            const isOpen = subList.classList.toggle('open');
+            if (icon) {
+                icon.textContent = isOpen ? '[-]' : '[+]';
+            }
+        }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn'); // 确保类名匹配你的 HTML
+        const mobileNav = document.querySelector('.dohna-nav'); // 替换为你的实际侧边栏/导航菜单类名
+
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // 阻止事件冒泡
+                mobileNav.classList.toggle('active'); // 通过 active 类控制菜单展开
+            });
+
+            // 附赠体验优化：点击页面空白处自动收起菜单
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 850 &&
+                    mobileNav.classList.contains('active') &&
+                    !mobileNav.contains(e.target) &&
+                    e.target !== mobileMenuBtn) {
+                    mobileNav.classList.remove('active');
+                }
+            });
+        }
+        
+    });
+    document.addEventListener('click', function(e) {
+        const clickedLink = e.target.closest('a.tree-item.link');
+        if (!clickedLink) return;
+        const mobileNav = document.querySelector('.dohna-nav');
+        const overlay = document.getElementById('mobileOverlay');
+        if (mobileNav) {
+            mobileNav.classList.remove('active');
+        }
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+    }, true); 
+
+</script>
+</body>
+</html>
